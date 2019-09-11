@@ -1,8 +1,7 @@
 import Link from "next/link";
 export default props => {
 	const { post } = props;
-	console.log("PROPS", props);
-	console.log("PROPS", post);
+
 	return (
 		<li>
 			<Link href="/p/[id]" as={`/p/${post.id}`}>
