@@ -8,6 +8,14 @@ const links = [
 	{ href: "/about", label: "Entrepreneur" },
 	{ href: "/contact", label: "Quotes" },
 ];
+const socialLinks = [
+	{ href: "/newsletter", label: "Newsletter" },
+	{ href: "/contact", label: "Facebook" },
+	{ href: "/contact", label: "Development" },
+	{ href: "/contact", label: "Motivation" },
+	{ href: "/about", label: "Entrepreneur" },
+	{ href: "/contact", label: "Quotes" },
+];
 // const moreLinks = [
 // 	{ href: "/contact", label: "Development" },
 // 	{ href: "/about", label: "Success" },
