@@ -38,9 +38,6 @@ const Home = props => {
 			`}</style>
 			<h1>Checking Next integration </h1>
 			<h2 style={{ color: "red" }}>Third Title</h2>
-			{/* <PostLink title="Hello Next.js" id="hello-nextjs" />
-			<PostLink title="Learn Next.js is awesome" id="learn-nextjs" />
-			<PostLink title="Deploy apps with Zeit" id="deploy-nextjs" /> */}
 		</Layout>
 	);
 };
