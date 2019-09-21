@@ -2,16 +2,16 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 import Head from "next/head";
 import {
-	contactForm,
+	emailSignUp,
 	INITIAL_STATE,
 	ERROR_STATE,
-} from "../data/contactFormData";
+} from "../data/emailSignupData";
 import { useState } from "react";
 import uuid from "uuid";
 import axios from "axios";
 import { theme } from "../theme/baseCss";
 import validate from "../components/FormValidation/Validation";
-import Recaptcha from "react-recaptcha";
+
 export default ({ url }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [errors, setErrors] = useState(ERROR_STATE);
@@ -20,20 +20,21 @@ export default ({ url }) => {
 		e.preventDefault();
 		const { push } = url;
 		const URL =
-			" https://01khx5y3mh.execute-api.eu-west-1.amazonaws.com/prod/contact-mailfwd";
+			"https://01khx5y3mh.execute-api.eu-west-1.amazonaws.com/prod/contact-mailfwd";
 		const submitForm = {
 			...formData,
 			site: "entrepreneur",
 			id: uuid(),
 			timeStamp: Date(),
+			popup: false,
 		};
 
-		try {
-			await axios.post(URL, { ...submitForm });
-			push("/");
-		} catch (err) {
-			console.log("Error occurred", err);
-		}
+		// try {
+		// 	await axios.post(URL, { ...submitForm });
+		// 	push("/");
+		// } catch (err) {
+		// 	console.log("Error occurred", err);
+		// }
 	};
 
 	const validateForm = e => {
@@ -45,81 +46,52 @@ export default ({ url }) => {
 	};
 
 	return (
-		<Layout>
+		<Layout background>
 			<Head>
-				<title>Contact Us</title>
+				<title>Newsletter</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-				<script
-					src="https://www.google.com/recaptcha/api.js"
-					async
-					defer
-				></script>
 			</Head>
 			<main className="content">
 				<article className="article">
-					<h1 className="main-title">Contact Us</h1>
+					<h1 className="main-title">Newsletter</h1>
 				</article>
 				<form className="contact-form" onSubmit={handleSubmit}>
+					<h3>
+						Be the first to get our latest content - striaght to your inbox
+					</h3>
 					<p>
-						<strong className="form-blurb">
-							We value your feedback as we continually try to improve our
-							content and its delivery for a better user experience.
-						</strong>
+						The best wealth and personal development content on the internet.
+						Get the latest content that you care about the most as soon as it
+						comes avaialable.
 					</p>
-					<p>
-						<strong className="form-blurb">
-							If you have any questions or comments about us please contact
-							admin@derivative-media.com or enter your information below and we
-							will get back to you as soon as possible
-						</strong>
-					</p>
-					{contactForm.map((input, index) => {
-						switch (input.textarea) {
-							case true:
-								return (
-									<div className="form-group" key={index}>
-										<label className="form-label">{input.label}</label>
-										<textarea
-											name={input.name}
-											className={input.className}
-											type={input.type}
-											placeholder={input.placeholder}
-											rows={input.rows}
-											style={{ height: "7.5rem", padding: 10 }}
-											onChange={handleChange}
-										/>
-									</div>
-								);
-							case false:
-								return (
-									<div className="form-group" key={index}>
-										<label className="form-label">{input.label}</label>
-										<input
-											name={input.name}
-											required={input.required}
-											className={errors[input.name] ? "error" : input.className}
-											type={input.type}
-											placeholder={
-												errors[input.name]
-													? errors[input.name]
-													: input.placeholder
-											}
-											rows={input.rows}
-											onChange={handleChange}
-											onBlur={validateForm}
-										/>
-									</div>
-								);
-						}
+					{emailSignUp.map((input, index) => {
+						return (
+							<div className="form-group" key={index}>
+								<label className="form-label">{input.label}</label>
+								<input
+									name={input.name}
+									required={input.required}
+									className={errors[input.name] ? "error" : input.className}
+									type={input.type}
+									placeholder={
+										errors[input.name] ? errors[input.name] : input.placeholder
+									}
+									rows={input.rows}
+									onChange={handleChange}
+									onBlur={validateForm}
+								/>
+							</div>
+						);
 					})}
-					<div className="recaptcha">
-						{process.env.NODE_ENV === "production" ? (
-							<Recaptcha sitekey={process.env.NEXT_APP_RECAPTCHA_SITEKEY} />
-						) : null}
-					</div>
+
 					<button type="submit" className="button">
-						<span className="submit-button">SUBMIT</span>
+						<span className="submit-button">SUBSCRIBE</span>
 					</button>
+					<strong>
+						*By signing up, you are subscribing to recieve newsletter from
+						Derivative Media Ltd. You data will be processed in accordance with
+						our Privacy & Cookies Policy
+					</strong>
 				</form>
 			</main>
 			<style jsx>
@@ -128,12 +100,14 @@ export default ({ url }) => {
 						width: 100%;
 						height: 2.5rem;
 						background-color: ${theme.primary};
+						border: none;
+						margin-top: 2rem;
+						margin-bottom: 1.5rem;
 					}
 					.button:focus {
 						outline: none;
 					}
 					.contact-form {
-						background: #f7f7f7;
 						padding: 1.5rem;
 						margin-bottom: 4rem;
 					}
@@ -142,7 +116,8 @@ export default ({ url }) => {
 						display: flex;
 						flex-grow: 1;
 						flex-direction: column;
-≈					}
+						background-color: "#111";
+					}
 					.error {
 						font-size: 1.1em;
 						font-weight: 400;
@@ -156,16 +131,28 @@ export default ({ url }) => {
 						margin: 0px;
 						width: 100%;
 						border-radius: 0;
-						font-family: ${theme.secondaryFont};
+						font-family: ${theme.font};
 						border: 1px solid ${theme.primary};
 					}
 					.error::placeholder {
 						color: ${theme.primary};
 					}
-					.form-blurb {
-						font-family: ${theme.secondaryFont};
+					h3 {
+						font-size: 1.2em;
+						font-weight: 600;
+						color: ${theme.primary};
+						font-family: ${theme.font};
+						text-align: left;
+						text-transform: uppercase;
+						text-align: center;
+					}
+					p {
+						font-size: ${theme.fontSize};
+						font-weight: 600;
+						color: #fff;
+						font-family: ${theme.font};
+						text-align: left;
 						line-height: ${theme.lineHeight};
-						font-size: 1.1rem;
 					}
 					.form-group {
 						position: relative;
@@ -196,7 +183,7 @@ export default ({ url }) => {
 						margin: 0px;
 						width: 100%;
 						border-radius: 0;
-						font-family: ${theme.secondaryFont};
+						font-family: ${theme.font};
 					}
 					.form-input::placeholder {
 						color: grey;
@@ -205,19 +192,21 @@ export default ({ url }) => {
 						outline: none;
 					}
 					.main-title {
-						font-family: ${theme.secondaryFont};
+						font-family: ${theme.font};
 						font-size: 2.8em;
 						font-weight: 700;
-						color: #101010;
+						color: #fefefe;
 						text-transform: uppercase;
+						text-align: center;
 					}
-					.recaptcha{
-					float: right;
-					 margin-top: 2rem;
-					  margin-bottom: 3rem
+					strong {
+						color: white;
+						font-family: ${theme.font};
+						line-height: ${theme.lineHeight};
+						font-size: 0.9rem;
 					}
 					.submit-button {
-						font-family: ${theme.secondaryFont};
+						font-family: ${theme.font};
 						font-size: 2em;
 						font-weight: 700;
 						color: #fefefe;
