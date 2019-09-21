@@ -36,7 +36,7 @@ const Home = props => {
 					opacity: 0.6;
 				}
 			`}</style>
-			<h1>Checking Next integration </h1>
+			<h1>Deployment </h1>
 			<h2 style={{ color: "red" }}>Third Title</h2>
 		</Layout>
 	);
