@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { theme } from "../theme/baseCss";
 export default props => {
 	const { post } = props;
 
@@ -11,7 +12,7 @@ export default props => {
 			<style jsx>{`
 				h1,
 				a {
-					font-family: "Arial";
+					font-family: ${theme.font};
 				}
 
 				ul {
