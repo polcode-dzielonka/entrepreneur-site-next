@@ -11,6 +11,14 @@
     "/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
+    ],
+    "/contact": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/terms": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }

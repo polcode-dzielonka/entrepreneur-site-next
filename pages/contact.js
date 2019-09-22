@@ -14,25 +14,28 @@ import validate from "../components/FormValidation/Validation";
 import Recaptcha from "react-recaptcha";
 export default ({ url }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
+	const [recaptcha, setRecaptcha] = useState(false);
 	const [errors, setErrors] = useState(ERROR_STATE);
 	console.log("PROCESS", process.env.NEXT_APP_RECAPTCHA_SITEKEY);
 	const handleSubmit = async e => {
 		e.preventDefault();
-		const { push } = url;
-		const URL =
-			" https://01khx5y3mh.execute-api.eu-west-1.amazonaws.com/prod/contact-mailfwd";
-		const submitForm = {
-			...formData,
-			site: "entrepreneur",
-			id: uuid(),
-			timeStamp: Date(),
-		};
+		if (recaptcha) {
+			const { push } = url;
+			const URL =
+				" https://01khx5y3mh.execute-api.eu-west-1.amazonaws.com/prod/contact-mailfwd";
+			const submitForm = {
+				...formData,
+				site: "entrepreneur",
+				id: uuid(),
+				timeStamp: Date(),
+			};
 
-		try {
-			await axios.post(URL, { ...submitForm });
-			push("/");
-		} catch (err) {
-			console.log("Error occurred", err);
+			try {
+				await axios.post(URL, { ...submitForm });
+				push("/");
+			} catch (err) {
+				console.log("Error occurred", err);
+			}
 		}
 	};
 
@@ -42,6 +45,12 @@ export default ({ url }) => {
 
 	const handleChange = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const verify = resp => {
+		if (resp) {
+			setRecaptcha(true);
+		}
 	};
 
 	return (
@@ -114,7 +123,11 @@ export default ({ url }) => {
 					})}
 					<div className="recaptcha">
 						{process.env.NODE_ENV === "production" ? (
-							<Recaptcha sitekey={process.env.NEXT_APP_RECAPTCHA_SITEKEY} />
+							<Recaptcha
+								sitekey={process.env.NEXT_APP_RECAPTCHA_SITEKEY}
+								render="explicit"
+								verifyCallback={verify}
+							/>
 						) : null}
 					</div>
 					<button type="submit" className="button">
