@@ -15,7 +15,7 @@ import Recaptcha from "react-recaptcha";
 export default ({ url }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [errors, setErrors] = useState(ERROR_STATE);
-
+	console.log("PROCESS", process.env.NEXT_APP_RECAPTCHA_SITEKEY);
 	const handleSubmit = async e => {
 		e.preventDefault();
 		const { push } = url;
