@@ -21,10 +21,9 @@ const Contact = ({ router }) => {
 	const handleSubmit = async e => {
 		e.preventDefault();
 		if (recaptcha) {
-			setRecaptchaError(false);
 			const { push } = router;
 			const URL =
-				" https://01khx5y3mh.execute-api.eu-west-1.amazonaws.com/prod/contact-mailfwd";
+				"https://01khx5y3mh.execute-api.eu-west-1.amazonaws.com/prod/contact-mailfwd";
 			const submitForm = {
 				...formData,
 				site: "entrepreneur",
@@ -54,6 +53,7 @@ const Contact = ({ router }) => {
 	const verify = resp => {
 		if (resp) {
 			setRecaptcha(true);
+			setRecaptchaError("");
 		}
 	};
 
