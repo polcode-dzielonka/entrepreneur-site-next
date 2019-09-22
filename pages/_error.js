@@ -26,13 +26,13 @@ export default () => {
 					<div className="main-content">
 						<p>The page you requested does not exist or has moved.</p>
 						<p>
-							Click &nbsp;
+							Click&nbsp;
 							<Link>
 								<a href="/" className="link">
 									here
 								</a>
 							</Link>
-							to get back to the Home page.
+							&nbsp;to get back to the Home page.
 						</p>
 					</div>
 				</section>

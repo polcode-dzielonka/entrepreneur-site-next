@@ -21,7 +21,7 @@ export default () => {
 							'influencer' lifestyle.
 						</p>
 						<p>
-							While this can be incidental it is not a result of
+							While this can be incidental it is not a result of&nbsp;
 							<strong>REAL</strong> wealth.
 						</p>
 						<p>
@@ -99,7 +99,6 @@ export default () => {
 						text-shadow: 0 1px white;
 						z-index: 600;
 					}
-
 					blockquote p {
 						color: #75808a;
 						line-height: 1.4 !important;

@@ -1,11 +1,19 @@
 {
-  "version": 2,
-  "name": "entrepreneur-site-next",
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-  "routes": [
-    {
-      "src": "/_next/static/(?:[^/]+/pages|chunks|runtime)/.+",
-      "headers": { "cache-control": "immutable,max-age=31536000" }
-    }
-  ]
+	"version": 2,
+	"name": "entrepreneur-site-next",
+	"builds": [{ "src": "next.config.js", "use": "@now/next" }],
+	"routes": [
+		{
+			"src": "/_next/static/(?:[^/]+/pages|chunks|runtime)/.+",
+			"headers": { "cache-control": "immutable,max-age=31536000" }
+		}
+	],
+	"env": {
+		"NEXT_APP_RECAPTCHA_SITEKEY": "@recaptcha-sitekey"
+	},
+	"build": {
+		"env": {
+			"NEXT_APP_RECAPTCHA_SITEKEY": "@recaptcha-sitekey"
+		}
+	}
 }

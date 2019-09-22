@@ -7,4 +7,7 @@ module.exports = {
 		config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
 		return config;
 	},
+	env: {
+		NEXT_APP_RECAPTCHA_SITEKEY: process.env.NEXT_APP_RECAPTCHA_SITEKEY,
+	},
 };
