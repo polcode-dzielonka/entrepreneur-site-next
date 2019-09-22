@@ -231,10 +231,8 @@ const Privacy = () => {
 								parent or guardian believes that the Website has personally
 								identifiable information of a child under the age of 16 in its
 								database, please contact us immediately&nbsp;
-								<Link>
-									<a href="/contact" className="link">
-										here
-									</a>
+								<Link href="/contact">
+									<a className="link">here</a>
 								</Link>{" "}
 								and we will use our best efforts to promptly remove such
 								information from our records.
@@ -274,10 +272,8 @@ const Privacy = () => {
 							<h2>12. Contact Us</h2>
 							If you have any questions about this Privacy Policy, please
 							contact us&nbsp;
-							<Link>
-								<a href="/contact" className="link">
-									here.
-								</a>
+							<Link href="/contact">
+								<a className="link">here.</a>
 							</Link>
 						</ol>
 						<p>

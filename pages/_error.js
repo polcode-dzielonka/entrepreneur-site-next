@@ -27,10 +27,8 @@ export default () => {
 						<p>The page you requested does not exist or has moved.</p>
 						<p>
 							Click&nbsp;
-							<Link>
-								<a href="/" className="link">
-									here
-								</a>
+							<Link href="/">
+								<a className="link">here</a>
 							</Link>
 							&nbsp;to get back to the Home page.
 						</p>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
 import Head from "next/head";
+import { withRouter } from "next/router";
 import {
 	contactForm,
 	INITIAL_STATE,
@@ -12,15 +13,16 @@ import axios from "axios";
 import { theme } from "../theme/baseCss";
 import validate from "../components/FormValidation/Validation";
 import Recaptcha from "react-recaptcha";
-export default ({ url }) => {
+const Contact = ({ router }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [recaptcha, setRecaptcha] = useState(false);
 	const [errors, setErrors] = useState(ERROR_STATE);
-	console.log("PROCESS", process.env.NEXT_APP_RECAPTCHA_SITEKEY);
+	const [recaptchaError, setRecaptchaError] = useState("");
 	const handleSubmit = async e => {
 		e.preventDefault();
 		if (recaptcha) {
-			const { push } = url;
+			setRecaptchaError(false);
+			const { push } = router;
 			const URL =
 				" https://01khx5y3mh.execute-api.eu-west-1.amazonaws.com/prod/contact-mailfwd";
 			const submitForm = {
@@ -36,6 +38,8 @@ export default ({ url }) => {
 			} catch (err) {
 				console.log("Error occurred", err);
 			}
+		} else {
+			setRecaptchaError(true);
 		}
 	};
 
@@ -122,12 +126,20 @@ export default ({ url }) => {
 						}
 					})}
 					<div className="recaptcha">
-						{process.env.NODE_ENV === "production" ? (
+						{process.browser ? (
 							<Recaptcha
 								sitekey={process.env.NEXT_APP_RECAPTCHA_SITEKEY}
 								render="explicit"
 								verifyCallback={verify}
 							/>
+						) : null}
+					</div>
+					<div>
+						{recaptchaError ? (
+							<div className="recaptcha-error">
+								Please confirm that you are not a bot by checking the checkbox
+								above
+							</div>
 						) : null}
 					</div>
 					<button type="submit" className="button">
@@ -225,9 +237,17 @@ export default ({ url }) => {
 						text-transform: uppercase;
 					}
 					.recaptcha{
-					float: right;
-					 margin-top: 2rem;
-					  margin-bottom: 3rem
+						float: right;
+					 margin-top: 1rem;
+					  margin-bottom: 1rem
+					}
+					.recaptcha-error{
+						font-family: ${theme.secondaryFont};
+						line-height: ${theme.lineHeight};
+						font-size: 1.1rem;
+						float: right;	
+						margin-bottom: 2rem;
+						font-weight:900;
 					}
 					.submit-button {
 						font-family: ${theme.secondaryFont};
@@ -256,3 +276,4 @@ export default ({ url }) => {
 		</Layout>
 	);
 };
+export default withRouter(Contact);

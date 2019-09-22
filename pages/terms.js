@@ -222,10 +222,8 @@ const Terms = () => {
 							Your submission of personal information through the site is
 							governed by our Privacy Policy. To view our Privacy Policy
 							click&nbsp;
-							<Link>
-								<a href="/contact" className="link">
-									here.
-								</a>
+							<Link href="/contact">
+								<a className="link">here.</a>
 							</Link>
 						</p>
 
@@ -420,10 +418,8 @@ const Terms = () => {
 						<h2>SECTION 18 - CONTACT INFORMATION</h2>
 						<p>
 							Questions about the Terms of Service should be sent to us&nbsp;
-							<Link>
-								<a href="/contact" className="link">
-									here.
-								</a>
+							<Link href="/contact">
+								<a className="link">here.</a>
 							</Link>
 						</p>
 					</div>

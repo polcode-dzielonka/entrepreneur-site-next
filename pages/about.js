@@ -74,10 +74,8 @@ export default () => {
 						</p>
 						<p>
 							To contact us please fill out the form&nbsp;
-							<Link>
-								<a href="/contact" className="link">
-									here.
-								</a>
+							<Link href="/contact">
+								<a className="link">here.</a>
 							</Link>
 						</p>
 					</div>
