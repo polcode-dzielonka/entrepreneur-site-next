@@ -38,7 +38,7 @@ const ArticleBody = ({ content, category, url, image, headline, brief }) => {
 			/>
 			<QuickEmailSignUp />
 			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="2rem" />
-			<FacebookComments href={url} numPostsVisible={5} orderBy="reverse_time" />
+			<FacebookComments url={url} numPostsVisible={5} orderBy="reverse_time" />
 			<SectionBar title="Latest" titleColor="#111" titleSize="2rem" />
 			<style jsx>
 				{`

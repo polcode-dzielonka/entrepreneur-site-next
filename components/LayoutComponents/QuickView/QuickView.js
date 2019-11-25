@@ -108,7 +108,7 @@ const QuickView = ({ content, position, url, id }) => {
 						titleSize="2rem"
 					/>
 					<FacebookComments
-						href={url}
+						url={url}
 						numPostsVisible={5}
 						orderBy="reverse_time"
 					/>

@@ -122,7 +122,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						titleSize="2rem"
 					/>
 					<FacebookComments
-						href={url}
+						url={url}
 						numPostsVisible={5}
 						orderBy="reverse_time"
 					/>
