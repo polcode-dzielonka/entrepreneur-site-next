@@ -832,6 +832,39 @@ const EMAIL_SIGN_UP = `
 
 /***/ }),
 
+/***/ "./gtag/lib.js":
+/*!*********************!*\
+  !*** ./gtag/lib.js ***!
+  \*********************/
+/*! exports provided: pageview, event */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pageview", function() { return pageview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "event", function() { return event; });
+// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+const pageview = url => {
+  window.gtag("config", process.envREACT_APP_GOOGLE_TAG_ID, {
+    page_path: url
+  });
+}; // https://developers.google.com/analytics/devguides/collection/gtagjs/events
+
+const event = ({
+  action,
+  category,
+  label,
+  value
+}) => {
+  window.gtag("event", action, {
+    event_category: category,
+    event_label: label,
+    value: value
+  });
+};
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
@@ -2886,6 +2919,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-cookie */ "js-cookie");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _components_SignUpModal_signUpModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/SignUpModal/signUpModal */ "./components/SignUpModal/signUpModal.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _gtag_lib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../gtag/lib */ "./gtag/lib.js");
 
 
 
@@ -2894,6 +2930,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 
+
+
+next_router__WEBPACK_IMPORTED_MODULE_7___default.a.events.on("routeChangeComplete", url => Object(_gtag_lib__WEBPACK_IMPORTED_MODULE_8__["pageview"])(url));
 
 class OverviewApp extends next_app__WEBPACK_IMPORTED_MODULE_3___default.a {
   constructor(...args) {
@@ -3118,6 +3157,17 @@ module.exports = require("core-js/library/fn/promise");
 /***/ (function(module, exports) {
 
 module.exports = require("js-cookie");
+
+/***/ }),
+
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
 
 /***/ }),
 

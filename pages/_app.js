@@ -2,6 +2,9 @@ import App from "next/app";
 import UserContext from "../utils/Context";
 import Cookie from "js-cookie";
 import SignUp from "../components/SignUpModal/signUpModal";
+import Router from "next/router";
+import { pageview } from "../gtag/lib";
+Router.events.on("routeChangeComplete", url => pageview(url));
 
 class OverviewApp extends App {
 	state = {

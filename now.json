@@ -16,7 +16,8 @@
 		"REACT_APP_SITE_ID": "@site_id",
 		"REACT_APP_FACEBOOK_APP_ID": "@facebook_app_id",
 		"SITEMAP_URL": "@sitemap_url",
-		"SITE_NAME": "@site_name"
+		"SITE_NAME": "@site_name",
+		"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id"
 	},
 	"build": {
 		"env": {
@@ -27,7 +28,8 @@
 			"REACT_APP_SITE_ID": "@site_id",
 			"REACT_APP_FACEBOOK_APP_ID": "@facebook_app_id",
 			"SITEMAP_URL": "@sitemap_url",
-			"SITE_NAME": "@site_name"
+			"SITE_NAME": "@site_name",
+			"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id"
 		}
 	}
 }
