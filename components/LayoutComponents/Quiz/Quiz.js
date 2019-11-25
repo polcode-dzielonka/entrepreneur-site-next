@@ -35,6 +35,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 
 	const nextHref = `/${url}/quiz/${id}/questions`;
 	const shareUrl = `${process.env.SITE_ADDRESS}/${url}/quiz/${id}/questions/opening`;
+	const commentsUrl = `${process.env.SITE_ADDRESS}/${url}/quiz/${id}/questions/closing`;
 
 	const quizEndRef =
 		positionNumber + 1 === content.numQuestions + 1
@@ -122,7 +123,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						titleSize="2rem"
 					/>
 					<FacebookComments
-						url={url}
+						url={commentsUrl}
 						numPostsVisible={5}
 						orderBy="reverse_time"
 					/>

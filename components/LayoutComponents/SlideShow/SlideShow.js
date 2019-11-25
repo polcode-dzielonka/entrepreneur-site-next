@@ -106,7 +106,11 @@ const SlideDetails = ({ content, position, url, id }) => {
 			/>
 			<QuickEmailSignUp />
 			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="2rem" />
-			<FacebookComments url={url} numPostsVisible={5} orderBy="reverse_time" />
+			<FacebookComments
+				url={shareUrl}
+				numPostsVisible={5}
+				orderBy="reverse_time"
+			/>
 			<SectionBar title="Latest" titleColor="#111" titleSize="2rem" />
 			<hr className="break" />
 			<style jsx>

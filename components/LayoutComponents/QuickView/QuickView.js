@@ -28,6 +28,7 @@ const QuickView = ({ content, position, url, id }) => {
 	}
 	const nextHref = `/${url}/quickview/${id}/slides`;
 	const shareUrl = `${process.env.SITE_ADDRESS}/${url}/quickview/${id}/slides/opening`;
+	const commentsUrl = `${process.env.SITE_ADDRESS}/${url}/quickview/${id}/slides/closing`;
 
 	const slideEndRef =
 		positionNumber + 1 === content.numSlides + 1
@@ -108,7 +109,7 @@ const QuickView = ({ content, position, url, id }) => {
 						titleSize="2rem"
 					/>
 					<FacebookComments
-						url={url}
+						url={commentsUrl}
 						numPostsVisible={5}
 						orderBy="reverse_time"
 					/>
