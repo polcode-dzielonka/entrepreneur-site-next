@@ -9,7 +9,8 @@
 		}
 	],
 	"env": {
-		"NEXT_APP_RECAPTCHA_SITEKEY": "@recaptcha-sitekey"
+		"NEXT_APP_RECAPTCHA_SITEKEY": "@recaptcha-sitekey",
+		"REACT_APP_PROD_ENDPOINT": "https://35tlenbo4neavaaoewbrxlvkpq.appsync-api.eu-west-1.amazonaws.com/graphql"
 	},
 	"build": {
 		"env": {
