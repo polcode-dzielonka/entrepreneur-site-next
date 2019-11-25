@@ -12,14 +12,16 @@
 		"NEXT_APP_RECAPTCHA_SITEKEY": "@recaptcha-sitekey",
 		"REACT_APP_PROD_ENDPOINT": "@appsync_api_endpoint",
 		"REACT_APP_PROD_API_KEY": "@prod_api_key",
-		"REACT_APP_SITE_ID": "@site_id"
+		"REACT_APP_SITE_ID": "@site_id",
+		"NEXT_APP_RECAPTCHA_INVISIBLE_SITEKEY": "@invisible_recaptcha_key"
 	},
 	"build": {
 		"env": {
 			"NEXT_APP_RECAPTCHA_SITEKEY": "@recaptcha-sitekey",
 			"REACT_APP_PROD_ENDPOINT": "@appsync_api_endpoint",
 			"REACT_APP_PROD_API_KEY": "@prod_api_key",
-			"REACT_APP_SITE_ID": "@site_id"
+			"REACT_APP_SITE_ID": "@site_id",
+			"NEXT_APP_RECAPTCHA_INVISIBLE_SITEKEY": "@invisible_recaptcha_key"
 		}
 	}
 }
