@@ -22,7 +22,12 @@ const Footer = ({ menuOpen, onClick }) => {
 						{socialLinks.map(({ href, icon }, index) => {
 							return (
 								<li key={index}>
-									<a href={href} target="_blank" className="footer-item-social">
+									<a
+										href={href}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="footer-item-social"
+									>
 										<img
 											style={{
 												width: "30%",
@@ -38,17 +43,26 @@ const Footer = ({ menuOpen, onClick }) => {
 				<strong className="footer-brand">
 					<span className="footer-brand-style">WealthMack</span>
 				</strong>
+				<div className="footer-icon">
+					<img
+						className="footer-brand-image"
+						src="/static/business_motivation.svg"
+					/>
+				</div>
 			</div>
 			<div className="footer-copy">Copyright © 2019 wealthmack.com</div>
 			<style jsx>{`
 				.footer {
 					padding-top: 5rem;
 					background: #111;
+					display: flex;
+					clear: both;
+					flex-direction: column;
 				}
 				.footer-brand {
 					display: block;
 					text-align: center;
-					margin-bottom: 4.5rem;
+					margin-bottom: 2rem;
 					width: 100%;
 					position: relative;
 					z-index: 1;
@@ -58,6 +72,7 @@ const Footer = ({ menuOpen, onClick }) => {
 					text-transform: uppercase;
 					letter-spacing: 1px;
 				}
+
 				.footer-brand:before {
 					border-top: 0.5px solid hsla(0, 0%, 100%);
 					content: "";
@@ -83,6 +98,18 @@ const Footer = ({ menuOpen, onClick }) => {
 					align-items: center;
 					justify-content: center;
 					padding: 2.5rem 0;
+				}
+				.footer-icon {
+					text-align: center;
+					width: 100%;
+					height: 100%;
+				}
+				.footer-brand-image {
+					width: 15%;
+					background-color: white;
+					height: 15%;
+					min-width: 150px;
+					border: 1px solid white;
 				}
 				.footer-nav {
 					width: 100%;

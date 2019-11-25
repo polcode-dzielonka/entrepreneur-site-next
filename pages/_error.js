@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import { theme } from "../theme/baseCss";
@@ -13,12 +13,11 @@ import { theme } from "../theme/baseCss";
 // 	{ property: "og:description", content: `${helmetMetaComment}` },
 // ];
 
-export default () => {
+const DefaultError = () => {
 	return (
 		<Layout>
 			<Head>
 				<title>404 Error</title>
-				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 			<main className="content">
 				<section>
@@ -51,7 +50,7 @@ export default () => {
 						font-weight: 900;
 					}
 					.main-title {
-						font-family: ${theme.secondaryFont};
+						font-family: ${theme.font};
 						margin-top: 3.5rem;
 						font-size: 2.8em;
 						font-weight: 700;
@@ -59,7 +58,7 @@ export default () => {
 						text-transform: uppercase;
 					}
 					.main-content {
-						font-family: ${theme.secondaryFont};
+						font-family: ${theme.font};
 						font-size: ${theme.fontSize};
 						color: #101010;
 					}
@@ -85,7 +84,7 @@ export default () => {
 							text-align: center;
 						}
 						.main-content {
-							font-family: ${theme.secondaryFont};
+							font-family: ${theme.font};
 							font-size: ${theme.fontSize};
 							font-weight: 300;
 							color: #101010;
@@ -99,3 +98,5 @@ export default () => {
 		</Layout>
 	);
 };
+
+export default DefaultError;

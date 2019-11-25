@@ -1,55 +1,16 @@
-import { Fragment } from "react";
-import Link from "next/link";
-import Layout from "../components/Layout";
-import PostLink from "../components/PostLink";
-import fetch from "isomorphic-unfetch";
+import { ALL_POSTS_QUERY } from "../graphql/headline";
+import MainHeadlineLayout from "../components/Layouts/MainHeadlineLayout";
+import { withApollo } from "../lib/apollo";
 
-const Home = props => {
+const Home = () => {
 	return (
-		<Layout>
-			<ul>
-				{props.shows.map(show => (
-					<PostLink key={show.id} post={show} />
-				))}
-			</ul>
-			<style jsx>{`
-				h1,
-				a {
-					font-family: "Arial";
-				}
-
-				ul {
-					padding: 0;
-				}
-
-				li {
-					list-style: none;
-					margin: 5px 0;
-				}
-
-				a {
-					text-decoration: none;
-					color: blue;
-				}
-
-				a:hover {
-					opacity: 0.6;
-				}
-			`}</style>
-			<h1>Deployment </h1>
-			<h2 style={{ color: "red" }}>Third Title</h2>
-		</Layout>
+		<MainHeadlineLayout
+			QUERY={ALL_POSTS_QUERY}
+			title="WealthMack"
+			pageTitle={"Latest"}
+			canonical=""
+		/>
 	);
 };
 
-Home.getInitialProps = async function() {
-	const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
-	const data = await res.json();
-
-	console.log(`Show data fetched. Count: ${data.length}`);
-
-	return {
-		shows: data.map(entry => entry.show),
-	};
-};
-export default Home;
+export default withApollo(Home);

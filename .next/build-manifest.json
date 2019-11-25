@@ -1,10 +1,10 @@
 {
   "devFiles": [
-    "static/development/dll/dll_9e2a3f9838424feeb96c.js",
-    "static/development/dll/dll_9e2a3f9838424feeb96c.js.map"
+    "static/development/dll/dll_01ec57fc9b90d43b98a8.js",
+    "static/development/dll/dll_01ec57fc9b90d43b98a8.js.map"
   ],
   "pages": {
-    "/": [
+    "/[url]/quickview/[slideId]/slides/[slideContentId]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
@@ -16,11 +16,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/contact": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/index": [
+    "/motivation": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

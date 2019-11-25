@@ -12,7 +12,7 @@ const validateForm = (values, name, setErrors, errors) => {
 					firstName: "",
 				});
 			}
-
+			break;
 		case "lastName":
 			if (!values.lastName) {
 				return setErrors({
@@ -25,7 +25,7 @@ const validateForm = (values, name, setErrors, errors) => {
 					lastName: "",
 				});
 			}
-
+			break;
 		case "email":
 			if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
 				return setErrors({
@@ -40,7 +40,7 @@ const validateForm = (values, name, setErrors, errors) => {
 					email: "",
 				});
 			}
-
+			break;
 		case "subject":
 			if (!values.subject) {
 				return setErrors({ ...errors, subject: "Please Enter A Subject" });
