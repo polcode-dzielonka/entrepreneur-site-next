@@ -4,19 +4,11 @@
     "static/development/dll/dll_01ec57fc9b90d43b98a8.js.map"
   ],
   "pages": {
-    "/[url]/quickview/[slideId]/slides/[slideContentId]": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
     "/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/motivation": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

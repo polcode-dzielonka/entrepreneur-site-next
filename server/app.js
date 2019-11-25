@@ -4,7 +4,9 @@ const next = require("next");
 const axios = require("axios");
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 8000;
-const ROOT_URL = dev ? `http://localhost:${port}` : "https://wealthmack.com";
+const ROOT_URL = dev
+	? `http://localhost:${port}`
+	: "https://35tlenbo4neavaaoewbrxlvkpq.appsync-api.eu-west-1.amazonaws.com";
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
