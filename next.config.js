@@ -31,4 +31,11 @@ module.exports = {
 		COOKIE_ACCEPT_EXPIRY: "365",
 		FACEBOOK_PAGE_URL: "https://www.facebook.com/WealthMack-103552984448329/",
 	},
+	experimental: {
+		modern: true,
+		async rewrites() {
+			return [{ source: "/sitemap.xml", destination: "/api/sitemap" }];
+		},
+		catchAllRouting: true,
+	},
 };
