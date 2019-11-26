@@ -2,7 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { theme } from "../../theme/baseCss";
 import Ripples from "../Button/Ripples";
-import Cookie from "js-cookie";
 import Context from "../../utils/Context";
 import CrossIcon from "../Icons/crossIcon";
 import axios from "axios";
@@ -14,6 +13,7 @@ import {
 } from "../../data/emailSignupData";
 import validate from "../../components/FormValidation/Validation";
 import SuccessModal from "./successModal";
+import Cookie from "js-cookie";
 
 //Set Cookie Expiration if not signed up (in minutes)
 const cookieTime = 1;
@@ -92,11 +92,11 @@ const SignUpModal = () => {
 					"x-api-key": process.env.REACT_APP_PROD_API_KEY,
 				},
 			});
-			const expiryDate = new Date(
-				new Date().getTime() + cookieTime * 60 * 1000,
-			);
+
+			const expiryDate = process.env.COOKIE_ACCEPT_EXPIRY; //Days
+
 			Cookie.set("wealth-cookie-email-signup", JSON.stringify(false), {
-				expires: expiryDate,
+				expires: Number(expiryDate),
 			});
 			setFormData(INITIAL_STATE);
 			setSuccessModal(true);

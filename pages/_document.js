@@ -7,6 +7,7 @@ export default class extends Document {
 			<html>
 				<Head>
 					{/* Global Site Tag (gtag.js) - Google Analytics */}
+
 					<script
 						async
 						src={`https://www.googletagmanager.com/gtag/js?id=${process.env.REACT_APP_GOOGLE_TAG_ID}`}

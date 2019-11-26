@@ -1345,7 +1345,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       src: `https://www.googletagmanager.com/gtag/js?id=${"GTM-PJHSSP6"}`,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 11
       },
       __self: this
     }), __jsx("script", {
@@ -1359,25 +1359,25 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 15
       },
       __self: this
     })), __jsx("body", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 26
       },
       __self: this
     }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 27
       },
       __self: this
     }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 28
       },
       __self: this
     })));

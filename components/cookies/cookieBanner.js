@@ -7,11 +7,8 @@ import Context from "../../utils/Context";
 
 const CookieBanner = () => {
 	const { cookie, handleState } = useContext(Context);
-	console.log("COOKIE", cookie);
-	console.log("Handle State", handleState);
+
 	const changeCookie = () => {
-		console.log("HIT ME", process.env);
-		console.log("HIT ME", process.env.COOKIE_ACCEPT_EXPIRY);
 		//set expiry to 10 minutes:- new Date(new Date().getTime() + 10 * 60 * 1000)
 		const expiryDate = process.env.COOKIE_ACCEPT_EXPIRY; //Days
 

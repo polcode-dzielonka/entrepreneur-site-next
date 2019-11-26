@@ -2,7 +2,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { theme } from "../../theme/baseCss";
 import Ripples from "../Button/Ripples";
-import axios from "axios";
 import EmailIcon from "./emailIcon";
 import { EMAIL_SIGN_UP } from "../../graphql/emailSignUp";
 import {
@@ -12,7 +11,8 @@ import {
 } from "../../data/emailSignupData";
 import validate from "../../components/FormValidation/Validation";
 import Reaptcha from "reaptcha";
-
+import axios from "axios";
+import Cookie from "js-cookie";
 //Set Cookie Expiration if not signed up (in minutes)
 const SignUpModal = () => {
 	const [formData, setFormData] = useState(QUICK_INITIAL_STATE);
@@ -75,6 +75,11 @@ const SignUpModal = () => {
 				},
 			});
 			setSuccess(true);
+			const expiryDate = process.env.COOKIE_ACCEPT_EXPIRY; //Days
+
+			Cookie.set("wealth-cookie-email-signup", JSON.stringify(false), {
+				expires: Number(expiryDate),
+			});
 			setFormData(QUICK_INITIAL_STATE);
 			setErrors({
 				QUICK_ERROR_STATE,

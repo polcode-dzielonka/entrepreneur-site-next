@@ -4,7 +4,6 @@ import Cookie from "js-cookie";
 import SignUp from "../components/SignUpModal/signUpModal";
 import Router from "next/router";
 import { pageview } from "../gtag/lib";
-Router.events.on("routeChangeComplete", url => pageview(url));
 
 class OverviewApp extends App {
 	state = {
@@ -13,6 +12,8 @@ class OverviewApp extends App {
 	};
 
 	componentDidMount() {
+		Router.events.on("routeChangeComplete", url => pageview(url));
+
 		const cookieMarker = Cookie.get("cookie-accept")
 			? JSON.parse(Cookie.get("cookie-accept"))
 			: true;
