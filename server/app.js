@@ -13,9 +13,13 @@ const handle = app.getRequestHandler();
 // Nextjs's server prepared
 app.prepare().then(() => {
 	const server = express();
+	console.log("HIT ME ", process.env.NODE_ENV);
+	console.log("HIT ME ", dev);
 	server.get("/sitemap.xml", async function(req, res) {
+		console.log("HIT SITEMATP");
 		res.header("Content-Type", "application/xml");
 		let xmlFile = await axios.get(process.env.SITEMAP_URL);
+		console.log("XML FILE", xmlFile);
 		res.send(xmlFile.data);
 	});
 

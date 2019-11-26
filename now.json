@@ -9,6 +9,7 @@
 		}
 	],
 	"env": {
+		"NODE_ENV": "production",
 		"NEXT_APP_RECAPTCHA_SITEKEY": "@recaptcha-sitekey",
 		"NEXT_APP_RECAPTCHA_INVISIBLE_SITEKEY": "@invisible_recaptcha_key",
 		"REACT_APP_PROD_ENDPOINT": "@appsync_api_endpoint",
