@@ -4,10 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon server/app.js -p 8080",
+		"dev": "nodemon server/app.js",
 		"build": "next build",
-		"start": "node server/app.js -p 8000",
-		"now-build": "next build"
+		"start": "node server/app.js",
+		"now-build": "next build",
+		"now": "now && now alias"
 	},
 	"keywords": [],
 	"author": "",

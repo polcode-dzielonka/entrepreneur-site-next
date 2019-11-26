@@ -32,5 +32,6 @@
 			"SITE_NAME": "@site_name",
 			"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id"
 		}
-	}
+	},
+	"alias": "https://wealthmack.com"
 }
