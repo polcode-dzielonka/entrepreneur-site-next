@@ -14,8 +14,9 @@ const CookieBanner = () => {
 		console.log("HIT ME", process.env.COOKIE_ACCEPT_EXPIRY);
 		//set expiry to 10 minutes:- new Date(new Date().getTime() + 10 * 60 * 1000)
 		const expiryDate = process.env.COOKIE_ACCEPT_EXPIRY; //Days
+
 		Cookie.set("cookie-accept", JSON.stringify(false), {
-			expires: `${expiryDate}`,
+			expires: Number(expiryDate),
 		});
 		handleState({ cookie: false });
 	};
