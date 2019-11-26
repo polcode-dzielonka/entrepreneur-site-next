@@ -1322,14 +1322,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/document */ "./node_modules/next/document.js");
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/thomaspatel/Documents/entrepreneur-site-next/pages/_document.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 /* harmony default export */ __webpack_exports__["default"] = (class extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
   render() {
-    return __jsx("html", null, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], null, __jsx("script", {
+    return __jsx("html", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7
+      },
+      __self: this
+    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8
+      },
+      __self: this
+    }, __jsx("script", {
       async: true,
-      src: `https://www.googletagmanager.com/gtag/js?id=${"GTM-PJHSSP6"}`
+      src: `https://www.googletagmanager.com/gtag/js?id=${"GTM-PJHSSP6"}`,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      },
+      __self: this
     }), __jsx("script", {
       dangerouslySetInnerHTML: {
         __html: `
@@ -1338,8 +1356,31 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
                             gtag('js', new Date());
                             gtag('config', '${"GTM-PJHSSP6"}');
                         `
-      }
-    })), __jsx("body", null, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], null), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], null)));
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: this
+    })), __jsx("body", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: this
+    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27
+      },
+      __self: this
+    })));
   }
 
 });
