@@ -14,16 +14,18 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
 	const server = express();
 
-	server.get("/sitemap.xml", async function(req, res) {
+	server.get("/sitemap.xml", function(req, res) {
 		res.header("Content-Type", "application/xml");
-		let xmlFile = await axios({
-			url: process.env.SITEMAP_URL,
-			method: "GET",
-			headers: {
-				Accept: "application/xml",
-			},
-		});
-		res.send(xmlFile.data);
+		(async function sendXML() {
+			let xmlFile = await axios({
+				url: process.env.SITEMAP_URL,
+				method: "GET",
+				headers: {
+					Accept: "application/xml",
+				},
+			});
+			res.send(xmlFile.data);
+		})();
 	});
 
 	server.get("*", (req, res) => handle(req, res));
