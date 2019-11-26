@@ -18,7 +18,8 @@ app.prepare().then(() => {
 		res.header("Content-Type", "application/xml");
 		(async function sendXML() {
 			let xmlFile = await axios({
-				url: process.env.SITEMAP_URL,
+				url:
+					"https://wealthmack-sitemap.s3-eu-west-1.amazonaws.com/sitemap-index-non-device-site.xml",
 				method: "GET",
 				headers: {
 					Accept: "application/xml",
