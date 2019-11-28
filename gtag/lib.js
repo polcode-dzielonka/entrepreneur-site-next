@@ -1,6 +1,6 @@
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = url => {
-	window.gtag("config", process.envREACT_APP_GOOGLE_TAG_ID, {
+	window.gtag("config", process.env.REACT_APP_GOOGLE_TAG_ID, {
 		page_path: url,
 	});
 };

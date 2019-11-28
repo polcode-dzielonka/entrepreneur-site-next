@@ -16,7 +16,7 @@ import SuccessModal from "./successModal";
 import Cookie from "js-cookie";
 
 //Set Cookie Expiration if not signed up (in minutes)
-const cookieTime = 1;
+const cookieTime = 60;
 const SignUpModal = () => {
 	const { emailCookie, handleState } = useContext(Context);
 	const [formData, setFormData] = useState(INITIAL_STATE);

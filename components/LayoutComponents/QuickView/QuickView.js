@@ -12,6 +12,8 @@ import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import { closingSocialButtons } from "../../SocialMedia/data";
 import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import FacebookComments from "../../SocialMedia/FacebookComments";
+import LazyLoad from "react-lazyload";
+import ScrollingContent from "../ScrollingContent/ScrollingContent";
 
 const QuickView = ({ content, position, url, id }) => {
 	const details = JSON.parse(content.overview);
@@ -115,7 +117,9 @@ const QuickView = ({ content, position, url, id }) => {
 					/>
 				</>
 			)}
-			<SectionBar title="Latest" titleColor="#111" titleSize="2rem" />
+			<LazyLoad>
+				<ScrollingContent id={id} title="Latest" type={"slideshow"} />
+			</LazyLoad>{" "}
 			<hr className="break" />
 			<style jsx>
 				{`

@@ -2,10 +2,10 @@ import { theme } from "../../../../../theme/baseCss";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-const NextLink = ({ brief, headline, image, url }) => {
+const NextLink = ({ brief, headline, image, url, title }) => {
 	return (
 		<div className="link-section">
-			<div className="scroll-text">Next:</div>
+			<div className="scroll-text">{title}</div>
 			<div className="link-button">
 				<Link href={url}>
 					<a className="quickview-link">
@@ -123,12 +123,15 @@ const NextLink = ({ brief, headline, image, url }) => {
 
 NextLink.defaultProps = {
 	url: "/",
+	image: process.env.SITE_IMAGE,
+	title: "Next:",
 };
 NextLink.propTypes = {
 	brief: PropTypes.String,
 	headline: PropTypes.String,
 	image: PropTypes.String,
 	url: PropTypes.String,
+	title: PropTypes.String,
 };
 
 export default NextLink;

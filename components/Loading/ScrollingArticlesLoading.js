@@ -1,4 +1,5 @@
-const ScrollingArticlesLoading = () => {
+import PropTypes from "prop-types";
+const ScrollingArticlesLoading = ({ height }) => {
 	return ["", "", "", "", "", "", ""].map((article, index) => {
 		if (index === 0) {
 			return (
@@ -60,7 +61,7 @@ const ScrollingArticlesLoading = () => {
 						position: relative;
 						cursor: pointer;
 						width: 100%;
-						height: 300px;
+						height: ${height};
 						background-color: white;
 					}
 					.sub-article {
@@ -126,5 +127,9 @@ const ScrollingArticlesLoading = () => {
 	});
 };
 export default ScrollingArticlesLoading;
-
-ScrollingArticlesLoading.propTypes = {};
+ScrollingArticlesLoading.defaultProps = {
+	height: "300px",
+};
+ScrollingArticlesLoading.propTypes = {
+	height: PropTypes.int,
+};

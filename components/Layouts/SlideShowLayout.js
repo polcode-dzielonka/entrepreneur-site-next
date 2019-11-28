@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import ErrorMessage from "../error";
 import { NetworkStatus } from "apollo-client";
 import { SLIDESHOW } from "../../graphql/indivSlideShow";
-import { HEADLINES } from "../../graphql/headline";
+import { HEADLINES, SLIDE } from "../../graphql/headline";
 import SlideLoading from "../Loading/Layouts/SlideShowLoading";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
@@ -37,6 +37,13 @@ const Slide = ({ id, position, url }) => {
 		},
 		notifyOnNetworkStatusChange: true,
 	});
+	const latestSlideShows = useQuery(SLIDE, {
+		variables: {
+			id: process.env.REACT_APP_SITE_ID,
+			filter: { mainHeadline: { eq: false } },
+			limit: 5,
+		},
+	});
 
 	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
@@ -57,9 +64,11 @@ const Slide = ({ id, position, url }) => {
 	// 	});
 	// };
 
-	if (error || headlines.error) return <SlideLoading />;
+	if (error || headlines.error || latestSlideShows.error)
+		return <SlideLoading />;
 	if ((loading && !loadingMorePosts) || headlines.loading)
 		return <SlideLoading />;
+
 	return (
 		<Layout>
 			<main className="article-container">
@@ -67,6 +76,7 @@ const Slide = ({ id, position, url }) => {
 					<SlideShowComponent
 						content={data.getProductionSlideShow}
 						position={position}
+						latest={latestSlideShows.data.listProductionSlideShows}
 						url={url}
 						id={id}
 					/>

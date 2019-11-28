@@ -2,9 +2,7 @@ import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
 import Link from "next/link";
 
-const ScrollingArticles = ({ data, loading }) => {
-	if (loading) return <div>Loading...</div>;
-
+const ScrollingArticles = ({ data }) => {
 	return data.map((article, index) => {
 		const overview = JSON.parse(article.overview);
 		const {
@@ -30,7 +28,7 @@ const ScrollingArticles = ({ data, loading }) => {
 						</a>
 					</Link>
 					<div className="large-info">
-						<h1 className="info-title">
+						<div className="info-title">
 							<Link href="/newsletter">
 								<a className="info-link">{headline}</a>
 							</Link>
@@ -39,7 +37,7 @@ const ScrollingArticles = ({ data, loading }) => {
 									<a className="category-link">{category}</a>
 								</Link>
 							</h2>
-						</h1>
+						</div>
 					</div>
 					<style jsx>{`
 						.category-link {

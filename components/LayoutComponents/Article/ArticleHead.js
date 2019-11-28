@@ -77,6 +77,7 @@ const ArticleHead = ({ overview, id }) => {
 				image={headlineImage}
 				headline={headline}
 				brief={brief}
+				id={id}
 			/>
 			<style jsx>
 				{`

@@ -9,7 +9,16 @@ import SectionBar from "../SectionBar";
 import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import defaultValue from "../Editor/defaultValue";
 import LazyLoad from "react-lazyload";
-const Slides = ({ data, showNumbers, shareUrl, image, headline, brief }) => {
+import NextLink from "../Editor/renderNode/ads/nextLink";
+const Slides = ({
+	data,
+	showNumbers,
+	shareUrl,
+	image,
+	headline,
+	brief,
+	latest,
+}) => {
 	return data.map((slideData, index) => {
 		const {
 			slide,
@@ -25,6 +34,13 @@ const Slides = ({ data, showNumbers, shareUrl, image, headline, brief }) => {
 				? JSON.parse(slideData.slideDetails)
 				: defaultValue,
 		);
+		const arrayNumber = Number.isInteger(index / 2) ? index / 2 : null;
+		const adData =
+			arrayNumber && arrayNumber < latest.items.length
+				? latest.items[arrayNumber - 1]
+				: null;
+		const midDataOverview = adData ? JSON.parse(adData.overview) : null;
+		const midDataId = adData ? adData.id : null;
 		return (
 			<div className="bookend-wrapper" key={index}>
 				<h1 className="section-header">
@@ -55,7 +71,6 @@ const Slides = ({ data, showNumbers, shareUrl, image, headline, brief }) => {
 				{index % 4 === 0 && (
 					<>
 						<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
-
 						<ShareButtonHoriz
 							data={openingSocialButtons}
 							url={shareUrl}
@@ -63,6 +78,23 @@ const Slides = ({ data, showNumbers, shareUrl, image, headline, brief }) => {
 							headline={headline}
 							brief={brief}
 						/>
+					</>
+				)}
+				{index % 2 === 0 && adData && (
+					<>
+						<SectionBar
+							title={`Up Next`}
+							titleColor="#111"
+							titleSize="1.5rem"
+						/>
+						<NextLink
+							brief={midDataOverview[0].brief}
+							title="Next Up:"
+							headline={midDataOverview[0].headline}
+							image={midDataOverview[0].headlineImage}
+							url={`/${midDataOverview[0].slideUrl}/quickview/${midDataId}/slides/opening`}
+						/>
+						<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
 					</>
 				)}
 
@@ -133,5 +165,8 @@ Slides.propTypes = {
 	image: PropTypes.String,
 	headline: PropTypes.String,
 	brief: PropTypes.String,
+};
+Slides.defaultProps = {
+	latest: [],
 };
 export default Slides;

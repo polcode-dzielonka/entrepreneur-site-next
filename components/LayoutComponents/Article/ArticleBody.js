@@ -9,8 +9,18 @@ import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import Crumbs from "../Crumbs/crumbs";
 import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
+import LazyLoad from "react-lazyload";
+import ScrollingContent from "../ScrollingContent/ScrollingContent";
 
-const ArticleBody = ({ content, category, url, image, headline, brief }) => {
+const ArticleBody = ({
+	content,
+	category,
+	url,
+	image,
+	headline,
+	brief,
+	id,
+}) => {
 	const value = Value.fromJSON(JSON.parse(content.content));
 	return (
 		<div className="section-padding">
@@ -39,7 +49,9 @@ const ArticleBody = ({ content, category, url, image, headline, brief }) => {
 			<QuickEmailSignUp />
 			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="2rem" />
 			<FacebookComments url={url} numPostsVisible={5} orderBy="reverse_time" />
-			<SectionBar title="Latest" titleColor="#111" titleSize="2rem" />
+			<LazyLoad>
+				<ScrollingContent id={id} type={"article"} />
+			</LazyLoad>
 			<style jsx>
 				{`
 					.section-padding {

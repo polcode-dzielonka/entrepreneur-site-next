@@ -12,6 +12,8 @@ import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import { closingSocialButtons } from "../../SocialMedia/data";
 import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import FacebookComments from "../../SocialMedia/FacebookComments";
+import LazyLoad from "react-lazyload";
+import ScrollingContent from "../ScrollingContent/ScrollingContent";
 
 const QuizDetails = ({ content, position, url, id, score }) => {
 	const details = JSON.parse(content.overview);
@@ -129,7 +131,9 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					/>
 				</>
 			)}
-			<SectionBar title="Latest" titleColor="#111" titleSize="2rem" />
+			<LazyLoad>
+				<ScrollingContent id={id} title="Latest" type={"quiz"} />
+			</LazyLoad>
 			<hr className="break" />
 			<style jsx>
 				{`

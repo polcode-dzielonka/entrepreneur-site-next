@@ -12,8 +12,10 @@ import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import Crumbs from "../Crumbs/crumbs";
 import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import FacebookComments from "../../SocialMedia/FacebookComments";
+import LazyLoad from "react-lazyload";
+import ScrollingContent from "../ScrollingContent/ScrollingContent";
 
-const SlideDetails = ({ content, position, url, id }) => {
+const SlideDetails = ({ content, position, latest, url, id }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
 	const {
@@ -67,7 +69,6 @@ const SlideDetails = ({ content, position, url, id }) => {
 				/>
 			</div>
 			<ScrollUpButton />
-
 			<Slides
 				data={slideData}
 				showNumbers={showNumbers}
@@ -75,6 +76,7 @@ const SlideDetails = ({ content, position, url, id }) => {
 				image={headlineImage}
 				headline={title}
 				brief={blurb}
+				latest={latest}
 			/>
 			<BookEnds
 				position={"closing"}
@@ -111,7 +113,9 @@ const SlideDetails = ({ content, position, url, id }) => {
 				numPostsVisible={5}
 				orderBy="reverse_time"
 			/>
-			<SectionBar title="Latest" titleColor="#111" titleSize="2rem" />
+			<LazyLoad>
+				<ScrollingContent id={id} title="Latest" type={"slideshow"} />
+			</LazyLoad>
 			<hr className="break" />
 			<style jsx>
 				{`
