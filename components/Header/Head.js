@@ -9,6 +9,7 @@ const MainHead = ({ children }) => {
 				href="https://fonts.googleapis.com/css?family=Khand"
 				rel="stylesheet"
 				key="google-font-khand"
+				as="font"
 			/>
 
 			<meta charset="UTF-8"></meta>

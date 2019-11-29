@@ -1190,39 +1190,6 @@ const EMAIL_SIGN_UP = `
 
 /***/ }),
 
-/***/ "./gtag/lib.js":
-/*!*********************!*\
-  !*** ./gtag/lib.js ***!
-  \*********************/
-/*! exports provided: pageview, event */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pageview", function() { return pageview; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "event", function() { return event; });
-// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-const pageview = url => {
-  window.gtag("config", "GTM-PJHSSP6", {
-    page_path: url
-  });
-}; // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-
-const event = ({
-  action,
-  category,
-  label,
-  value
-}) => {
-  window.gtag("event", action, {
-    event_category: category,
-    event_label: label,
-    value: value
-  });
-};
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
@@ -3303,7 +3270,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SignUpModal_signUpModal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/SignUpModal/signUpModal */ "./components/SignUpModal/signUpModal.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _gtag_lib__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../gtag/lib */ "./gtag/lib.js");
+/* harmony import */ var react_gtm_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-gtm-module */ "react-gtm-module");
+/* harmony import */ var react_gtm_module__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_gtm_module__WEBPACK_IMPORTED_MODULE_14__);
 
 
 
@@ -3326,6 +3294,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+const tagManagerArgs = {
+  gtmId: `${"GTM-PJHSSP6"}`
+};
 
 class OverviewApp extends next_app__WEBPACK_IMPORTED_MODULE_9___default.a {
   constructor(...args) {
@@ -3342,7 +3313,7 @@ class OverviewApp extends next_app__WEBPACK_IMPORTED_MODULE_9___default.a {
   }
 
   componentDidMount() {
-    next_router__WEBPACK_IMPORTED_MODULE_13___default.a.events.on("routeChangeComplete", url => Object(_gtag_lib__WEBPACK_IMPORTED_MODULE_14__["pageview"])(url));
+    react_gtm_module__WEBPACK_IMPORTED_MODULE_14___default.a.initialize(tagManagerArgs);
     const cookieMarker = js_cookie__WEBPACK_IMPORTED_MODULE_11___default.a.get("cookie-accept") ? JSON.parse(js_cookie__WEBPACK_IMPORTED_MODULE_11___default.a.get("cookie-accept")) : true;
     const cookieEmailMarker = js_cookie__WEBPACK_IMPORTED_MODULE_11___default.a.get("wealth-cookie-email-signup") ? JSON.parse(js_cookie__WEBPACK_IMPORTED_MODULE_11___default.a.get("wealth-cookie-email-signup")) : true;
     this.setState({
@@ -3365,19 +3336,19 @@ class OverviewApp extends next_app__WEBPACK_IMPORTED_MODULE_9___default.a {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 37
       },
       __self: this
     }, __jsx(_components_SignUpModal_signUpModal__WEBPACK_IMPORTED_MODULE_12__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 44
       },
       __self: this
     }), __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_6__["default"])({}, pageProps, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 45
       },
       __self: this
     })));
@@ -3645,6 +3616,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-gtm-module":
+/*!***********************************!*\
+  !*** external "react-gtm-module" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-gtm-module");
 
 /***/ }),
 

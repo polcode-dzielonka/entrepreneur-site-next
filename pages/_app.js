@@ -3,8 +3,10 @@ import UserContext from "../utils/Context";
 import Cookie from "js-cookie";
 import SignUp from "../components/SignUpModal/signUpModal";
 import Router from "next/router";
-import { pageview } from "../gtag/lib";
-
+import TagManager from "react-gtm-module";
+const tagManagerArgs = {
+	gtmId: `${process.env.REACT_APP_GOOGLE_TAG_ID}`,
+};
 class OverviewApp extends App {
 	state = {
 		cookie: false,
@@ -12,8 +14,7 @@ class OverviewApp extends App {
 	};
 
 	componentDidMount() {
-		Router.events.on("routeChangeComplete", url => pageview(url));
-
+		TagManager.initialize(tagManagerArgs);
 		const cookieMarker = Cookie.get("cookie-accept")
 			? JSON.parse(Cookie.get("cookie-accept"))
 			: true;

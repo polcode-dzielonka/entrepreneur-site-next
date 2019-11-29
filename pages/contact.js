@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import PropTypes from "prop-types";
@@ -16,7 +15,7 @@ import validate from "../components/FormValidation/Validation";
 import Reaptcha from "reaptcha";
 import Vanilla from "../components/Layouts/vanillaLayout";
 import RippleButton from "../components/Button/Button";
-import { event } from "../gtag/lib";
+
 const Contact = ({ router }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [recaptcha, setRecaptcha] = useState(false);
@@ -35,11 +34,7 @@ const Contact = ({ router }) => {
 				id: uuid(),
 				timeStamp: Date(),
 			};
-			event({
-				action: "submit_form",
-				category: "Contact",
-				label: formData.message,
-			});
+
 			try {
 				await axios.post(URL, { ...submitForm });
 				setFormData(INITIAL_STATE);
