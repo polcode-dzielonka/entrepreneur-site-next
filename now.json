@@ -5,7 +5,7 @@
 	"routes": [
 		{
 			"src": "/",
-			"headers": { "cache-control": "immutable,max-age=31536000" }
+			"headers": { "cache-control": "s-maxage=1, stale-while-revalidate" }
 		}
 	],
 	"env": {
