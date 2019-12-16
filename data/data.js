@@ -28,7 +28,7 @@ const socialLinks = [
 	},
 	{ href: "https://www.bbc.co.uk/", icon: "/static/youtubeIcon.png" },
 	{ href: "https://www.bbc.co.uk/", icon: "/static/instagramIcon.png" },
-	{ href: "https://www.bbc.co.uk/", icon: "/static/twitterIcon.png" },
+	{ href: "https://twitter.com/wealthmack", icon: "/static/twitterIcon.png" },
 ];
 
 export { links, mobileLinks, socialLinks, footerLinks };

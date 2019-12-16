@@ -1,10 +1,10 @@
 import { theme } from "../../theme/baseCss";
 import PropTypes from "prop-types";
 import Link from "next/link";
-const SlideLinkButton = ({ label, href, imgSrc }) => {
+const SlideLinkButton = ({ label, href, imgSrc, handler }) => {
 	return (
 		<div className="link-section">
-			<div className="link-button">
+			<button className="link-button" onClick={handler}>
 				<Link href={href}>
 					<a className="quickview-link">
 						<div className="img-wrapper">
@@ -21,7 +21,7 @@ const SlideLinkButton = ({ label, href, imgSrc }) => {
 						</div>
 					</a>
 				</Link>
-			</div>
+			</button>
 			<style jsx>{`
 				.arrow {
 					width: 40%;
@@ -105,11 +105,13 @@ const SlideLinkButton = ({ label, href, imgSrc }) => {
 
 SlideLinkButton.defaultProps = {
 	href: "/newsletter",
+	handler: () => {},
 };
 SlideLinkButton.propTypes = {
 	href: PropTypes.String,
 	label: PropTypes.String,
 	imgSrc: PropTypes.String,
+	handler: PropTypes.Func,
 };
 
 export default SlideLinkButton;
