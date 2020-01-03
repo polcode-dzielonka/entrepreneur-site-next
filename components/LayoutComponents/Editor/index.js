@@ -1,4 +1,3 @@
-import renderNode from "./renderNode/renderNode";
-import renderMark from "./renderMark/renderMark";
-import renderInline from "./renderInline/renderInline";
-export { renderNode, renderMark, renderInline };
+import renderElement from "./renderElement/renderElement";
+import renderLeaf from "./renderLeaf/renderLeaf";
+export { renderElement, renderLeaf };

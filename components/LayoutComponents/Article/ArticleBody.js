@@ -1,17 +1,18 @@
-import SectionBar from "../SectionBar";
+import { useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
-import { Editor } from "slate-react";
-import { Value } from "slate";
-import { renderNode, renderMark, renderInline } from "../Editor";
+import { Slate, Editable } from "slate-react";
+import { createEditor } from "slate";
+import LazyLoad from "react-lazyload";
+import RenderElement from "../Editor/renderElement/renderElement";
+import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import FacebookComments from "../../SocialMedia/FacebookComments";
 import { closingSocialButtons } from "../../SocialMedia/data";
 import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import Crumbs from "../Crumbs/crumbs";
 import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
-import LazyLoad from "react-lazyload";
+import SectionBar from "../SectionBar";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
-
 const ArticleBody = ({
 	content,
 	category,
@@ -21,16 +22,20 @@ const ArticleBody = ({
 	brief,
 	id,
 }) => {
-	const value = Value.fromJSON(JSON.parse(content.content));
+	const editor = useMemo(() => createEditor(), []);
+	const renderElement = useCallback(props => <RenderElement {...props} />, []);
+	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
+
+	const value = JSON.parse(content.content);
 	return (
 		<div className="section-padding">
-			<Editor
-				readOnly={true}
-				value={value}
-				renderMark={renderMark}
-				renderBlock={renderNode}
-				renderInline={renderInline}
-			/>
+			<Slate editor={editor} value={value}>
+				<Editable
+					readOnly={true}
+					renderElement={renderElement}
+					renderLeaf={renderLeaf}
+				/>
+			</Slate>
 			<ScrollUpButton />
 			<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
 			<ShareButtonHoriz
@@ -65,6 +70,7 @@ const ArticleBody = ({
 };
 
 ArticleBody.propTypes = {
+	id: PropTypes.string,
 	content: PropTypes.Object,
 	url: PropTypes.String,
 	category: PropTypes.String,

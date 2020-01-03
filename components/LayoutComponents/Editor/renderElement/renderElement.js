@@ -1,15 +1,12 @@
-import React from "react";
-
-// import Embed from "./embed/embed";
+import dynamic from "next/dynamic";
 import Quote from "./quote/quote";
 import EmbedImage from "./embedImage/embedImage";
-import dynamic from "next/dynamic";
 import SingleLoader from "../../../Loading/SingleLoader";
 import { theme } from "../../../../theme/baseCss";
 import LazyLoad from "react-lazyload";
 import SiteAd from "./ads/siteAd";
 import LinkAd from "./ads/linkAd";
-// import LinearProgress from "@material-ui/core/LinearProgress";
+
 const Embed = dynamic(() => import("./embed/embed"), {
 	ssr: false,
 	loading: () => <SingleLoader />,
@@ -18,9 +15,24 @@ const Embed = dynamic(() => import("./embed/embed"), {
 const formatSize = 18;
 const lineHeight = 1.75;
 
-const renderNode = (props, editor, next) => {
-	const { attributes, children, node } = props;
-	switch (node.type) {
+const RenderElement = props => {
+	const { attributes, children, element } = props;
+	switch (element.type) {
+		case "link":
+			const { url } = element;
+			return (
+				<a {...attributes} href={url} rel="noopener noreferrer" target="_blank">
+					{children}
+				</a>
+			);
+		case "emoji":
+			const emoji = element.data;
+			return (
+				<span {...attributes} style={{ fontSize: 30 }}>
+					{emoji}
+					{children}
+				</span>
+			);
 		case "code":
 			return (
 				<code {...attributes} className="code">
@@ -33,6 +45,15 @@ const renderNode = (props, editor, next) => {
 					`}</style>
 				</code>
 			);
+
+		case "bold":
+			return <strong {...attributes}>{children}</strong>;
+		case "italic":
+			return <em {...attributes}>{children}</em>;
+		case "strikethrough":
+			return <del {...attributes}>{children}</del>;
+		case "underline":
+			return <u {...attributes}>{children}</u>;
 		case "paragraph":
 			return (
 				<div className="para" {...attributes}>
@@ -181,7 +202,7 @@ const renderNode = (props, editor, next) => {
 				</li>
 			);
 		case "quote":
-			return <Quote {...props} {...attributes} {...node} {...children} />;
+			return <Quote {...props} {...attributes} {...element} {...children} />;
 		case "horizontal-line":
 			return (
 				<span
@@ -199,16 +220,15 @@ const renderNode = (props, editor, next) => {
 		case "embed-image":
 			return (
 				<LazyLoad once={true}>
-					<EmbedImage {...props} {...attributes} {...node} {...children} />
+					<EmbedImage {...props} {...attributes} {...element} {...children} />
 				</LazyLoad>
 			);
 		case "embed":
 			return (
 				<LazyLoad once={true}>
-					<Embed {...props} {...attributes} {...node} {...children} />
+					<Embed {...props} {...attributes} {...element} {...children} />
 				</LazyLoad>
 			);
-
 		case "paid-ad":
 			return (
 				<div className="paid-ad" {...attributes}>
@@ -228,19 +248,38 @@ const renderNode = (props, editor, next) => {
 		case "site-ad":
 			return (
 				<LazyLoad once={true}>
-					<SiteAd {...props} {...attributes} {...node} {...children} />
+					<SiteAd {...props} {...attributes} {...element} {...children} />
 				</LazyLoad>
 			);
-
 		case "link-ad":
 			return (
 				<LazyLoad once={true}>
-					<LinkAd {...props} {...attributes} {...node} {...children} />
+					<LinkAd {...props} {...attributes} {...element} {...children} />
 				</LazyLoad>
 			);
+		case "table":
+			return (
+				<table style={{ width: "100%" }}>
+					<tbody style={{ border: "1px solid black" }} {...attributes}>
+						{children}
+					</tbody>
+				</table>
+			);
+		case "table-row":
+			return (
+				<tr {...attributes} style={{ border: "1px solid black" }}>
+					{children}
+				</tr>
+			);
+		case "table-cell":
+			return (
+				<td {...attributes} style={{ border: "1px solid black" }}>
+					{children}
+				</td>
+			);
 		default:
-			return next();
+			return <p {...attributes}>{children}</p>;
 	}
 };
 
-export default renderNode;
+export default RenderElement;

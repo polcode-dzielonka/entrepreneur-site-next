@@ -59,6 +59,7 @@ const SlideLinkButton = ({ label, href, imgSrc, handler }) => {
 					margin: 1rem 0rem;
 					display: flex;
 					flex-direction: row;
+					margin: 0 auto;
 				}
 				.link-section {
 					text-align: center;

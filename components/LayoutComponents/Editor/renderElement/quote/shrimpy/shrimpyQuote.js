@@ -1,11 +1,10 @@
-import React from "react";
 import {
 	quoteIconFirst,
 	quoteIconSecond,
 	quoteWordStyle,
 	quoteIconFooter,
-} from "./electricQuoteStyle";
-const ElectricQuote = ({ quote, attributes, children }) => {
+} from "./shrimpyQuoteStyle";
+const ShrimpyQuote = ({ quote, attributes, children }) => {
 	return (
 		<div {...attributes} style={{ padding: 15 }}>
 			<div style={quoteWordStyle}>
@@ -19,4 +18,4 @@ const ElectricQuote = ({ quote, attributes, children }) => {
 		</div>
 	);
 };
-export default ElectricQuote;
+export default ShrimpyQuote;

@@ -61,7 +61,7 @@ const QuickView = ({ content, position, url, id }) => {
 						title={slides[position][0][`${position}`]}
 						details={
 							slides[position][0][`${position}SlideDetails`]
-								? JSON.parse(slides[position][0][`${position}SlideDetails`])
+								? slides[position][0][`${position}SlideDetails`]
 								: undefined
 						}
 						embed={slides[position][0][`${position}Image-embed`]}

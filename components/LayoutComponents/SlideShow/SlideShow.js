@@ -18,6 +18,7 @@ import ScrollingContent from "../ScrollingContent/ScrollingContent";
 const SlideDetails = ({ content, position, latest, url, id }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
+
 	const {
 		blurb,
 		category,
@@ -56,7 +57,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				title={bookEndOpening.opening}
 				details={
 					bookEndOpening.openingSlideDetails
-						? JSON.parse(bookEndOpening.openingSlideDetails)
+						? bookEndOpening.openingSlideDetails
 						: undefined
 				}
 				embed={bookEndOpening["openingImage-embed"]}

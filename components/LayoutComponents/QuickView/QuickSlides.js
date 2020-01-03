@@ -1,9 +1,12 @@
+import { useMemo, useCallback } from "react";
+
 import { theme } from "../../../theme/baseCss";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
-import { Editor } from "slate-react";
-import { Value } from "slate";
-import { renderNode, renderMark, renderInline } from "../Editor";
+import { Slate, Editable } from "slate-react";
+import { createEditor } from "slate";
+import RenderElement from "../Editor/renderElement/renderElement";
+import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import defaultValue from "../Editor/defaultValue";
 import QuickViewButton from "../../Button/QuickViewButton";
 
@@ -18,11 +21,12 @@ const QuickSlides = ({ total, slideData, position, linkImage, nextHref }) => {
 		slideImageAttributionLink,
 		slidePosition,
 	} = slideDetails;
-	const value = Value.fromJSON(
-		slideDetails.slideDetails
-			? JSON.parse(slideDetails.slideDetails)
-			: defaultValue,
-	);
+	const value = slideDetails.slideDetails
+		? slideDetails.slideDetails
+		: defaultValue;
+	const editor = useMemo(() => createEditor(), []);
+	const renderElement = useCallback(props => <RenderElement {...props} />, []);
+	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
 	return (
 		<div className="bookend-wrapper">
 			<h1 className="section-header">
@@ -38,13 +42,13 @@ const QuickSlides = ({ total, slideData, position, linkImage, nextHref }) => {
 				imageAltAttributionLink={slideImageAttributionLink}
 			/>
 			<div className="section-paragraph">
-				<Editor
-					readOnly={true}
-					value={value}
-					renderMark={renderMark}
-					renderBlock={renderNode}
-					renderInline={renderInline}
-				/>
+				<Slate editor={editor} value={value}>
+					<Editable
+						readOnly={true}
+						renderElement={renderElement}
+						renderLeaf={renderLeaf}
+					/>
+				</Slate>
 			</div>
 			<QuickViewButton label="Next" imgSrc={linkImage} href={nextHref} />
 			<style jsx>

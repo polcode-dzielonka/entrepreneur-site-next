@@ -1,15 +1,17 @@
+import { useMemo, useCallback } from "react";
 import { theme } from "../../../theme/baseCss";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
-import { Editor } from "slate-react";
-import { Value } from "slate";
-import { renderNode, renderMark, renderInline } from "../Editor";
+import { Slate, Editable } from "slate-react";
+import { createEditor } from "slate";
+import RenderElement from "../Editor/renderElement/renderElement";
+import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import { openingSocialButtons } from "../../SocialMedia/data";
 import SectionBar from "../SectionBar";
 import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import defaultValue from "../Editor/defaultValue";
 import LazyLoad from "react-lazyload";
-import NextLink from "../Editor/renderNode/ads/nextLink";
+import NextLink from "../Editor/renderElement/ads/nextLink";
 const Slides = ({
 	data,
 	showNumbers,
@@ -29,11 +31,16 @@ const Slides = ({
 			slideImageAttributionLink,
 			slidePosition,
 		} = slideData;
-		const value = Value.fromJSON(
-			slideData.slideDetails
-				? JSON.parse(slideData.slideDetails)
-				: defaultValue,
+		const value = slideData.slideDetails
+			? slideData.slideDetails
+			: defaultValue;
+
+		const editor = useMemo(() => createEditor(), []);
+		const renderElement = useCallback(
+			props => <RenderElement {...props} />,
+			[],
 		);
+		const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
 		const arrayNumber = Number.isInteger(index / 2) ? index / 2 : null;
 		const adData =
 			arrayNumber && arrayNumber < latest.items.length
@@ -60,13 +67,13 @@ const Slides = ({
 					/>
 				</LazyLoad>
 				<div className="section-paragraph">
-					<Editor
-						readOnly={true}
-						value={value}
-						renderMark={renderMark}
-						renderBlock={renderNode}
-						renderInline={renderInline}
-					/>
+					<Slate editor={editor} value={value}>
+						<Editable
+							readOnly={true}
+							renderElement={renderElement}
+							renderLeaf={renderLeaf}
+						/>
+					</Slate>
 				</div>
 				{index % 4 === 0 && (
 					<>

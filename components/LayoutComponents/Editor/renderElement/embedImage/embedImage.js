@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ImageLoader from "../../../../Loading/ImageLoader";
 
-const EmbedImage = props => {
-	const { attributes, node, children } = props;
-	const { data } = node;
+const EmbedImage = ({ attributes, element, children }) => {
+	const { data } = element;
+
 	const [embedImage, setEmbedImageUrl] = useState({
 		imageUrl: "",
 		imageAlt: "",
@@ -16,10 +16,10 @@ const EmbedImage = props => {
 	}, []);
 
 	const handleImageEmbed = () => {
-		const embedImageUrl = data.get("imageUrl");
-		const embedImageAlt = data.get("imageAlt");
-		const embedImageAttribution = data.get("imageAttribution");
-		const embedImageAttributionLink = data.get("imageAttributionLink");
+		const embedImageUrl = data.imageUrl;
+		const embedImageAlt = data.imageAlt;
+		const embedImageAttribution = data.imageAttribution;
+		const embedImageAttributionLink = data.imageAttributionLink;
 		setEmbedImageUrl({
 			imageUrl: embedImageUrl,
 			imageAlt: embedImageAlt,
@@ -48,4 +48,14 @@ const EmbedImage = props => {
 	);
 };
 
+EmbedImage.defaultProps = {
+	element: {
+		data: {
+			url: "",
+			imageAlt: "",
+			imageAttribution: "",
+			imageAttributionLink: "",
+		},
+	},
+};
 export default EmbedImage;

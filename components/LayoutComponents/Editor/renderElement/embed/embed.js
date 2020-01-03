@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import Embedo from "../../../../Embed/embedo/embedo";
 import SingleSocialLoader from "../../../../Loading/SingleSocialLoader";
 
-const EmbedUrl = props => {
-	const { isFocused, attributes, node, values, children } = props;
-	const { data } = node;
+const EmbedUrl = ({ attributes, element, children }) => {
+	const { data } = element;
+
 	const [embedUrl, setEmbedUrl] = useState({
 		url: "",
 		caption: "",
@@ -12,16 +12,17 @@ const EmbedUrl = props => {
 		attributionLink: "",
 	});
 	const embedoContainer = useRef(null);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		handleEmbed();
 	}, []);
 
 	const handleEmbed = () => {
-		const embedUrlString = data.get("url");
-		const embedCaption = data.get("caption");
-		const embedAttribution = data.get("attribution");
-		const embedAttributionLink = data.get("attributionLink");
+		const embedUrlString = data.url;
+		const embedCaption = data.caption;
+		const embedAttribution = data.attribution;
+		const embedAttributionLink = data.attributionLink;
 
 		setEmbedUrl({
 			url: embedUrlString,
@@ -34,32 +35,31 @@ const EmbedUrl = props => {
 			width: "100%",
 			centerize: true,
 		})
-			.done(data => {})
+			.done(data => {
+				setLoading(false);
+			})
 			.fail(err => {
 				console.error("error", err);
+				setLoading(false);
 			});
 	};
 
-	//   const onChange = e => {
-	//     const embed = e.target.value;
-	//     const { node, editor } = this.props;
-	//     editor.setNodeByKey(node.key, { data: { embed } });
-	//   };
+	if (loading) {
+		return <SingleSocialLoader />;
+	}
 
 	return (
-		<>
-			<div {...attributes}>
-				<div
-					href={embedUrl.url}
-					className="embedo"
-					target="_blank"
-					rel="noopener noreferrer"
-					ref={embedoContainer}
-				/>
-				{children}
-				<span>{embedUrl.caption}</span>
-			</div>
-		</>
+		<div {...attributes}>
+			<div
+				href={embedUrl.url}
+				className={"embedo"}
+				target="_blank"
+				rel="noopener noreferrer"
+				ref={embedoContainer}
+			/>
+			{children}
+			<span>{embedUrl.caption}</span>
+		</div>
 	);
 };
 

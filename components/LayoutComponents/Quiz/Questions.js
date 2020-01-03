@@ -42,10 +42,11 @@ const Questions = ({
 		questionImageAttribution,
 		questionImageAttributionLink,
 		questionPosition,
+		correctAnswerComment,
+		incorrectAnswerComment,
 	} = questionDetails;
 	const answerInfo = { ...correctAnswerDetails, ...inCorrectAnswerDetails };
 	const [answers, setAnswers] = useState(Object.keys(answerInfo));
-
 	const [totalVotes, setTotalVotes] = useState(0);
 	useEffect(() => {
 		setAnswers(answers.sort(() => Math.random() - 0.5));
@@ -164,9 +165,9 @@ const Questions = ({
 			<LongAnswer
 				showAnswer={showAnswer}
 				correct={correct}
-				answer={
-					correct ? questionDetails.longAnswer : questionDetails.longFalseAnswer
-				}
+				answer={questionDetails.longAnswer}
+				correctAnswerComment={correctAnswerComment}
+				incorrectAnswerComment={incorrectAnswerComment}
 			/>
 			{showAnswer && (
 				<QuickViewButton

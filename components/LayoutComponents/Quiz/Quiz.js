@@ -69,7 +69,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						title={questions[position][0][`${position}`]}
 						details={
 							questions[position][0][`${position}QuizDetails`]
-								? JSON.parse(questions[position][0][`${position}QuizDetails`])
+								? questions[position][0][`${position}QuizDetails`]
 								: undefined
 						}
 						embed={questions[position][0][`${position}Image-embed`]}
