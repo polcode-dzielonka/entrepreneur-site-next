@@ -220,13 +220,21 @@ const RenderElement = props => {
 		case "embed-image":
 			return (
 				<LazyLoad once={true}>
-					<EmbedImage {...props} {...attributes} {...element} {...children} />
+					<EmbedImage
+						attributes={attributes}
+						element={element}
+						children={children}
+					/>
 				</LazyLoad>
 			);
 		case "embed":
 			return (
 				<LazyLoad once={true}>
-					<Embed {...props} {...attributes} {...element} {...children} />
+					<Embed
+						attributes={attributes}
+						element={element}
+						children={children}
+					/>
 				</LazyLoad>
 			);
 		case "paid-ad":

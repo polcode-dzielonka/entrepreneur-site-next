@@ -4,7 +4,6 @@ import SingleSocialLoader from "../../../../Loading/SingleSocialLoader";
 
 const EmbedUrl = ({ attributes, element, children }) => {
 	const { data } = element;
-
 	const [embedUrl, setEmbedUrl] = useState({
 		url: "",
 		caption: "",

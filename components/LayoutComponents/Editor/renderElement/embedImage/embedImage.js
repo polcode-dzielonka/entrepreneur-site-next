@@ -3,7 +3,6 @@ import ImageLoader from "../../../../Loading/ImageLoader";
 
 const EmbedImage = ({ attributes, element, children }) => {
 	const { data } = element;
-
 	const [embedImage, setEmbedImageUrl] = useState({
 		imageUrl: "",
 		imageAlt: "",
