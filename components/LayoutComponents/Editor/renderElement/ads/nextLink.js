@@ -2,7 +2,7 @@ import { theme } from "../../../../../theme/baseCss";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-const NextLink = ({ brief, headline, image, url, title }) => {
+const NextLink = ({ brief, headline, image, url, title, srcset }) => {
 	return (
 		<div className="link-section">
 			<div className="scroll-text">{title}</div>
@@ -10,7 +10,12 @@ const NextLink = ({ brief, headline, image, url, title }) => {
 				<Link href={url}>
 					<a className="quickview-link">
 						<div className="img-wrapper">
-							<img src={image} className="quickview-image" />
+							<img
+								src={image}
+								className="quickview-image"
+								srcSet={srcset ? srcset : []}
+								sizes="150px"
+							/>
 						</div>
 						<div className="label">
 							<div className="link-label">{headline}</div>
@@ -132,6 +137,7 @@ NextLink.propTypes = {
 	image: PropTypes.String,
 	url: PropTypes.String,
 	title: PropTypes.String,
+	srcset: PropTypes.Array,
 };
 
 export default NextLink;

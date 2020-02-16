@@ -11,6 +11,7 @@ const ScrollingArticles = ({ data }) => {
 			headline,
 			category,
 			kicker,
+			srcset,
 		} = overview[0];
 
 		if (index === 0) {
@@ -23,6 +24,8 @@ const ScrollingArticles = ({ data }) => {
 									className="large-image-main"
 									src={headlineImage}
 									alt={headlineImageAlt}
+									srcSet={srcset ? srcset : []}
+									sizes="330px"
 								/>
 							</div>
 						</a>
@@ -135,6 +138,8 @@ const ScrollingArticles = ({ data }) => {
 								className="scroll-image-main"
 								src={headlineImage}
 								alt={headlineImageAlt}
+								srcSet={srcset ? srcset : []}
+								sizes="330px"
 							/>
 							<div className="scroll-title-container">
 								<div className="scroll-title-pad">

@@ -65,11 +65,13 @@ const QuickView = ({ content, position, url, id }) => {
 								: undefined
 						}
 						embed={slides[position][0][`${position}Image-embed`]}
+						srcset={slides[position][0].srcset}
 					/>
 					{position === "opening" && (
 						<QuickViewButton
 							label="Next"
 							imgSrc={details[0].headlineImage}
+							srcset={details[0].srcset}
 							href={`${nextHref}/1`}
 						/>
 					)}
@@ -80,6 +82,9 @@ const QuickView = ({ content, position, url, id }) => {
 					total={content.numSlides}
 					slideData={slides.slides.filter(
 						x => x.slidePosition === positionNumber,
+					)}
+					nextSlideData={slides.slides.filter(
+						x => x.slidePosition === positionNumber + 1,
 					)}
 					position={position}
 					linkImage={details[0][`headlineImage`]}
@@ -100,7 +105,7 @@ const QuickView = ({ content, position, url, id }) => {
 				home={process.env.SITE_ADDRESS}
 				category={category}
 				headline={title}
-				headlineUrl={url}
+				headlineUrl={shareUrl}
 			/>
 			<QuickEmailSignUp />
 			{position === "closing" && (

@@ -76,11 +76,13 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						scoreComments={scoreCommentsDetails}
 						finalScore={score}
 						numberQuestions={content.numQuestions}
+						srcset={questions[position][0].srcset}
 					/>
 					{position === "opening" && (
 						<QuickViewButton
 							label="Start"
 							imgSrc={details[0].headlineImage}
+							srcset={details[0].srcset}
 							href={`${nextHref}/1`}
 						/>
 					)}
@@ -91,6 +93,9 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					total={content.numQuestions}
 					questionData={questions.questions.filter(
 						x => x.questionPosition === positionNumber,
+					)}
+					nextQuestionData={questions.questions.filter(
+						x => x.questionPosition === positionNumber + 1,
 					)}
 					position={position}
 					linkImage={headlineImage}
@@ -114,7 +119,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 				home={process.env.SITE_ADDRESS}
 				category={category}
 				headline={title}
-				headlineUrl={url}
+				headlineUrl={shareUrl}
 			/>
 			<QuickEmailSignUp />
 			{position === "closing" && (

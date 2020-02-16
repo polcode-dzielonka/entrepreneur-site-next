@@ -1,17 +1,19 @@
-export const EMAIL_SIGN_UP = `
-	mutation CreateEmailSignup($input: CreateEmailSignupInput!) {
-		createEmailSignup(input: $input) {
+export const EMAIL_SIGN_UP = /* GraphQL */ `
+	mutation CreateEmail($input: CreateEmailInput!) {
+		createEmail(input: $input) {
 			id
+			popUp
 			firstName
 			lastName
-			popUp
-			createdAt
-			updatedAt
 			email
 			contentType
 			contentHeadline
 			contentCategory
 			source
+			site
+			emailSignupSiteId
+			createdAt
+			updatedAt
 		}
 	}
 `;

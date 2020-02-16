@@ -5,7 +5,13 @@ import Link from "next/link";
 const SideBarContent = ({ data }) => {
 	return data.map((article, index) => {
 		const overview = JSON.parse(article.overview);
-		const { headlineImage, headlineImageAlt, headline, category } = overview[0];
+		const {
+			headlineImage,
+			headlineImageAlt,
+			headline,
+			category,
+			srcset,
+		} = overview[0];
 
 		return (
 			<article className="side-content" key={index}>
@@ -16,6 +22,8 @@ const SideBarContent = ({ data }) => {
 								className="side-image-main"
 								src={headlineImage}
 								alt={headlineImageAlt}
+								srcSet={srcset ? srcset : []}
+								sizes="180px"
 							/>
 						</div>
 					</a>

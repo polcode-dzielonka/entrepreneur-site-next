@@ -21,6 +21,7 @@ const BookEnds = ({ data, id, position }) => {
 		blurb,
 		slideTitle,
 		slideUrl,
+		srcset,
 	} = data[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${position}`;
 
@@ -43,6 +44,7 @@ const BookEnds = ({ data, id, position }) => {
 				src={headlineImage}
 				alt={headlineImageAlt}
 				animation={false}
+				srcset={srcset}
 			/>
 			<hr className="break" />
 			<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />

@@ -6,7 +6,6 @@ import {
 	ERROR_STATE,
 } from "../data/emailSignupData";
 import { useState } from "react";
-import axios from "axios";
 import { theme } from "../theme/baseCss";
 import validate from "../components/FormValidation/Validation";
 import Vanilla from "../components/Layouts/vanillaLayout";
@@ -15,6 +14,8 @@ import { EMAIL_SIGN_UP } from "../graphql/emailSignUp";
 import Cookie from "js-cookie";
 import Link from "next/link";
 import ImageLoader from "../components/Loading/ImageLoader";
+import manualRequest from "../components/apiRequest/manualApiRequest";
+
 const Newsletter = ({ url }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [successMsg, setSuccessMsg] = useState(false);
@@ -30,24 +31,18 @@ const Newsletter = ({ url }) => {
 			...formData,
 			id: formData.email,
 			emailSignupSiteId: process.env.REACT_APP_SITE_ID,
+			site: "wealthmack",
 			popUp: false,
 		};
 
 		try {
 			const mutationData = {
 				query: EMAIL_SIGN_UP,
-				operationName: "CreateEmailSignup",
+				operationName: "CreateEmail",
 				variables: { input: submitForm },
 			};
-			await axios({
-				url: process.env.REACT_APP_PROD_ENDPOINT,
-				method: "POST",
-				data: JSON.stringify(mutationData),
-				headers: {
-					Accept: "application/json",
-					"x-api-key": process.env.REACT_APP_PROD_API_KEY,
-				},
-			});
+
+			await manualRequest(mutationData);
 			const expiryDate = new Date(new Date().getTime() + 1 * 60 * 1000);
 			Cookie.set("wealth-cookie-email-signup", JSON.stringify(false), {
 				expires: expiryDate,

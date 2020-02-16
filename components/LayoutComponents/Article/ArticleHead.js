@@ -22,6 +22,7 @@ const ArticleHead = ({ overview, id }) => {
 		bulletHeadlines,
 		bulletHeadlinesDetails,
 		urlDescription,
+		srcset,
 	} = details[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${urlDescription}/article/${id}`;
 	return (
@@ -40,6 +41,7 @@ const ArticleHead = ({ overview, id }) => {
 
 			<ImageLoader
 				src={headlineImage}
+				srcset={srcset}
 				alt={headlineImageAlt}
 				animation={false}
 			/>

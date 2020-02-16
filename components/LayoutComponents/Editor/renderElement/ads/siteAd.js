@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import router from "next/router";
-import axios from "axios";
 import { ADVERT_ARTICLE } from "../../../../../graphql/indivArticle";
 import { midSocialButtons } from "../../../../SocialMedia/data";
 import ShareButtonHoriz from "../../../../SocialMedia/ShareButtonsHoriz";
-
+import prodRequest from "../../../../apiRequest/prodAppsyncRequest";
 const SiteAd = ({ children, attributes }) => {
 	const [shareInfo, setShareInfo] = useState({
 		url: "",
@@ -24,15 +23,8 @@ const SiteAd = ({ children, attributes }) => {
 				query: ADVERT_ARTICLE,
 				variables: { id: postId },
 			};
-			const { data } = await axios({
-				url: process.env.REACT_APP_PROD_ENDPOINT,
-				method: "POST",
-				data: JSON.stringify(queryData),
-				headers: {
-					Accept: "application/json",
-					"x-api-key": process.env.REACT_APP_PROD_API_KEY,
-				},
-			});
+			const { data } = await prodRequest(queryData);
+
 			const overview = JSON.parse(data.data.getProductionArticle.overview);
 			const { brief, headlineImage, headline, urlDescription } = overview[0];
 			const { id } = data.data.getProductionArticle;

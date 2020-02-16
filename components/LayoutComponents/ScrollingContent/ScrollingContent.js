@@ -6,7 +6,8 @@ import MainScrollingContent from "./MainContent";
 import SectionBar from "../SectionBar";
 import schemaType from "./utils/schemaSelect";
 import querySelect from "./utils/querySelect";
-import axios from "axios";
+import prodRequest from "../../apiRequest/prodAppsyncRequest";
+
 const limit = 5;
 const ScrollingContent = ({ id, title, type }) => {
 	const [QUERY, queryString, operationName] = querySelect(type);
@@ -27,15 +28,7 @@ const ScrollingContent = ({ id, title, type }) => {
 
 	const getQueryData = async queryData => {
 		try {
-			const { data } = await axios({
-				url: process.env.REACT_APP_PROD_ENDPOINT,
-				method: "POST",
-				data: JSON.stringify(queryData),
-				headers: {
-					Accept: "application/json",
-					"x-api-key": process.env.REACT_APP_PROD_API_KEY,
-				},
-			});
+			const { data } = await prodRequest(queryData);
 			setContent([...data.data[queryString].items, ...content]);
 			setNextToken(data.data[queryString].nextToken);
 		} catch (err) {

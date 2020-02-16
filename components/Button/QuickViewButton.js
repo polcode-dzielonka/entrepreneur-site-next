@@ -1,14 +1,19 @@
 import { theme } from "../../theme/baseCss";
 import PropTypes from "prop-types";
 import Link from "next/link";
-const SlideLinkButton = ({ label, href, imgSrc, handler }) => {
+const SlideLinkButton = ({ label, href, imgSrc, handler, srcset }) => {
 	return (
 		<div className="link-section">
 			<button className="link-button" onClick={handler}>
 				<Link href={href}>
 					<a className="quickview-link">
 						<div className="img-wrapper">
-							<img src={imgSrc} className="quickview-image" />
+							<img
+								src={imgSrc}
+								srcSet={srcset}
+								sizes="150px"
+								className="quickview-image"
+							/>
 						</div>
 						<div className="label">
 							<div className="link-label">{label}</div>
@@ -60,9 +65,11 @@ const SlideLinkButton = ({ label, href, imgSrc, handler }) => {
 					display: flex;
 					flex-direction: row;
 					margin: 0 auto;
+					width: 100%;
 				}
 				.link-section {
 					text-align: center;
+					width: 100%;
 				}
 				.quickview-image {
 					width: 100%;
@@ -113,6 +120,7 @@ SlideLinkButton.propTypes = {
 	label: PropTypes.String,
 	imgSrc: PropTypes.String,
 	handler: PropTypes.Func,
+	srcset: PropTypes.Array,
 };
 
 export default SlideLinkButton;

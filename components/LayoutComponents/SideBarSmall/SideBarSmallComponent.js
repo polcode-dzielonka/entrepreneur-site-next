@@ -10,6 +10,7 @@ const SideBarContent = ({
 	category,
 	url,
 	contentLink,
+	srcset,
 }) => {
 	return (
 		<article className="side-content" key={key}>
@@ -20,6 +21,8 @@ const SideBarContent = ({
 							className="side-image-main"
 							src={headlineImage}
 							alt={headlineImageAlt}
+							srcSet={srcset ? srcset : []}
+							sizes="150px"
 						/>
 					</div>
 				</a>

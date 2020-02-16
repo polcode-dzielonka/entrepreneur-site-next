@@ -13,6 +13,7 @@ const BookEnds = ({
 	imageAlt,
 	imageAltAttribution,
 	imageAltAttributionLink,
+	srcset,
 	title,
 	details,
 	position,
@@ -46,9 +47,9 @@ const BookEnds = ({
 					imageAlt={imageAlt}
 					imageAltAttribution={imageAltAttribution}
 					imageAltAttributionLink={imageAltAttributionLink}
+					srcset={srcset}
 				/>
 			</LazyLoad>
-
 			{position === "closing" && (
 				<>
 					<h1 className="section-header">{title}</h1>
@@ -63,7 +64,6 @@ const BookEnds = ({
 					</div>
 				</>
 			)}
-
 			<style jsx>
 				{`
 					.bookend-wrapper {
@@ -112,6 +112,7 @@ BookEnds.propTypes = {
 	title: PropTypes.string,
 	details: PropTypes.Object,
 	embed: PropTypes.string,
+	srcset: PropTypes.array,
 };
 BookEnds.defaultProps = {
 	details: [

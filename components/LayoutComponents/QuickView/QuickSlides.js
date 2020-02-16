@@ -10,7 +10,14 @@ import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import defaultValue from "../Editor/defaultValue";
 import QuickViewButton from "../../Button/QuickViewButton";
 
-const QuickSlides = ({ total, slideData, position, linkImage, nextHref }) => {
+const QuickSlides = ({
+	total,
+	slideData,
+	position,
+	linkImage,
+	nextHref,
+	nextSlideData,
+}) => {
 	const slideDetails = slideData[0];
 	const {
 		slide,
@@ -20,7 +27,9 @@ const QuickSlides = ({ total, slideData, position, linkImage, nextHref }) => {
 		slideImageAttribution,
 		slideImageAttributionLink,
 		slidePosition,
+		srcset,
 	} = slideDetails;
+
 	const value = slideDetails.slideDetails
 		? slideDetails.slideDetails
 		: defaultValue;
@@ -40,6 +49,7 @@ const QuickSlides = ({ total, slideData, position, linkImage, nextHref }) => {
 				imageAlt={slideImageAlt}
 				imageAltAttribution={slideImageAttribution}
 				imageAltAttributionLink={slideImageAttributionLink}
+				srcset={srcset}
 			/>
 			<div className="section-paragraph">
 				<Slate editor={editor} value={value}>
@@ -50,7 +60,12 @@ const QuickSlides = ({ total, slideData, position, linkImage, nextHref }) => {
 					/>
 				</Slate>
 			</div>
-			<QuickViewButton label="Next" imgSrc={linkImage} href={nextHref} />
+			<QuickViewButton
+				label="Next"
+				imgSrc={nextSlideData[0] ? nextSlideData[0].slideImage : slideImage}
+				href={nextHref}
+				srcset={nextSlideData[0] ? nextSlideData[0].srcset : srcset}
+			/>
 			<style jsx>
 				{`
 						.bookend-wrapper {

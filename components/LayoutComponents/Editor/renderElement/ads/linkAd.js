@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import router from "next/router";
-import axios from "axios";
 import { NEXT_ARTICLE } from "../../../../../graphql/indivArticle";
 import NextLink from "./nextLink";
+import prodRequest from "../../../../apiRequest/prodAppsyncRequest";
+
 const NextArticleAd = ({ children, attributes }) => {
 	const [nextInfo, setNextInfo] = useState({
 		showNext: false,
@@ -28,15 +29,8 @@ const NextArticleAd = ({ children, attributes }) => {
 					limit: 2,
 				},
 			};
-			const { data } = await axios({
-				url: process.env.REACT_APP_PROD_ENDPOINT,
-				method: "POST",
-				data: JSON.stringify(queryData),
-				headers: {
-					Accept: "application/json",
-					"x-api-key": process.env.REACT_APP_PROD_API_KEY,
-				},
-			});
+
+			const { data } = await prodRequest(queryData);
 
 			const selectedArticle = data.data.listProductionArticles.items.filter(
 				x => x.id !== postId,

@@ -11,12 +11,15 @@ module.exports = {
 		NEXT_APP_RECAPTCHA_SITEKEY: process.env.NEXT_APP_RECAPTCHA_SITEKEY,
 		REACT_APP_PROD_ENDPOINT: process.env.REACT_APP_PROD_ENDPOINT,
 		REACT_APP_PROD_API_KEY: process.env.REACT_APP_PROD_API_KEY,
+		REACT_APP_MANUAL_ENDPOINT: process.env.REACT_APP_MANUAL_ENDPOINT,
+		REACT_APP_MANUAL_API_KEY: process.env.REACT_APP_MANUAL_API_KEY,
 		REACT_APP_SITE_ID: process.env.REACT_APP_SITE_ID,
 		NEXT_APP_RECAPTCHA_INVISIBLE_SITEKEY:
 			process.env.NEXT_APP_RECAPTCHA_INVISIBLE_SITEKEY,
 		REACT_APP_FACEBOOK_APP_ID: process.env.REACT_APP_FACEBOOK_APP_ID,
 		REACT_APP_GOOGLE_TAG_ID: process.env.REACT_APP_GOOGLE_TAG_ID,
 		SITEMAP_URL: process.env.SITEMAP_URL,
+		RSS_URL: process.env.RSS_URL,
 		SITE_NAME: process.env.SITE_NAME,
 		SITE_TITLE: "WealthMack",
 		SITE_IMAGE:
@@ -34,7 +37,10 @@ module.exports = {
 	experimental: {
 		modern: true,
 		async rewrites() {
-			return [{ source: "/sitemap.xml", destination: "/api/sitemap" }];
+			return [
+				{ source: "/sitemap.xml", destination: "/api/sitemap" },
+				{ source: "/rss", destination: "/api/rss" },
+			];
 		},
 		catchAllRouting: true,
 	},

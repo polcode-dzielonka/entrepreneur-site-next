@@ -15,7 +15,9 @@ const MainHeadline = ({ data }) => {
 		headline,
 		category,
 		urlDescription,
+		srcset,
 	} = overview[0];
+
 	return (
 		<section className="header-section">
 			<SectionBar title="Featured" titleColor="#fefefe" titleSize="1.25rem" />
@@ -26,6 +28,8 @@ const MainHeadline = ({ data }) => {
 							<div className="headline-image-main-wrapper">
 								<img
 									className="headline-image-main"
+									srcSet={srcset ? srcset : []}
+									sizes="330px"
 									src={headlineImage}
 									alt={headlineImageAlt}
 								/>
@@ -43,7 +47,12 @@ const MainHeadline = ({ data }) => {
 				<div className="sub-headline-container">
 					{subHeadlineData.map((head, index) => {
 						const overview = JSON.parse(head.overview);
-						const { headlineImage, headlineImageAlt, headline } = overview[0];
+						const {
+							headlineImage,
+							headlineImageAlt,
+							headline,
+							srcset,
+						} = overview[0];
 						return (
 							<article className="sub-article" key={index}>
 								<Link href="/newsletter">
@@ -53,6 +62,8 @@ const MainHeadline = ({ data }) => {
 												className="sub-headline-image"
 												src={headlineImage}
 												alt={headlineImageAlt}
+												srcSet={srcset ? srcset : []}
+												sizes="330px"
 											/>
 										</div>
 										<div className="sub-title-container">

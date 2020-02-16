@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export const config = { amp: "hybrid" };
 import { useAmp } from "next/amp";
 
-const ImageLoader = ({ src, alt, animation, styles }) => {
+const ImageLoader = ({ src, alt, animation, styles, srcset }) => {
 	const [classStyle, setClassStyle] = useState(
 		animation ? "img-loading-animation" : "img-loading",
 	);
@@ -21,6 +21,8 @@ const ImageLoader = ({ src, alt, animation, styles }) => {
 					style={styles}
 					className={classStyle}
 					onLoad={onLoad}
+					srcSet={srcset}
+					sizes="350px"
 				/>
 			)}
 			{isAmp && (
@@ -30,6 +32,8 @@ const ImageLoader = ({ src, alt, animation, styles }) => {
 					style={styles}
 					className={classStyle}
 					onLoad={onLoad}
+					srcSet={srcset}
+					sizes="350px"
 				/>
 			)}
 			<style jsx>{`
@@ -79,6 +83,7 @@ ImageLoader.propTypes = {
 	alt: PropTypes.string,
 	animation: PropTypes.boolean,
 	styles: PropTypes.object,
+	srcset: PropTypes.array,
 };
 
 ImageLoader.defaultProps = {

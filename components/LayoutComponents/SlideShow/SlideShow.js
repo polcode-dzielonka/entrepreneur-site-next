@@ -36,7 +36,6 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	const bookEndClosing = slides["closing"][0];
 	const slideData = countdown ? slides["slides"].reverse() : slides["slides"];
 	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/opening`;
-
 	return (
 		<div className="section-padding">
 			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
@@ -46,6 +45,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 					label="Start SlideShow"
 					href={href}
 					imgSrc={details[0].headlineImage}
+					srcset={details[0].srcset}
 				/>
 			</div>
 			<BookEnds
@@ -54,6 +54,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				imageAlt={bookEndOpening.openingImageAlt}
 				imageAltAttribution={bookEndOpening.openingImageAttribution}
 				imageAltAttributionLink={bookEndOpening.openingImageAttributionLink}
+				srcset={bookEndOpening.srcset}
 				title={bookEndOpening.opening}
 				details={
 					bookEndOpening.openingSlideDetails
@@ -67,6 +68,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 					label="Start SlideShow"
 					href={href}
 					imgSrc={details[0].headlineImage}
+					srcset={details[0].srcset}
 				/>
 			</div>
 			<ScrollUpButton />
@@ -85,6 +87,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				imageAlt={bookEndClosing.closingImageAlt}
 				imageAltAttribution={bookEndClosing.closingImageAttribution}
 				imageAltAttributionLink={bookEndClosing.closingImageAttributionLink}
+				srcset={bookEndClosing.srcset}
 				title={bookEndClosing.closing}
 				details={
 					bookEndClosing.openingSlideDetails

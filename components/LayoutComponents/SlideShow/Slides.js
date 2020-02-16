@@ -30,6 +30,7 @@ const Slides = ({
 			slideImageAttribution,
 			slideImageAttributionLink,
 			slidePosition,
+			srcset,
 		} = slideData;
 		const value = slideData.slideDetails
 			? slideData.slideDetails
@@ -64,6 +65,7 @@ const Slides = ({
 						imageAlt={slideImageAlt}
 						imageAltAttribution={slideImageAttribution}
 						imageAltAttributionLink={slideImageAttributionLink}
+						srcset={srcset}
 					/>
 				</LazyLoad>
 				<div className="section-paragraph">
@@ -99,6 +101,7 @@ const Slides = ({
 							title="Next Up:"
 							headline={midDataOverview[0].headline}
 							image={midDataOverview[0].headlineImage}
+							srcset={srcset}
 							url={`/${midDataOverview[0].slideUrl}/quickview/${midDataId}/slides/opening`}
 						/>
 						<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
@@ -172,6 +175,7 @@ Slides.propTypes = {
 	image: PropTypes.String,
 	headline: PropTypes.String,
 	brief: PropTypes.String,
+	srcset: PropTypes.Array,
 };
 Slides.defaultProps = {
 	latest: [],

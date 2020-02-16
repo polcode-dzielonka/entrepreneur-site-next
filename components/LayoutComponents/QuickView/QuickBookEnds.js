@@ -17,12 +17,12 @@ const BookEnds = ({
 	details,
 	position,
 	embed,
+	srcset,
 }) => {
 	const value = details;
 	const editor = useMemo(() => createEditor(), []);
 	const renderElement = useCallback(props => <RenderElement {...props} />, []);
 	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
-
 	return (
 		<div className="bookend-wrapper">
 			<h1 className="section-header">{title}</h1>
@@ -32,6 +32,7 @@ const BookEnds = ({
 				imageAlt={imageAlt}
 				imageAltAttribution={imageAltAttribution}
 				imageAltAttributionLink={imageAltAttributionLink}
+				srcset={srcset}
 			/>
 			<>
 				<div className="section-paragraph">
@@ -93,6 +94,7 @@ BookEnds.propTypes = {
 	title: PropTypes.string,
 	details: PropTypes.Object,
 	embed: PropTypes.string,
+	srcset: PropTypes.array,
 };
 BookEnds.defaultProps = {
 	details: [

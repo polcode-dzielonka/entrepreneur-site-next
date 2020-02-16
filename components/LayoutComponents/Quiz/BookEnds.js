@@ -19,6 +19,7 @@ const QuizBookEnds = ({
 	scoreComments,
 	finalScore,
 	numberQuestions,
+	srcset,
 }) => {
 	const editor = useMemo(() => createEditor(), []);
 	const renderElement = useCallback(props => <RenderElement {...props} />, []);
@@ -49,6 +50,7 @@ const QuizBookEnds = ({
 				imageAlt={imageAlt}
 				imageAltAttribution={imageAltAttribution}
 				imageAltAttributionLink={imageAltAttributionLink}
+				srcset={srcset}
 			/>
 			{positionClosing && (
 				<h1 className="section-header">
@@ -150,6 +152,7 @@ QuizBookEnds.propTypes = {
 	scoreComments: PropTypes.string,
 	finalScore: PropTypes.Bool,
 	numberQuestions: PropTypes.Bool,
+	srcset: PropTypes.array,
 };
 
 QuizBookEnds.defaultProps = {

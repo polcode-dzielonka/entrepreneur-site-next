@@ -11,8 +11,8 @@ import {
 } from "../../data/emailSignupData";
 import validate from "../../components/FormValidation/Validation";
 import Reaptcha from "reaptcha";
-import axios from "axios";
 import Cookie from "js-cookie";
+import manualRequest from "../apiRequest/manualApiRequest";
 //Set Cookie Expiration if not signed up (in minutes)
 const SignUpModal = () => {
 	const [formData, setFormData] = useState(QUICK_INITIAL_STATE);
@@ -56,24 +56,18 @@ const SignUpModal = () => {
 			...formData,
 			id: formData.email,
 			emailSignupSiteId: process.env.REACT_APP_SITE_ID,
+			site: "wealthmack",
 			popUp: false,
 		};
 
 		try {
 			const mutationData = {
 				query: EMAIL_SIGN_UP,
-				operationName: "CreateEmailSignup",
+				operationName: "CreateEmail",
 				variables: { input: submitForm },
 			};
-			await axios({
-				url: process.env.REACT_APP_PROD_ENDPOINT,
-				method: "POST",
-				data: JSON.stringify(mutationData),
-				headers: {
-					Accept: "application/json",
-					"x-api-key": process.env.REACT_APP_PROD_API_KEY,
-				},
-			});
+			await manualRequest(mutationData);
+
 			setSuccess(true);
 			const expiryDate = process.env.COOKIE_ACCEPT_EXPIRY; //Days
 

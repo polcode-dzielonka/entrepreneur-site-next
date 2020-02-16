@@ -23,6 +23,10 @@ const footerLinks = [
 ];
 const socialLinks = [
 	{
+		href: process.env.RSS_URL,
+		icon: "/static/rss_icon.png",
+	},
+	{
 		href: "https://www.facebook.com/WealthMack-103552984448329/",
 		icon: "/static/facebookIcon.png",
 	},

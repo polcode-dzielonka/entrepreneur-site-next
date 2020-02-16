@@ -9,7 +9,8 @@ import QuickViewButton from "../../Button/QuickViewButton";
 import LongAnswer from "./LongAnswer";
 import Cookie from "js-cookie";
 import router from "next/router";
-import axios from "axios";
+import prodRequest from "../../apiRequest/prodAppsyncRequest";
+
 const Questions = ({
 	total,
 	questionData,
@@ -19,6 +20,7 @@ const Questions = ({
 	id,
 	currentScore,
 	questions,
+	nextQuestionData,
 }) => {
 	const [showAnswer, setShowAnswer] = useState(false);
 	const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -44,6 +46,8 @@ const Questions = ({
 		questionPosition,
 		correctAnswerComment,
 		incorrectAnswerComment,
+		questionSrcset,
+		answerSrcset,
 	} = questionDetails;
 	const answerInfo = { ...correctAnswerDetails, ...inCorrectAnswerDetails };
 	const [answers, setAnswers] = useState(Object.keys(answerInfo));
@@ -98,15 +102,7 @@ const Questions = ({
 				operationName: "UpdateProductionQuiz",
 				variables: { input: updateVotes },
 			};
-			axios({
-				url: process.env.REACT_APP_PROD_ENDPOINT,
-				method: "POST",
-				data: JSON.stringify(mutationData),
-				headers: {
-					Accept: "application/json",
-					"x-api-key": process.env.REACT_APP_PROD_API_KEY,
-				},
-			});
+			prodRequest(mutationData);
 		} catch (err) {
 			console.log("Error with request", err);
 		}
@@ -129,6 +125,7 @@ const Questions = ({
 						imageAlt={questionImageAlt}
 						imageAltAttribution={questionImageAttribution}
 						imageAltAttributionLink={questionImageAttributionLink}
+						srcset={questionSrcset}
 					/>
 				</div>
 			)}
@@ -140,6 +137,7 @@ const Questions = ({
 						imageAlt={answerImageAlt}
 						imageAltAttribution={answerImageAttribution}
 						imageAltAttributionLink={answerImageAttributionLink}
+						srcset={answerSrcset}
 					/>
 				</div>
 			)}
@@ -172,8 +170,17 @@ const Questions = ({
 			{showAnswer && (
 				<QuickViewButton
 					label="Next"
-					imgSrc={linkImage}
+					imgSrc={
+						nextQuestionData[0]
+							? nextQuestionData[0].questionImage
+							: questionImage
+					}
 					href={`${nextHref}?score=${score}`}
+					srcset={
+						nextQuestionData[0]
+							? nextQuestionData[0].questionSrcset
+							: questionSrcset
+					}
 				/>
 			)}
 			<style jsx>

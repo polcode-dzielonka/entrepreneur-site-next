@@ -8,6 +8,7 @@ const EmbedImage = ({ attributes, element, children }) => {
 		imageAlt: "",
 		imageAttribution: "",
 		imageAttributionLink: "",
+		srcset: [],
 	});
 
 	useEffect(() => {
@@ -19,11 +20,14 @@ const EmbedImage = ({ attributes, element, children }) => {
 		const embedImageAlt = data.imageAlt;
 		const embedImageAttribution = data.imageAttribution;
 		const embedImageAttributionLink = data.imageAttributionLink;
+		const embedImageSrcset = data.srcset ? data.srcset : [];
+
 		setEmbedImageUrl({
 			imageUrl: embedImageUrl,
 			imageAlt: embedImageAlt,
 			imageAttribution: embedImageAttribution,
 			imageAttributionLink: embedImageAttributionLink,
+			srcset: embedImageSrcset,
 		});
 	};
 
@@ -40,6 +44,8 @@ const EmbedImage = ({ attributes, element, children }) => {
 				src={embedImage.imageUrl}
 				alt={embedImage.imageAlt}
 				animation={true}
+				srcset={embedImage.srcset}
+				sizes="330px"
 			/>
 			{children}
 			<span>{embedImage.imageCaption}</span>

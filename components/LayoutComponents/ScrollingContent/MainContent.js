@@ -7,6 +7,7 @@ const MainScrollingContent = ({
 	headlineImage,
 	headlineImageAlt,
 	index,
+	srcset,
 }) => {
 	return (
 		<article className="side-content" key={index}>
@@ -17,6 +18,8 @@ const MainScrollingContent = ({
 							className="side-image-main"
 							src={headlineImage}
 							alt={headlineImageAlt}
+							srcSet={srcset ? srcset : []}
+							sizes="330px"
 						/>
 					</div>
 				</a>
@@ -130,5 +133,6 @@ MainScrollingContent.propTypes = {
 	headlineImage: PropTypes.String,
 	headlineImageAlt: PropTypes.String,
 	index: PropTypes.int,
+	srcset: PropTypes.array,
 };
 export default MainScrollingContent;
