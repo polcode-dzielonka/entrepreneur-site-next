@@ -33,6 +33,10 @@ const socialLinks = [
 	{ href: "https://www.bbc.co.uk/", icon: "/static/youtubeIcon.png" },
 	{ href: "https://www.bbc.co.uk/", icon: "/static/instagramIcon.png" },
 	{ href: "https://twitter.com/wealthmack", icon: "/static/twitterIcon.png" },
+	{
+		href: "https://www.linkedin.com/company/wealthmack",
+		icon: "/static/linkedinIcon.png",
+	},
 ];
 
 export { links, mobileLinks, socialLinks, footerLinks };

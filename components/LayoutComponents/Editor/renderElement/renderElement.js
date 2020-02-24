@@ -6,7 +6,8 @@ import { theme } from "../../../../theme/baseCss";
 import LazyLoad from "react-lazyload";
 import SiteAd from "./ads/siteAd";
 import LinkAd from "./ads/linkAd";
-
+const paragraphFontSize = 1.35;
+const paragraphLineHeight = 2.5;
 const Embed = dynamic(() => import("./embed/embed"), {
 	ssr: false,
 	loading: () => <SingleLoader />,
@@ -60,7 +61,8 @@ const RenderElement = props => {
 					{children}
 					<style jsx>{`
 						.para {
-							font-size: 1.15rem;
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
 							color: #4d4d4d;
@@ -138,28 +140,69 @@ const RenderElement = props => {
 					`}</style>
 				</h5>
 			);
+
 		case "format-align-left":
 			return (
-				<div style={{ align: "left" }} {...attributes}>
+				<div className="para" {...attributes}>
 					{children}
+					<style jsx>{`
+						.para {
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
+							font-family: ${theme.secondaryFont};
+							font-weight: 400;
+							color: #4d4d4d;
+							align: left;
+						}
+					`}</style>
 				</div>
 			);
 		case "format-align-center":
 			return (
-				<div style={{ align: "center" }} {...attributes}>
+				<div className="para" {...attributes}>
 					{children}
+					<style jsx>{`
+						.para {
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
+							font-family: ${theme.secondaryFont};
+							font-weight: 400;
+							color: #4d4d4d;
+							align: center;
+						}
+					`}</style>
 				</div>
 			);
 		case "format-align-right":
 			return (
-				<div style={{ align: "right" }} {...attributes}>
+				<div className="para" {...attributes}>
 					{children}
+					<style jsx>{`
+						.para {
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
+							font-family: ${theme.secondaryFont};
+							font-weight: 400;
+							color: #4d4d4d;
+							align: right;
+						}
+					`}</style>
 				</div>
 			);
 		case "format-align-justify":
 			return (
-				<div style={{ align: "justify" }} {...attributes}>
+				<div className="para" {...attributes}>
 					{children}
+					<style jsx>{`
+						.para {
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
+							font-family: ${theme.secondaryFont};
+							font-weight: 400;
+							color: #4d4d4d;
+							align: justify;
+						}
+					`}</style>
 				</div>
 			);
 		case "bulleted-list":
@@ -168,7 +211,8 @@ const RenderElement = props => {
 					{children}
 					<style jsx>{`
 						.bullet {
-							font-size: 1.15rem;
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
 							color: #4d4d4d;
@@ -182,7 +226,8 @@ const RenderElement = props => {
 					{children}
 					<style jsx>{`
 						ol {
-							font-size: 1.15rem;
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
 							color: #4d4d4d;
@@ -286,7 +331,20 @@ const RenderElement = props => {
 				</td>
 			);
 		default:
-			return <p {...attributes}>{children}</p>;
+			return (
+				<div className="para" {...attributes}>
+					{children}
+					<style jsx>{`
+						.para {
+							font-size: ${paragraphFontSize}rem;
+							line-height: ${paragraphLineHeight}rem;
+							font-family: ${theme.secondaryFont};
+							font-weight: 400;
+							color: #4d4d4d;
+						}
+					`}</style>
+				</div>
+			);
 	}
 };
 
