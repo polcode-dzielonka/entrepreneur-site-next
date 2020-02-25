@@ -38,7 +38,7 @@ const MainHeadline = ({ data }) => {
 					</Link>
 					<div className="info">
 						<h1 className="info-title">
-							<Link href="/newsletter">
+							<Link href={`/${urlDescription}/article/${id}`}>
 								<a className="info-link">{headline}</a>
 							</Link>
 						</h1>
@@ -47,15 +47,17 @@ const MainHeadline = ({ data }) => {
 				<div className="sub-headline-container">
 					{subHeadlineData.map((head, index) => {
 						const overview = JSON.parse(head.overview);
+						const { id } = head;
 						const {
 							headlineImage,
 							headlineImageAlt,
 							headline,
+							urlDescription,
 							srcset,
 						} = overview[0];
 						return (
 							<article className="sub-article" key={index}>
-								<Link href="/newsletter">
+								<Link href={`/${urlDescription}/article/${id}`}>
 									<a className="sub-headline-anchor">
 										<div className="sub-headline-image-wrap">
 											<img
@@ -177,7 +179,7 @@ const MainHeadline = ({ data }) => {
 					.sub-article {
 						height: 33%;
 						width: 100%;
-						padding: 0.25rem;
+						padding: 0rem 0rem 0.25rem 0.25rem;
 					}
 					.sub-headline-anchor {
 						width: 100%;
