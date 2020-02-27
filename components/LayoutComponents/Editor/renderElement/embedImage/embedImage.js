@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ImageLoader from "../../../../Loading/ImageLoader";
+import ImageLoader from "../../../../Loading/EditorImageLoader";
 
 const EmbedImage = ({ attributes, element, children }) => {
 	const { data } = element;
