@@ -105,6 +105,7 @@ const MainHeadline = ({ data }) => {
 						width: 60%;
 						position: relative;
 						cursor: pointer;
+						padding-bottom: 0.25rem;
 					}
 					.headline-image-main {
 						display: flex;
@@ -177,7 +178,7 @@ const MainHeadline = ({ data }) => {
 						width: 50%;
 					}
 					.sub-article {
-						height: 33%;
+						height: calc(100% / 3);
 						width: 100%;
 						padding: 0rem 0rem 0.25rem 0.25rem;
 					}

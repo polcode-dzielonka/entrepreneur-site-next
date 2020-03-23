@@ -4,6 +4,9 @@ import Link from "next/link";
 
 const ScrollingArticles = ({ data }) => {
 	return data.map((article, index) => {
+		const headlineData = data[0];
+		const { id } = headlineData;
+
 		const overview = JSON.parse(article.overview);
 		const {
 			headlineImage,
@@ -11,13 +14,14 @@ const ScrollingArticles = ({ data }) => {
 			headline,
 			category,
 			kicker,
+			urlDescription,
 			srcset,
 		} = overview[0];
 
 		if (index === 0) {
 			return (
 				<article key={index} className="large-image-container">
-					<Link href="/newsletter">
+					<Link href={`/${urlDescription}/article/${id}`}>
 						<a className="large-image-anchor">
 							<div className="large-image-main-wrapper">
 								<img
@@ -32,11 +36,11 @@ const ScrollingArticles = ({ data }) => {
 					</Link>
 					<div className="large-info">
 						<div className="info-title">
-							<Link href="/newsletter">
+							<Link href={`/${urlDescription}/article/${id}`}>
 								<a className="info-link">{headline}</a>
 							</Link>
 							<h2 className="info-title">
-								<Link href="/newsletter">
+								<Link href={`/${urlDescription}/article/${id}`}>
 									<a className="category-link">{category}</a>
 								</Link>
 							</h2>

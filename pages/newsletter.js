@@ -79,9 +79,15 @@ const Newsletter = ({ url }) => {
 						<h1 className="main-title">Newsletter</h1>
 					</article>
 					<ImageLoader
-						src={"/static/business_cover_photo.png"}
+						src={"/static/business_cover_photox1024.jpg"}
 						alt={process.env.SITE_NAME}
 						animation={false}
+						srcset={[
+							`/static/business_cover_photox256.jpg 256w`,
+							`/static/business_cover_photox512.jpg 512w`,
+							`/static/business_cover_photox768.jpg 768w`,
+							`/static/business_cover_photox1024.jpg 1024w`,
+						]}
 					/>
 					<form className="contact-form" onSubmit={handleSubmit}>
 						<h3>

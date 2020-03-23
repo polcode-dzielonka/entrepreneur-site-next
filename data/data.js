@@ -30,8 +30,14 @@ const socialLinks = [
 		href: "https://www.facebook.com/WealthMack-103552984448329/",
 		icon: "/static/facebookIcon.png",
 	},
-	{ href: "https://www.bbc.co.uk/", icon: "/static/youtubeIcon.png" },
-	{ href: "https://www.bbc.co.uk/", icon: "/static/instagramIcon.png" },
+	{
+		href: "https://www.youtube.com/channel/UC7PG3SDVzaVn7UO4uCEV8_g/",
+		icon: "/static/youtubeIcon.png",
+	},
+	{
+		href: "https://www.instagram.com/wealthmack1/",
+		icon: "/static/instagramIcon.png",
+	},
 	{ href: "https://twitter.com/wealthmack", icon: "/static/twitterIcon.png" },
 	{
 		href: "https://www.linkedin.com/company/wealthmack",

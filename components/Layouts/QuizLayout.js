@@ -77,6 +77,7 @@ const Quiz = ({ id, position, url, score }) => {
 					<SideBarContent
 						data={headlines.data.listProductionArticles.items}
 						loading={headlines.loading}
+						type="article"
 					/>
 					<FacebookPage />
 					<div className="section-padding">
@@ -85,6 +86,7 @@ const Quiz = ({ id, position, url, score }) => {
 					<SideBarSmallContent
 						data={headlines.data.listProductionArticles.items}
 						loading={headlines.loading}
+						type="article"
 					/>
 				</aside>
 			</main>

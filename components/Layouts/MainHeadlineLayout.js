@@ -2,7 +2,7 @@ import Layout from "./Layout";
 import { useQuery } from "@apollo/react-hooks";
 import ErrorMessage from "../error";
 import { NetworkStatus } from "apollo-client";
-import { QUIZ, SLIDE, HEADLINES } from "../../graphql/headline";
+import { QUIZ, SLIDE, HEADLINES, LATEST } from "../../graphql/headline";
 import MainHeadlineLoading from "../Loading/Layouts/MainHeadlineLoadingLayout";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
@@ -39,7 +39,13 @@ const MainHeadlineLayout = ({
 	const headlines = useQuery(HEADLINES, {
 		variables: {
 			filter: { mainHeadline: { eq: true } },
-			limit: 5,
+			limit: 4,
+		},
+		notifyOnNetworkStatusChange: true,
+	});
+	const latestArticles = useQuery(LATEST, {
+		variables: {
+			limit: 10,
 		},
 		notifyOnNetworkStatusChange: true,
 	});
@@ -77,15 +83,32 @@ const MainHeadlineLayout = ({
 	// 		},
 	// 	});
 	// };
-	if (error || headlines.error || quiz.error || slide.error)
+	if (
+		error ||
+		headlines.error ||
+		quiz.error ||
+		slide.error ||
+		latestArticles.error
+	)
 		return <MainHeadlineLoading />;
 	if (
 		(loading && !loadingMorePosts) ||
 		headlines.loading ||
 		quiz.loading ||
-		slide.loading
+		slide.loading ||
+		latestArticles.loading
 	)
 		return <MainHeadlineLoading />;
+
+	const newLatestArticles = latestArticles.data.listProductionArticles.items.filter(
+		item => {
+			return (
+				headlines.data.listProductionArticles.items.filter(filteredItem => {
+					return filteredItem.id === item.id;
+				}).length == 0
+			);
+		},
+	);
 
 	return (
 		<Layout>
@@ -114,7 +137,7 @@ const MainHeadlineLayout = ({
 						</div>
 						<LazyLoad once={true}>
 							<ScrollingArticles
-								data={headlines.data.listProductionArticles.items}
+								data={newLatestArticles}
 								loading={headlines.loading}
 							/>
 
@@ -133,14 +156,15 @@ const MainHeadlineLayout = ({
 							/>
 						</div>
 						<SideBarContent
-							data={headlines.data.listProductionArticles.items}
-							loading={headlines.loading}
+							data={quiz.data.listProductionQuizs.items}
+							loading={quiz.loading}
+							type="quiz"
 						/>
 						<FacebookPage />
 						<div className="section-padding">
-							<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
+							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
 						</div>
-						<SideBarSmallContent
+						{/* <SideBarSmallContent
 							data={quiz.data.listProductionQuizs.items}
 							loading={quiz.loading}
 							type="quiz"
@@ -149,7 +173,7 @@ const MainHeadlineLayout = ({
 							data={headlines.data.listProductionArticles.items}
 							loading={quiz.loading}
 							type="article"
-						/>
+						/> */}
 
 						<SideBarSmallContent
 							data={slide.data.listProductionSlideShows.items}

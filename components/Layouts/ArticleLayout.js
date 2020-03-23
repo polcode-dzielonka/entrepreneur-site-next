@@ -71,6 +71,7 @@ const Article = ({ id }) => {
 					<SideBarContent
 						data={headlines.data.listProductionArticles.items}
 						loading={headlines.loading}
+						type="article"
 					/>
 					<FacebookPage />
 					<div className="section-padding">
@@ -79,6 +80,7 @@ const Article = ({ id }) => {
 					<SideBarSmallContent
 						data={headlines.data.listProductionArticles.items}
 						loading={headlines.loading}
+						type="article"
 					/>
 				</aside>
 			</main>

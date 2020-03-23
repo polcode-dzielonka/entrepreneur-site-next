@@ -79,6 +79,7 @@ const QuickViewLayout = ({ id, position, url }) => {
 					<SideBarContent
 						data={headlines.data.listProductionArticles.items}
 						loading={headlines.loading}
+						type="article"
 					/>
 					<FacebookPage />
 					<div className="section-padding">
@@ -87,6 +88,7 @@ const QuickViewLayout = ({ id, position, url }) => {
 					<SideBarSmallContent
 						data={headlines.data.listProductionArticles.items}
 						loading={headlines.loading}
+						type="article"
 					/>
 				</aside>
 			</main>

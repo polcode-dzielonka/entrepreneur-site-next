@@ -106,6 +106,34 @@ export const HEADLINES = gql`
 	}
 `;
 
+export const LATEST = gql`
+	query ListProductionArticles(
+		$filter: ModelProductionArticleFilterInput
+		$limit: Int
+	) {
+		listProductionArticles(filter: $filter, limit: $limit) {
+			items {
+				id
+				authorId
+				authorName
+				category
+				viewCount
+				development
+				production
+				overview
+				developmentId
+				content
+				schedule
+				original
+				scheduleTime
+				createdAt
+				updatedAt
+			}
+			nextToken
+		}
+	}
+`;
+
 export const QUIZ = gql`
 	query ListProductionQuizs(
 		$filter: ModelProductionQuizFilterInput

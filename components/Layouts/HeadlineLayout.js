@@ -112,6 +112,7 @@ const HeadlineLayout = ({
 						<SideBarContent
 							data={headlines.data.listProductionArticles.items}
 							loading={headlines.loading}
+							type="article"
 						/>
 						<FacebookPage />
 						<div className="section-padding">
@@ -120,6 +121,7 @@ const HeadlineLayout = ({
 						<SideBarSmallContent
 							data={headlines.data.listProductionArticles.items}
 							loading={headlines.loading}
+							type="article"
 						/>
 					</aside>
 				</section>
