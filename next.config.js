@@ -23,9 +23,9 @@ module.exports = {
 		SITE_NAME: process.env.SITE_NAME,
 		SITE_TITLE: "WealthMack",
 		SITE_IMAGE:
-			"https://image-bucket-list.s3-eu-west-1.amazonaws.com/business_cover_photo.png",
+			"https://amplify-images-bucket-dev-resized.s3.eu-west-1.amazonaws.com/public/resized-thumbnails/business_cover_photox1024.jpg",
 		SITE_IMAGE_WIDTH: "1024",
-		SITE_IMAGE_HEIGHT: "576",
+		SITE_IMAGE_HEIGHT: "573",
 		SITE_DESC:
 			"Dedicated to providing aspiring entrepreneurs and those who wish to improve their lives with some of the most inspirational and motivating content on the internet",
 		TWITTER_SITE: "@WealthMack",
