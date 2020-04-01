@@ -1,4 +1,5 @@
 import Head from "next/head";
+import PropTypes from "prop-types";
 
 const MainHead = ({ children }) => {
 	return (
@@ -145,5 +146,9 @@ const MainHead = ({ children }) => {
 			<meta name="msapplication-config" content="/static/browserconfig.xml" />
 		</Head>
 	);
+};
+
+MainHead.propTypes = {
+	children: PropTypes.Object,
 };
 export default MainHead;
