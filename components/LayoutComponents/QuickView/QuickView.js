@@ -99,6 +99,7 @@ const QuickView = ({ content, position, url, id }) => {
 				image={headlineImage}
 				headline={title}
 				brief={blurb}
+				position={"bottom_quickview_share_horiz"}
 			/>
 			<hr className="break" />
 			<Crumbs
@@ -163,6 +164,12 @@ const QuickView = ({ content, position, url, id }) => {
 					}
 					ul {
 						margin: 0;
+					}
+					@media only screen and (max-width: 670px) {
+						.section-padding {
+							margin: 0 auto;
+							width: 96%;
+						}
 					}
 				`}
 			</style>

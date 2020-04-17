@@ -48,6 +48,27 @@ const SectionBar = ({ title, titleColor, titleSize }) => {
 							width: 97%;
 						}
 					}
+					@media only screen and (max-width: 620px) {
+						.section-title {
+							margin: 0rem 0rem 0.75rem 0rem;
+							font-size: 1.25rem;
+							letter-spacing: 1px;
+							line-height: 1.4rem;
+							padding: 0.5rem 0rem;
+							font-weight: 900;
+						}
+						.section-title:after {
+							height: 2px;
+						}
+						.featured-content {
+							width: 97%;
+						}
+					}
+					@media only screen and (max-width: 450px) {
+						.section-title {
+							font-size: 1rem;
+						}
+					}
 				`}
 			</style>
 		</>

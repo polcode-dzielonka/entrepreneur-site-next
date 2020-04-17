@@ -81,18 +81,26 @@ const Cookies = () => {
 							<ul>
 								<li>
 									AllAboutCookies:&nbsp;
+									<br />
 									<strong>
-										<a href="http://www.allaboutcookies.org/" target="_blank">
+										<a
+											href="http://www.allaboutcookies.org/"
+											target="_blank"
+											rel="noopener noreferrer"
+										>
 											http://www.allaboutcookies.org/
 										</a>
 									</strong>
 								</li>
+								<br />
 								<li>
 									Network Advertising Initiative:&nbsp;
+									<br />
 									<strong>
 										<a
 											href="https://www.networkadvertising.org/"
 											target="_blank"
+											rel="noopener noreferrer"
 										>
 											https://www.networkadvertising.org/
 										</a>
@@ -161,6 +169,32 @@ const Cookies = () => {
 							width: 80%;
 							margin: 0 auto;
 							margin-bottom: 5rem;
+						}
+					}
+					@media only screen and (max-width: 560px) {
+						h2 {
+							text-transform: uppercase;
+							margin-top: 1.5rem;
+							line-height: 2rem;
+							text-align: center;
+						}
+						.main-content {
+							font-family: ${theme.font};
+							font-size: ${theme.mobileFontSize};
+							font-size: ${theme.mobileLineHeight};
+							font-weight: 300;
+							color: #101010;
+							width: 96%;
+							margin: 0 auto;
+							margin-bottom: 5rem;
+						}
+						.main-title {
+							font-family: ${theme.font};
+							margin-top: 2rem;
+							font-size: ${theme.mobileHeaderSize};
+							font-weight: 700;
+							color: #101010;
+							text-transform: uppercase;
 						}
 					}
 				`}

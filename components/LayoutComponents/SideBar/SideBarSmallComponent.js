@@ -28,10 +28,10 @@ const SideBarContent = ({
 				</a>
 			</Link>
 			<div className="side-title-info">
+				<Link href={contentLink}>
+					<a className="info-link">{headline}</a>
+				</Link>
 				<div className="side-title">
-					<Link href={contentLink}>
-						<a className="info-link">{headline}</a>
-					</Link>
 					<div className="side-title">
 						<Link href={contentLink}>
 							<a className="category-link">{category}</a>
@@ -56,15 +56,9 @@ const SideBarContent = ({
 					color: ${theme.secondary};
 					font-size: 1.2rem;
 					letter-spacing: -0.02em;
-					line-height: 1.2;
-					margin: 0 0.5rem;
-					margin-bottom: 0.55rem;
+					line-height: 1.4rem;
+					padding: 0 0.25rem;
 					text-decoration: none;
-					display: -webkit-box;
-					-webkit-line-clamp: 3;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					-webkit-box-orient: vertical;
 					transition: all 0.2s ease;
 					font-family: ${theme.font};
 				}
@@ -106,13 +100,10 @@ const SideBarContent = ({
 					flex-wrap: wrap;
 				}
 				.side-title {
-					position: relative;
 					width: 100%;
-					padding: 0.5rem;
 					text-transform: uppercase;
 					margin: 0;
 					padding: 0;
-					overflow: hidden;
 				}
 				@media only screen and (max-width: 1000px) {
 					.info-link {
@@ -125,6 +116,18 @@ const SideBarContent = ({
 				@media only screen and (max-width: 645px) {
 					.info-link {
 						font-size: 1.5rem;
+						line-height: 1.7rem;
+					}
+					.side-image-main {
+						height: 8rem;
+					}
+				}
+				@media only screen and (max-width: 460px) {
+					.info-link {
+						font-size: 1.35rem;
+						line-height: 1.5rem;
+						font-weight: 900;
+						padding: 0rem 0.5rem;
 					}
 					.side-image-main {
 						height: 8rem;

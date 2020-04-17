@@ -21,19 +21,14 @@ const Footer = ({ menuOpen, onClick }) => {
 					<ul className="footer-nav-list">
 						{socialLinks.map(({ href, icon }, index) => {
 							return (
-								<li key={index}>
+								<li key={index} className="link-wrapper">
 									<a
 										href={href}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="footer-item-social"
 									>
-										<img
-											style={{
-												width: "30%",
-											}}
-											src={icon}
-										></img>
+										<img className="social-image" src={icon}></img>
 									</a>
 								</li>
 							);
@@ -145,6 +140,9 @@ const Footer = ({ menuOpen, onClick }) => {
 					list-style: none;
 					width: 30%;
 				}
+				.social-image {
+					width: 30%;
+				}
 				li {
 					list-style-type: none;
 				}
@@ -155,6 +153,18 @@ const Footer = ({ menuOpen, onClick }) => {
 						text-decoration: none;
 						list-style: none;
 						display: flex;
+					}
+
+					.footer-nav-list {
+						margin-bottom: 0.5rem;
+					}
+					.link-wrapper {
+						width: 30%;
+						padding-bottom: 1.2rem;
+					}
+					.social-image {
+						width: 20%;
+						margin: 0.2rem;
 					}
 				}
 			`}</style>

@@ -2,6 +2,7 @@ import { memo } from "react";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
 import SocialSvgFactory from "./utils/svgFactory";
+import createUtm from "../utm/createUtm";
 const VerticalShareButtons = ({
 	data,
 	url,
@@ -35,6 +36,50 @@ const VerticalShareButtons = ({
 			title: headline,
 		},
 	};
+	const utmOptions = {
+		facebook: {
+			originalUrl: url,
+			campaignSource: "facebook",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: "vertical_side",
+		},
+		twitter: {
+			originalUrl: url,
+			campaignSource: "twitter",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: "vertical_side",
+		},
+		LinkedIn: {
+			originalUrl: url,
+			campaignSource: "linkedin",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: "vertical_side",
+		},
+		Email: {
+			originalUrl: url,
+			campaignSource: "email",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: "vertical_side",
+		},
+		Pinterest: {
+			originalUrl: url,
+			campaignSource: "pinterest",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: "vertical_side",
+		},
+		Whatsapp: {
+			originalUrl: url,
+			campaignSource: "whatsapp",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: "vertical_side",
+		},
+	};
 	return (
 		<div className="button-vertical-container">
 			<div className="button-container">
@@ -47,7 +92,7 @@ const VerticalShareButtons = ({
 								width: button.height,
 								backgroundColor: button.secondaryColor,
 							}}
-							url={url}
+							url={createUtm(utmOptions[button.name])}
 							key={index}
 							{...options[button.name]}
 						>
@@ -137,6 +182,32 @@ const VerticalShareButtons = ({
 						}
 						.button-container {
 							flex-direction: row;
+						}
+						.indiv-button {
+							width: ${100 / data.length - 1}%;
+							margin: 0 auto;
+						}
+					}
+					@media only screen and (max-width: 450px) {
+						.button-text {
+							display: none;
+						}
+
+						.button-vertical-container {
+							left: 0;
+							bottom: 0;
+							width: 100%;
+							text-align: center;
+							top: 84%;
+						}
+						.button-content {
+							margin: 0 auto;
+							text-align: center;
+							width: 100%;
+						}
+						.button-container {
+							flex-direction: row;
+							position: absolute;
 						}
 						.indiv-button {
 							width: ${100 / data.length - 1}%;

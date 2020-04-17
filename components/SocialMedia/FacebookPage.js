@@ -14,13 +14,20 @@ const FacebookPage = ({ tabs, height, width, adaptContainerWidth }) => {
 			</FacebookProvider>
 			<style jsx>{`
 				.social-container {
-					margin: 3rem 0rem;
+					// margin: 3rem 0rem;
+					width: 100%;
 				}
 
 				@media only screen and (max-width: 1000px) {
 					.social-container {
 						margin: 0 auto;
-						padding: 3rem 0rem;
+						padding: 1rem 0rem;
+						width: auto;
+					}
+				}
+				@media only screen and (max-width: 480px) {
+					.social-container {
+						width: 100%;
 					}
 				}
 			`}</style>

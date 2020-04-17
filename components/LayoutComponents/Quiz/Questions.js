@@ -145,20 +145,22 @@ const Questions = ({
 				<span className="question-position">{questionPosition}</span>
 				{question}
 			</h1>
-			{answers.map((answer, index) => {
-				return (
-					<QuizButton
-						key={index}
-						answer={answerInfo[answer]}
-						handleClick={answerClick}
-						buttonDisabled={buttonDisabled}
-						showAnswer={showAnswer}
-						correct={answerInfo[answer].correct}
-						totalVotes={totalVotes}
-						answerDetails={answer}
-					/>
-				);
-			})}
+			<div className="answer-wrap">
+				{answers.map((answer, index) => {
+					return (
+						<QuizButton
+							key={index}
+							answer={answerInfo[answer]}
+							handleClick={answerClick}
+							buttonDisabled={buttonDisabled}
+							showAnswer={showAnswer}
+							correct={answerInfo[answer].correct}
+							totalVotes={totalVotes}
+							answerDetails={answer}
+						/>
+					);
+				})}
+			</div>
 
 			<LongAnswer
 				showAnswer={showAnswer}
@@ -196,7 +198,6 @@ const Questions = ({
 					.section-brief {
 						margin: 1.5rem 0;
 						padding: 0;
-
 						font-size: 1.45rem;
 						font-weight: 300;
 						line-height: 2rem;
@@ -261,6 +262,45 @@ const Questions = ({
 						}
 						to {
 							opacity: 1;
+						}
+					}
+					@media only screen and (max-width: 670px) {
+						.answer-wrap {
+							margin: 0.75rem 0rem;
+						}
+						.section-header-score {
+							font-size: 2.4rem;
+							line-height: 2.75rem;
+							padding: 0.5rem;
+							margin: 0 auto;
+							font-style: normal;
+						}
+						.section-header {
+							font-size: 2.4rem;
+							line-height: 2.75rem;
+							padding: 0.5rem;
+							margin: 0 auto;
+							font-style: normal;
+						}
+						.section-paragraph {
+							margin: 2rem 0 0 0;
+							width: 98%;
+						}
+					}
+					@media only screen and (max-width: 450px) {
+						.section-header-score {
+							font-size: 1.75rem;
+							line-height: 2rem;
+							padding: 0.5rem;
+							margin: 0.75rem 0;
+							font-style: normal;
+						}
+						.section-header {
+							font-size: 1.75rem;
+							line-height: 2rem;
+							padding: 0.5rem;
+							margin: 0 auto;
+							font-style: normal;
 						}
 					}
 				`}

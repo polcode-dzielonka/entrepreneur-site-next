@@ -35,7 +35,7 @@ const QuizButton = ({
 	return (
 		<Ripples
 			color={theme.quizRipple}
-			styling={{ borderRadius: "25px", margin: "0.45rem 0rem" }}
+			styling={{ borderRadius: "25px", margin: "0.5rem 0rem 0rem 0rem" }}
 		>
 			<button
 				className={classCorrect}
@@ -165,6 +165,13 @@ const QuizButton = ({
 						100% {
 							width: 100%;
 						}
+					}
+					@media only screen and (max-width: 670px) {
+						.link-section {
+							margin: 1.5rem 0;
+						}
+					}
+					@media only screen and (max-width: 450px) {
 					}
 				`}</style>
 			</button>

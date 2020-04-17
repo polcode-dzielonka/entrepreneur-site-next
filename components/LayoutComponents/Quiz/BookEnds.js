@@ -135,6 +135,49 @@ const QuizBookEnds = ({
 						color: ${theme.secondary};
 						font-family: ${theme.secondaryFont};
 					}
+					@media only screen and (max-width: 650px) {
+						.section-header-open {
+							font-size: 2.4rem;
+							line-height: 2.75rem;
+							padding: 0.5rem;
+							margin: 1.75rem 0;
+							font-style: normal;
+						}
+						.section-header {
+							font-size: 2.4rem;
+							line-height: 2.75rem;
+							padding: 0.5rem;
+							margin: 1.75rem 0;
+							font-style: normal;
+						}
+						.section-paragraph {
+							margin: 1.75rem auto;
+							width: 100%;
+						}
+						.end-header {
+							margin: 1.75rem auto;
+							width: 100%;
+						}
+					}
+
+					@media only screen and (max-width: 450px) {
+						.end-header {
+							margin: 1.75rem auto;
+							width: 100%;
+							font-size: 1.5rem;
+							line-height: 1.75rem;
+						}
+						.section-header-open {
+							font-size: 1.75rem;
+							line-height: 2rem;
+							margin: 0.5rem 0rem;
+						}
+						.section-header {
+							font-size: 1.75rem;
+							line-height: 2rem;
+							margin: 2rem 0rem;
+						}
+					}
 				`}
 			</style>
 		</div>

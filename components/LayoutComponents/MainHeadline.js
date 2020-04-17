@@ -17,32 +17,31 @@ const MainHeadline = ({ data }) => {
 		urlDescription,
 		srcset,
 	} = overview[0];
-
 	return (
 		<section className="header-section">
-			<SectionBar title="Featured" titleColor="#fefefe" titleSize="1.25rem" />
+			<div className="section-head">
+				<SectionBar title="Featured" titleColor="#fefefe" titleSize="1.25rem" />
+			</div>
 			<div className="headline-container">
 				<article className="headline-image-container">
 					<Link href={`/${urlDescription}/article/${id}`}>
-						<a>
-							<div className="headline-image-main-wrapper">
-								<img
-									className="headline-image-main"
-									srcSet={srcset ? srcset : []}
-									sizes="330px"
-									src={headlineImage}
-									alt={headlineImageAlt}
-								/>
-							</div>
-						</a>
+						<div className="headline-image-main-wrapper">
+							<img
+								className="headline-image-main"
+								srcSet={srcset ? srcset : []}
+								sizes="450px" //"330px"
+								src={headlineImage}
+								alt={headlineImageAlt}
+							/>
+						</div>
 					</Link>
-					<div className="info">
-						<h1 className="info-title">
-							<Link href={`/${urlDescription}/article/${id}`}>
+					<Link href={`/${urlDescription}/article/${id}`}>
+						<div className="info">
+							<h1 className="info-title">
 								<a className="info-link">{headline}</a>
-							</Link>
-						</h1>
-					</div>
+							</h1>
+						</div>
+					</Link>
 				</article>
 				<div className="sub-headline-container">
 					{subHeadlineData.map((head, index) => {
@@ -65,7 +64,7 @@ const MainHeadline = ({ data }) => {
 												src={headlineImage}
 												alt={headlineImageAlt}
 												srcSet={srcset ? srcset : []}
-												sizes="330px"
+												sizes="350px"
 											/>
 										</div>
 										<div className="sub-title-container">
@@ -89,7 +88,7 @@ const MainHeadline = ({ data }) => {
 						padding: 2rem;
 						font-size: 10px;
 						margin: 0 auto;
-						background-color: ${theme.secondary};
+						background-color: ${theme.tertiary};
 					}
 
 					.headline-container {
@@ -124,15 +123,12 @@ const MainHeadline = ({ data }) => {
 						position: absolute;
 						left: 0;
 						bottom: 0;
-						width: 100%;
 					}
-
 					.info-title {
 						position: relative;
 						width: 100%;
 						padding: 0.5rem;
 						text-transform: uppercase;
-						// margin-bottom: 0;
 						background: rgba(16, 16, 16, 0.75);
 					}
 					.info-link {
@@ -206,7 +202,6 @@ const MainHeadline = ({ data }) => {
 						letter-spacing: 1px;
 						padding-bottom: 2rem;
 						float: right;
-
 						font-family: ${theme.font};
 					}
 					.sub-category-wrapper {
@@ -247,6 +242,10 @@ const MainHeadline = ({ data }) => {
 							width: 100%;
 							margin-bottom: 1rem;
 						}
+
+						.section-head {
+							display: none;
+						}
 						.sub-article:after {
 							overflow: hidden;
 							width: 100%;
@@ -275,23 +274,113 @@ const MainHeadline = ({ data }) => {
 							height: 80%;
 						}
 					}
-					@media only screen and (max-width: 620px) {
+					@media only screen and (max-width: 670px) {
+						.headline-container {
+							padding: 0;
+							padding-top: 2rem;
+						}
+						.headline-image-container {
+							padding-bottom: 0.25rem;
+							margin-bottom: 0.15rem;
+						}
 						.info-link {
-							color: #fff;
-							font-size: 1.75rem;
+							font-size: 1.6rem;
 							letter-spacing: -0.02em;
-							line-height: 1.2;
-							margin: 1rem;
-							margin-bottom: 0.25rem;
+							line-height: 1.9rem;
+							margin: 0.7rem;
+							// padding: 0.75rem 0rem;
+						}
+						.info {
+							width: 100%;
+						}
+						.info-title {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							padding: 0.15rem 0rem;
+							margin: 0;
+							text-transform: uppercase;
+							background: rgba(16, 16, 16, 0.75);
+						}
+						.sub-article {
+							height: 9rem;
+							margin: 1rem 0;
+						}
+						.sub-article:after {
+							height: 1px;
+							margin: 1rem 0rem;
+						}
+
+						.sub-headline-image-wrap {
+							width: 80%;
+						}
+						.sub-headline-image {
+							width: 100%;
 						}
 						.sub-title {
 							font-size: 1.15rem;
+							margin: 0;
+							padding: 0 0.35rem;
+							text-transform: capitalize;
 						}
 						.sub-title-wrap {
-							height: 60%;
+							height: 50%;
+						}
+					}
+					@media only screen and (max-width: 480px) {
+						.headline-container {
+							padding: 0;
+							padding-top: 2rem;
+						}
+						.headline-image-container {
+							padding-bottom: 0.25rem;
+						}
+
+						.info-link {
+							font-size: 1.45rem;
+							letter-spacing: -0.02em;
+							line-height: 1.5rem;
+							margin: 0.2rem; // 0.2rem;
+							padding: 0.2rem; // 0.2rem;
+							-webkit-line-clamp: 4;
+						}
+						.info {
+							width: 100%;
+						}
+						.info-title {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							padding: 0.35rem 0rem;
+							margin: 0;
+							text-transform: uppercase;
+							background: rgba(16, 16, 16, 0.75);
+						}
+						.sub-article {
+							height: 8.5rem;
+						}
+						.sub-article:after {
+							height: 1px;
+							margin: 0.9rem 0rem;
+						}
+						.sub-category-wrapper {
+							display: none;
 						}
 						.sub-headline-image-wrap {
+							width: 80%;
+						}
+						.sub-headline-image {
 							width: 100%;
+						}
+						.sub-title {
+							font-size: 1.1rem;
+							line-height: 1.2rem;
+							margin: 0;
+							text-transform: capitalize;
+						}
+
+						.sub-title-wrap {
+							height: 60%;
 						}
 					}
 				`}

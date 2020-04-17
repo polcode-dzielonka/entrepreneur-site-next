@@ -50,6 +50,7 @@ const QuickSlides = ({
 				imageAltAttribution={slideImageAttribution}
 				imageAltAttributionLink={slideImageAttributionLink}
 				srcset={srcset}
+				// styles={{ width: "100%", height: "576px" }}
 			/>
 			<div className="section-paragraph">
 				<Slate editor={editor} value={value}>
@@ -120,6 +121,32 @@ const QuickSlides = ({
 						.slide-position:after{
 							content: ".";
 							display: inline-block;
+						}
+						@media only screen and (max-width: 670px) {
+							.section-header {
+								font-size: 2.4rem;
+								line-height: 2.75rem;
+								padding: 0.5rem;
+								margin: 0 auto;
+								font-style: normal;
+							}
+							.section-paragraph {
+								margin: 2rem 0 0.5rem 0;
+								width: 98%;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.section-header {
+								font-size: 2rem;
+								line-height: 2.3rem;
+								padding: 0.5rem;
+								margin: 0rem 0;
+								font-style: normal;
+							}
+							.section-paragraph {
+								margin-bottom: 1.5rem;
+								
+							}
 						}
 					`}
 			</style>

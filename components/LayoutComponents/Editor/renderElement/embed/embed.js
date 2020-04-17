@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Embedo from "../../../../Embed/embedo/embedo";
 import SingleSocialLoader from "../../../../Loading/SingleSocialLoader";
-
+import { theme } from "../../../../../theme/baseCss";
 const EmbedUrl = ({ attributes, element, children }) => {
 	const { data } = element;
 	const [embedUrl, setEmbedUrl] = useState({
@@ -57,7 +57,26 @@ const EmbedUrl = ({ attributes, element, children }) => {
 				ref={embedoContainer}
 			/>
 			{children}
-			<span>{embedUrl.caption}</span>
+			<span className="caption">{embedUrl.caption}</span>
+			<style jsx>{`
+				.caption {
+					font-size: 1rem;
+					font-family: ${theme.secondaryFont};
+					font-weight: 400;
+					color: ${theme.contentFontColor};
+				}
+				@media only screen and (max-width: 670px) {
+					.caption {
+						font-size: 0.9rem;
+						line-height: 2rem;
+					}
+				}
+				@media only screen and (max-width: 450px) {
+					.caption {
+						font-size: 0.9rem;
+					}
+				}
+			`}</style>
 		</div>
 	);
 };

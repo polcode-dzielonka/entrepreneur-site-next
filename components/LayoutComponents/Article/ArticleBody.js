@@ -37,6 +37,7 @@ const ArticleBody = ({
 				/>
 			</Slate>
 			<ScrollUpButton />
+			<br />
 			<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
 			<ShareButtonHoriz
 				data={closingSocialButtons}
@@ -44,6 +45,7 @@ const ArticleBody = ({
 				image={image}
 				headline={headline}
 				brief={brief}
+				position={"bottom_share_horiz"}
 			/>
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
@@ -62,6 +64,16 @@ const ArticleBody = ({
 					.section-padding {
 						margin: 2rem;
 						height: 100%;
+					}
+					@media only screen and (max-width: 670px) {
+						.section-padding {
+							margin: 0.8rem;
+						}
+					}
+					@media only screen and (max-width: 450px) {
+						.section-padding {
+							margin: 1.5rem 0rem 0rem 0rem;
+						}
 					}
 				`}
 			</style>

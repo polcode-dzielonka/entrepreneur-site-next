@@ -2,6 +2,8 @@ import { memo } from "react";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
 import SocialSvgFactory from "./utils/svgFactory";
+import createUtm from "../utm/createUtm";
+
 const HorizontalShareButtons = ({
 	data,
 	url,
@@ -11,6 +13,7 @@ const HorizontalShareButtons = ({
 	handle,
 	hashtag,
 	facebookQuote,
+	position,
 }) => {
 	const options = {
 		facebook: {
@@ -35,6 +38,50 @@ const HorizontalShareButtons = ({
 			title: headline,
 		},
 	};
+	const utmOptions = {
+		facebook: {
+			originalUrl: url,
+			campaignSource: "facebook",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: position,
+		},
+		twitter: {
+			originalUrl: url,
+			campaignSource: "twitter",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: position,
+		},
+		LinkedIn: {
+			originalUrl: url,
+			campaignSource: "linkedin",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: position,
+		},
+		Email: {
+			originalUrl: url,
+			campaignSource: "email",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: position,
+		},
+		Pinterest: {
+			originalUrl: url,
+			campaignSource: "pinterest",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: position,
+		},
+		Whatsapp: {
+			originalUrl: url,
+			campaignSource: "whatsapp",
+			campaignMedium: "shared_link",
+			campaignName: "organic",
+			campaignContent: position,
+		},
+	};
 	return (
 		<div className="button-container">
 			{data.map((button, index) => {
@@ -46,7 +93,7 @@ const HorizontalShareButtons = ({
 							width: button.width,
 							backgroundColor: button.secondaryColor,
 						}}
-						url={url}
+						url={createUtm(utmOptions[button.name])}
 						key={index}
 						{...options[button.name]}
 					>
@@ -99,6 +146,11 @@ const HorizontalShareButtons = ({
 							display: none;
 						}
 					}
+					@media only screen and (max-width: 450px) {
+						.button-text {
+							display: none;
+						}
+					}
 				`}
 			</style>
 		</div>
@@ -114,6 +166,7 @@ HorizontalShareButtons.propTypes = {
 	handle: PropTypes.string,
 	hashtag: PropTypes.string,
 	facebookQuote: PropTypes.string,
+	position: PropTypes.String,
 };
 HorizontalShareButtons.defaultProps = {
 	data: PropTypes.array,

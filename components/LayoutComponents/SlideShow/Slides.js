@@ -86,6 +86,7 @@ const Slides = ({
 							image={image}
 							headline={headline}
 							brief={brief}
+							position={"middle_slideshow_share_horiz"}
 						/>
 					</>
 				)}
@@ -162,6 +163,28 @@ const Slides = ({
 						.slide-position:after{
 							content: ".";
 							display: inline-block;
+						}
+						@media only screen and (max-width: 670px) {
+							.section-header {
+								font-size: 2.4rem;
+								line-height: 2.75rem;
+								padding: 0.5rem;
+								margin: 0 auto;
+								font-style: normal;
+							}
+							.section-paragraph {
+								margin: 2rem 0 0 0;
+								width: 98%;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.section-header {
+								font-size: 2rem;
+								line-height: 2.3rem;
+								padding: 0.5rem;
+								margin: 0.75rem 0;
+								font-style: normal;
+							}
 						}
 					`}
 				</style>

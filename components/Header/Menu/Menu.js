@@ -1,6 +1,7 @@
 import { mobileLinks } from "../../../data/data";
 import MenuItem from "./MenuItem";
 import PropTypes from "prop-types";
+
 import Link from "next/link";
 const Menu = ({ onClick }) => {
 	const menuItems = mobileLinks.map((val, index) => {

@@ -113,6 +113,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 				image={headlineImage}
 				headline={title}
 				brief={blurb}
+				position={"bottom_share_horiz"}
 			/>
 			<hr className="break" />
 			<Crumbs
@@ -176,6 +177,12 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					}
 					ul {
 						margin: 0;
+					}
+					@media only screen and (max-width: 670px) {
+						.section-padding {
+							margin: 0 auto;
+							width: 96%;
+						}
 					}
 				`}
 			</style>

@@ -10,6 +10,7 @@ import {
 	openingSocialButtons,
 	sideSocialButtons,
 } from "../../SocialMedia/data";
+import ShowMeta from "../../showMeta/showMeta";
 
 const ArticleHead = ({ overview, id }) => {
 	const details = JSON.parse(overview.overview);
@@ -23,6 +24,10 @@ const ArticleHead = ({ overview, id }) => {
 		bulletHeadlinesDetails,
 		urlDescription,
 		srcset,
+		showDate,
+		displayDate,
+		showAuthor,
+		authorName,
 	} = details[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${urlDescription}/article/${id}`;
 	return (
@@ -44,6 +49,7 @@ const ArticleHead = ({ overview, id }) => {
 				srcset={srcset}
 				alt={headlineImageAlt}
 				animation={false}
+				styles={{ width: "100%", height: "100%" }}
 			/>
 			<h3 className="section-brief">{brief}</h3>
 			{bulletHeadlines > 0 && (
@@ -57,6 +63,13 @@ const ArticleHead = ({ overview, id }) => {
 					})}
 				</ul>
 			)}
+
+			<ShowMeta
+				showDate={showDate}
+				displayDate={displayDate}
+				showAuthor={showAuthor}
+				authorName={authorName}
+			/>
 			<hr className="break" />
 			<ShareButtonVert
 				data={sideSocialButtons}
@@ -71,6 +84,7 @@ const ArticleHead = ({ overview, id }) => {
 				image={headlineImage}
 				headline={headline}
 				brief={brief}
+				position={"top_share_horiz"}
 			/>
 			<hr className="break" />
 			<ArticleBody
@@ -133,8 +147,54 @@ const ArticleHead = ({ overview, id }) => {
 						text-transform: capitalize;
 						font-family: ${theme.secondaryFont};
 					}
+					.section-meta {
+						margin: 0px 0px 7px 0px;
+						padding: 0;
+						font-size: 1.2rem;
+						font-weight: 900;
+						line-height: 1.7rem;
+						color: grey;
+						text-transform: capitalize;
+					}
 					ul {
 						margin: 0;
+					}
+
+					@media only screen and (max-width: 670px) {
+						.section-padding {
+							margin: 0 0.25rem;
+						}
+						.section-heading {
+							font-size: 2rem;
+							font-weight: 900;
+							line-height: 2.25rem;
+							margin: 0;
+							padding: 0;
+							// text-align: center;
+						}
+					}
+					@media only screen and (max-width: 450px) {
+						.section-brief {
+							font-size: 1rem;
+							line-height: 1.2rem;
+							text-transform: capitalize;
+							padding: 0 0.5rem;
+							margin: 0.75rem 0;
+						}
+						.section-category {
+							font-size: 1.2rem;
+							font-weight: 900;
+							line-height: 2rem;
+							margin: 0.25rem 0;
+						}
+						.section-heading {
+							font-size: 1.6rem;
+							font-weight: 900;
+							line-height: 1.8rem;
+							margin: 0;
+							padding: 0;
+							// text-align: center;
+						}
 					}
 				`}
 			</style>

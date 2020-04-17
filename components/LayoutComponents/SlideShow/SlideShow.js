@@ -34,11 +34,12 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	const href = `/${url}/quickview/${id}/slides/${position}`;
 	const bookEndOpening = slides["opening"][0];
 	const bookEndClosing = slides["closing"][0];
+
 	const slideData = countdown ? slides["slides"].reverse() : slides["slides"];
 	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/opening`;
 	return (
 		<div className="section-padding">
-			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
+			<SectionBar title={`Lists`} titleColor="#111" titleSize="1.5rem" />
 			<Headline data={details} id={id} position={position} />
 			<div className="link-wrapper">
 				<LinkButton
@@ -90,8 +91,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				srcset={bookEndClosing.srcset}
 				title={bookEndClosing.closing}
 				details={
-					bookEndClosing.openingSlideDetails
-						? JSON.parse(bookEndClosing.openingSlideDetails)
+					bookEndClosing.closingSlideDetails
+						? bookEndClosing.closingSlideDetails
 						: undefined
 				}
 				embed={bookEndClosing["closingImage-embed"]}
@@ -103,6 +104,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				image={headlineImage}
 				headline={title}
 				brief={blurb}
+				position={"bottom_share_horiz"}
 			/>
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
@@ -161,6 +163,13 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 					}
 					ul {
 						margin: 0;
+					}
+
+					@media only screen and (max-width: 670px) {
+						.section-padding {
+							margin: 0 auto;
+							width: 96%;
+						}
 					}
 				`}
 			</style>

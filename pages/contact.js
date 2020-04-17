@@ -266,6 +266,31 @@ const Contact = ({ router }) => {
 							text-align: center;
 						}
 					}
+					@media only screen and (max-width: 560px) {
+						.form-blurb {
+							font-family: ${theme.font};
+							line-height: ${theme.lineHeight};
+							font-size: 0.95rem;
+							line-height: 1.2rem;
+						}
+						.form-group {
+							margin-bottom: 1rem;
+							margin-top: 1.2rem;
+						}
+						.main-title {
+							font-family: ${theme.font};
+							margin-top: 2rem;
+							font-size: ${theme.mobileHeaderSize};
+							font-weight: 700;
+							color: #101010;
+							text-transform: uppercase;
+							margin-bottom: 0;
+						}
+						.contact-form {
+							padding: 1rem;
+							margin-bottom: 2rem;
+						}
+					}
 				`}
 			</style>
 		</Layout>

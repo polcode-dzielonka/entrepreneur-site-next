@@ -99,7 +99,6 @@ const MainHeadlineLayout = ({
 		latestArticles.loading
 	)
 		return <MainHeadlineLoading />;
-
 	const newLatestArticles = latestArticles.data.listProductionArticles.items.filter(
 		item => {
 			return (
@@ -162,7 +161,11 @@ const MainHeadlineLayout = ({
 						/>
 						<FacebookPage />
 						<div className="section-padding">
-							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
+							<SectionBar
+								title="Popular"
+								titleColor="#111"
+								titleSize="1.7rem"
+							/>
 						</div>
 						{/* <SideBarSmallContent
 							data={quiz.data.listProductionQuizs.items}

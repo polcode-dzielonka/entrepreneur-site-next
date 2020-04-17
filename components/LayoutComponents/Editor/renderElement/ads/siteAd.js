@@ -46,6 +46,7 @@ const SiteAd = ({ children, attributes }) => {
 				image={shareInfo.image}
 				headline={shareInfo.headline}
 				brief={shareInfo.brief}
+				position={"middle_sitead_share_horiz"}
 			/>
 			{children}
 			<style jsx>{`

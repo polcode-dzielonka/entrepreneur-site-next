@@ -280,6 +280,26 @@ const Newsletter = ({ url }) => {
 						}
 						.main-title {
 							text-align: center;
+							font-size: 2rem;
+							line-height: 2.25rem;
+							margin-bottom: 0.5rem;
+						}
+						.contact-form {
+							padding: 0.25rem;
+							margin-bottom: 4rem;
+						}
+						p {
+							text-align: center;
+							font-size: ${theme.mobileFontSize};
+							line-height: ${theme.mobileLineHeight};
+						}
+						h3 {
+							font-size: ${theme.mobileFontSize};
+							line-height: ${theme.mobileLineHeight};
+						}
+						.form-group {
+							margin-bottom: 0.4rem;
+							margin-top: 0.7rem;
 						}
 					}
 				`}

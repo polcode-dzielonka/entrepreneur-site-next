@@ -17,7 +17,6 @@ const ScrollingArticles = ({ data }) => {
 			urlDescription,
 			srcset,
 		} = overview[0];
-
 		if (index === 0) {
 			return (
 				<article key={index} className="large-image-container">
@@ -39,11 +38,13 @@ const ScrollingArticles = ({ data }) => {
 							<Link href={`/${urlDescription}/article/${id}`}>
 								<a className="info-link">{headline}</a>
 							</Link>
-							<h2 className="info-title">
-								<Link href={`/${urlDescription}/article/${id}`}>
-									<a className="category-link">{category}</a>
-								</Link>
-							</h2>
+							{headline.length < 70 && (
+								<h2 className="info-title">
+									<Link href={`/${urlDescription}/article/${id}`}>
+										<a className="category-link">{category}</a>
+									</Link>
+								</h2>
+							)}
 						</div>
 					</div>
 					<style jsx>{`
@@ -59,6 +60,7 @@ const ScrollingArticles = ({ data }) => {
 						.category-link:hover {
 							color: ${theme.primary};
 						}
+
 						.large-info {
 							position: absolute;
 							left: 0;
@@ -66,6 +68,7 @@ const ScrollingArticles = ({ data }) => {
 							width: 100%;
 							padding-bottom: 1rem;
 						}
+
 						.info-title {
 							position: relative;
 							width: 100%;
@@ -125,7 +128,10 @@ const ScrollingArticles = ({ data }) => {
 
 						@media only screen and (max-width: 645px) {
 							.info-link {
-								font-size: 1.8rem;
+								font-size: 1.15rem;
+								letter-spacing: -0.02em;
+								line-height: 1.35rem;
+								margin: 0.7rem;
 							}
 						}
 					`}</style>
@@ -314,14 +320,14 @@ const ScrollingArticles = ({ data }) => {
 
 					@media only screen and (max-width: 645px) {
 						.scroll-category-wrapper {
-							padding-right: 0.8rem;
+							display: none;
 						}
 						.scroll-title {
-							font-size: 1.8rem;
-							line-height: 1.8rem;
+							font-size: 1.3rem;
+							line-height: 1.5rem;
 						}
 						.scroll-title-container {
-							width: 55%;
+							padding: 0rem 0.5rem;
 						}
 						.scroll-title-wrap {
 							height: 60%;
@@ -333,14 +339,53 @@ const ScrollingArticles = ({ data }) => {
 							width: 45%;
 						}
 						.header-section {
-							height: 175px;
-							padding: 0.05rem 0;
+							padding: 0;
+							height: 9rem;
+							margin: 0.25rem 0rem;
 						}
 						.scroll-title-pad {
 							padding: 0.1rem;
 						}
 						.scroll-kicker-wrapper {
 							font-size: 0.9rem;
+							height: 35%;
+						}
+						.scroll-kicker {
+							margin-top: 0.25rem;
+						}
+					}
+					@media only screen and (max-width: 480px) {
+						.scroll-category-wrapper {
+							display: none;
+						}
+						.scroll-title {
+							font-size: 1rem;
+							line-height: 1.15rem;
+							font-weight: 900;
+						}
+						.scroll-title-container {
+							padding: 0rem 0.5rem;
+						}
+						.scroll-title-wrap {
+							height: 60%;
+						}
+						.scroll-headline-image-wrap {
+							width: 100%;
+						}
+						.scroll-image-main {
+							width: 45%;
+						}
+						.header-section {
+							padding: 0;
+							height: 8.5rem;
+							margin: 0.25rem 0rem;
+						}
+						.scroll-title-pad {
+							padding: 0.1rem;
+						}
+						.scroll-kicker-wrapper {
+							font-size: 0.8rem;
+							line-height: 0.95rem;
 							height: 35%;
 						}
 						.scroll-kicker {

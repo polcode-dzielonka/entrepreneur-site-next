@@ -8,23 +8,18 @@ const Header = ({ menuOpen, onClick }) => {
 		<>
 			<header className="site-header">
 				<nav className="mobile-nav">
-					<MenuButton open={menuOpen} onClick={onClick} />
 					<div className="mobile-links">
-						<Link href={"/"}>
-							<div className="mobile-nav-menu-item">
-								<img
-									src="/static/business_motivation.svg"
-									style={{
-										backgroundColor: "white",
-										height: "100%",
-										maxWidth: "300px",
-										marginRight: "1rem",
-										border: "1px solid #fefefe",
-										marginTop: "6px",
-									}}
-								/>
+						<div className="mobile-nav-menu-item">
+							<div className="icon-wrapper">
+								<Link href={"/"}>
+									<img
+										src="/static/business_motivation.svg"
+										className="header-icon"
+									/>
+								</Link>
 							</div>
-						</Link>
+							<MenuButton open={menuOpen} onClick={onClick} />
+						</div>
 					</div>
 				</nav>
 				{!menuOpen && (
@@ -32,21 +27,15 @@ const Header = ({ menuOpen, onClick }) => {
 						<div className="head-links">
 							<div
 								style={{
-									width: "20%",
+									width: "25%",
+									height: "100%",
 								}}
 							>
 								<Link href={"/"}>
-									<div className="nav-menu-logo">
-										<img
-											src="/static/business_motivation.svg"
-											style={{
-												width: "100%",
-												backgroundColor: "white",
-												height: "100%",
-												border: "1px solid #fefefe",
-											}}
-										/>
-									</div>
+									<img
+										src="/static/business_motivation.svg"
+										className="header-icon"
+									/>
 								</Link>
 							</div>
 							<div
@@ -100,6 +89,19 @@ const Header = ({ menuOpen, onClick }) => {
 					margin-left: auto;
 					cursor: pointer;
 				}
+				.header-icon {
+					// height: 9rem;
+					width: 5.8rem;
+					border: 1px solid #fefefe;
+					background-color: "#000000";
+				}
+
+				.icon-wrapper {
+					width: 90%;
+					height: 100%;
+
+					// padding-bottom: 15px;
+				}
 				.mobile-nav {
 					display: flex;
 					flex-direction: row;
@@ -115,7 +117,7 @@ const Header = ({ menuOpen, onClick }) => {
 				}
 				.mobile-nav-menu-item {
 					display: flex;
-					flex-direction: row-reverse;
+					flex-direction: row;
 					align-items: center;
 					width: 100%;
 					border-bottom: 4px solid transparent;
@@ -134,12 +136,7 @@ const Header = ({ menuOpen, onClick }) => {
 					width: calc(100% / ${links.length});
 					border-bottom: 4px solid transparent;
 				}
-				.nav-menu-logo {
-					display: flex;
-					align-items: center;
 
-					border-bottom: 4px solid transparent;
-				}
 				.nav-menu-item:hover {
 					animation: hoverEffect;
 					animation-duration: 1s;
@@ -168,7 +165,7 @@ const Header = ({ menuOpen, onClick }) => {
 				}
 				.site-header {
 					background: ${theme.secondary};
-					height: ${theme.headerSize};
+					height: ${theme.mobileHeaderSize};
 					position: fixed;
 					top: 0;
 					width: 100%;
@@ -192,24 +189,50 @@ const Header = ({ menuOpen, onClick }) => {
 					}
 				}
 
-				@media only screen and (max-width: 1200px) and (min-width: 960px) {
-					.head-social-links {
-						margin-right: 1.75rem;
-					}
-				}
 				@media only screen and (min-width: 1001px) {
 					.mobile-nav {
 						display: none;
 					}
+					.site-header {
+						height: ${theme.headerSize};
+					}
 				}
+
+				@media only screen and (max-width: 1247px) {
+					.header-icon {
+						height: 100%;
+						width: 5.5rem;
+						border: 1px solid #fefefe;
+						background-color: #000000;
+					}
+					.mobile-nav-menu-item {
+						border-bottom: none;
+					}
+				}
+				@media only screen and (max-width: 1246px) and (min-width: 960px) {
+					.head-social-links {
+						margin-right: 1.75rem;
+					}
+					.header-icon {
+						width: 5.5rem;
+						height: 3.25rem;
+						margin-left: 1.4rem;
+					}
+				}
+
 				@media only screen and (max-width: 1000px) {
 					.navbar {
 						display: none;
 					}
-				}
-				@media only screen and (max-width: 1247px) {
-					.head-links {
-						margin-left: 2rem;
+					.header-icon {
+						width: 5rem;
+						height: 2.98rem;
+						margin-left: 1rem;
+					}
+				@media only screen and (max-width: 670px) {
+
+					.header-icon {
+						margin-left: 0rem;
 					}
 				}
 			`}</style>

@@ -22,8 +22,20 @@ const RenderElement = props => {
 		case "link":
 			const { url } = element;
 			return (
-				<a {...attributes} href={url} rel="noopener noreferrer" target="_blank">
+				<a
+					{...attributes}
+					className="link"
+					href={url}
+					rel="noopener noreferrer"
+					target="_blank"
+				>
 					{children}
+					<style jsx>{`
+						.link {
+							text-decoration: none;
+							color: ${theme.contentFontColor};
+						}
+					`}</style>
 				</a>
 			);
 		case "emoji":
@@ -41,7 +53,7 @@ const RenderElement = props => {
 					<style jsx>{`
 						.code {
 							font-size: 1.25rem;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 						}
 					`}</style>
 				</code>
@@ -65,7 +77,19 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
+						}
+						@media only screen and (max-width: 670px) {
+							.para {
+								font-size: 1.3rem;
+								line-height: 2rem;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.para {
+								font-size: 1.2rem;
+								line-height: 1.8rem;
+							}
 						}
 					`}</style>
 				</div>
@@ -78,8 +102,15 @@ const RenderElement = props => {
 						h1 {
 							font-size: 3.75rem;
 							font-family: ${theme.font};
-							margin: 0.5rem 0rem;
+							margin: 1rem 0rem 0rem 0rem;
 							line-height: 3.75rem;
+						}
+						@media only screen and (max-width: 450px) {
+							h1 {
+								font-size: 3rem;
+								line-height: 3rem;
+								margin: 1rem 0rem 0rem 0rem;
+							}
 						}
 					`}</style>
 				</h1>
@@ -87,13 +118,20 @@ const RenderElement = props => {
 		case "heading-two":
 			return (
 				<h2 {...attributes}>
-					{children}{" "}
+					{children}
 					<style jsx>{`
 						h2 {
 							font-size: 3.25rem;
 							font-family: ${theme.font};
-							margin: 0.5rem 0rem;
+							margin: 1rem 0rem 0rem 0rem;
 							line-height: 3.25rem;
+						}
+						@media only screen and (max-width: 450px) {
+							h2 {
+								font-size: 2.6rem;
+								line-height: 2.6rem;
+								margin: 1rem 0rem 0rem 0rem;
+							}
 						}
 					`}</style>
 				</h2>
@@ -101,13 +139,20 @@ const RenderElement = props => {
 		case "heading-three":
 			return (
 				<h3 {...attributes}>
-					{children}{" "}
+					{children}
 					<style jsx>{`
 						h3 {
 							font-size: 2.75rem;
 							font-family: ${theme.font};
-							margin: 0.5rem 0rem;
+							margin: 1rem 0rem 0rem 0rem;
 							line-height: 2.75rem;
+						}
+						@media only screen and (max-width: 450px) {
+							h3 {
+								font-size: 2.3rem;
+								line-height: 2.3rem;
+								margin: 1rem 0rem 0rem 0rem;
+							}
 						}
 					`}</style>
 				</h3>
@@ -115,13 +160,20 @@ const RenderElement = props => {
 		case "heading-four":
 			return (
 				<h4 {...attributes}>
-					{children}{" "}
+					{children}
 					<style jsx>{`
 						h4 {
 							font-size: 2.25rem;
 							font-family: ${theme.font};
-							margin: 0.5rem 0rem;
+							margin: 1rem 0rem 0rem 0rem;
 							line-height: 2.25rem;
+						}
+						@media only screen and (max-width: 450px) {
+							h4 {
+								font-size: 2rem;
+								line-height: 2rem;
+								margin: 1rem 0rem 0rem 0rem;
+							}
 						}
 					`}</style>
 				</h4>
@@ -129,13 +181,20 @@ const RenderElement = props => {
 		case "heading-five":
 			return (
 				<h5 {...attributes}>
-					{children}{" "}
+					{children}
 					<style jsx>{`
 						h5 {
 							font-size: 1.75rem;
 							font-family: ${theme.font};
-							margin: 0.5rem 0rem;
+							margin: 1rem 0rem 0rem 0rem;
 							line-height: 1.75rem;
+						}
+						@media only screen and (max-width: 450px) {
+							h5 {
+								font-size: 1.5rem;
+								line-height: 1.5rem;
+								margin: 1rem 0rem 0rem 0rem;
+							}
 						}
 					`}</style>
 				</h5>
@@ -151,8 +210,20 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 							align: left;
+						}
+						@media only screen and (max-width: 670px) {
+							.para {
+								font-size: 1.3rem;
+								line-height: 2rem;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.para {
+								font-size: 1.2rem;
+								line-height: 1.8rem;
+							}
 						}
 					`}</style>
 				</div>
@@ -167,8 +238,20 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 							align: center;
+						}
+						@media only screen and (max-width: 670px) {
+							.para {
+								font-size: 1.3rem;
+								line-height: 2rem;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.para {
+								font-size: 1.2rem;
+								line-height: 1.8rem;
+							}
 						}
 					`}</style>
 				</div>
@@ -183,8 +266,20 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 							align: right;
+						}
+						@media only screen and (max-width: 670px) {
+							.para {
+								font-size: 1.3rem;
+								line-height: 2rem;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.para {
+								font-size: 1.2rem;
+								line-height: 1.8rem;
+							}
 						}
 					`}</style>
 				</div>
@@ -199,8 +294,20 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 							align: justify;
+						}
+						@media only screen and (max-width: 670px) {
+							.para {
+								font-size: 1.3rem;
+								line-height: 2rem;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.para {
+								font-size: 1.2rem;
+								line-height: 1.8rem;
+							}
 						}
 					`}</style>
 				</div>
@@ -215,7 +322,7 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 						}
 					`}</style>
 				</ul>
@@ -230,7 +337,7 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 						}
 					`}</style>
 				</ol>
@@ -291,7 +398,7 @@ const RenderElement = props => {
 						.paid-ad {
 							width: 100%;
 							margin: 0 auto;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
 							text-align: center;
 							font-size: 2rem;
 						}
@@ -340,7 +447,19 @@ const RenderElement = props => {
 							line-height: ${paragraphLineHeight}rem;
 							font-family: ${theme.secondaryFont};
 							font-weight: 400;
-							color: #4d4d4d;
+							color: ${theme.contentFontColor};
+						}
+						@media only screen and (max-width: 670px) {
+							.para {
+								font-size: 1.3rem;
+								line-height: 2rem;
+							}
+						}
+						@media only screen and (max-width: 450px) {
+							.para {
+								font-size: 1.2rem;
+								line-height: 1.8rem;
+							}
 						}
 					`}</style>
 				</div>

@@ -26,12 +26,6 @@ const EmbedUrl = ({
 				rel="noopener noreferrer"
 				ref={embedoContainer}
 			/>
-			<style jsx>
-				{`
-					.embedo {
-					}
-				`}
-			</style>
 		</>
 	);
 };

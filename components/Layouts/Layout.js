@@ -6,7 +6,6 @@ import { theme } from "../../theme/baseCss";
 import CookieBanner from "../cookies/cookieBanner";
 import DefaultHeader from "../Header/Head";
 import PropTypes from "prop-types";
-import Head from "next/head";
 
 const Layout = props => {
 	const { background, children } = props;
@@ -37,11 +36,11 @@ const Layout = props => {
 					margin: 0;
 					background-color: ${background ? "#111" : "white"};
 				}
-				@media only screen and (max-width: 960px) {
+				@media only screen and (max-width: 1000px) {
 					.page-layout {
 						width: 100%;
 						margin: 0 auto;
-						margin-top: ${theme.headerSize};
+						margin-top: ${theme.mobileHeaderSize};
 					}
 				}
 			`}</style>

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
 
-const MainHead = ({ children }) => {
+const MainHead = () => {
 	return (
 		<Head>
 			<meta name="viewport" content="initial-scale=1.0, width=device-width" />

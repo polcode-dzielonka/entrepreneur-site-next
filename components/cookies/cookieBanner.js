@@ -53,6 +53,7 @@ const CookieBanner = () => {
 					background-color: rgba(0, 0, 0, 0.85);
 					animation-name: slideIn;
 					animation-duration: 1s;
+					z-index: 100;
 				}
 
 				.alert-box-wrapper {
@@ -102,6 +103,10 @@ const CookieBanner = () => {
 					}
 				}
 				@media only screen and (max-width: 1000px) {
+					.alert-box {
+						z-index: 100;
+						padding-top: 1rem;
+					}
 					.alert-box-wrapper {
 						flex-direction: column;
 						width: 100%;
@@ -121,6 +126,16 @@ const CookieBanner = () => {
 						max-width: 100%;
 						padding: 0;
 						margin: 0;
+					}
+				}
+				@media only screen and (max-width: 450px) {
+					.alert-box {
+						z-index: 100;
+					}
+					.banner-content {
+						padding-top: 0rem;
+						font-size: 0.8rem;
+						line-height: 1rem;
 					}
 				}
 			`}</style>

@@ -14,6 +14,7 @@ import validate from "../../components/FormValidation/Validation";
 import SuccessModal from "./successModal";
 import Cookie from "js-cookie";
 import manualRequest from "../apiRequest/manualApiRequest";
+
 //Set Cookie Expiration if not signed up (in minutes)
 const cookieTime = 60;
 const SignUpModal = () => {
@@ -21,9 +22,9 @@ const SignUpModal = () => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [errors, setErrors] = useState(ERROR_STATE);
 	const [showModal, setShowModal] = useState(false);
+	const [widthModal, setWidthModal] = useState(true);
 	const [successModal, setSuccessModal] = useState(false);
 	const [count, setCount] = useState(0);
-
 	const handleScroll = () => {
 		const top = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -37,6 +38,9 @@ const SignUpModal = () => {
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		handleScroll();
 
+		if (window.innerWidth < 1000) {
+			setWidthModal(false);
+		}
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
@@ -108,7 +112,7 @@ const SignUpModal = () => {
 
 	return (
 		<>
-			{emailCookie && showModal && (
+			{emailCookie && showModal && widthModal && (
 				<div className="modal-background">
 					<div className="modal-box">
 						<div className="modal-content-wrapper">

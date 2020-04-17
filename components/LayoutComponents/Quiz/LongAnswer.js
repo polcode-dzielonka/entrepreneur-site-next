@@ -47,7 +47,7 @@ const LongAnswer = ({
 						<Slate editor={editor} value={answer}>
 							{
 								<div className="answer-comment">
-									<h3>
+									<h3 className="answer-comment-header">
 										{correct ? correctAnswerComment : incorrectAnswerComment}
 									</h3>
 								</div>
@@ -120,6 +120,47 @@ const LongAnswer = ({
 						display: flex;
 						flex-direction: row;
 						align-items: center;
+					}
+					@media only screen and (max-width: 650px) {
+						.answer-comment {
+							font-size: 1.75rem;
+						}
+						.answer-comment-header {
+							font-size: 1.75rem;
+							padding: 0;
+							margin: 0;
+						}
+						.correct-image {
+							width: 20%;
+							height: 20%;
+						}
+						.correct-label {
+							font-size: 1.75rem;
+						}
+						.editor-block {
+							padding: 1rem;
+						}
+						.incorrect-image {
+							width: 20%;
+						}
+						.incorrect-label {
+							font-size: 1.75rem;
+						}
+					}
+
+					@media only screen and (max-width: 450px) {
+						.answer-comment {
+							margin: 0.5rem 0;
+						}
+						.answer-comment-header {
+							font-size: 1.4rem;
+							line-height: 1.6rem;
+							padding: 0;
+							margin: 0;
+						}
+						.editor-block {
+							padding: 0.5rem;
+						}
 					}
 				`}
 			</style>

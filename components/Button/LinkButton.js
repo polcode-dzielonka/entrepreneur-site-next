@@ -61,7 +61,6 @@ const SlideLinkButton = ({ label, href, imgSrc, srcset }) => {
 				}
 
 				.link-button {
-					padding: 2rem;
 					position: relative;
 					border: 1px solid rgba(51, 51, 51, 0.15);
 					padding: 1.5rem;
@@ -108,6 +107,31 @@ const SlideLinkButton = ({ label, href, imgSrc, srcset }) => {
 					font-family: ${theme.font};
 					text-transform: capitalize;
 					margin: 1rem 0;
+				}
+				@media only screen and (max-width: 450px) {
+					.arrow {
+						width: 60%;
+					}
+					.img-wrapper {
+						height: 100%;
+						width: 40%;
+						display: flex;
+						padding-left: 0.25rem;
+					}
+					.link-button {
+						padding: 0rem;
+						margin: 1.2rem 0rem 0rem 0rem;
+					}
+					.link-label {
+						font-size: 1.6rem;
+						text-align: center;
+					}
+					.quickview-image {
+						width: 100%;
+					}
+					.scroll-text {
+						margin: 0.1rem 0;
+					}
 				}
 			`}</style>
 		</div>

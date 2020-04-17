@@ -10,6 +10,7 @@ const EmbedUrl = ({
 	imageAltAttribution,
 	imageAltAttributionLink,
 	srcset,
+	styles,
 }) => {
 	const Embedo = dynamic(() => import("./embedo/Embed"), {
 		ssr: false,
@@ -23,6 +24,7 @@ const EmbedUrl = ({
 					imageAlt={imageAlt}
 					animation={false}
 					srcset={srcset}
+					style={styles}
 				/>
 			)}
 			{embed && (

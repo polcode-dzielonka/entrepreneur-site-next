@@ -33,6 +33,7 @@ const BookEnds = ({
 				imageAltAttribution={imageAltAttribution}
 				imageAltAttributionLink={imageAltAttributionLink}
 				srcset={srcset}
+				// styles={{ width: "100%", height: "100%" }}
 			/>
 			<>
 				<div className="section-paragraph">
@@ -79,6 +80,27 @@ const BookEnds = ({
 						line-height: 2rem;
 						color: ${theme.secondary};
 						font-family: ${theme.secondaryFont};
+					}
+					@media only screen and (max-width: 650px) {
+						.section-header {
+							font-size: 2.4rem;
+							line-height: 2.75rem;
+							padding: 0.5rem;
+							margin: 1.75rem 0;
+							font-style: normal;
+						}
+						.section-paragraph {
+							margin: 1.75rem auto;
+							width: 100%;
+						}
+					}
+
+					@media only screen and (max-width: 450px) {
+						.section-header {
+							font-size: 2rem;
+							line-height: 2.3rem;
+							margin: 0.5rem 0rem;
+						}
 					}
 				`}
 			</style>

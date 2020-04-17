@@ -16,7 +16,7 @@ const SlideLinkButton = ({ label, href, imgSrc, handler, srcset }) => {
 							/>
 						</div>
 						<div className="label">
-							<div className="link-label">{label}</div>
+							<div className="link-label">{label} </div>
 						</div>
 						<div className="arrow-wrapper">
 							<img
@@ -105,6 +105,39 @@ const SlideLinkButton = ({ label, href, imgSrc, handler, srcset }) => {
 					font-family: ${theme.font};
 					text-transform: capitalize;
 					margin: 1rem 0;
+				}
+				@media only screen and (max-width: 670px) {
+					.link-section {
+						margin: 1.5rem 0;
+					}
+				}
+				@media only screen and (max-width: 450px) {
+					.arrow {
+						width: 60%;
+					}
+					.img-wrapper {
+						height: 100%;
+						width: 40%;
+						display: flex;
+						padding-left: 0.75rem;
+					}
+					.link-button {
+						padding: 0rem;
+						margin: 1.2rem 0rem 0rem 0rem;
+					}
+					.link-label {
+						font-size: 1.6rem;
+						text-align: center;
+					}
+					.link-section {
+						margin: 0rem 0rem 2rem 0rem;
+					}
+					.quickview-image {
+						width: 100%;
+					}
+					.scroll-text {
+						margin: 0.1rem 0;
+					}
 				}
 			`}</style>
 		</div>

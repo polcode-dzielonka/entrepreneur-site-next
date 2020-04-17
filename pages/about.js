@@ -187,6 +187,41 @@ const About = () => {
 							margin-bottom: 5rem;
 						}
 					}
+					@media only screen and (max-width: 560px) {
+						h2 {
+							text-transform: uppercase;
+							margin-top: 1.5rem;
+							line-height: 2rem;
+							text-align: center;
+						}
+						.main-content {
+							font-family: ${theme.font};
+							font-size: ${theme.mobileFontSize};
+							font-size: ${theme.mobileLineHeight};
+							font-weight: 300;
+							color: #101010;
+							width: 96%;
+							margin: 0 auto;
+							margin-bottom: 5rem;
+						}
+						.main-title {
+							font-family: ${theme.font};
+							margin-top: 2rem;
+							font-size: ${theme.mobileHeaderSize};
+							font-weight: 700;
+							color: #101010;
+							text-transform: uppercase;
+						}
+						blockquote {
+							border: 0;
+							margin: 25px;
+							margin-bottom: 10px;
+							font-size: 1.35em;
+						}
+						cite {
+							text-align: center;
+						}
+					}
 				`}
 			</style>
 		</Layout>
