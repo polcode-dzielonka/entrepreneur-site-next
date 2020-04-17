@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import moment from "moment";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import dayjs from "dayjs";
+dayjs.extend(advancedFormat);
 
 const ShowMeta = ({ showDate, displayDate, showAuthor, authorName }) => {
 	return (
 		<>
 			{showDate && (
 				<h3 className="section-meta">
-					{moment(displayDate).format("Do MMM YYYY")}
+					{dayjs(displayDate).format("Do MMM YYYY")}
 				</h3>
 			)}
 			{showAuthor && authorName && (
