@@ -50,7 +50,7 @@ const QuickSlides = ({
 				imageAltAttribution={slideImageAttribution}
 				imageAltAttributionLink={slideImageAttributionLink}
 				srcset={srcset}
-				// styles={{ width: "100%", height: "576px" }}
+				styles={{ width: "100%", height: "100%" }}
 			/>
 			<div className="section-paragraph">
 				<Slate editor={editor} value={value}>

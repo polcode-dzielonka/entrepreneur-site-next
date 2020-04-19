@@ -12,6 +12,7 @@ import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import defaultValue from "../Editor/defaultValue";
 import LazyLoad from "react-lazyload";
 import NextLink from "../Editor/renderElement/ads/nextLink";
+
 const Slides = ({
 	data,
 	showNumbers,
@@ -66,8 +67,10 @@ const Slides = ({
 						imageAltAttribution={slideImageAttribution}
 						imageAltAttributionLink={slideImageAttributionLink}
 						srcset={srcset}
+						styles={{ width: "100%", height: "100%" }}
 					/>
 				</LazyLoad>
+
 				<div className="section-paragraph">
 					<Slate editor={editor} value={value}>
 						<Editable

@@ -48,6 +48,7 @@ const BookEnds = ({
 					imageAltAttribution={imageAltAttribution}
 					imageAltAttributionLink={imageAltAttributionLink}
 					srcset={srcset}
+					styles={{ width: "100%", height: "100%" }}
 				/>
 			</LazyLoad>
 			{position === "closing" && (

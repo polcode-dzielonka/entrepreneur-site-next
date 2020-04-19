@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
 import { Slate, Editable } from "slate-react";
 import { createEditor } from "slate";
-
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 const QuizBookEnds = ({
@@ -51,6 +50,7 @@ const QuizBookEnds = ({
 				imageAltAttribution={imageAltAttribution}
 				imageAltAttributionLink={imageAltAttributionLink}
 				srcset={srcset}
+				styles={{ width: "100%", height: "100%" }}
 			/>
 			{positionClosing && (
 				<h1 className="section-header">

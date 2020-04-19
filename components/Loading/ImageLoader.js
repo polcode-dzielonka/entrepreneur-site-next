@@ -48,6 +48,7 @@ const ImageLoader = ({ src, alt, animation, styles, srcset }) => {
 				.img-loading {
 					width: 100%;
 					height: 550px;
+					// height: 100%;
 					background: #f4f4f4;
 				}
 				.img-loading-animation {
@@ -71,6 +72,15 @@ const ImageLoader = ({ src, alt, animation, styles, srcset }) => {
 					width: 100%;
 					max-height: 550px;
 					object-fit: cover;
+				}
+
+				@media only screen and (max-width: 450px) {
+					.img-loading {
+						width: 100%;
+						height: 250px;
+						// height: 100%;
+						background: #f4f4f4;
+					}
 				}
 			`}</style>
 		</>

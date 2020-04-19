@@ -125,7 +125,7 @@ const QuickView = ({ content, position, url, id }) => {
 			)}
 			<LazyLoad>
 				<ScrollingContent id={id} title="Latest" type={"slideshow"} />
-			</LazyLoad>{" "}
+			</LazyLoad>
 			<hr className="break" />
 			<style jsx>
 				{`

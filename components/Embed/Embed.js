@@ -16,6 +16,7 @@ const EmbedUrl = ({
 		ssr: false,
 		loading: () => <SingleSocialLoader />,
 	});
+
 	return (
 		<>
 			{!embed && (

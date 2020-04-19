@@ -56,6 +56,7 @@ const BookEnds = ({ data, id, position }) => {
 				alt={headlineImageAlt}
 				animation={false}
 				srcset={srcset}
+				styles={{ width: "100%", height: "100%" }}
 			/>
 			<hr className="break" />
 			<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />

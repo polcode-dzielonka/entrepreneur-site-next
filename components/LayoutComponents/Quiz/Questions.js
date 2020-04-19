@@ -126,6 +126,7 @@ const Questions = ({
 						imageAltAttribution={questionImageAttribution}
 						imageAltAttributionLink={questionImageAttributionLink}
 						srcset={questionSrcset}
+						styles={{ width: "100%", height: "100%" }}
 					/>
 				</div>
 			)}
@@ -138,6 +139,7 @@ const Questions = ({
 						imageAltAttribution={answerImageAttribution}
 						imageAltAttributionLink={answerImageAttributionLink}
 						srcset={answerSrcset}
+						styles={{ width: "100%", height: "100%" }}
 					/>
 				</div>
 			)}
