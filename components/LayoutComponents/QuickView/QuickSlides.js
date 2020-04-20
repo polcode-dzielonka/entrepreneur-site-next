@@ -17,6 +17,8 @@ const QuickSlides = ({
 	linkImage,
 	nextHref,
 	nextSlideData,
+	showNumbers,
+	countdown,
 }) => {
 	const slideDetails = slideData[0];
 	const {
@@ -36,10 +38,11 @@ const QuickSlides = ({
 	const editor = useMemo(() => createEditor(), []);
 	const renderElement = useCallback(props => <RenderElement {...props} />, []);
 	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
+	const showNumber = countdown ? total - slidePosition + 1 : slidePosition;
 	return (
 		<div className="bookend-wrapper">
 			<h1 className="section-header">
-				<span className="slide-position">{slidePosition}</span>
+				{showNumbers && <span className="slide-position">{showNumber}</span>}
 				{slide}
 			</h1>
 			<h3 className="section-brief">{slideComment}</h3>

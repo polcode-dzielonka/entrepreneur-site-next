@@ -35,7 +35,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	const bookEndOpening = slides["opening"][0];
 	const bookEndClosing = slides["closing"][0];
 
-	const slideData = countdown ? slides["slides"].reverse() : slides["slides"];
+	const slideData = countdown ? slides["slides"] : slides["slides"];
 	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/opening`;
 	return (
 		<div className="section-padding">
@@ -81,6 +81,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				headline={title}
 				brief={blurb}
 				latest={latest}
+				countdown={countdown}
 			/>
 			<BookEnds
 				position={"closing"}

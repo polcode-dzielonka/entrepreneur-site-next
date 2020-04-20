@@ -21,6 +21,7 @@ const Slides = ({
 	headline,
 	brief,
 	latest,
+	countdown,
 }) => {
 	return data.map((slideData, index) => {
 		const {
@@ -50,12 +51,14 @@ const Slides = ({
 				: null;
 		const midDataOverview = adData ? JSON.parse(adData.overview) : null;
 		const midDataId = adData ? adData.id : null;
+		const showNumber = countdown
+			? data.length - slidePosition + 1
+			: slidePosition;
+
 		return (
 			<div className="bookend-wrapper" key={index}>
 				<h1 className="section-header">
-					{showNumbers && (
-						<span className="slide-position">{slidePosition}</span>
-					)}
+					{showNumbers && <span className="slide-position">{showNumber}</span>}
 					{slide}
 				</h1>
 				<h3 className="section-brief">{slideComment}</h3>

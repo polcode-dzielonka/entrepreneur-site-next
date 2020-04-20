@@ -18,7 +18,14 @@ import ScrollingContent from "../ScrollingContent/ScrollingContent";
 const QuickView = ({ content, position, url, id }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
-	const { blurb, category, title, headlineImage } = details[0];
+	const {
+		blurb,
+		category,
+		title,
+		headlineImage,
+		showNumbers,
+		countdown,
+	} = details[0];
 
 	const positionNumber = Number(position);
 	if (
@@ -86,7 +93,9 @@ const QuickView = ({ content, position, url, id }) => {
 					nextSlideData={slides.slides.filter(
 						x => x.slidePosition === positionNumber + 1,
 					)}
+					showNumbers={showNumbers}
 					position={position}
+					countdown={countdown}
 					linkImage={details[0][`headlineImage`]}
 					nextHref={`${nextHref}/${slideEndRef}`}
 				/>
