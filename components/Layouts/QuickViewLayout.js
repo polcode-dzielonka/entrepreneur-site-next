@@ -66,7 +66,7 @@ const QuickViewLayout = ({ id, position, url }) => {
 			<main className="article-container">
 				<article className="article-section">
 					<QuickViewComponent
-						content={data.getProductionSlideShow}
+						content={data.getProductionSlideshow}
 						position={position}
 						url={url}
 						id={id}

@@ -74,7 +74,7 @@ const Slide = ({ id, position, url }) => {
 			<main className="article-container">
 				<article className="article-section">
 					<SlideShowComponent
-						content={data.getProductionSlideShow}
+						content={data.getProductionSlideshow}
 						position={position}
 						latest={latestSlideShows.data.listProductionSlideshows}
 						url={url}
