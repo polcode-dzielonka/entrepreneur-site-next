@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const ALL_POSTS_QUERY = gql`
-	query GetProductionSite($id: ID!) {
+	query GetProductionSite($id: String!) {
 		getProductionSite(id: $id) {
 			id
 			name
@@ -11,68 +11,68 @@ export const ALL_POSTS_QUERY = gql`
 			production
 			categories
 			developmentId
-			articles {
-				items {
-					id
-					authorId
-					authorName
-					category
-					viewCount
-					development
-					production
-					overview
-					developmentId
-					content
-					schedule
-					original
-					scheduleTime
-					createdAt
-					updatedAt
-				}
-				nextToken
-			}
-			quiz {
-				items {
-					id
-					authorId
-					authorName
-					category
-					viewCount
-					development
-					production
-					overview
-					developmentId
-					questions
-					original
-					numQuestions
-					schedule
-					scheduleTime
-					createdAt
-					updatedAt
-				}
-				nextToken
-			}
-			slideShows {
-				items {
-					id
-					authorId
-					authorName
-					category
-					viewCount
-					development
-					production
-					overview
-					developmentId
-					slides
-					numSlides
-					original
-					schedule
-					scheduleTime
-					createdAt
-					updatedAt
-				}
-				nextToken
-			}
+			# articles {
+			# 	items {
+			# 		id
+			# 		authorId
+			# 		authorName
+			# 		category
+			# 		viewCount
+			# 		development
+			# 		production
+			# 		overview
+			# 		developmentId
+			# 		content
+			# 		schedule
+			# 		original
+			# 		scheduleTime
+			# 		createdAt
+			# 		updatedAt
+			# 	}
+			# 	nextToken
+			# }
+			# quiz {
+			# 	items {
+			# 		id
+			# 		authorId
+			# 		authorName
+			# 		category
+			# 		viewCount
+			# 		development
+			# 		production
+			# 		overview
+			# 		developmentId
+			# 		questions
+			# 		original
+			# 		numQuestions
+			# 		schedule
+			# 		scheduleTime
+			# 		createdAt
+			# 		updatedAt
+			# 	}
+			# 	nextToken
+			# }
+			# slideShows {
+			# 	items {
+			# 		id
+			# 		authorId
+			# 		authorName
+			# 		category
+			# 		viewCount
+			# 		development
+			# 		production
+			# 		overview
+			# 		developmentId
+			# 		slides
+			# 		numSlides
+			# 		original
+			# 		schedule
+			# 		scheduleTime
+			# 		createdAt
+			# 		updatedAt
+			# 	}
+			# 	nextToken
+			# }
 			createdAt
 			updatedAt
 		}
@@ -80,7 +80,7 @@ export const ALL_POSTS_QUERY = gql`
 `;
 export const HEADLINES = gql`
 	query ListProductionArticles(
-		$filter: ModelProductionArticleFilterInput
+		$filter: CreateProductionArticleInput
 		$limit: Int
 	) {
 		listProductionArticles(filter: $filter, limit: $limit) {
@@ -108,7 +108,7 @@ export const HEADLINES = gql`
 
 export const LATEST = gql`
 	query ListProductionArticles(
-		$filter: ModelProductionArticleFilterInput
+		$filter: CreateProductionArticleInput
 		$limit: Int
 	) {
 		listProductionArticles(filter: $filter, limit: $limit) {
@@ -135,10 +135,7 @@ export const LATEST = gql`
 `;
 
 export const QUIZ = gql`
-	query ListProductionQuizs(
-		$filter: ModelProductionQuizFilterInput
-		$limit: Int
-	) {
+	query ListProductionQuizs($filter: CreateProductionQuizInput, $limit: Int) {
 		listProductionQuizs(filter: $filter, limit: $limit) {
 			items {
 				id
@@ -166,11 +163,11 @@ export const QUIZ = gql`
 	}
 `;
 export const SLIDE = gql`
-	query ListProductionSlideShows(
-		$filter: ModelProductionSlideShowFilterInput
+	query ListProductionSlideshows(
+		$filter: CreateProductionSlideshowInput
 		$limit: Int
 	) {
-		listProductionSlideShows(filter: $filter, limit: $limit) {
+		listProductionSlideshows(filter: $filter, limit: $limit) {
 			items {
 				id
 				authorId
@@ -197,13 +194,17 @@ export const SLIDE = gql`
 	}
 `;
 
-export const LATEST_HEADLINES = `
+export const LATEST_HEADLINES = /* GraphQL */ `
 	query ListProductionArticles(
-		$filter: ModelProductionArticleFilterInput
+		$filter: CreateProductionArticleInput
 		$limit: Int
 		$nextToken: String
 	) {
-		listProductionArticles(filter: $filter, limit: $limit, nextToken: $nextToken) {
+		listProductionArticles(
+			filter: $filter
+			limit: $limit
+			nextToken: $nextToken
+		) {
 			items {
 				id
 				authorId
@@ -226,13 +227,13 @@ export const LATEST_HEADLINES = `
 	}
 `;
 
-export const LATEST_QUIZ = `
+export const LATEST_QUIZ = /* GraphQL */ `
 	query ListProductionQuizs(
-		$filter: ModelProductionQuizFilterInput
+		$filter: CreateProductionQuizInput
 		$limit: Int
 		$nextToken: String
 	) {
-		listProductionQuizs(filter: $filter, limit: $limit, nextToken: $nextToken ) {
+		listProductionQuizs(filter: $filter, limit: $limit, nextToken: $nextToken) {
 			items {
 				id
 				authorId
@@ -259,13 +260,9 @@ export const LATEST_QUIZ = `
 	}
 `;
 
-export const LATEST_SLIDE = `
-	query ListProductionSlideShows(
-		$filter: ModelProductionSlideShowFilterInput
-		$limit: Int
-		$nextToken: String
-	) {
-		listProductionSlideShows(filter: $filter, limit: $limit, nextToken: $nextToken) {
+export const LATEST_SLIDE = /* GraphQL */ `
+	query ListProductionSlideshows($limit: Int, $nextToken: String) {
+		listProductionSlideshows(limit: $limit, nextToken: $nextToken) {
 			items {
 				id
 				authorId

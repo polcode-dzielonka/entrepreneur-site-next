@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const QUIZ = gql`
-	query GetProductionQuiz($id: ID!) {
+	query GetProductionQuiz($id: String!) {
 		getProductionQuiz(id: $id) {
 			id
 			authorId

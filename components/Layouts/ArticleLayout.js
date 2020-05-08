@@ -29,7 +29,7 @@ const Article = ({ id }) => {
 	const headlines = useQuery(HEADLINES, {
 		variables: {
 			id: process.env.REACT_APP_SITE_ID,
-			filter: { mainHeadline: { eq: true } },
+			filter: { mainHeadline: true },
 			limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,

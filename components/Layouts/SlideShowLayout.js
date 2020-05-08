@@ -32,7 +32,7 @@ const Slide = ({ id, position, url }) => {
 	const headlines = useQuery(HEADLINES, {
 		variables: {
 			id: process.env.REACT_APP_SITE_ID,
-			filter: { mainHeadline: { eq: true } },
+			filter: { mainHeadline: true },
 			limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,
@@ -40,7 +40,7 @@ const Slide = ({ id, position, url }) => {
 	const latestSlideShows = useQuery(SLIDE, {
 		variables: {
 			id: process.env.REACT_APP_SITE_ID,
-			filter: { mainHeadline: { eq: false } },
+			filter: { mainHeadline: false },
 			limit: 5,
 		},
 	});
@@ -76,7 +76,7 @@ const Slide = ({ id, position, url }) => {
 					<SlideShowComponent
 						content={data.getProductionSlideShow}
 						position={position}
-						latest={latestSlideShows.data.listProductionSlideShows}
+						latest={latestSlideShows.data.listProductionSlideshows}
 						url={url}
 						id={id}
 					/>

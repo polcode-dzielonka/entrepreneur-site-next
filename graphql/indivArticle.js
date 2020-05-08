@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const ARTICLE = gql`
-	query GetProductionArticle($id: ID!) {
+	query GetProductionArticle($id: String!) {
 		getProductionArticle(id: $id) {
 			id
 			authorId
@@ -21,8 +21,8 @@ export const ARTICLE = gql`
 		}
 	}
 `;
-export const ADVERT_ARTICLE = `
-	query GetProductionArticle($id: ID!) {
+export const ADVERT_ARTICLE = /* GraphQL */ `
+	query GetProductionArticle($id: String!) {
 		getProductionArticle(id: $id) {
 			id
 			authorId
@@ -43,8 +43,8 @@ export const ADVERT_ARTICLE = `
 	}
 `;
 export const NEXT_ARTICLE = `
-	query ListProductionArticles($filter: ModelProductionArticleFilterInput!, $limit: Int) {
-		listProductionArticles(filter: $filter, limit: $limit) {
+	query ListProductionArticles($limit: Int) {
+		listProductionArticles(limit: $limit) {
 			items {
 				id
 				authorId

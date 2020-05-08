@@ -35,10 +35,9 @@ const MainHeadlineLayout = ({
 		// 	allPosts: [...prevResult.allPosts, ...result.allPosts],
 		// }),
 	});
-
 	const headlines = useQuery(HEADLINES, {
 		variables: {
-			filter: { mainHeadline: { eq: true } },
+			filter: { mainHeadline: true },
 			limit: 4,
 		},
 		notifyOnNetworkStatusChange: true,
@@ -52,7 +51,7 @@ const MainHeadlineLayout = ({
 
 	const quiz = useQuery(QUIZ, {
 		variables: {
-			filter: { mainHeadline: { eq: true } },
+			filter: { mainHeadline: true },
 			limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,
@@ -60,7 +59,7 @@ const MainHeadlineLayout = ({
 
 	const slide = useQuery(SLIDE, {
 		variables: {
-			filter: { mainHeadline: { eq: true } },
+			filter: { mainHeadline: true },
 			limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,
@@ -108,7 +107,6 @@ const MainHeadlineLayout = ({
 			);
 		},
 	);
-
 	return (
 		<Layout>
 			<Head>
@@ -161,11 +159,7 @@ const MainHeadlineLayout = ({
 						/>
 						<FacebookPage />
 						<div className="section-padding">
-							<SectionBar
-								title="Popular"
-								titleColor="#111"
-								titleSize="1.7rem"
-							/>
+							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
 						</div>
 						{/* <SideBarSmallContent
 							data={quiz.data.listProductionQuizs.items}
@@ -179,7 +173,7 @@ const MainHeadlineLayout = ({
 						/> */}
 
 						<SideBarSmallContent
-							data={slide.data.listProductionSlideShows.items}
+							data={slide.data.listProductionSlideshows.items}
 							loading={slide.loading}
 							type="slideshow"
 						/>

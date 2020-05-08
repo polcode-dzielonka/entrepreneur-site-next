@@ -2,7 +2,7 @@ import Layout from "../Layouts/Layout";
 import { useQuery } from "@apollo/react-hooks";
 import ErrorMessage from "../error";
 import { NetworkStatus } from "apollo-client";
-import { HEADLINES } from "../../graphql/headline";
+import { QUIZ, SLIDE, HEADLINES } from "../../graphql/headline";
 import HeadlineLoading from "../Loading/Layouts/HeadlineLoadingLayout";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
@@ -38,14 +38,28 @@ const HeadlineLayout = ({
 	const headlines = useQuery(HEADLINES, {
 		variables: {
 			id: process.env.REACT_APP_SITE_ID,
-			filter: { mainHeadline: { eq: true } },
+			filter: { category: canonical },
+			limit: 5,
+		},
+		notifyOnNetworkStatusChange: true,
+	});
+	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
+
+	const quiz = useQuery(QUIZ, {
+		variables: {
+			filter: { mainHeadline: true },
 			limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,
 	});
 
-	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
-
+	const slide = useQuery(SLIDE, {
+		variables: {
+			filter: { mainHeadline: true },
+			limit: 5,
+		},
+		notifyOnNetworkStatusChange: true,
+	});
 	// const loadMorePosts = () => {
 	// 	fetchMore({
 	// 		variables: {
@@ -64,7 +78,12 @@ const HeadlineLayout = ({
 	// };
 
 	if (error || headlines.error) return <HeadlineLoading />;
-	if ((loading && !loadingMorePosts) || headlines.loading)
+	if (
+		(loading && !loadingMorePosts) ||
+		headlines.loading ||
+		quiz.loading ||
+		slide.loading
+	)
 		return <HeadlineLoading />;
 
 	// const { allPosts, _allPostsMeta } = data;
@@ -110,18 +129,18 @@ const HeadlineLayout = ({
 							/>
 						</div>
 						<SideBarContent
-							data={headlines.data.listProductionArticles.items}
-							loading={headlines.loading}
-							type="article"
+							data={quiz.data.listProductionQuizs.items}
+							loading={quiz.loading}
+							type="quiz"
 						/>
 						<FacebookPage />
 						<div className="section-padding">
-							<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
+							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
 						</div>
 						<SideBarSmallContent
-							data={headlines.data.listProductionArticles.items}
-							loading={headlines.loading}
-							type="article"
+							data={slide.data.listProductionSlideshows.items}
+							loading={slide.loading}
+							type="slideshow"
 						/>
 					</aside>
 				</section>

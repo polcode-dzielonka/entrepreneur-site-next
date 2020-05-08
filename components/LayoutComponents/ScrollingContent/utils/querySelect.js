@@ -17,8 +17,8 @@ const querySelect = type => {
 		case "slideshow":
 			return [
 				LATEST_SLIDE,
-				"listProductionSlideShows",
-				"ListProductionSlideShows",
+				"listProductionSlideshows",
+				"ListProductionSlideshows",
 			];
 		default:
 			return null;

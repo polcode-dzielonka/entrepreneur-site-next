@@ -8,7 +8,6 @@ const MainHeadline = ({ data }) => {
 	const subHeadlineData = data.filter((x, index) => index !== 0);
 	const { id } = headlineData;
 	const overview = JSON.parse(headlineData.overview);
-
 	const {
 		headlineImage,
 		headlineImageAlt,

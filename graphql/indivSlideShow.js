@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const SLIDESHOW = gql`
-	query GetProductionSlideShow($id: ID!) {
+	query GetProductionSlideShow($id: String!) {
 		getProductionSlideShow(id: $id) {
 			id
 			authorId
