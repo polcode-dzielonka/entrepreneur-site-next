@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import PropTypes from "prop-types";
 import sideHelper from "../helper/sideBarHelper";
 import SideBarComponent from "./SideBar/SideBarComponent";
@@ -14,17 +15,18 @@ const SideBarContent = ({ data, type }) => {
 		} = sideHelper(article, type);
 
 		return (
-			<SideBarComponent
-				key={index}
-				type={type}
-				headlineImage={headlineImage}
-				headlineImageAlt={headlineImageAlt}
-				headline={headline}
-				category={category}
-				url={url}
-				contentLink={contentLink}
-				srcset={srcset}
-			/>
+			<Fragment key={index}>
+				<SideBarComponent
+					type={type}
+					headlineImage={headlineImage}
+					headlineImageAlt={headlineImageAlt}
+					headline={headline}
+					category={category}
+					url={url}
+					contentLink={contentLink}
+					srcset={srcset}
+				/>
+			</Fragment>
 		);
 	});
 };

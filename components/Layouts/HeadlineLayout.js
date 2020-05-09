@@ -25,30 +25,22 @@ const HeadlineLayout = ({
 	filter,
 	limit,
 }) => {
-	const { loading, error, data, fetchMore, networkStatus } = useQuery(QUERY, {
-		variables: { id: process.env.REACT_APP_SITE_ID },
-		// variables: { skip, first: 10 },
-		notifyOnNetworkStatusChange: true,
-		// updateData: (prevResult, result) => ({
-		// 	...result,
-		// 	allPosts: [...prevResult.allPosts, ...result.allPosts],
-		// }),
-	});
-
-	const headlines = useQuery(HEADLINES, {
-		variables: {
-			id: process.env.REACT_APP_SITE_ID,
-			filter: { category: canonical },
-			limit: 5,
+	const { loading, error, data, fetchMore, networkStatus } = useQuery(
+		HEADLINES,
+		{
+			variables: {
+				// id: process.env.REACT_APP_SITE_ID,
+				filter: { category: canonical },
+				// limit: 10,
+			},
+			notifyOnNetworkStatusChange: true,
 		},
-		notifyOnNetworkStatusChange: true,
-	});
+	);
 	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
-
 	const quiz = useQuery(QUIZ, {
 		variables: {
 			filter: { mainHeadline: true },
-			limit: 5,
+			// limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,
 	});
@@ -56,7 +48,7 @@ const HeadlineLayout = ({
 	const slide = useQuery(SLIDE, {
 		variables: {
 			filter: { mainHeadline: true },
-			limit: 5,
+			// limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,
 	});
@@ -77,13 +69,8 @@ const HeadlineLayout = ({
 	// 	});
 	// };
 
-	if (error || headlines.error) return <HeadlineLoading />;
-	if (
-		(loading && !loadingMorePosts) ||
-		headlines.loading ||
-		quiz.loading ||
-		slide.loading
-	)
+	if (error) return <HeadlineLoading />;
+	if ((loading && !loadingMorePosts) || quiz.loading || slide.loading)
 		return <HeadlineLoading />;
 
 	// const { allPosts, _allPostsMeta } = data;
@@ -110,8 +97,8 @@ const HeadlineLayout = ({
 						</div>
 						<LazyLoad once={true}>
 							<ScrollingArticles
-								data={headlines.data.listProductionArticles.items}
-								loading={headlines.loading}
+								data={data.listProductionArticles.items}
+								loading={loading}
 							/>
 
 							<RippleButton

@@ -1,17 +1,17 @@
 const links = [
 	{ href: "/people", label: "People" },
 	{ href: "/motivation", label: "Motivation" },
-	{ href: "/quotes", label: "Quotes" },
-	{ href: "/networth", label: "Net Worth" },
-	{ href: "/quiz", label: "Quiz" },
+	// { href: "/quotes", label: "Quotes" },
+	// { href: "/networth", label: "Net Worth" },
+	// { href: "/quiz", label: "Quiz" },
 ];
 const mobileLinks = [
 	{ href: "/", label: "Home" },
 	{ href: "/people", label: "People" },
 	{ href: "/motivation", label: "Motivation" },
-	{ href: "/quotes", label: "Quotes" },
-	{ href: "/networth", label: "Net Worth" },
-	{ href: "/quiz", label: "Quiz" },
+	// { href: "/quotes", label: "Quotes" },
+	// { href: "/networth", label: "Net Worth" },
+	// { href: "/quiz", label: "Quiz" },
 	{ href: "/newsletter", label: "Newsletter" },
 ];
 const footerLinks = [
