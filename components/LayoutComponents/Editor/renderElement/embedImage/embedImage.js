@@ -49,14 +49,14 @@ const EmbedImage = ({ attributes, element, children }) => {
 				sizes="330px"
 			/>
 			{children}
-			{embedImage.imageAltAttribution && (
+			{embedImage.imageAttribution && (
 				<span>
 					<a
-						href={embedImage.imageAltAttributionLink}
+						href={embedImage.imageAttributionLink}
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Credit:{embedImage.imageAltAttribution}
+						Credit:{embedImage.imageAttribution}
 					</a>
 				</span>
 			)}
