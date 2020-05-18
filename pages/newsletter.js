@@ -14,7 +14,7 @@ import { EMAIL_SIGN_UP } from "../graphql/emailSignUp";
 import Cookie from "js-cookie";
 import Link from "next/link";
 import ImageLoader from "../components/Loading/ImageLoader";
-import manualRequest from "../components/apiRequest/manualApiRequest";
+import manualRequest from "../components/apiRequest/prodAppsyncRequest";
 
 const Newsletter = ({ url }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
@@ -88,6 +88,7 @@ const Newsletter = ({ url }) => {
 							`/static/business_cover_photox768.jpg 768w`,
 							`/static/business_cover_photox1024.jpg 1024w`,
 						]}
+						styles={{ width: "100%", height: "100%" }}
 					/>
 					<form className="contact-form" onSubmit={handleSubmit}>
 						<h3>

@@ -16,7 +16,6 @@ const EmbedUrl = ({
 		ssr: false,
 		loading: () => <SingleSocialLoader />,
 	});
-
 	return (
 		<>
 			{!embed && (
@@ -25,7 +24,7 @@ const EmbedUrl = ({
 					imageAlt={imageAlt}
 					animation={false}
 					srcset={srcset}
-					style={styles}
+					styles={styles}
 				/>
 			)}
 			{embed && (

@@ -26,7 +26,7 @@ export const QUIZ = gql`
 	}
 `;
 
-export const UPDATE_QUIZ = `
+export const UPDATE_QUIZ = /* GraphQL */ `
 	mutation UpdateProductionQuiz($input: UpdateProductionQuizInput!) {
 		updateProductionQuiz(input: $input) {
 			id
@@ -40,7 +40,6 @@ export const UPDATE_QUIZ = `
 			numQuestions
 			createdAt
 			updatedAt
-	
 		}
 	}
 `;

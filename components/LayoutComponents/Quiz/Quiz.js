@@ -24,6 +24,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 		blurb,
 		scoreCommentsDetails,
 		headlineImage,
+		randomiseAnswers,
 	} = details[0];
 	const positionNumber = Number(position);
 
@@ -103,6 +104,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					id={id}
 					currentScore={score}
 					questions={questions}
+					randomiseAnswers={randomiseAnswers}
 				/>
 			)}
 			<ScrollUpButton />

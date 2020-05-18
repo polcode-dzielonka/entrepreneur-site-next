@@ -115,20 +115,30 @@ const HeadlineLayout = ({
 								titleSize="1.7rem"
 							/>
 						</div>
-						<SideBarContent
-							data={quiz.data.listProductionQuizs.items}
-							loading={quiz.loading}
-							type="quiz"
-						/>
-						<FacebookPage />
-						<div className="section-padding">
-							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
-						</div>
-						<SideBarSmallContent
-							data={slide.data.listProductionSlideshows.items}
-							loading={slide.loading}
-							type="slideshow"
-						/>
+						<LazyLoad once={true}>
+							<SideBarContent
+								data={quiz.data.listProductionQuizs.items}
+								loading={quiz.loading}
+								type="quiz"
+							/>
+						</LazyLoad>
+						<LazyLoad once={true}>
+							<FacebookPage />
+						</LazyLoad>
+						<LazyLoad once={true}>
+							<div className="section-padding">
+								<SectionBar
+									title="Lists"
+									titleColor="#111"
+									titleSize="1.7rem"
+								/>
+							</div>
+							<SideBarSmallContent
+								data={slide.data.listProductionSlideshows.items}
+								loading={slide.loading}
+								type="slideshow"
+							/>
+						</LazyLoad>
 					</aside>
 				</section>
 			</div>

@@ -44,12 +44,14 @@ const NextLink = ({ brief, headline, image, url, title, srcset }) => {
 					width: 100%;
 					height: 50%;
 					text-align: center;
+					text-transform: capitalize;
 				}
 				.link-label-brief:hover {
 					color: ${theme.primary};
 				}
 				.link-label {
-					font-size: 2rem;
+					font-size: 1.75rem;
+					line-height: 1.9rem;
 					width: 100%;
 					height: 50%;
 					text-align: center;
@@ -69,6 +71,7 @@ const NextLink = ({ brief, headline, image, url, title, srcset }) => {
 					display: flex;
 					flex-direction: column;
 					text-decoration: none;
+					padding: 0rem 1rem;
 				}
 
 				.link-button {

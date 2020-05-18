@@ -31,8 +31,7 @@ const NextArticleAd = ({ children, attributes }) => {
 			};
 
 			const { data } = await prodRequest(queryData);
-
-			const selectedArticle = data.data.listProductionArticles.items.filter(
+			const selectedArticle = data.listProductionArticles.items.filter(
 				x => x.id !== postId,
 			);
 			const overview = JSON.parse(selectedArticle[0].overview);
@@ -49,6 +48,7 @@ const NextArticleAd = ({ children, attributes }) => {
 			console.log("Error with request", err);
 		}
 	};
+
 	return (
 		<div className="site-ad" {...attributes}>
 			{nextInfo.showNext && (

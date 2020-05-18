@@ -12,7 +12,7 @@ import {
 import validate from "../../components/FormValidation/Validation";
 import Reaptcha from "reaptcha";
 import Cookie from "js-cookie";
-import manualRequest from "../apiRequest/manualApiRequest";
+import manualRequest from "../apiRequest/prodAppsyncRequest";
 //Set Cookie Expiration if not signed up (in minutes)
 const SignUpModal = () => {
 	const [formData, setFormData] = useState(QUICK_INITIAL_STATE);

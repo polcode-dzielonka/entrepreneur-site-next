@@ -24,7 +24,7 @@ const QuizButton = ({
 
 	const percentageAnswers = Math.round(
 		(!answer.votes && answer.correct
-			? 1
+			? 0
 			: !answer.votes && !answer.incorrect
 			? 0
 			: Number(answer.votes) / totalVotes
@@ -32,6 +32,7 @@ const QuizButton = ({
 			: 1) * 100,
 		0,
 	);
+
 	return (
 		<Ripples
 			color={theme.quizRipple}

@@ -21,6 +21,7 @@ const Questions = ({
 	currentScore,
 	questions,
 	nextQuestionData,
+	randomiseAnswers,
 }) => {
 	const [showAnswer, setShowAnswer] = useState(false);
 	const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -50,10 +51,37 @@ const Questions = ({
 		answerSrcset,
 	} = questionDetails;
 	const answerInfo = { ...correctAnswerDetails, ...inCorrectAnswerDetails };
-	const [answers, setAnswers] = useState(Object.keys(answerInfo));
+
+	const [answers, setAnswers] = useState(
+		Object.keys(answerInfo).sort((a, b) => a.answer - b.answer),
+	);
 	const [totalVotes, setTotalVotes] = useState(0);
+
 	useEffect(() => {
-		setAnswers(answers.sort(() => Math.random() - 0.5));
+		if (randomiseAnswers) {
+			setAnswers(answers.sort(() => Math.random() - 0.5));
+		} else {
+			const nonRandomAnswers = Object.keys(answerInfo)
+				.map(keyVal => {
+					return {
+						[keyVal]: answerInfo[keyVal].answer,
+						answer: answerInfo[keyVal].answer,
+					};
+				})
+				.sort((a, b) => a.answer.localeCompare(b.answer));
+			let newOrderAnswers = [];
+			nonRandomAnswers.map(answerRandom => {
+				return Object.keys(answerRandom).map(answ => {
+					if (answ !== "answer") {
+						newOrderAnswers.push(answ);
+					}
+				});
+			});
+			setAnswers(newOrderAnswers);
+		}
+	}, []);
+
+	useEffect(() => {
 		setTotalVotes(
 			Object.values(answerInfo).reduce(
 				(runn, val) => runn + Number(val.votes),
@@ -107,7 +135,6 @@ const Questions = ({
 			console.log("Error with request", err);
 		}
 
-		setTotalVotes(totalVotes + 1);
 		if (answer.correct) {
 			setCorrect(true);
 			setScore(score + 1);

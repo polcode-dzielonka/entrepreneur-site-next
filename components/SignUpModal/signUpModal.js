@@ -13,7 +13,7 @@ import {
 import validate from "../../components/FormValidation/Validation";
 import SuccessModal from "./successModal";
 import Cookie from "js-cookie";
-import manualRequest from "../apiRequest/manualApiRequest";
+import manualRequest from "../apiRequest/prodAppsyncRequest";
 
 //Set Cookie Expiration if not signed up (in minutes)
 const cookieTime = 60;

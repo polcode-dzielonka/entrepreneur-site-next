@@ -104,11 +104,11 @@ const Slides = ({
 							titleSize="1.5rem"
 						/>
 						<NextLink
-							brief={midDataOverview[0].brief}
+							brief={midDataOverview[0].blurb}
 							title="Next Up:"
-							headline={midDataOverview[0].headline}
+							headline={midDataOverview[0].slideTitle}
 							image={midDataOverview[0].headlineImage}
-							srcset={srcset}
+							srcset={midDataOverview[0].srcset}
 							url={`/${midDataOverview[0].slideUrl}/quickview/${midDataId}/slides/opening`}
 						/>
 						<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />

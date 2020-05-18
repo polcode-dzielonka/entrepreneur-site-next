@@ -21,13 +21,14 @@ const EmbedImage = ({ attributes, element, children }) => {
 		const embedImageAttribution = data.imageAttribution;
 		const embedImageAttributionLink = data.imageAttributionLink;
 		const embedImageSrcset = data.srcset ? data.srcset : [];
-
+		const embedImageComment = data.imageComment;
 		setEmbedImageUrl({
 			imageUrl: embedImageUrl,
 			imageAlt: embedImageAlt,
 			imageAttribution: embedImageAttribution,
 			imageAttributionLink: embedImageAttributionLink,
 			srcset: embedImageSrcset,
+			imageComment: embedImageComment,
 		});
 	};
 
@@ -48,7 +49,33 @@ const EmbedImage = ({ attributes, element, children }) => {
 				sizes="330px"
 			/>
 			{children}
-			<span>{embedImage.imageCaption}</span>
+			{embedImage.imageAltAttribution && (
+				<span>
+					<a
+						href={embedImage.imageAltAttributionLink}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Credit:{embedImage.imageAltAttribution}
+					</a>
+				</span>
+			)}
+			<span className="comment">{embedImage.imageComment}</span>
+			<style jsx>
+				{`
+					a {
+						font-size: 1rem;
+						text-decoration: none;
+						float: right;
+					}
+					.comment {
+						font-size: 1rem;
+						text-decoration: none;
+						margin: 0;
+						text-transform: capitalize;
+					}
+				`}
+			</style>
 		</div>
 	);
 };

@@ -3,7 +3,15 @@ import PropTypes from "prop-types";
 export const config = { amp: "hybrid" };
 import { useAmp } from "next/amp";
 
-const ImageLoader = ({ src, alt, animation, styles, srcset }) => {
+const ImageLoader = ({
+	src,
+	alt,
+	animation,
+	styles,
+	srcset,
+	imageAltAttribution,
+	imageAltAttributionLink,
+}) => {
 	const [classStyle, setClassStyle] = useState(
 		animation ? "img-loading-animation" : "img-loading",
 	);
@@ -36,7 +44,23 @@ const ImageLoader = ({ src, alt, animation, styles, srcset }) => {
 					sizes="350px"
 				/>
 			)}
+			{imageAltAttribution && (
+				<span>
+					<a
+						href={imageAltAttributionLink}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Credit:{imageAltAttribution}
+					</a>
+				</span>
+			)}
 			<style jsx>{`
+				a {
+					font-size: 1rem;
+					text-decoration: none;
+					float: right;
+				}
 				@keyframes fadeInImg {
 					from {
 						opacity: 0;
@@ -94,6 +118,8 @@ ImageLoader.propTypes = {
 	animation: PropTypes.boolean,
 	styles: PropTypes.object,
 	srcset: PropTypes.array,
+	imageAltAttribution: PropTypes.string,
+	imageAltAttributionLink: PropTypes.string,
 };
 
 ImageLoader.defaultProps = {
