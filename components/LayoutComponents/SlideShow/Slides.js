@@ -71,9 +71,9 @@ const Slides = ({
 						imageAltAttributionLink={slideImageAttributionLink}
 						srcset={srcset}
 						styles={{ width: "100%", height: "100%" }}
+						noMaxHeight={true}
 					/>
 				</LazyLoad>
-
 				<div className="section-paragraph">
 					<Slate editor={editor} value={value}>
 						<Editable
@@ -83,35 +83,45 @@ const Slides = ({
 						/>
 					</Slate>
 				</div>
+
 				{index % 4 === 0 && (
 					<>
-						<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
-						<ShareButtonHoriz
-							data={openingSocialButtons}
-							url={shareUrl}
-							image={image}
-							headline={headline}
-							brief={brief}
-							position={"middle_slideshow_share_horiz"}
-						/>
+						<LazyLoad once={true}>
+							<SectionBar
+								title={`Share`}
+								titleColor="#111"
+								titleSize="1.5rem"
+							/>
+							<ShareButtonHoriz
+								data={openingSocialButtons}
+								url={shareUrl}
+								image={image}
+								headline={headline}
+								brief={brief}
+								position={"middle_slideshow_share_horiz"}
+							/>
+						</LazyLoad>
 					</>
 				)}
 				{index % 2 === 0 && adData && (
 					<>
-						<SectionBar
-							title={`Up Next`}
-							titleColor="#111"
-							titleSize="1.5rem"
-						/>
-						<NextLink
-							brief={midDataOverview[0].blurb}
-							title="Next Up:"
-							headline={midDataOverview[0].slideTitle}
-							image={midDataOverview[0].headlineImage}
-							srcset={midDataOverview[0].srcset}
-							url={`/${midDataOverview[0].slideUrl}/quickview/${midDataId}/slides/opening`}
-						/>
-						<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
+						<LazyLoad once={true}>
+							<SectionBar
+								title={`Up Next`}
+								titleColor="#111"
+								titleSize="1.5rem"
+							/>
+							<NextLink
+								brief={midDataOverview[0].blurb}
+								title="Next Up:"
+								headline={midDataOverview[0].slideTitle}
+								image={midDataOverview[0].headlineImage}
+								imageAlt={midDataOverview[0].headlineImageAlt}
+								srcset={midDataOverview[0].srcset}
+								url={`/${midDataOverview[0].slideUrl}/quickview/${midDataId}/slides/opening`}
+							/>
+							<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
+						</LazyLoad>
 					</>
 				)}
 

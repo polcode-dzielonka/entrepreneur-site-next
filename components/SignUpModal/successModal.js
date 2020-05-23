@@ -29,6 +29,7 @@ const SuccessModal = ({ successModal, setSuccessModal }) => {
 									<img
 										src="/static/business_motivation.svg"
 										className="modal-logo"
+										alt="wealthmack_logo"
 									/>
 								</div>
 								<div className="header-container">

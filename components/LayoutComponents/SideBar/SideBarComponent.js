@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { theme } from "../../../theme/baseCss";
+import LazyLoad from "react-lazyload";
 
 const SideBarContent = ({
 	key,
@@ -14,31 +15,33 @@ const SideBarContent = ({
 }) => {
 	return (
 		<article className="side-content" key={key}>
-			<Link href={contentLink}>
-				<a className="side-headline-anchor">
-					<div className="side-image-wrapper">
-						<img
-							className="side-image-main"
-							src={headlineImage}
-							alt={headlineImageAlt}
-							srcSet={srcset ? srcset : []}
-							sizes="180px"
-						/>
-					</div>
-				</a>
-			</Link>
-			<div className="side-title-info">
-				<h1 className="side-title">
-					<Link href={contentLink}>
-						<a className="info-link">{headline}</a>
-					</Link>
-					<h2 className="side-title">
+			<LazyLoad once={true}>
+				<Link href={contentLink}>
+					<a className="side-headline-anchor">
+						<div className="side-image-wrapper">
+							<img
+								className="side-image-main"
+								src={headlineImage}
+								alt={headlineImageAlt}
+								srcSet={srcset ? srcset : []}
+								sizes="180px"
+							/>
+						</div>
+					</a>
+				</Link>
+				<div className="side-title-info">
+					<h1 className="side-title">
 						<Link href={contentLink}>
-							<a className="category-link">{category}</a>
+							<a className="info-link">{headline}</a>
 						</Link>
-					</h2>
-				</h1>
-			</div>
+						<h2 className="side-title">
+							<Link href={contentLink}>
+								<a className="category-link">{category}</a>
+							</Link>
+						</h2>
+					</h1>
+				</div>
+			</LazyLoad>
 			<style jsx>{`
 				.category-link {
 					color: #fff;

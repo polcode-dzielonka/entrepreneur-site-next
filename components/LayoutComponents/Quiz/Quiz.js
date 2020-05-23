@@ -85,6 +85,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							imgSrc={details[0].headlineImage}
 							srcset={details[0].srcset}
 							href={`${nextHref}/1`}
+							imageAlt={details[0].headlineImageAlt}
 						/>
 					)}
 				</>
@@ -107,16 +108,20 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					randomiseAnswers={randomiseAnswers}
 				/>
 			)}
-			<ScrollUpButton />
-			<hr className="break" />
-			<ShareButtonHoriz
-				data={closingSocialButtons}
-				url={shareUrl}
-				image={headlineImage}
-				headline={title}
-				brief={blurb}
-				position={"bottom_share_horiz"}
-			/>
+			<LazyLoad once={true}>
+				<ScrollUpButton />
+			</LazyLoad>
+			<LazyLoad once={true}>
+				<hr className="break" />
+				<ShareButtonHoriz
+					data={closingSocialButtons}
+					url={shareUrl}
+					image={headlineImage}
+					headline={title}
+					brief={blurb}
+					position={"bottom_share_horiz"}
+				/>
+			</LazyLoad>
 			<hr className="break" />
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
@@ -124,7 +129,11 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 				headline={title}
 				headlineUrl={shareUrl}
 			/>
-			<QuickEmailSignUp />
+
+			<LazyLoad once={true}>
+				<QuickEmailSignUp />
+			</LazyLoad>
+
 			{position === "closing" && (
 				<>
 					<SectionBar
@@ -139,7 +148,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					/>
 				</>
 			)}
-			<LazyLoad>
+			<LazyLoad once={true}>
 				<ScrollingContent id={id} title="Latest" type={"quiz"} />
 			</LazyLoad>
 			<hr className="break" />

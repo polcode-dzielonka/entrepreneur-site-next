@@ -10,6 +10,7 @@ import {
 } from "../../SocialMedia/data";
 import SectionBar from "../SectionBar";
 import ShowMeta from "../../showMeta/showMeta";
+import LazyLoad from "react-lazyload";
 
 const BookEnds = ({ data, id, position }) => {
 	const {
@@ -27,6 +28,7 @@ const BookEnds = ({ data, id, position }) => {
 		displayDate,
 		showAuthor,
 		authorName,
+		slideTags,
 	} = data[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${position}`;
 
@@ -38,6 +40,9 @@ const BookEnds = ({ data, id, position }) => {
 				url={canonical}
 				canonical={canonical}
 				image={headlineImage}
+				createdAt={displayDate}
+				updatedAt={displayDate}
+				tags={slideTags}
 			/>
 			<h1 className="section-heading">{title}</h1>
 			<h3 className="section-category">{category}</h3>
@@ -57,25 +62,30 @@ const BookEnds = ({ data, id, position }) => {
 				animation={false}
 				srcset={srcset}
 				styles={{ width: "100%", height: "100%" }}
+				noMaxHeight={true}
 			/>
 			<hr className="break" />
-			<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
+			<LazyLoad once={true}>
+				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
+				<ShareButtonVert
+					data={sideSocialButtons}
+					url={canonical}
+					image={headlineImage}
+					headline={title}
+					brief={blurb}
+				/>
+			</LazyLoad>
+			<LazyLoad once={true}>
+				<ShareButtonHoriz
+					data={openingSocialButtons}
+					url={canonical}
+					image={headlineImage}
+					headline={title}
+					brief={blurb}
+					position={"top_share_horiz"}
+				/>
+			</LazyLoad>
 
-			<ShareButtonVert
-				data={sideSocialButtons}
-				url={canonical}
-				image={headlineImage}
-				headline={title}
-				brief={blurb}
-			/>
-			<ShareButtonHoriz
-				data={openingSocialButtons}
-				url={canonical}
-				image={headlineImage}
-				headline={title}
-				brief={blurb}
-				position={"top_share_horiz"}
-			/>
 			<hr className="break" />
 			<style jsx>
 				{`

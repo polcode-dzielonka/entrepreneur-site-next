@@ -19,7 +19,7 @@ const Footer = ({ menuOpen, onClick }) => {
 						})}
 					</ul>
 					<ul className="footer-nav-list">
-						{socialLinks.map(({ href, icon }, index) => {
+						{socialLinks.map(({ href, icon, altName }, index) => {
 							return (
 								<li key={index} className="link-wrapper">
 									<a
@@ -28,7 +28,7 @@ const Footer = ({ menuOpen, onClick }) => {
 										rel="noopener noreferrer"
 										className="footer-item-social"
 									>
-										<img className="social-image" src={icon}></img>
+										<img className="social-image" src={icon} alt={altName} />
 									</a>
 								</li>
 							);
@@ -42,6 +42,7 @@ const Footer = ({ menuOpen, onClick }) => {
 					<img
 						className="footer-brand-image"
 						src="/static/business_motivation.svg"
+						alt="wealthmack_logo"
 					/>
 				</div>
 			</div>

@@ -11,6 +11,7 @@ const ImageLoader = ({
 	srcset,
 	imageAltAttribution,
 	imageAltAttributionLink,
+	noMaxHeight,
 }) => {
 	const [classStyle, setClassStyle] = useState(
 		animation ? "img-loading-animation" : "img-loading",
@@ -71,7 +72,7 @@ const ImageLoader = ({
 				}
 				.img-loading {
 					width: 100%;
-					height: 550px;
+					height: 100%;
 					// height: 100%;
 					background: #f4f4f4;
 				}
@@ -94,7 +95,7 @@ const ImageLoader = ({
 				.img-loaded {
 					position: relative;
 					width: 100%;
-					max-height: 550px;
+					max-height: ${noMaxHeight ? null : "550px"};
 					object-fit: cover;
 				}
 
@@ -120,6 +121,7 @@ ImageLoader.propTypes = {
 	srcset: PropTypes.array,
 	imageAltAttribution: PropTypes.string,
 	imageAltAttributionLink: PropTypes.string,
+	noMaxHeight: PropTypes.boolean,
 };
 
 ImageLoader.defaultProps = {

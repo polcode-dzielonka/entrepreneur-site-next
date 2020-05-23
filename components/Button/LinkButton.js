@@ -1,7 +1,7 @@
 import { theme } from "../../theme/baseCss";
 import PropTypes from "prop-types";
 import Link from "next/link";
-const SlideLinkButton = ({ label, href, imgSrc, srcset }) => {
+const SlideLinkButton = ({ label, href, imgSrc, srcset, imageAlt }) => {
 	return (
 		<div className="link-section">
 			<div className="scroll-text">Continue Scrolling to Keep Reading</div>
@@ -17,6 +17,7 @@ const SlideLinkButton = ({ label, href, imgSrc, srcset }) => {
 								srcSet={srcset}
 								sizes="150px"
 								className="quickview-image"
+								alt={imageAlt}
 							/>
 						</div>
 						<div className="label">
@@ -25,6 +26,7 @@ const SlideLinkButton = ({ label, href, imgSrc, srcset }) => {
 						<div className="arrow-wrapper">
 							<img
 								className="arrow"
+								alt="right-arrow"
 								src={"/static/fatArrowRightBlackx128.png"}
 							/>
 						</div>
@@ -145,6 +147,7 @@ SlideLinkButton.propTypes = {
 	href: PropTypes.String,
 	label: PropTypes.String,
 	imgSrc: PropTypes.String,
+	imageAlt: PropTypes.String,
 	srcset: PropTypes.array,
 };
 

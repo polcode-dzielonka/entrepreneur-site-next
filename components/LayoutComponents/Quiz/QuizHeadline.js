@@ -4,6 +4,7 @@ import DynamicHeader from "../../Header/DynamicHeader";
 import ShareButtonVert from "../../SocialMedia/ShareButtonsVert";
 import { sideSocialButtons } from "../../SocialMedia/data";
 import ShowMeta from "../../showMeta/showMeta";
+import LazyLoad from "react-lazyload";
 
 const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 	const {
@@ -17,6 +18,7 @@ const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 		displayDate,
 		showAuthor,
 		authorName,
+		quizTags,
 	} = data[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${quizUrl}/quiz/${id}/questions/${position}`;
 	const shareUrl = `${process.env.SITE_ADDRESS}/${quizUrl}/quiz/${id}/questions/opening`;
@@ -55,6 +57,9 @@ const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 				image={headlineImage}
 				next={next}
 				prev={prev}
+				createdAt={displayDate}
+				updatedAt={displayDate}
+				tags={quizTags}
 			/>
 			<h1 className="section-heading">{title}</h1>
 			<h3 className="section-category">{category}</h3>
@@ -64,14 +69,15 @@ const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 				showAuthor={showAuthor}
 				authorName={authorName}
 			/>
-
-			<ShareButtonVert
-				data={sideSocialButtons}
-				url={shareUrl}
-				image={headlineImage}
-				headline={title}
-				brief={blurb}
-			/>
+			<LazyLoad once={true}>
+				<ShareButtonVert
+					data={sideSocialButtons}
+					url={shareUrl}
+					image={headlineImage}
+					headline={title}
+					brief={blurb}
+				/>
+			</LazyLoad>
 
 			<style jsx>
 				{`

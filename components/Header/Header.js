@@ -15,6 +15,7 @@ const Header = ({ menuOpen, onClick }) => {
 									<img
 										src="/static/business_motivation.svg"
 										className="header-icon"
+										alt="wealthmack_logo"
 									/>
 								</Link>
 							</div>
@@ -35,6 +36,7 @@ const Header = ({ menuOpen, onClick }) => {
 									<img
 										src="/static/business_motivation.svg"
 										className="header-icon"
+										alt="wealthmack_logo"
 									/>
 								</Link>
 							</div>
@@ -61,13 +63,14 @@ const Header = ({ menuOpen, onClick }) => {
 									<a className="nav-menu-link">Newsletter</a>
 								</div>
 							</Link>
-							{socialLinks.map(({ href, icon }, index) => (
+							{socialLinks.map(({ href, icon, altName }, index) => (
 								<div className="social-nav-menu-item" key={index}>
 									<a href={href} target="_blank" rel="noopener noreferrer">
 										<img
 											className="social-style"
 											style={{ width: 22 }}
 											src={icon}
+											alt={altName}
 										/>
 									</a>
 								</div>

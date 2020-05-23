@@ -1,0 +1,23 @@
+{
+	"@context": "http://schema.org",
+	"@type": "Organization",
+	"@id": "https://wealthmack.com/#organization",
+	"name": "WealthMack",
+	"alternateName": "WealthMack",
+	"url": "https://wealthmack.com",
+	"foundingDate": "2019",
+	"sameAs": [
+		"https://www.facebook.com/WealthMack-103552984448329/",
+		"https://www.youtube.com/channel/UC7PG3SDVzaVn7UO4uCEV8_g?sub_confirmation=1",
+		"https://twitter.com/intent/follow?source=followbutton&amp;variant=1.0&amp;screen_name=wealthmack",
+		"https://www.instagram.com/wealthmack1/"
+	],
+	"logo": {
+		"@type": "ImageObject",
+		"url": "https://www.wealthmack.com/static/wealthmack_logo.png",
+		"width": 324,
+		"height": 182,
+		"caption": "WealthMack Cover Logo",
+		"inLanguage": "en"
+	}
+}

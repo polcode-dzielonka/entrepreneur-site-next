@@ -47,6 +47,7 @@ const EmbedImage = ({ attributes, element, children }) => {
 				animation={true}
 				srcset={embedImage.srcset}
 				sizes="330px"
+				noMaxHeight={true}
 			/>
 			{children}
 			{embedImage.imageAttribution && (

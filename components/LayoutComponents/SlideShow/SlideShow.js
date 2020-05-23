@@ -5,7 +5,6 @@ import Slides from "./Slides";
 import ErrorLoader from "../Error";
 import Headline from "./Headline";
 import SectionBar from "../SectionBar";
-import LinkButton from "../../Button/LinkButton";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import { closingSocialButtons } from "../../SocialMedia/data";
 import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
@@ -27,6 +26,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 		countdown,
 		title,
 		slideUrl,
+		srcset,
+		headlineImageAlt,
 	} = details[0];
 	if (!slides) {
 		return <ErrorLoader />;
@@ -41,16 +42,10 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 		<div className="section-padding">
 			<SectionBar title={`Lists`} titleColor="#111" titleSize="1.5rem" />
 			<Headline data={details} id={id} position={position} />
-			<div className="link-wrapper">
-				<LinkButton
-					label="Start SlideShow"
-					href={href}
-					imgSrc={details[0].headlineImage}
-					srcset={details[0].srcset}
-				/>
-			</div>
+
 			<BookEnds
 				position={"opening"}
+				showHeadlineImage={false}
 				image={bookEndOpening.openingImage}
 				imageAlt={bookEndOpening.openingImageAlt}
 				imageAltAttribution={bookEndOpening.openingImageAttribution}
@@ -64,15 +59,10 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				}
 				embed={bookEndOpening["openingImage-embed"]}
 			/>
-			<div className="link-wrapper">
-				<LinkButton
-					label="Start SlideShow"
-					href={href}
-					imgSrc={details[0].headlineImage}
-					srcset={details[0].srcset}
-				/>
-			</div>
-			<ScrollUpButton />
+
+			<LazyLoad once={true}>
+				<ScrollUpButton />
+			</LazyLoad>
 			<Slides
 				data={slideData}
 				showNumbers={showNumbers}
@@ -83,9 +73,11 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				latest={latest}
 				countdown={countdown}
 			/>
+
 			<BookEnds
 				position={"closing"}
 				image={bookEndClosing.closingImage}
+				showHeadlineImage={true}
 				imageAlt={bookEndClosing.closingImageAlt}
 				imageAltAttribution={bookEndClosing.closingImageAttribution}
 				imageAltAttributionLink={bookEndClosing.closingImageAttributionLink}
@@ -98,29 +90,40 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				}
 				embed={bookEndClosing["closingImage-embed"]}
 			/>
-			<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
-			<ShareButtonHoriz
-				data={closingSocialButtons}
-				url={shareUrl}
-				image={headlineImage}
-				headline={title}
-				brief={blurb}
-				position={"bottom_share_horiz"}
-			/>
+			<LazyLoad once={true}>
+				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
+				<ShareButtonHoriz
+					data={closingSocialButtons}
+					url={shareUrl}
+					image={headlineImage}
+					headline={title}
+					brief={blurb}
+					position={"bottom_share_horiz"}
+				/>
+			</LazyLoad>
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
 				category={category}
 				headline={title}
 				headlineUrl={url}
 			/>
-			<QuickEmailSignUp />
-			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="2rem" />
+
+			<LazyLoad once={true}>
+				<QuickEmailSignUp />
+			</LazyLoad>
+			<LazyLoad once={true}>
+				<SectionBar
+					title="Leave a Comment"
+					titleColor="#111"
+					titleSize="2rem"
+				/>
+			</LazyLoad>
 			<FacebookComments
 				url={shareUrl}
 				numPostsVisible={5}
 				orderBy="reverse_time"
 			/>
-			<LazyLoad>
+			<LazyLoad once={true}>
 				<ScrollingContent id={id} title="Latest" type={"slideshow"} />
 			</LazyLoad>
 			<hr className="break" />

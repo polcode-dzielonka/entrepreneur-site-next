@@ -84,23 +84,51 @@ const HeadlineLayout = ({
 					rel="canonical"
 					href={`${process.env.SITE_ADDRESS}/${canonical}`}
 				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(
+							{
+								"@context": "https://schema.org",
+								"@type": "BreadcrumbList",
+								itemListElement: [
+									{
+										"@type": "ListItem",
+										position: 1,
+										name: "Home",
+										item: "https://wealthmack.com/",
+									},
+									{
+										"@type": "ListItem",
+										position: 2,
+										name: title,
+										item: `${process.env.SITE_ADDRESS}/${canonical}`,
+									},
+								],
+							},
+							null,
+							4,
+						),
+					}}
+				/>
 			</Head>
 			<div className="home-container">
 				<section className="body-container">
 					<div className="latest-container">
 						<div className="section-padding">
-							<SectionBar
-								title={pageTitle}
-								titleColor="#111"
-								titleSize="2rem"
-							/>
+							<LazyLoad once={true}>
+								<SectionBar
+									title={pageTitle}
+									titleColor="#111"
+									titleSize="2rem"
+								/>
+							</LazyLoad>
 						</div>
+						<ScrollingArticles
+							data={data.listProductionArticles.items}
+							loading={loading}
+						/>
 						<LazyLoad once={true}>
-							<ScrollingArticles
-								data={data.listProductionArticles.items}
-								loading={loading}
-							/>
-
 							<RippleButton
 								label={loadingMorePosts ? "Loading..." : "Load More!"}
 								color={theme.secondary}
@@ -115,30 +143,22 @@ const HeadlineLayout = ({
 								titleSize="1.7rem"
 							/>
 						</div>
-						<LazyLoad once={true}>
-							<SideBarContent
-								data={quiz.data.listProductionQuizs.items}
-								loading={quiz.loading}
-								type="quiz"
-							/>
-						</LazyLoad>
+						<SideBarContent
+							data={quiz.data.listProductionQuizs.items}
+							loading={quiz.loading}
+							type="quiz"
+						/>
 						<LazyLoad once={true}>
 							<FacebookPage />
 						</LazyLoad>
-						<LazyLoad once={true}>
-							<div className="section-padding">
-								<SectionBar
-									title="Lists"
-									titleColor="#111"
-									titleSize="1.7rem"
-								/>
-							</div>
-							<SideBarSmallContent
-								data={slide.data.listProductionSlideshows.items}
-								loading={slide.loading}
-								type="slideshow"
-							/>
-						</LazyLoad>
+						<div className="section-padding">
+							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
+						</div>
+						<SideBarSmallContent
+							data={slide.data.listProductionSlideshows.items}
+							loading={slide.loading}
+							type="slideshow"
+						/>
 					</aside>
 				</section>
 			</div>

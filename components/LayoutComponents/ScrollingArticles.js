@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
 import Link from "next/link";
+import LazyLoad from "react-lazyload";
 
 const ScrollingArticles = ({ data }) => {
 	return data.map((article, index) => {
@@ -20,33 +21,35 @@ const ScrollingArticles = ({ data }) => {
 		if (index === 0) {
 			return (
 				<article key={index} className="large-image-container">
-					<Link href={`/${urlDescription}/article/${id}`}>
-						<a className="large-image-anchor">
-							<div className="large-image-main-wrapper">
-								<img
-									className="large-image-main"
-									src={headlineImage}
-									alt={headlineImageAlt}
-									srcSet={srcset ? srcset : []}
-									sizes="330px"
-								/>
+					<LazyLoad once={true}>
+						<Link href={`/${urlDescription}/article/${id}`}>
+							<a className="large-image-anchor">
+								<div className="large-image-main-wrapper">
+									<img
+										className="large-image-main"
+										src={headlineImage}
+										alt={headlineImageAlt}
+										srcSet={srcset ? srcset : []}
+										sizes="330px"
+									/>
+								</div>
+							</a>
+						</Link>
+						<div className="large-info">
+							<div className="info-title">
+								<Link href={`/${urlDescription}/article/${id}`}>
+									<a className="info-link">{headline}</a>
+								</Link>
+								{headline.length < 70 && (
+									<h2 className="info-title">
+										<Link href={`/${urlDescription}/article/${id}`}>
+											<a className="category-link">{category}</a>
+										</Link>
+									</h2>
+								)}
 							</div>
-						</a>
-					</Link>
-					<div className="large-info">
-						<div className="info-title">
-							<Link href={`/${urlDescription}/article/${id}`}>
-								<a className="info-link">{headline}</a>
-							</Link>
-							{headline.length < 70 && (
-								<h2 className="info-title">
-									<Link href={`/${urlDescription}/article/${id}`}>
-										<a className="category-link">{category}</a>
-									</Link>
-								</h2>
-							)}
 						</div>
-					</div>
+					</LazyLoad>
 					<style jsx>{`
 						.category-link {
 							color: #fff;
@@ -141,32 +144,34 @@ const ScrollingArticles = ({ data }) => {
 
 		return (
 			<article className="header-section" key={index}>
-				<Link href={`/${urlDescription}/article/${id}`}>
-					<a className="scroll-image-anchor">
-						<div className="scroll-image-wrapper">
-							<img
-								className="scroll-image-main"
-								src={headlineImage}
-								alt={headlineImageAlt}
-								srcSet={srcset ? srcset : []}
-								sizes="330px"
-							/>
-							<div className="scroll-title-container">
-								<div className="scroll-title-pad">
-									<div className="scroll-title-wrap">
-										<h1 className="scroll-title">{headline}</h1>
-									</div>
-									<div className="scroll-kicker-wrapper">
-										<p className="scroll-kicker">{kicker}</p>
-									</div>
-									<div className="scroll-category-wrapper">
-										<h2 className="scroll-category">{category}</h2>
+				<LazyLoad once={true}>
+					<Link href={`/${urlDescription}/article/${id}`}>
+						<a className="scroll-image-anchor">
+							<div className="scroll-image-wrapper">
+								<img
+									className="scroll-image-main"
+									src={headlineImage}
+									alt={headlineImageAlt}
+									srcSet={srcset ? srcset : []}
+									sizes="330px"
+								/>
+								<div className="scroll-title-container">
+									<div className="scroll-title-pad">
+										<div className="scroll-title-wrap">
+											<h1 className="scroll-title">{headline}</h1>
+										</div>
+										<div className="scroll-kicker-wrapper">
+											<p className="scroll-kicker">{kicker}</p>
+										</div>
+										<div className="scroll-category-wrapper">
+											<h2 className="scroll-category">{category}</h2>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</a>
-				</Link>
+						</a>
+					</Link>
+				</LazyLoad>
 				<style jsx>{`
 					.header-section {
 						display: flex;

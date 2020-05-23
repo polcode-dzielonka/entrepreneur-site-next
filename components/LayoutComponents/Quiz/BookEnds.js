@@ -6,6 +6,7 @@ import { Slate, Editable } from "slate-react";
 import { createEditor } from "slate";
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
+
 const QuizBookEnds = ({
 	image,
 	imageAlt,
@@ -51,7 +52,9 @@ const QuizBookEnds = ({
 				imageAltAttributionLink={imageAltAttributionLink}
 				srcset={srcset}
 				styles={{ width: "100%", height: "100%" }}
+				noMaxHeight={true}
 			/>
+
 			{positionClosing && (
 				<h1 className="section-header">
 					{scoreComments[`scoreComment${commentNumber}`]}

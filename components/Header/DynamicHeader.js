@@ -11,7 +11,48 @@ const DynamicHeader = ({
 	canonical,
 	next,
 	prev,
+	createdAt,
+	updatedAt,
+	tags,
 }) => {
+	const structuredData = {
+		"@context": "http://schema.org",
+		"@type": "NewsArticle",
+		mainEntityOfPage: {
+			"@type": "WebPage",
+			"@id": canonical,
+		},
+		url: canonical,
+		name: title,
+		headline: title,
+		image: {
+			"@type": "ImageObject",
+			url: image,
+			height: imageHeight,
+			width: imageWidth,
+		},
+		datePublished: createdAt,
+		dateModified: updatedAt,
+		publisher: {
+			"@type": "Organization",
+			"@id": "https://wealthmack.com/#organization",
+			name: "WealthMack",
+			sameAs: [
+				"https://www.facebook.com/WealthMack-103552984448329/",
+				"https://www.youtube.com/channel/UC7PG3SDVzaVn7UO4uCEV8_g?sub_confirmation=1",
+				"https://twitter.com/intent/follow?source=followbutton&amp;variant=1.0&amp;screen_name=wealthmack",
+				"https://www.instagram.com/wealthmack1/",
+			],
+			logo: {
+				"@type": "ImageObject",
+				url: "https://www.wealthmack.com/static/wealthmack_logo.png",
+				height: 182,
+				width: 324,
+			},
+		},
+		articleSection: tags ? tags : ["Entrepreneur", "Business", "Motivation"],
+		description: description ? description : title,
+	};
 	return (
 		<Head>
 			<title>{title}</title>
@@ -29,6 +70,12 @@ const DynamicHeader = ({
 			<meta name="og:url" content={url} />
 			<meta name="og:image:width" content={imageWidth} />
 			<meta name="og:image:height" content={imageHeight} />
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(structuredData, null, 4),
+				}}
+			/>
 		</Head>
 	);
 };
@@ -43,6 +90,9 @@ DynamicHeader.propTypes = {
 	imageHeight: PropTypes.int,
 	next: PropTypes.string,
 	prev: PropTypes.string,
+	createdAt: PropTypes.string,
+	updatedAt: PropTypes.string,
+	tags: PropTypes.array,
 };
 DynamicHeader.defaultProps = {
 	imageWidth: 1024,
@@ -52,5 +102,6 @@ DynamicHeader.defaultProps = {
 	image: process.env.SITE_IMAGE,
 	next: "",
 	prev: "",
+	tags: [],
 };
 export default DynamicHeader;

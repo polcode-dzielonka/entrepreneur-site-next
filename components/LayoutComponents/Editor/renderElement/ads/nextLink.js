@@ -2,7 +2,7 @@ import { theme } from "../../../../../theme/baseCss";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-const NextLink = ({ brief, headline, image, url, title, srcset }) => {
+const NextLink = ({ brief, headline, image, url, title, srcset, imageAlt }) => {
 	return (
 		<div className="link-section">
 			<div className="scroll-text">{title}</div>
@@ -15,6 +15,7 @@ const NextLink = ({ brief, headline, image, url, title, srcset }) => {
 								className="quickview-image"
 								srcSet={srcset ? srcset : []}
 								sizes="150px"
+								alt={imageAlt}
 							/>
 						</div>
 						<div className="label">
@@ -23,7 +24,11 @@ const NextLink = ({ brief, headline, image, url, title, srcset }) => {
 						</div>
 
 						<div className="arrow-wrapper">
-							<img className="arrow" src={"/static/right-arrow.svg"} />
+							<img
+								className="arrow"
+								src={"/static/right-arrow.svg"}
+								alt="right-arrow"
+							/>
 						</div>
 					</a>
 				</Link>
@@ -124,6 +129,53 @@ const NextLink = ({ brief, headline, image, url, title, srcset }) => {
 					text-transform: capitalize;
 					margin: 1rem 0;
 				}
+
+				@media only screen and (max-width: 670px) {
+					.arrow {
+						width: 15%;
+						margin: 0 auto;
+						padding: 1rem;
+					}
+					.arrow-wrapper {
+						width: 100%;
+						height: 20%;
+					}
+					.link-label {
+						width: 90%;
+						padding: 1rem;
+						margin: 0 auto;
+						padding-bottom: 0rem;
+					}
+					.link-label-brief {
+						width: 90%;
+						padding: 1rem;
+						margin: 0 auto;
+						padding-bottom: 0rem;
+					}
+					.label {
+						height: 40%;
+						width: 100%;
+						padding: 0rem 1rem;
+					}
+					.quickview-link {
+						flex-direction: column;
+					}
+					.img-wrapper {
+						height: 40%;
+						width: 100%;
+						padding-left: 0rem;
+					}
+					.quickview-image {
+						width: 50%;
+						margin: 0 auto;
+					}
+				}
+				@media only screen and (max-width: 450px) {
+					.link-label {
+						font-size: 1rem;
+						line-height: 1.2rem;
+					}
+				}
 			`}</style>
 		</div>
 	);
@@ -140,6 +192,7 @@ NextLink.propTypes = {
 	image: PropTypes.String,
 	url: PropTypes.String,
 	title: PropTypes.String,
+	imageAlt: PropTypes.String,
 	srcset: PropTypes.Array,
 };
 

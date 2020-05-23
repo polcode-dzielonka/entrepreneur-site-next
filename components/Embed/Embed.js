@@ -11,20 +11,23 @@ const EmbedUrl = ({
 	imageAltAttributionLink,
 	srcset,
 	styles,
+	noMaxHeight,
 }) => {
 	const Embedo = dynamic(() => import("./embedo/Embed"), {
 		ssr: false,
 		loading: () => <SingleSocialLoader />,
 	});
+
 	return (
 		<>
 			{!embed && (
 				<ImageLoader
 					src={image}
-					imageAlt={imageAlt}
+					alt={imageAlt ? imageAlt : imageAltAttribution}
 					animation={false}
 					srcset={srcset}
 					styles={styles}
+					noMaxHeight={noMaxHeight}
 				/>
 			)}
 			{embed && (

@@ -1,6 +1,8 @@
 import { theme } from "../../../theme/baseCss";
 import Link from "next/link";
 import PropTypes from "prop-types";
+import LazyLoad from "react-lazyload";
+
 const SubScrollingContent = ({
 	category,
 	headline,
@@ -11,31 +13,33 @@ const SubScrollingContent = ({
 }) => {
 	return (
 		<article className="side-content" key={index}>
-			<Link href={"/"}>
-				<a className="side-headline-anchor">
-					<div className="side-image-wrapper">
-						<img
-							className="side-image-main"
-							src={headlineImage}
-							alt={headlineImageAlt}
-							srcSet={srcset ? srcset : []}
-							sizes="330px"
-						/>
-					</div>
-				</a>
-			</Link>
-			<div className="side-title-info">
-				<div className="side-title">
-					<Link href={"/"}>
-						<a className="info-link">{headline}</a>
-					</Link>
+			<LazyLoad once={true}>
+				<Link href={"/"}>
+					<a className="side-headline-anchor">
+						<div className="side-image-wrapper">
+							<img
+								className="side-image-main"
+								src={headlineImage}
+								alt={headlineImageAlt}
+								srcSet={srcset ? srcset : []}
+								sizes="330px"
+							/>
+						</div>
+					</a>
+				</Link>
+				<div className="side-title-info">
 					<div className="side-title">
 						<Link href={"/"}>
-							<a className="category-link">{category}</a>
+							<a className="info-link">{headline}</a>
 						</Link>
+						<div className="side-title">
+							<Link href={"/"}>
+								<a className="category-link">{category}</a>
+							</Link>
+						</div>
 					</div>
 				</div>
-			</div>
+			</LazyLoad>
 			<style jsx>{`
 				.category-link {
 					color: ${theme.secondary};

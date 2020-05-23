@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import ErrorMessage from "../error";
 import { NetworkStatus } from "apollo-client";
 import { SLIDESHOW } from "../../graphql/indivSlideShow";
-import { HEADLINES } from "../../graphql/headline";
+import { HEADLINES, QUIZ } from "../../graphql/headline";
 import SlideLoading from "../Loading/Layouts/QuizLoadingLayout";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
@@ -14,6 +14,7 @@ import {
 	QuickViewComponent,
 } from "../LayoutComponents";
 import FacebookPage from "../SocialMedia/FacebookPage";
+import LazyLoad from "react-lazyload";
 
 const QuickViewLayout = ({ id, position, url }) => {
 	const { loading, error, data, fetchMore, networkStatus } = useQuery(
@@ -37,7 +38,13 @@ const QuickViewLayout = ({ id, position, url }) => {
 		},
 		notifyOnNetworkStatusChange: true,
 	});
-
+	const quiz = useQuery(QUIZ, {
+		variables: {
+			filter: { mainHeadline: true },
+			// limit: 5,
+		},
+		notifyOnNetworkStatusChange: true,
+	});
 	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
 	// const loadMorePosts = () => {
@@ -58,7 +65,7 @@ const QuickViewLayout = ({ id, position, url }) => {
 	// };
 
 	if (error || headlines.error) return <SlideLoading />;
-	if ((loading && !loadingMorePosts) || headlines.loading)
+	if ((loading && !loadingMorePosts) || headlines.loading || quiz.loading)
 		return <SlideLoading />;
 
 	return (
@@ -81,14 +88,16 @@ const QuickViewLayout = ({ id, position, url }) => {
 						loading={headlines.loading}
 						type="article"
 					/>
-					<FacebookPage />
+					<LazyLoad once={true}>
+						<FacebookPage />
+					</LazyLoad>
 					<div className="section-padding">
 						<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
 					</div>
 					<SideBarSmallContent
-						data={headlines.data.listProductionArticles.items}
-						loading={headlines.loading}
-						type="article"
+						data={quiz.data.listProductionQuizs.items}
+						loading={quiz.loading}
+						type="quiz"
 					/>
 				</aside>
 			</main>

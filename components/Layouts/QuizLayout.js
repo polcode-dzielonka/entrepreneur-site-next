@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import ErrorMessage from "../error";
 import { NetworkStatus } from "apollo-client";
 import { QUIZ } from "../../graphql/indivQuiz";
-import { HEADLINES } from "../../graphql/headline";
+import { HEADLINES, SLIDE } from "../../graphql/headline";
 import QuizLoading from "../Loading/Layouts/QuizLoadingLayout";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
@@ -14,6 +14,7 @@ import {
 	QuizComponent,
 } from "../LayoutComponents";
 import FacebookPage from "../SocialMedia/FacebookPage";
+import LazyLoad from "react-lazyload";
 
 const Quiz = ({ id, position, url, score }) => {
 	const { loading, error, data, fetchMore, networkStatus } = useQuery(QUIZ, {
@@ -34,7 +35,12 @@ const Quiz = ({ id, position, url, score }) => {
 		},
 		notifyOnNetworkStatusChange: true,
 	});
-
+	const latestSlideShows = useQuery(SLIDE, {
+		variables: {
+			id: process.env.REACT_APP_SITE_ID,
+			filter: { mainHeadline: false },
+		},
+	});
 	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
 	// const loadMorePosts = () => {
@@ -54,8 +60,13 @@ const Quiz = ({ id, position, url, score }) => {
 	// 	});
 	// };
 
-	if (error || headlines.error) return <QuizLoading />;
-	if ((loading && !loadingMorePosts) || headlines.loading)
+	if (error || headlines.error || latestSlideShows.error)
+		return <QuizLoading />;
+	if (
+		(loading && !loadingMorePosts) ||
+		headlines.loading ||
+		latestSlideShows.loading
+	)
 		return <QuizLoading />;
 
 	return (
@@ -79,14 +90,16 @@ const Quiz = ({ id, position, url, score }) => {
 						loading={headlines.loading}
 						type="article"
 					/>
-					<FacebookPage />
+					<LazyLoad once={true}>
+						<FacebookPage />
+					</LazyLoad>
 					<div className="section-padding">
-						<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
+						<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
 					</div>
 					<SideBarSmallContent
-						data={headlines.data.listProductionArticles.items}
-						loading={headlines.loading}
-						type="article"
+						data={latestSlideShows.data.listProductionSlideshows.items}
+						loading={latestSlideShows.loading}
+						type="slideshow"
 					/>
 				</aside>
 			</main>

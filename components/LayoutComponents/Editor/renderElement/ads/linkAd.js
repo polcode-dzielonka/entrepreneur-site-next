@@ -48,7 +48,6 @@ const NextArticleAd = ({ children, attributes }) => {
 			console.log("Error with request", err);
 		}
 	};
-
 	return (
 		<div className="site-ad" {...attributes}>
 			{nextInfo.showNext && (
@@ -57,6 +56,7 @@ const NextArticleAd = ({ children, attributes }) => {
 					image={nextInfo.image}
 					headline={nextInfo.headline}
 					brief={nextInfo.brief}
+					imageAlt={nextInfo.imageAlt}
 				/>
 			)}
 			{children}

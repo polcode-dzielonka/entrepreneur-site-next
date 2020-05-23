@@ -11,6 +11,7 @@ import {
 	sideSocialButtons,
 } from "../../SocialMedia/data";
 import ShowMeta from "../../showMeta/showMeta";
+import LazyLoad from "react-lazyload";
 
 const ArticleHead = ({ overview, id }) => {
 	const details = JSON.parse(overview.overview);
@@ -28,6 +29,7 @@ const ArticleHead = ({ overview, id }) => {
 		displayDate,
 		showAuthor,
 		authorName,
+		tags,
 	} = details[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${urlDescription}/article/${id}`;
 	return (
@@ -38,18 +40,20 @@ const ArticleHead = ({ overview, id }) => {
 				url={canonical}
 				canonical={canonical}
 				image={headlineImage}
+				createdAt={displayDate}
+				updatedAt={displayDate}
+				tags={tags}
 			/>
-
 			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
 			<h1 className="section-heading">{headline}</h1>
 			<h3 className="section-category">{category}</h3>
-
 			<ImageLoader
 				src={headlineImage}
 				srcset={srcset}
 				alt={headlineImageAlt}
 				animation={false}
 				styles={{ width: "100%", height: "100%" }}
+				noMaxHeight={true}
 			/>
 			<h3 className="section-brief">{brief}</h3>
 			{bulletHeadlines > 0 && (
@@ -63,29 +67,30 @@ const ArticleHead = ({ overview, id }) => {
 					})}
 				</ul>
 			)}
-
 			<ShowMeta
 				showDate={showDate}
 				displayDate={displayDate}
 				showAuthor={showAuthor}
 				authorName={authorName}
 			/>
-			<hr className="break" />
-			<ShareButtonVert
-				data={sideSocialButtons}
-				url={canonical}
-				image={headlineImage}
-				headline={headline}
-				brief={brief}
-			/>
-			<ShareButtonHoriz
-				data={openingSocialButtons}
-				url={canonical}
-				image={headlineImage}
-				headline={headline}
-				brief={brief}
-				position={"top_share_horiz"}
-			/>
+			<LazyLoad once={true}>
+				<hr className="break" />
+				<ShareButtonVert
+					data={sideSocialButtons}
+					url={canonical}
+					image={headlineImage}
+					headline={headline}
+					brief={brief}
+				/>
+				<ShareButtonHoriz
+					data={openingSocialButtons}
+					url={canonical}
+					image={headlineImage}
+					headline={headline}
+					brief={brief}
+					position={"top_share_horiz"}
+				/>
+			</LazyLoad>
 			<hr className="break" />
 			<ArticleBody
 				content={overview}

@@ -14,6 +14,7 @@ const SlideLinkButton = ({ label, href }) => {
 							<img
 								className="arrow"
 								src={"/static/fatArrowRightWhitex128.png"}
+								alt="right-arrow"
 							/>
 						</div>
 					</a>

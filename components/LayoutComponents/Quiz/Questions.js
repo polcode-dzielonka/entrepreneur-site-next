@@ -140,7 +140,6 @@ const Questions = ({
 			setScore(score + 1);
 		}
 	};
-
 	return (
 		<div className="bookend-wrapper">
 			<h1 className="section-header-score">Current Score: {score}</h1>
@@ -154,6 +153,7 @@ const Questions = ({
 						imageAltAttributionLink={questionImageAttributionLink}
 						srcset={questionSrcset}
 						styles={{ width: "100%", height: "100%" }}
+						noMaxHeight={true}
 					/>
 				</div>
 			)}
@@ -167,6 +167,7 @@ const Questions = ({
 						imageAltAttributionLink={answerImageAttributionLink}
 						srcset={answerSrcset}
 						styles={{ width: "100%", height: "100%" }}
+						noMaxHeight={true}
 					/>
 				</div>
 			)}
@@ -198,6 +199,7 @@ const Questions = ({
 				correctAnswerComment={correctAnswerComment}
 				incorrectAnswerComment={incorrectAnswerComment}
 			/>
+
 			{showAnswer && (
 				<QuickViewButton
 					label="Next"
@@ -211,6 +213,11 @@ const Questions = ({
 						nextQuestionData[0]
 							? nextQuestionData[0].questionSrcset
 							: questionSrcset
+					}
+					imageAlt={
+						nextQuestionData[0]
+							? nextQuestionData[0].questionImageAlt
+							: questionImageAlt
 					}
 				/>
 			)}

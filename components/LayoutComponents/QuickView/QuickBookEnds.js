@@ -33,6 +33,7 @@ const BookEnds = ({
 				imageAltAttributionLink={imageAltAttributionLink}
 				srcset={srcset}
 				styles={{ width: "100%", height: "100%" }}
+				noMaxHeight={true}
 			/>
 			<>
 				<div className="section-paragraph">

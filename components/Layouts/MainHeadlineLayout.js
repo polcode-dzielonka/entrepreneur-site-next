@@ -17,7 +17,8 @@ import RippleButton from "../Button/Button";
 import LazyLoad from "react-lazyload";
 import Head from "next/head";
 import FacebookPage from "../SocialMedia/FacebookPage";
-
+import organisationData from "../StructuredData/organisation";
+import webPageData from "../StructuredData/webPage";
 const MainHeadlineLayout = ({
 	QUERY,
 	title,
@@ -107,6 +108,7 @@ const MainHeadlineLayout = ({
 			);
 		},
 	);
+
 	return (
 		<Layout>
 			<Head>
@@ -116,6 +118,18 @@ const MainHeadlineLayout = ({
 					href={`${process.env.SITE_ADDRESS}${
 						canonical ? `/${canonical}` : ``
 					}`}
+				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(organisationData, null, 4),
+					}}
+				/>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify(webPageData, null, 4),
+					}}
 				/>
 			</Head>
 			<div className="home-container">
@@ -156,8 +170,10 @@ const MainHeadlineLayout = ({
 							data={quiz.data.listProductionQuizs.items}
 							loading={quiz.loading}
 							type="quiz"
-						/>
-						<FacebookPage />
+						/>{" "}
+						<LazyLoad once={true}>
+							<FacebookPage />
+						</LazyLoad>
 						<div className="section-padding">
 							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
 						</div>
@@ -171,7 +187,6 @@ const MainHeadlineLayout = ({
 							loading={quiz.loading}
 							type="article"
 						/> */}
-
 						<SideBarSmallContent
 							data={slide.data.listProductionSlideshows.items}
 							loading={slide.loading}

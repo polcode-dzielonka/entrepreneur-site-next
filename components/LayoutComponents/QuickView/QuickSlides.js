@@ -9,6 +9,7 @@ import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import defaultValue from "../Editor/defaultValue";
 import QuickViewButton from "../../Button/QuickViewButton";
+import LazyLoad from "react-lazyload";
 
 const QuickSlides = ({
 	total,
@@ -54,6 +55,7 @@ const QuickSlides = ({
 				imageAltAttributionLink={slideImageAttributionLink}
 				srcset={srcset}
 				styles={{ width: "100%", height: "100%" }}
+				noMaxHeight={true}
 			/>
 			<div className="section-paragraph">
 				<Slate editor={editor} value={value}>
@@ -64,12 +66,19 @@ const QuickSlides = ({
 					/>
 				</Slate>
 			</div>
-			<QuickViewButton
-				label="Next"
-				imgSrc={nextSlideData[0] ? nextSlideData[0].slideImage : slideImage}
-				href={nextHref}
-				srcset={nextSlideData[0] ? nextSlideData[0].srcset : srcset}
-			/>
+			<LazyLoad once={true}>
+				<QuickViewButton
+					label="Next"
+					imgSrc={nextSlideData[0] ? nextSlideData[0].slideImage : slideImage}
+					href={nextHref}
+					srcset={nextSlideData[0] ? nextSlideData[0].srcset : srcset}
+					imageAlt={
+						nextSlideData[0]
+							? nextSlideData[0].slideImageAlt
+							: "Next Slide Image"
+					}
+				/>
+			</LazyLoad>
 			<style jsx>
 				{`
 						.bookend-wrapper {

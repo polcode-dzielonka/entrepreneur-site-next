@@ -127,6 +127,7 @@ const SignUpModal = () => {
 										<img
 											src="/static/business_motivation.svg"
 											className="modal-logo"
+											alt="wealthmack_logo"
 										/>
 									</div>
 									<h1 className="header-primary">Keep Me Updated</h1>

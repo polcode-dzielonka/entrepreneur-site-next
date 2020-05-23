@@ -80,6 +80,7 @@ const QuickView = ({ content, position, url, id }) => {
 							imgSrc={details[0].headlineImage}
 							srcset={details[0].srcset}
 							href={`${nextHref}/1`}
+							imageAlt={details[0].headlineImageAlt}
 						/>
 					)}
 				</>
@@ -100,16 +101,21 @@ const QuickView = ({ content, position, url, id }) => {
 					nextHref={`${nextHref}/${slideEndRef}`}
 				/>
 			)}
-			<ScrollUpButton />
-			<hr className="break" />
-			<ShareButtonHoriz
-				data={closingSocialButtons}
-				url={shareUrl}
-				image={headlineImage}
-				headline={title}
-				brief={blurb}
-				position={"bottom_quickview_share_horiz"}
-			/>
+			<LazyLoad once={true}>
+				<ScrollUpButton />
+			</LazyLoad>
+			<LazyLoad once={true}>
+				<hr className="break" />
+				<ShareButtonHoriz
+					data={closingSocialButtons}
+					url={shareUrl}
+					image={headlineImage}
+					headline={title}
+					brief={blurb}
+					position={"bottom_quickview_share_horiz"}
+				/>
+			</LazyLoad>
+
 			<hr className="break" />
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
@@ -117,7 +123,10 @@ const QuickView = ({ content, position, url, id }) => {
 				headline={title}
 				headlineUrl={shareUrl}
 			/>
-			<QuickEmailSignUp />
+			<LazyLoad once={true}>
+				<QuickEmailSignUp />
+			</LazyLoad>
+
 			{position === "closing" && (
 				<>
 					<SectionBar

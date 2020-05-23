@@ -21,12 +21,12 @@ const FacebookPage = ({ url, numPostsVisible, orderBy }) => {
 					.social-container {
 						margin: 0 auto;
 						padding: 1rem 0rem;
-						width: auto;
+						width: 100%;
 					}
 				}
 				@media only screen and (max-width: 480px) {
 					.social-container {
-						width: 100%;
+						width: auto;
 					}
 				}
 			`}</style>

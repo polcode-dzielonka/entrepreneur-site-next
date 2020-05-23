@@ -13,6 +13,7 @@ import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import SectionBar from "../SectionBar";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
+
 const ArticleBody = ({
 	content,
 	category,
@@ -36,24 +37,32 @@ const ArticleBody = ({
 					renderLeaf={renderLeaf}
 				/>
 			</Slate>
-			<ScrollUpButton />
+			<LazyLoad once={true}>
+				<ScrollUpButton />
+			</LazyLoad>
+
 			<br />
-			<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
-			<ShareButtonHoriz
-				data={closingSocialButtons}
-				url={url}
-				image={image}
-				headline={headline}
-				brief={brief}
-				position={"bottom_share_horiz"}
-			/>
+			<LazyLoad once={true}>
+				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
+				<ShareButtonHoriz
+					data={closingSocialButtons}
+					url={url}
+					image={image}
+					headline={headline}
+					brief={brief}
+					position={"bottom_share_horiz"}
+				/>
+			</LazyLoad>
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
 				category={category}
 				headline={headline}
 				headlineUrl={url}
 			/>
-			<QuickEmailSignUp />
+			<LazyLoad once={true}>
+				<QuickEmailSignUp />
+			</LazyLoad>
+
 			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="2rem" />
 			<FacebookComments url={url} numPostsVisible={5} orderBy="reverse_time" />
 			<LazyLoad>

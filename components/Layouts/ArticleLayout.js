@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 import ErrorMessage from "../error";
 import { NetworkStatus } from "apollo-client";
 import { ARTICLE } from "../../graphql/indivArticle";
-import { HEADLINES } from "../../graphql/headline";
+import { HEADLINES, QUIZ } from "../../graphql/headline";
 import ArticleLoading from "../Loading/Layouts/ArticleLoadingLayout";
 import PropTypes from "prop-types";
 import { theme } from "../../theme/baseCss";
@@ -14,6 +14,7 @@ import {
 	ArticleHead as ArticleContent,
 } from "../LayoutComponents";
 import FacebookPage from "../SocialMedia/FacebookPage";
+import LazyLoad from "react-lazyload";
 
 const Article = ({ id }) => {
 	const { loading, error, data, fetchMore, networkStatus } = useQuery(ARTICLE, {
@@ -35,6 +36,13 @@ const Article = ({ id }) => {
 		notifyOnNetworkStatusChange: true,
 	});
 
+	const quiz = useQuery(QUIZ, {
+		variables: {
+			filter: { mainHeadline: true },
+			// limit: 5,
+		},
+		notifyOnNetworkStatusChange: true,
+	});
 	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
 	// const loadMorePosts = () => {
@@ -55,7 +63,7 @@ const Article = ({ id }) => {
 	// };
 
 	if (error || headlines.error) return <ArticleLoading />;
-	if ((loading && !loadingMorePosts) || headlines.loading)
+	if ((loading && !loadingMorePosts) || headlines.loading || quiz.loading)
 		return <ArticleLoading />;
 
 	return (
@@ -73,14 +81,16 @@ const Article = ({ id }) => {
 						loading={headlines.loading}
 						type="article"
 					/>
-					<FacebookPage />
+					<LazyLoad once={true}>
+						<FacebookPage />
+					</LazyLoad>
 					<div className="section-padding">
 						<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
 					</div>
 					<SideBarSmallContent
-						data={headlines.data.listProductionArticles.items}
-						loading={headlines.loading}
-						type="article"
+						data={quiz.data.listProductionQuizs.items}
+						loading={quiz.loading}
+						type="quiz"
 					/>
 				</aside>
 			</main>

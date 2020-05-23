@@ -6,13 +6,13 @@ import { Slate, Editable } from "slate-react";
 import { createEditor } from "slate";
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
-import LazyLoad from "react-lazyload";
 
 const BookEnds = ({
 	image,
 	imageAlt,
 	imageAltAttribution,
 	imageAltAttributionLink,
+	showHeadlineImage,
 	srcset,
 	title,
 	details,
@@ -40,7 +40,7 @@ const BookEnds = ({
 					</div>
 				</>
 			)}
-			<LazyLoad once={true}>
+			{showHeadlineImage && (
 				<Embed
 					embed={embed}
 					image={image}
@@ -49,8 +49,9 @@ const BookEnds = ({
 					imageAltAttributionLink={imageAltAttributionLink}
 					srcset={srcset}
 					styles={{ width: "100%", height: "100%" }}
+					noMaxHeight={true}
 				/>
-			</LazyLoad>
+			)}
 			{position === "closing" && (
 				<>
 					<h1 className="section-header"> {title}</h1>

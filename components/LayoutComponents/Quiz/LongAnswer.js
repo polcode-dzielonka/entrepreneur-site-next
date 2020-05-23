@@ -24,7 +24,11 @@ const LongAnswer = ({
 					{correct && (
 						<div className="correct">
 							<div className="correct-group">
-								<img className="correct-image" src={"/static/tickx128.png"} />
+								<img
+									className="correct-image"
+									src={"/static/tickx128.png"}
+									alt="correct-tick-icon"
+								/>
 								<div className="correct-label">Correct</div>
 							</div>
 						</div>
@@ -36,6 +40,7 @@ const LongAnswer = ({
 									<img
 										className="incorrect-image"
 										src={"/static/deletex128.png"}
+										alt="incorrect-cross-icon"
 									/>
 								</div>
 								<div className="incorrect-label">Wrong</div>
