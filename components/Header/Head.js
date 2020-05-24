@@ -7,8 +7,8 @@ const MainHead = () => {
 			<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			<meta httpEquiv="Content-Type" content="text/html: charset=UTF-8" />
 			<link
-				href="https://fonts.googleapis.com/css?family=Khand"
-				rel="stylesheet"
+				href="https://fonts.googleapis.com/css?family=Khand&display=swap"
+				rel="preload"
 				key="google-font-khand"
 				as="font"
 			/>
