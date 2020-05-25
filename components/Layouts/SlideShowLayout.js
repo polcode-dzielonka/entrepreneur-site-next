@@ -41,7 +41,7 @@ const Slide = ({ id, position, url }) => {
 	const latestSlideShows = useQuery(SLIDE, {
 		variables: {
 			id: process.env.REACT_APP_SITE_ID,
-			filter: { mainHeadline: false },
+			longForm: "true",
 			limit: 5,
 		},
 	});

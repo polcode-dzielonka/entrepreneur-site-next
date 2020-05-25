@@ -38,7 +38,7 @@ const Quiz = ({ id, position, url, score }) => {
 	const latestSlideShows = useQuery(SLIDE, {
 		variables: {
 			id: process.env.REACT_APP_SITE_ID,
-			filter: { mainHeadline: false },
+			longForm: "true",
 		},
 	});
 	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;

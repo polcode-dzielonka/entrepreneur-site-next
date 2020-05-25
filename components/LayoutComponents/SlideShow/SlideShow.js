@@ -32,7 +32,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	if (!slides) {
 		return <ErrorLoader />;
 	}
-	const href = `/${url}/quickview/${id}/slides/${position}`;
+	// const href = `/${url}/quickview/${id}/slides/${position}`;
 	const bookEndOpening = slides["opening"][0];
 	const bookEndClosing = slides["closing"][0];
 

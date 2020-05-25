@@ -47,7 +47,7 @@ const HeadlineLayout = ({
 
 	const slide = useQuery(SLIDE, {
 		variables: {
-			filter: { mainHeadline: true },
+			longForm: "true",
 			// limit: 5,
 		},
 		notifyOnNetworkStatusChange: true,

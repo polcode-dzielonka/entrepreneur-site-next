@@ -165,9 +165,14 @@ export const QUIZ = gql`
 export const SLIDE = gql`
 	query ListProductionSlideshows(
 		$filter: CreateProductionSlideshowInput
+		$longForm: String
 		$limit: Int
 	) {
-		listProductionSlideshows(filter: $filter, limit: $limit) {
+		listProductionSlideshows(
+			filter: $filter
+			limit: $limit
+			longForm: $longForm
+		) {
 			items {
 				id
 				authorId
@@ -261,8 +266,16 @@ export const LATEST_QUIZ = /* GraphQL */ `
 `;
 
 export const LATEST_SLIDE = /* GraphQL */ `
-	query ListProductionSlideshows($limit: Int, $nextToken: String) {
-		listProductionSlideshows(limit: $limit, nextToken: $nextToken) {
+	query ListProductionSlideshows(
+		$limit: Int
+		$nextToken: String
+		$longForm: String
+	) {
+		listProductionSlideshows(
+			limit: $limit
+			nextToken: $nextToken
+			longForm: $longForm
+		) {
 			items {
 				id
 				authorId

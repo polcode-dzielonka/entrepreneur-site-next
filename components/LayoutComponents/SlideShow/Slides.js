@@ -118,7 +118,7 @@ const Slides = ({
 								image={midDataOverview[0].headlineImage}
 								imageAlt={midDataOverview[0].headlineImageAlt}
 								srcset={midDataOverview[0].srcset}
-								url={`/${midDataOverview[0].slideUrl}/quickview/${midDataId}/slides/opening`}
+								url={`/${midDataOverview[0].slideUrl}/slideshow/${midDataId}/slides/opening`}
 							/>
 							<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
 						</LazyLoad>

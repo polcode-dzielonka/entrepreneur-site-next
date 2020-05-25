@@ -22,7 +22,6 @@ const NextLink = ({ brief, headline, image, url, title, srcset, imageAlt }) => {
 							<div className="link-label">{headline}</div>
 							<div className="link-label-brief">{brief}</div>
 						</div>
-
 						<div className="arrow-wrapper">
 							<img
 								className="arrow"
