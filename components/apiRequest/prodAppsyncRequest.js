@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const prodApiRequest = async queryData => {
+	console.log("HIT ME");
 	const { data } = await axios({
 		url: process.env.REACT_APP_PRODUCTION_MANUAL_ENDPOINT, //process.env.REACT_APP_PROD_ENDPOINT,
 		method: "POST",
