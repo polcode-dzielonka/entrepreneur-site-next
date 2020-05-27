@@ -1,11 +1,9 @@
-import axios from "axios";
 import shareCountFactory from "../utils/shareCountFactory";
 
 const getFacebookShareCount = async (shareUrl, callback) => {
 	const endpoint = `https://graph.facebook.com/?id=${shareUrl}&fields=og_object{engagement}`;
 	try {
-		const { data } = await axios({
-			url: endpoint,
+		const { data } = await fetch(endpoint, {
 			method: "GET",
 		});
 		callback(

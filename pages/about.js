@@ -1,7 +1,6 @@
 import Layout from "../components/Layouts/Layout";
 import Link from "next/link";
 import { theme } from "../theme/baseCss";
-import { withApollo } from "../lib/apollo";
 import Vanilla from "../components/Layouts/vanillaLayout";
 import Head from "next/head";
 const About = () => {
@@ -227,7 +226,4 @@ const About = () => {
 		</Layout>
 	);
 };
-export default withApollo(About, {
-	// Disable apollo ssr fetching in favour of automatic static optimization
-	ssr: false,
-});
+export default About;

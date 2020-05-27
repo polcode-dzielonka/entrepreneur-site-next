@@ -2,16 +2,6 @@ import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import { theme } from "../theme/baseCss";
-// const social = [
-// 	{ name: "description", content: `${helmetMetaComment}` },
-// 	{ name: "twitter:title", content: `${helmetTitle}` },
-// 	{ name: "twitter:description", content: `${helmetMetaComment}` },
-// 	{ name: "twitter:image", content: `${helmetImage}` },
-// 	{ property: "og:title", content: `${helmetTitle}` },
-// 	{ property: "og:type", content: "article" },
-// 	{ property: "og:image", content: `${helmetImage}` },
-// 	{ property: "og:description", content: `${helmetMetaComment}` },
-// ];
 
 const DefaultError = () => {
 	return (

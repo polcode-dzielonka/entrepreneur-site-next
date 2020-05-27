@@ -1,11 +1,22 @@
-import { ALL_POSTS_QUERY } from "../graphql/headline";
+import {
+	ALL_POSTS_QUERY,
+	QUIZ,
+	SLIDE,
+	HEADLINES,
+	LATEST,
+} from "../graphql/headline";
 import HeadlineLayout from "../components/Layouts/HeadlineLayout";
-import { withApollo } from "../lib/apollo";
+import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
+import prodRequest from "../components/apiRequest/prodRequest";
 
-const Networth = () => {
+const Networth = ({ headline, quiz, slide }) => {
+	if (!headline.data || !quiz.data || !slide.data)
+		return <MainHeadlineLoading />;
 	return (
 		<HeadlineLayout
-			QUERY={ALL_POSTS_QUERY}
+			headline={headline.data.listProductionArticles}
+			quiz={quiz.data.listProductionQuizs}
+			slide={slide.data.listProductionSlideshows}
 			title="Networth"
 			pageTitle="Networth"
 			canonical="networth"
@@ -13,4 +24,46 @@ const Networth = () => {
 	);
 };
 
-export default withApollo(Networth);
+// This gets called on every request
+export async function getServerSideProps() {
+	// Fetch data from external API
+	const querys = [
+		{
+			query: HEADLINES,
+			variables: {
+				filter: { category: "networth" },
+			},
+			operationName: "ListProductionArticles",
+		},
+
+		{
+			query: QUIZ,
+			variables: {
+				filter: { mainHeadline: true },
+				// limit: 5,
+			},
+			operationName: "ListProductionQuizs",
+		},
+		{
+			query: SLIDE,
+			variables: {
+				longForm: "true",
+				// limit: 5,
+			},
+			operationName: "ListProductionSlideshows",
+		},
+	];
+	const [headline, quiz, slide] = await Promise.all(
+		querys.map(query =>
+			prodRequest({
+				query: query.query,
+				variables: query.variables,
+				operationName: query.operationName,
+			}),
+		),
+	);
+
+	// Pass data to the page via props
+	return { props: { headline, quiz, slide } };
+}
+export default Networth;

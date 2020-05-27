@@ -9,7 +9,7 @@ import QuickViewButton from "../../Button/QuickViewButton";
 import LongAnswer from "./LongAnswer";
 import Cookie from "js-cookie";
 import router from "next/router";
-import prodRequest from "../../apiRequest/prodAppsyncRequest";
+import prodRequest from "../../apiRequest/prodRequest";
 
 const Questions = ({
 	total,

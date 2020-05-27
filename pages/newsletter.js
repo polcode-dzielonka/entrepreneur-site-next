@@ -14,7 +14,7 @@ import { EMAIL_SIGN_UP } from "../graphql/emailSignUp";
 import Cookie from "js-cookie";
 import Link from "next/link";
 import ImageLoader from "../components/Loading/ImageLoader";
-import manualRequest from "../components/apiRequest/prodAppsyncRequest";
+import manualRequest from "../components/apiRequest/prodRequest";
 
 const Newsletter = ({ url }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);

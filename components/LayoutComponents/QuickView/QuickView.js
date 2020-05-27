@@ -38,7 +38,7 @@ const QuickView = ({ content, position, url, id }) => {
 	const nextHref = `/${url}/quickview/${id}/slides`;
 	const shareUrl = `${process.env.SITE_ADDRESS}/${url}/quickview/${id}/slides/opening`;
 	const commentsUrl = `${process.env.SITE_ADDRESS}/${url}/quickview/${id}/slides/closing`;
-
+	console.log("NEXT ", nextHref);
 	const slideEndRef =
 		positionNumber + 1 === content.numSlides + 1
 			? "closing"

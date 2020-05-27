@@ -1,0 +1,21 @@
+{
+	"short_name": "WealthMack",
+	"name": "WealthMack",
+	"icons": [
+		{
+			"src": "static/favicon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/static/favicon-310.png",
+			"type": "image/png",
+			"sizes": "310x310"
+		}
+	],
+	"start_url": "/?source=pwa",
+	"background_color": "101010",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#101010"
+}

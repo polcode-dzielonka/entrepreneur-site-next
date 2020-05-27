@@ -8,8 +8,7 @@ import {
 	ERROR_STATE,
 } from "../data/contactFormData";
 import { useState } from "react";
-import uuid from "uuid";
-import axios from "axios";
+import { v1 as uuid } from "uuid";
 import { theme } from "../theme/baseCss";
 import validate from "../components/FormValidation/Validation";
 import Reaptcha from "reaptcha";
@@ -36,7 +35,13 @@ const Contact = ({ router }) => {
 			};
 
 			try {
-				await axios.post(URL, { ...submitForm });
+				await fetch(URL, {
+					method: "POST",
+					body: { ...submitForm },
+					headers: {
+						Accept: "application/json",
+					},
+				});
 				setFormData(INITIAL_STATE);
 				setErrors({
 					ERROR_STATE,

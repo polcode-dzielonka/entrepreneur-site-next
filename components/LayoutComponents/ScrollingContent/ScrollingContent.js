@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 import SubScrollingContent from "./SubContent";
 import MainScrollingContent from "./MainContent";
 import SectionBar from "../SectionBar";
-import schemaType from "./utils/schemaSelect";
+import sideHelper from "../../helper/sideBarHelper";
 import querySelect from "./utils/querySelect";
-import prodRequest from "../../apiRequest/prodAppsyncRequest";
-
+import prodRequest from "../../apiRequest/prodRequest";
+import { filterUnique } from "../../../utils/handler";
+import styles from "./styles/scrollingContent.module.css";
 const limit = 5;
 const ScrollingContent = ({ id, title, type }) => {
 	const [QUERY, queryString, operationName] = querySelect(type);
@@ -29,8 +30,10 @@ const ScrollingContent = ({ id, title, type }) => {
 	const getQueryData = async queryData => {
 		try {
 			const { data } = await prodRequest(queryData);
-			setContent([...data.data[queryString].items, ...content]);
-			setNextToken(data.data[queryString].nextToken);
+			const uniqueContent = filterUnique(data[queryString].items, content);
+			const scrollingContent = content.concat(uniqueContent);
+			setContent(scrollingContent);
+			setNextToken(data[queryString].nextToken);
 		} catch (err) {
 			console.log("Error with requests", err);
 			setNextToken(false);
@@ -43,6 +46,7 @@ const ScrollingContent = ({ id, title, type }) => {
 			operationName: operationName,
 			variables: { id: process.env.REACT_APP_SITE_ID, limit: limit },
 		};
+
 		getQueryData(queryData);
 	};
 
@@ -81,19 +85,19 @@ const ScrollingContent = ({ id, title, type }) => {
 	if (!content || content.length < 1)
 		return <ScrollingArticlesLoading height="200px" />;
 	return (
-		<div className="scrolling-wrapper">
+		<div className={styles.scrollingWrapper}>
 			<SectionBar title={title} titleColor="#111" titleSize="2rem" />
 			{content.map((content, index) => {
 				if (content.id === id) return null;
-				const overview = JSON.parse(content.overview);
 
 				const {
 					headlineImage,
 					headlineImageAlt,
 					headline,
 					category,
-					kicker,
-				} = schemaType(type, overview[0]);
+					contentLink,
+				} = sideHelper(content, "slideshow");
+
 				if (index % 4 === 0) {
 					return (
 						<MainScrollingContent
@@ -103,6 +107,7 @@ const ScrollingContent = ({ id, title, type }) => {
 							headlineImageAlt={headlineImageAlt}
 							index={index}
 							key={index}
+							contentLink={contentLink}
 						/>
 					);
 				}
@@ -114,17 +119,10 @@ const ScrollingContent = ({ id, title, type }) => {
 						headlineImageAlt={headlineImageAlt}
 						index={index}
 						key={index}
+						contentLink={contentLink}
 					/>
 				);
 			})}
-			<style jsx>
-				{`
-					.scrolling-wrapper {
-						display: flex;
-						flex-wrap: wrap;
-					}
-				`}
-			</style>
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import SideBarSmallComponent from "./SideBar/SideBarSmallComponent";
 import sideHelper from "../helper/sideBarHelper";
-const SideBarSmallContent = ({ data, loading, type }) => {
+const SideBarSmallContent = ({ data, type }) => {
 	return data.map((content, index) => {
 		const {
 			headlineImage,

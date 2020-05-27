@@ -1,6 +1,4 @@
-import gql from "graphql-tag";
-
-export const SLIDESHOW = gql`
+export const SLIDESHOW = /* GraphQL */ `
 	query GetProductionSlideshow($id: String!) {
 		getProductionSlideshow(id: $id) {
 			id

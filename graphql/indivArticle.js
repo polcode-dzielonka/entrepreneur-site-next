@@ -1,6 +1,4 @@
-import gql from "graphql-tag";
-
-export const ARTICLE = gql`
+export const ARTICLE = /* GraphQL */ `
 	query GetProductionArticle($id: String!) {
 		getProductionArticle(id: $id) {
 			id
@@ -42,7 +40,7 @@ export const ADVERT_ARTICLE = /* GraphQL */ `
 		}
 	}
 `;
-export const NEXT_ARTICLE = `
+export const NEXT_ARTICLE = /* GraphQL */ `
 	query ListProductionArticles($limit: Int) {
 		listProductionArticles(limit: $limit) {
 			items {

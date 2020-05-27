@@ -1,9 +1,7 @@
-import axios from "axios";
 export default async function rssFunc(req, res) {
 	res.setHeader("Content-Type", "application/xml");
 	try {
-		let xmlFile = await axios({
-			url: process.env.RSS_URL,
+		let xmlFile = await fetch(process.env.RSS_URL, {
 			method: "GET",
 			headers: {
 				Accept: "application/xml",

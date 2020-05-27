@@ -1,6 +1,4 @@
-import gql from "graphql-tag";
-
-export const QUIZ = gql`
+export const QUIZ = /* GraphQL */ `
 	query GetProductionQuiz($id: String!) {
 		getProductionQuiz(id: $id) {
 			id

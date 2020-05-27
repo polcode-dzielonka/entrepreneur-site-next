@@ -2,7 +2,6 @@ import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import { theme } from "../theme/baseCss";
-import { withApollo } from "../lib/apollo";
 import Vanilla from "../components/Layouts/vanillaLayout";
 
 const Terms = () => {
@@ -525,7 +524,4 @@ const Terms = () => {
 	);
 };
 
-export default withApollo(Terms, {
-	// Disable apollo ssr fetching in favour of automatic static optimization
-	ssr: false,
-});
+export default Terms;

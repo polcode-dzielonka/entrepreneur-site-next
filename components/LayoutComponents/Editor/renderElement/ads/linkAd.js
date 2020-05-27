@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import router from "next/router";
 import { NEXT_ARTICLE } from "../../../../../graphql/indivArticle";
 import NextLink from "./nextLink";
-import prodRequest from "../../../../apiRequest/prodAppsyncRequest";
+import prodRequest from "../../../../apiRequest/prodRequest";
 
 const NextArticleAd = ({ children, attributes }) => {
 	const [nextInfo, setNextInfo] = useState({

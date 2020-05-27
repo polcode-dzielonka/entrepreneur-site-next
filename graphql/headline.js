@@ -1,6 +1,4 @@
-import gql from "graphql-tag";
-
-export const ALL_POSTS_QUERY = gql`
+export const ALL_POSTS_QUERY = /* GraphQL */ `
 	query GetProductionSite($id: String!) {
 		getProductionSite(id: $id) {
 			id
@@ -78,7 +76,7 @@ export const ALL_POSTS_QUERY = gql`
 		}
 	}
 `;
-export const HEADLINES = gql`
+export const HEADLINES = /* GraphQL */ `
 	query ListProductionArticles(
 		$filter: CreateProductionArticleInput
 		$limit: Int
@@ -106,7 +104,7 @@ export const HEADLINES = gql`
 	}
 `;
 
-export const LATEST = gql`
+export const LATEST = /* GraphQL */ `
 	query ListProductionArticles(
 		$filter: CreateProductionArticleInput
 		$limit: Int
@@ -134,7 +132,7 @@ export const LATEST = gql`
 	}
 `;
 
-export const QUIZ = gql`
+export const QUIZ = /* GraphQL */ `
 	query ListProductionQuizs($filter: CreateProductionQuizInput, $limit: Int) {
 		listProductionQuizs(filter: $filter, limit: $limit) {
 			items {
@@ -162,7 +160,7 @@ export const QUIZ = gql`
 		}
 	}
 `;
-export const SLIDE = gql`
+export const SLIDE = /* GraphQL */ `
 	query ListProductionSlideshows(
 		$filter: CreateProductionSlideshowInput
 		$longForm: String

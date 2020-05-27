@@ -1,0 +1,48 @@
+.articleContainer {
+	display: flex;
+	flex-direction: row;
+	font-size: 10px;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+.articleSection {
+	display: flex;
+	flex-direction: column;
+	font-size: 10px;
+	width: 70%;
+	height: 100%;
+}
+.sideArticleSection {
+	display: flex;
+	flex-direction: column;
+	font-size: 10px;
+	width: 30%;
+}
+.sectionPadding {
+	padding-right: 0.5rem;
+}
+
+.pageLayout {
+	margin: 0 auto;
+	width: 80%;
+	max-width: 1200px;
+}
+
+@media only screen and (max-width: 1000px) {
+	.articleContainer {
+		flex-direction: column;
+	}
+	.articleSection {
+		width: 100%;
+	}
+	.sideArticleSection {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.pageLayout {
+		width: 100%;
+		margin: 0 auto;
+	}
+}

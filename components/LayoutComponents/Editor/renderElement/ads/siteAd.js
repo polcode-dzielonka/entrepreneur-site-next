@@ -4,7 +4,7 @@ import router from "next/router";
 import { ADVERT_ARTICLE } from "../../../../../graphql/indivArticle";
 import { midSocialButtons } from "../../../../SocialMedia/data";
 import ShareButtonHoriz from "../../../../SocialMedia/ShareButtonsHoriz";
-import prodRequest from "../../../../apiRequest/prodAppsyncRequest";
+import prodRequest from "../../../../apiRequest/prodRequest";
 const SiteAd = ({ children, attributes }) => {
 	const [shareInfo, setShareInfo] = useState({
 		url: "",
