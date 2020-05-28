@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
+
 const SectionBar = ({ title, titleColor, titleSize }) => {
 	return (
 		<>

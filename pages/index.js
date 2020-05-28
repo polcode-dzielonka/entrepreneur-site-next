@@ -17,7 +17,6 @@ const Home = ({ site, headline, latest, quiz, slide }) => {
 		latest.data.listProductionArticles.items,
 		headline.data.listProductionArticles.items,
 	);
-	console.log("NEWLATE", newLatestArticles);
 	return (
 		<MainHeadlineLayout
 			site={site.data.getProductionSite}

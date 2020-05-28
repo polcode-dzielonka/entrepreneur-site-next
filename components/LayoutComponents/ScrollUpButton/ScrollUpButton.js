@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { theme } from "../../../theme/baseCss";
 import Arrow from "./Arrow";
 
 const ScrollUpButton = () => {

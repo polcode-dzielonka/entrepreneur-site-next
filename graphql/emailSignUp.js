@@ -17,3 +17,14 @@ export const EMAIL_SIGN_UP = /* GraphQL */ `
 		}
 	}
 `;
+
+export const createContactForm = /* GraphQL */ `
+	mutation CreateContactForm($input: ContactFormInput!) {
+		createContactForm(input: $input) {
+			id
+			message
+			email
+			site
+		}
+	}
+`;

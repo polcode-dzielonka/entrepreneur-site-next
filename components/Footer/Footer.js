@@ -1,6 +1,5 @@
 import { footerLinks, socialLinks } from "../../data/data";
 import Link from "next/link";
-import { theme } from "../../theme/baseCss";
 
 const Footer = ({ menuOpen, onClick }) => {
 	return (

@@ -10,6 +10,7 @@ import {
 	QUIZ as QUIZ_CONTENT,
 	LATEST,
 } from "../../../../../graphql/headline";
+
 const Questions = ({
 	individual,
 	headline,

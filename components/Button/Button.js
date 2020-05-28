@@ -1,7 +1,6 @@
-import { theme } from "../../theme/baseCss";
 import PropTypes from "prop-types";
 import Ripples from "./Ripples";
-
+import styles from "./styles/buttonStyles.module.sass";
 const RippleButton = ({
 	loading,
 	handler,
@@ -18,41 +17,15 @@ const RippleButton = ({
 				type={type}
 				disabled={loading}
 				className="button"
+				styles={{ backgroundColor: color }}
 			>
-				<div className="submit-button">{label}</div>
+				<div className={styles.submitButton}>{label}</div>
 				<style jsx>{`
-					.react-ripples {
-						width: 100%;
-						content: "";
-					}
-					button {
-						width: 100%;
-						height: 2.5rem;
-						background-color: ${color};
-						cursor: pointer;
-						position: relative;
-						border: none;
-					}
-					.button:focus {
-						outline: none;
-					}
 					.button:hover {
 						background-color: ${hoverColor};
 					}
-
-					.submit-button {
-						font-family: ${theme.font};
-						font-size: 2em;
-						font-weight: 700;
-						width: 100%;
-						color: #fefefe;
-						text-transform: uppercase;
-					}
 					.submit-button:hover {
 						background-color: ${hoverColor};
-					}
-					.submit-button:focus {
-						outline: none;
 					}
 				`}</style>
 			</button>
@@ -60,9 +33,9 @@ const RippleButton = ({
 	);
 };
 RippleButton.defaultProps = {
-	rippleColor: theme.rippleColor,
-	color: theme.primary,
-	hoverColor: theme.primary,
+	rippleColor: "#FFAB66",
+	color: "#ff4500",
+	hoverColor: "#ff4500",
 	handler: () => {},
 	type: "button",
 };

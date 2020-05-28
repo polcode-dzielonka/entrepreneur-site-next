@@ -1,6 +1,5 @@
 import Layout from "../../Layouts/Layout";
 import MainHeadlineLoading from "../MainHeadlineLoading";
-import { theme } from "../../../theme/baseCss";
 import ScrollingArticlesLoading from "../ScrollingArticlesLoading";
 import SideBarContentLoading from "../SideBarContentLoading";
 const Loading = () => {

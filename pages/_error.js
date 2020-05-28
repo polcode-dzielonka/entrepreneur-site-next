@@ -1,7 +1,6 @@
 import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import Link from "next/link";
-import { theme } from "../theme/baseCss";
 
 const DefaultError = () => {
 	return (

@@ -1,6 +1,5 @@
 import Layout from "../components/Layouts/Layout";
 import Link from "next/link";
-import { theme } from "../theme/baseCss";
 import Vanilla from "../components/Layouts/vanillaLayout";
 import Head from "next/head";
 const About = () => {

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { theme } from "../../../theme/baseCss";
 import BookEnds from "./QuickBookEnds";
 import QuickSlides from "./QuickSlides";
 import ErrorLoader from "../Error";

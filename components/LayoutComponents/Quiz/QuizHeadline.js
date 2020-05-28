@@ -1,4 +1,3 @@
-import { theme } from "../../../theme/baseCss";
 import PropTypes from "prop-types";
 import DynamicHeader from "../../Header/DynamicHeader";
 import ShareButtonVert from "../../SocialMedia/ShareButtonsVert";

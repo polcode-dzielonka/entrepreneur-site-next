@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Embedo from "../../../../Embed/embedo/embedo";
 import SingleSocialLoader from "../../../../Loading/SingleSocialLoader";
-import { theme } from "../../../../../theme/baseCss";
 const EmbedUrl = ({ attributes, element, children }) => {
 	const { data } = element;
 	const [embedUrl, setEmbedUrl] = useState({

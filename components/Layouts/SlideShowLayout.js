@@ -1,6 +1,5 @@
 import Layout from "../Layouts/Layout";
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 import {
 	SideBarContent,
 	SideBarSmallContent,

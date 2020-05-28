@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { theme } from "../../theme/baseCss";
 import Ripples from "../Button/Ripples";
 import CrossIcon from "../Icons/crossIcon";
 import PropTypes from "prop-types";

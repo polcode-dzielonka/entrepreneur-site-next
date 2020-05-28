@@ -1,6 +1,5 @@
 import SectionBar from "../SectionBar";
 import PropTypes from "prop-types";
-import { theme } from "../../../theme/baseCss";
 import DynamicHeader from "../../Header/DynamicHeader";
 import ArticleBody from "./ArticleBody";
 import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";

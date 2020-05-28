@@ -6,7 +6,6 @@ import {
 	ERROR_STATE,
 } from "../data/emailSignupData";
 import { useState } from "react";
-import { theme } from "../theme/baseCss";
 import validate from "../components/FormValidation/Validation";
 import Vanilla from "../components/Layouts/vanillaLayout";
 import RippleButton from "../components/Button/Button";

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Layout from "./Layout";
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 import {
 	MainHeadline,
 	ScrollingArticles,

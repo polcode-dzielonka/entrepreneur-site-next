@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
-import { theme } from "../../theme/baseCss";
 import Ripples from "../Button/Ripples";
 import Context from "../../utils/Context";
 import CrossIcon from "../Icons/crossIcon";

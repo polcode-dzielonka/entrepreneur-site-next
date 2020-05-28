@@ -1,4 +1,3 @@
-import { theme } from "../../../theme/baseCss";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";

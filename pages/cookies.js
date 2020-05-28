@@ -1,6 +1,5 @@
 import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
-import { theme } from "../theme/baseCss";
 import Vanilla from "../components/Layouts/vanillaLayout";
 const Cookies = () => {
 	return (

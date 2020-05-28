@@ -1,4 +1,3 @@
-import { theme } from "../../../theme/baseCss";
 import PropTypes from "prop-types";
 import ImageLoader from "../../Loading/ImageLoader";
 import DynamicHeader from "../../Header/DynamicHeader";

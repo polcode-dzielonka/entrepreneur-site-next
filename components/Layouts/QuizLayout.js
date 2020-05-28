@@ -1,10 +1,5 @@
 import Layout from "../Layouts/Layout";
-import ErrorMessage from "../error";
-import { QUIZ } from "../../graphql/indivQuiz";
-import { HEADLINES, SLIDE } from "../../graphql/headline";
-import QuizLoading from "../Loading/Layouts/QuizLoadingLayout";
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 import {
 	SideBarContent,
 	SideBarSmallContent,

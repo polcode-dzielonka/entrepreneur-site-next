@@ -1,4 +1,3 @@
-import { theme } from "../../../../../theme/baseCss";
 import PropTypes from "prop-types";
 import Link from "next/link";
 

@@ -7,7 +7,7 @@ export default async function rssFunc(req, res) {
 				Accept: "application/xml",
 			},
 		});
-		res.send(xmlFile.data);
+		res.send(xmlFile.body);
 	} catch (e) {
 		console.log(e);
 		res.end();

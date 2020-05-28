@@ -32,7 +32,6 @@ export async function getServerSideProps(context) {
 			},
 			operationName: "GetProductionArticle",
 		},
-
 		{
 			query: QUIZ,
 			variables: {

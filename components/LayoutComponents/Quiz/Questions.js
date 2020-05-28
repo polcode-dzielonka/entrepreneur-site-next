@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Button from "../../Button/Button";
-import { theme } from "../../../theme/baseCss";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
 import { UPDATE_QUIZ } from "../../../graphql/indivQuiz";

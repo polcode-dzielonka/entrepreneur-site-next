@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import Quote from "./quote/quote";
 import EmbedImage from "./embedImage/embedImage";
 import SingleLoader from "../../../Loading/SingleLoader";
-import { theme } from "../../../../theme/baseCss";
 import LazyLoad from "react-lazyload";
 import SiteAd from "./ads/siteAd";
 import LinkAd from "./ads/linkAd";

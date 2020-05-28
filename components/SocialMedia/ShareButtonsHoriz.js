@@ -1,6 +1,5 @@
 import { memo } from "react";
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 import SocialSvgFactory from "./utils/svgFactory";
 import createUtm from "../utm/createUtm";
 

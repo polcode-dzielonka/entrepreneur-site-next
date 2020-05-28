@@ -4,6 +4,7 @@ import Cookie from "js-cookie";
 import SignUp from "../components/SignUpModal/signUpModal";
 import Router from "next/router";
 import TagManager from "react-gtm-module";
+
 const tagManagerArgs = {
 	gtmId: `${process.env.REACT_APP_GOOGLE_TAG_ID}`,
 };

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import MenuButton from "./Menu/MenuButton";
 import { links, socialLinks } from "../../data/data";
-import { theme } from "../../theme/baseCss";
 import { PropTypes } from "prop-types";
 const Header = ({ menuOpen, onClick }) => {
 	return (

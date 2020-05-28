@@ -1,6 +1,5 @@
 import SectionBar from "../SectionBar";
 import PropTypes from "prop-types";
-import { theme } from "../../../theme/baseCss";
 import BookEnds from "./BookEnds";
 import Questions from "./Questions";
 import ErrorLoader from "../Error";

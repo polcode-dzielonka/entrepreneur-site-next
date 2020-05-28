@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { theme } from "../../../theme/baseCss";
 const MenuItem = ({ delay, onClick, children }) => {
 	const [hover, setHover] = useState(false);
 	const styles = {

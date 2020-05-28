@@ -23,10 +23,10 @@
 		"react-gtm-module": "2.0.8",
 		"react-lazyload": "2.6.7",
 		"reaptcha": "1.7.2",
+		"sass": "^1.26.5",
 		"slate": "0.58.1",
 		"slate-react": "0.58.1",
-		"swr": "^0.2.2",
-		"uuid": "8.1.0"
+		"swr": "^0.2.2"
 	},
 	"devDependencies": {
 		"eslint": "7.1.0",

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Link from "next/link";
-import { theme } from "../../theme/baseCss";
 import Ripples from "../Button/Ripples";
 import EmailIcon from "./emailIcon";
 import { EMAIL_SIGN_UP } from "../../graphql/emailSignUp";

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { theme } from "../../../theme/baseCss";
 import LazyLoad from "react-lazyload";
 
 const SideBarContent = ({

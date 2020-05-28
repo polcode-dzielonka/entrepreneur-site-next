@@ -1,5 +1,4 @@
 import Layout from "../../Layouts/Layout";
-import { theme } from "../../../theme/baseCss";
 import ScrollingArticlesLoading from "../ScrollingArticlesLoading";
 import SideBarContentLoading from "../SideBarContentLoading";
 const Loading = () => {

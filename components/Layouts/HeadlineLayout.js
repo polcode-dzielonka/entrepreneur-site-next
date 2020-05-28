@@ -4,7 +4,6 @@ import ErrorMessage from "../error";
 import { QUIZ, SLIDE, HEADLINES } from "../../graphql/headline";
 import HeadlineLoading from "../Loading/Layouts/HeadlineLoadingLayout";
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 import {
 	ScrollingArticles,
 	SideBarContent,

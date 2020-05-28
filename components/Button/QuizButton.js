@@ -1,4 +1,3 @@
-import { theme } from "../../theme/baseCss";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Ripples from "./Ripples";

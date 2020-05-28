@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import Link from "next/link";
-import { theme } from "../../theme/baseCss";
 import Ripples from "../Button/Ripples";
 import Cookie from "js-cookie";
 import Context from "../../utils/Context";

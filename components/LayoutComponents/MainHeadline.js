@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 import Link from "next/link";
 import SectionBar from "./SectionBar";
 

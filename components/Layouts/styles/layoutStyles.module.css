@@ -1,0 +1,13 @@
+.pageLayout {
+	margin-top: 3.45rem;
+}
+.topLayout {
+	margin: 0;
+}
+@media only screen and (max-width: 1000px) {
+	.pageLayout {
+		width: 100%;
+		margin: 0 auto;
+		margin-top: 3.1rem;
+	}
+}

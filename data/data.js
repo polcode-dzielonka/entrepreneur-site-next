@@ -24,7 +24,7 @@ const footerLinks = [
 ];
 const socialLinks = [
 	{
-		href: process.env.RSS_URL,
+		href: "/rss",
 		icon: "/static/rss_icon.png",
 		altName: "rss_feed_icon",
 	},

@@ -1,5 +1,4 @@
 import { useMemo, useCallback } from "react";
-import { theme } from "../../../theme/baseCss";
 import PropTypes from "prop-types";
 // import Embed from "../../Embed/Embed";
 import { Slate, Editable } from "slate-react";

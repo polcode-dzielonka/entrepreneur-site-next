@@ -1,6 +1,5 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 const MainHead = () => {
 	return (
 		<Head>
@@ -13,9 +12,9 @@ const MainHead = () => {
 				as="font"
 			/>
 
-			<meta charset="UTF-8"></meta>
+			<meta charSet="UTF-8"></meta>
 			<link rel="manifest" href="/static/manifest.json" />
-			<meta name="theme-color" content={theme.secondary} />
+			<meta name="theme-color" content="#101010" />
 			<meta name="description" content={process.env.SITE_DESC} />
 			<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript" />
 			<meta name="twitter:site" content={process.env.TWITTER_SITE} />

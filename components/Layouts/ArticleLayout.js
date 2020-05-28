@@ -3,7 +3,6 @@ import { ARTICLE } from "../../graphql/indivArticle";
 import { HEADLINES, QUIZ } from "../../graphql/headline";
 import ArticleLoading from "../Loading/Layouts/ArticleLoadingLayout";
 import PropTypes from "prop-types";
-import { theme } from "../../theme/baseCss";
 import {
 	SideBarContent,
 	SideBarSmallContent,
