@@ -13,7 +13,7 @@ import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import FacebookComments from "../../SocialMedia/FacebookComments";
 import LazyLoad from "react-lazyload";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
-
+import styles from "./styles/quickViewStyles.module.sass";
 const QuickView = ({ content, position, url, id }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
@@ -37,14 +37,13 @@ const QuickView = ({ content, position, url, id }) => {
 	const nextHref = `/${url}/quickview/${id}/slides`;
 	const shareUrl = `${process.env.SITE_ADDRESS}/${url}/quickview/${id}/slides/opening`;
 	const commentsUrl = `${process.env.SITE_ADDRESS}/${url}/quickview/${id}/slides/closing`;
-	console.log("NEXT ", nextHref);
 	const slideEndRef =
 		positionNumber + 1 === content.numSlides + 1
 			? "closing"
 			: positionNumber + 1;
 
 	return (
-		<div className="section-padding">
+		<div className={styles.sectionPadding}>
 			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
 			<Headline
 				data={details}
@@ -104,7 +103,7 @@ const QuickView = ({ content, position, url, id }) => {
 				<ScrollUpButton />
 			</LazyLoad>
 			<LazyLoad once={true}>
-				<hr className="break" />
+				<hr className={styles.break} />
 				<ShareButtonHoriz
 					data={closingSocialButtons}
 					url={shareUrl}
@@ -115,7 +114,7 @@ const QuickView = ({ content, position, url, id }) => {
 				/>
 			</LazyLoad>
 
-			<hr className="break" />
+			<hr className={styles.break} />
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
 				category={category}
@@ -143,53 +142,7 @@ const QuickView = ({ content, position, url, id }) => {
 			<LazyLoad>
 				<ScrollingContent id={id} title="Latest" type={"slideshow"} />
 			</LazyLoad>
-			<hr className="break" />
-			<style jsx>
-				{`
-					.break {
-						border: 1px solid #dedede;
-						width: 100%;
-						margin: 0 auto;
-					}
-					.headline-image {
-						max-height: 550px;
-					}
-					.section-padding {
-						display: flex;
-						flex-direction: column;
-						margin: 0.15rem 2rem;
-					}
-
-					.section-brief {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						line-height: 2rem;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					.section-list {
-						margin: 0rem 1rem 1rem 1rem;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					ul {
-						margin: 0;
-					}
-					@media only screen and (max-width: 670px) {
-						.section-padding {
-							margin: 0 auto;
-							width: 96%;
-						}
-					}
-				`}
-			</style>
+			<hr className={styles.break} />
 		</div>
 	);
 };

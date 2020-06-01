@@ -5,6 +5,7 @@ import { ADVERT_ARTICLE } from "../../../../../graphql/indivArticle";
 import { midSocialButtons } from "../../../../SocialMedia/data";
 import ShareButtonHoriz from "../../../../SocialMedia/ShareButtonsHoriz";
 import prodRequest from "../../../../apiRequest/prodRequest";
+import styles from "../styles/ads/linkAdStyles.module.sass";
 const SiteAd = ({ children, attributes }) => {
 	const [shareInfo, setShareInfo] = useState({
 		url: "",
@@ -39,7 +40,7 @@ const SiteAd = ({ children, attributes }) => {
 		}
 	};
 	return (
-		<div className="site-ad" {...attributes}>
+		<div className={styles.siteAd} {...attributes}>
 			<ShareButtonHoriz
 				data={midSocialButtons}
 				url={shareInfo.url}
@@ -49,15 +50,6 @@ const SiteAd = ({ children, attributes }) => {
 				position={"middle_sitead_share_horiz"}
 			/>
 			{children}
-			<style jsx>{`
-				.site-ad {
-					width: 100%;
-					margin: 0 auto;
-					color: #4d4d4d;
-					text-align: center;
-					font-size: 2rem;
-				}
-			`}</style>
 		</div>
 	);
 };

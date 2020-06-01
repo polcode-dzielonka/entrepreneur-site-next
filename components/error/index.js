@@ -1,18 +1,9 @@
 import PropTypes from "prop-types";
 import Layout from "../../components/Layouts/Layout";
+import styles from "./styles/errorStyles.module.sass";
 const Error = ({ message }) => (
 	<Layout>
-		<aside>
-			{message}
-			<style jsx>{`
-				aside {
-					padding: 1.5em;
-					font-size: 14px;
-					color: white;
-					background-color: red;
-				}
-			`}</style>
-		</aside>
+		<aside className={styles.errorLayout}>{message}</aside>
 	</Layout>
 );
 

@@ -5,6 +5,7 @@ import { Slate, Editable } from "slate-react";
 import { createEditor } from "slate";
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
+import styles from "./styles/longAnswerStyles.module.sass";
 
 const LongAnswer = ({
 	showAnswer,
@@ -17,41 +18,41 @@ const LongAnswer = ({
 	const renderElement = useCallback(props => <RenderElement {...props} />, []);
 	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
 	return (
-		<div className="bookend-wrapper">
+		<div className={styles.bookendWrapper}>
 			{showAnswer && (
-				<div className="editor-answer">
+				<div className={styles.editorAnswer}>
 					{correct && (
-						<div className="correct">
-							<div className="correct-group">
+						<div className={styles.correct}>
+							<div className={styles.correctGroup}>
 								<img
-									className="correct-image"
+									className={styles.correctImage}
 									src={"/static/tickx128.png"}
 									alt="correct-tick-icon"
 								/>
-								<div className="correct-label">Correct</div>
+								<div className={styles.correctLabel}>Correct</div>
 							</div>
 						</div>
 					)}
 					{!correct && (
-						<div className="correct">
-							<div className="correct-group">
-								<div className="incorrect-wrapper">
+						<div className={styles.correct}>
+							<div className={styles.correctGroup}>
+								<div className={styles.incorrectWrapper}>
 									<img
-										className="incorrect-image"
+										className={styles.incorrectImage}
 										src={"/static/deletex128.png"}
 										alt="incorrect-cross-icon"
 									/>
 								</div>
-								<div className="incorrect-label">Wrong</div>
+								<div className={styles.incorrectLabel}>Wrong</div>
 							</div>
 						</div>
 					)}
 
-					<div className="editor-block">
+					<div className={styles.editorBlock}>
 						<Slate editor={editor} value={answer}>
 							{
-								<div className="answer-comment">
-									<h3 className="answer-comment-header">
+								<div className={styles.answerComment}>
+									<h3 className={styles.answerCommentHeader}>
 										{correct ? correctAnswerComment : incorrectAnswerComment}
 									</h3>
 								</div>
@@ -65,109 +66,6 @@ const LongAnswer = ({
 					</div>
 				</div>
 			)}
-			<style jsx>
-				{`
-					.answer-comment {
-						padding: 0;
-						margin: 0;
-					}
-					.bookend-wrapper {
-						height: 100%;
-						width: 100%;
-						margin: 0;
-						padding: 0;
-					}
-					.editor-answer {
-						font-size: 2.5rem;
-						text-align: justify;
-						margin: 0 auto;
-						padding-top: 0.5rem;
-					}
-					.editor-block {
-						font-size: 2.25rem;
-						text-align: justify;
-						font-color: blue;
-						padding: 2rem;
-					}
-					.correct {
-						width: 100%;
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						height: 100%;
-						color: ${theme.quizCorrectOverlay};
-					}
-					.correct-group {
-						display: flex;
-						flex-direction: row;
-						text-align: center;
-						margin: 0 auto;
-					}
-					.correct-label {
-						position: relative;
-						height: 100%;
-						margin-left: 1rem;
-					}
-					.incorrect-label {
-						position: relative;
-						height: 100%;
-						margin-left: -3.5rem;
-						color: #d20000;
-					}
-					.correct-image {
-						width: 25%;
-					}
-					.incorrect-image {
-						width: 40%;
-					}
-					.incorrect-wrapper {
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-					}
-					@media only screen and (max-width: 650px) {
-						.answer-comment {
-							font-size: 1.75rem;
-						}
-						.answer-comment-header {
-							font-size: 1.75rem;
-							padding: 0;
-							margin: 0;
-						}
-						.correct-image {
-							width: 20%;
-							height: 20%;
-						}
-						.correct-label {
-							font-size: 1.75rem;
-						}
-						.editor-block {
-							padding: 1rem;
-						}
-						.incorrect-image {
-							width: 20%;
-						}
-						.incorrect-label {
-							font-size: 1.75rem;
-						}
-					}
-
-					@media only screen and (max-width: 450px) {
-						.answer-comment {
-							margin: 0.5rem 0;
-						}
-						.answer-comment-header {
-							font-size: 1.4rem;
-							line-height: 1.6rem;
-							padding: 0;
-							margin: 0;
-						}
-						.editor-block {
-							padding: 0.5rem;
-						}
-					}
-				`}
-			</style>
 		</div>
 	);
 };

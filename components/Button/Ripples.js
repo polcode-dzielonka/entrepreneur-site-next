@@ -73,12 +73,7 @@ const Ripple = props => {
 		if (buttonClick) buttonClick(ev);
 	};
 	return (
-		<div
-			{...props}
-			className={`react-ripples`}
-			style={boxStyle}
-			onClick={onClick}
-		>
+		<div {...props} style={boxStyle} onClick={onClick}>
 			{children}
 			<s style={rippleStyles.rippleStyle} />
 		</div>

@@ -1,8 +1,10 @@
 import { FacebookProvider, Page } from "react-facebook";
 import PropTypes from "prop-types";
+import styles from "./styles/facebookPageStyles.module.sass";
+
 const FacebookPage = ({ tabs, height, width, adaptContainerWidth }) => {
 	return (
-		<div className="social-container">
+		<div className={styles.socialContainer}>
 			<FacebookProvider appId={process.env.REACT_APP_FACEBOOK_APP_ID}>
 				<Page
 					href={process.env.FACEBOOK_PAGE_URL}
@@ -12,25 +14,6 @@ const FacebookPage = ({ tabs, height, width, adaptContainerWidth }) => {
 					adaptContainerWidth={adaptContainerWidth}
 				/>
 			</FacebookProvider>
-			<style jsx>{`
-				.social-container {
-					// margin: 3rem 0rem;
-					width: 100%;
-				}
-
-				@media only screen and (max-width: 1000px) {
-					.social-container {
-						margin: 0 auto;
-						padding: 1rem 0rem;
-						width: auto;
-					}
-				}
-				@media only screen and (max-width: 480px) {
-					.social-container {
-						width: 100%;
-					}
-				}
-			`}</style>
 		</div>
 	);
 };

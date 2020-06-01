@@ -4,7 +4,7 @@ import router from "next/router";
 import { NEXT_ARTICLE } from "../../../../../graphql/indivArticle";
 import NextLink from "./nextLink";
 import prodRequest from "../../../../apiRequest/prodRequest";
-
+import styles from "../styles/ads/linkAdStyles.module.sass";
 const NextArticleAd = ({ children, attributes }) => {
 	const [nextInfo, setNextInfo] = useState({
 		showNext: false,
@@ -49,7 +49,7 @@ const NextArticleAd = ({ children, attributes }) => {
 		}
 	};
 	return (
-		<div className="site-ad" {...attributes}>
+		<div className={styles.siteAd} {...attributes}>
 			{nextInfo.showNext && (
 				<NextLink
 					url={nextInfo.url}
@@ -60,15 +60,6 @@ const NextArticleAd = ({ children, attributes }) => {
 				/>
 			)}
 			{children}
-			<style jsx>{`
-				.site-ad {
-					width: 100%;
-					margin: 0 auto;
-					color: #4d4d4d;
-					text-align: center;
-					font-size: 2rem;
-				}
-			`}</style>
 		</div>
 	);
 };

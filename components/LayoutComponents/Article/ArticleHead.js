@@ -11,6 +11,7 @@ import {
 } from "../../SocialMedia/data";
 import ShowMeta from "../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
+import styles from "./styles/articleHeadStyles.module.sass";
 
 const ArticleHead = ({ overview, id }) => {
 	const details = JSON.parse(overview.overview);
@@ -32,7 +33,7 @@ const ArticleHead = ({ overview, id }) => {
 	} = details[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${urlDescription}/article/${id}`;
 	return (
-		<div className="section-padding">
+		<div className={styles.sectionPadding}>
 			<DynamicHeader
 				title={headline}
 				description={brief}
@@ -44,8 +45,8 @@ const ArticleHead = ({ overview, id }) => {
 				tags={tags}
 			/>
 			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
-			<h1 className="section-heading">{headline}</h1>
-			<h3 className="section-category">{category}</h3>
+			<h1 className={styles.sectionHeading}>{headline}</h1>
+			<h3 className={styles.sectionCategory}>{category}</h3>
 			<ImageLoader
 				src={headlineImage}
 				srcset={srcset}
@@ -54,12 +55,12 @@ const ArticleHead = ({ overview, id }) => {
 				styles={{ width: "100%", height: "100%" }}
 				noMaxHeight={true}
 			/>
-			<h3 className="section-brief">{brief}</h3>
+			<h3 className={styles.sectionBrief}>{brief}</h3>
 			{bulletHeadlines > 0 && (
-				<ul>
+				<ul className={styles.sectionList}>
 					{Object.keys(bulletHeadlinesDetails).map((bullet, index) => {
 						return (
-							<li className="section-list" key={index}>
+							<li className={styles.sectionList} key={index}>
 								{bulletHeadlinesDetails[bullet]}
 							</li>
 						);
@@ -73,7 +74,7 @@ const ArticleHead = ({ overview, id }) => {
 				authorName={authorName}
 			/>
 			<LazyLoad once={true}>
-				<hr className="break" />
+				<hr className={styles.break} />
 				<ShareButtonVert
 					data={sideSocialButtons}
 					url={canonical}
@@ -90,7 +91,7 @@ const ArticleHead = ({ overview, id }) => {
 					position={"top_share_horiz"}
 				/>
 			</LazyLoad>
-			<hr className="break" />
+			<hr className={styles.break} />
 			<ArticleBody
 				content={overview}
 				url={canonical}
@@ -99,109 +100,6 @@ const ArticleHead = ({ overview, id }) => {
 				brief={brief}
 				id={id}
 			/>
-			<style jsx>
-				{`
-					.break {
-						border: 1px solid #dedede;
-						width: 100%;
-						margin: 0 auto;
-					}
-					.section-padding {
-						display: flex;
-						flex-direction: column;
-						margin: 0 2rem;
-					}
-					.section-heading {
-						font-size: 3.75rem;
-						font-weight: 900;
-						line-height: 3.95rem;
-						margin: 0;
-						padding: 0;
-					}
-					.section-category {
-						margin: 0;
-						padding: 0;
-						font-size: 1.5rem;
-						font-weight: 900;
-						line-height: 3.5rem;
-						color: ${theme.primary};
-						text-transform: capitalize;
-					}
-					.section-brief {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						line-height: 2rem;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					.section-image {
-						height: 426px;
-						width: 100%;
-						background-color: #e2e2e2e2;
-					}
-					.section-list {
-						margin: 0rem 1rem 1rem 1rem;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					.section-meta {
-						margin: 0px 0px 7px 0px;
-						padding: 0;
-						font-size: 1.2rem;
-						font-weight: 900;
-						line-height: 1.7rem;
-						color: grey;
-						text-transform: capitalize;
-					}
-					ul {
-						margin: 0;
-					}
-
-					@media only screen and (max-width: 670px) {
-						.section-padding {
-							margin: 0 0.25rem;
-						}
-						.section-heading {
-							font-size: 2rem;
-							font-weight: 900;
-							line-height: 2.25rem;
-							margin: 0;
-							padding: 0;
-							// text-align: center;
-						}
-					}
-					@media only screen and (max-width: 450px) {
-						.section-brief {
-							font-size: 1rem;
-							line-height: 1.2rem;
-							text-transform: capitalize;
-							padding: 0 0.5rem;
-							margin: 0.75rem 0;
-						}
-						.section-category {
-							font-size: 1.2rem;
-							font-weight: 900;
-							line-height: 2rem;
-							margin: 0.25rem 0;
-						}
-						.section-heading {
-							font-size: 1.6rem;
-							font-weight: 900;
-							line-height: 1.8rem;
-							margin: 0;
-							padding: 0;
-							// text-align: center;
-						}
-					}
-				`}
-			</style>
 		</div>
 	);
 };

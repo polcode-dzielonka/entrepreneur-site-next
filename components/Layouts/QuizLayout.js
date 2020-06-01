@@ -8,7 +8,7 @@ import {
 } from "../LayoutComponents";
 import FacebookPage from "../SocialMedia/FacebookPage";
 import LazyLoad from "react-lazyload";
-import styles from "./styles/contentLayout.module.css";
+import styles from "./styles/contentLayout.module.sass";
 
 const Quiz = ({
 	individual,

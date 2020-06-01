@@ -2,39 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import dayjs from "dayjs";
+import styles from "./styles/showMetaStyles.module.sass";
 dayjs.extend(advancedFormat);
 
 const ShowMeta = ({ showDate, displayDate, showAuthor, authorName }) => {
 	return (
 		<>
 			{showDate && (
-				<h3 className="section-meta">
+				<h3 className={styles.sectionMeta}>
 					{dayjs(displayDate).format("Do MMM YYYY")}
 				</h3>
 			)}
 			{showAuthor && authorName && (
-				<h3 className="section-meta">By: {authorName}</h3>
+				<h3 className={styles.sectionMeta}>By: {authorName}</h3>
 			)}
-			<style jsx>
-				{`
-					.section-meta {
-						margin: 0px 0px 7px 0px;
-						padding: 0;
-						font-size: 1.2rem;
-						font-weight: 900;
-						line-height: 1.7rem;
-						color: grey;
-						text-transform: capitalize;
-					}
-					@media only screen and (max-width: 670px) {
-					}
-					@media only screen and (max-width: 480px) {
-						.section-meta {
-							padding: 0 0.5rem;
-						}
-					}
-				`}
-			</style>
 		</>
 	);
 };

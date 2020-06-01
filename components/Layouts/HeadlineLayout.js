@@ -14,8 +14,8 @@ import RippleButton from "../Button/Button";
 import Head from "next/head";
 import LazyLoad from "react-lazyload";
 import FacebookPage from "../SocialMedia/FacebookPage";
-import styles from "./styles/headlineLayout.module.css";
-
+import styles from "./styles/headlineLayout.module.sass";
+import baseTheme from "../../theme/baseTheme.json";
 const HeadlineLayout = ({
 	headline,
 	latest,
@@ -63,25 +63,27 @@ const HeadlineLayout = ({
 					}}
 				/>
 			</Head>
-			<div className="home-container">
+			<div className={styles.homeContainer}>
 				<section className={styles.bodyContainer}>
 					<div className={styles.latestContainer}>
-						<div className={styles.sectionPadding}>
+						<div className={styles.scrollingWrapper}>
+							<div className={styles.sectionPadding}>
+								<LazyLoad once={true}>
+									<SectionBar
+										title={pageTitle}
+										titleColor="#111"
+										titleSize="2rem"
+									/>
+								</LazyLoad>
+							</div>
+							<ScrollingArticles data={headline.items} />
 							<LazyLoad once={true}>
-								<SectionBar
-									title={pageTitle}
-									titleColor="#111"
-									titleSize="2rem"
+								<RippleButton
+									label={loadingMorePosts ? "Loading..." : "Load More!"}
+									color={baseTheme.secondary}
 								/>
 							</LazyLoad>
 						</div>
-						<ScrollingArticles data={headline.items} />
-						<LazyLoad once={true}>
-							<RippleButton
-								label={loadingMorePosts ? "Loading..." : "Load More!"}
-								color={theme.secondary}
-							/>
-						</LazyLoad>
 					</div>
 					<aside className={styles.slideContainer}>
 						<div className={styles.sectionPadding}>
@@ -106,9 +108,6 @@ const HeadlineLayout = ({
 	);
 };
 HeadlineLayout.propTypes = {
-	QUERY: PropTypes.String,
-	filter: PropTypes.Object,
-	limit: PropTypes.Int,
 	title: PropTypes.string,
 	pageTitle: PropTypes.string,
 };

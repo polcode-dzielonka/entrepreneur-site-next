@@ -2,7 +2,7 @@ import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import Vanilla from "../components/Layouts/vanillaLayout";
-
+import styles from "../styles/termStyles.module.sass";
 const Terms = () => {
 	return (
 		<Layout>
@@ -11,11 +11,11 @@ const Terms = () => {
 				<link rel="canonical" href={`${process.env.SITE_ADDRESS}/terms`} />
 			</Head>
 			<Vanilla>
-				<main className="content">
-					<article className="article">
-						<h1 className="main-title">Terms and Conditions</h1>
-						<div className="main-content">
-							<h2>Overview</h2>
+				<main className={styles.content}>
+					<article className={styles.article}>
+						<h1 className={styles.mainTitle}>Terms and Conditions</h1>
+						<div className={styles.mainContent}>
+							<h2 className={styles.header}>Overview</h2>
 							<p>
 								This website is operated by{" "}
 								<strong>Derivative Media Ltd</strong>. Throughout the site, the
@@ -59,7 +59,7 @@ const Terms = () => {
 								acceptance of those changes.
 							</p>
 
-							<h2>SECTION 1 - ONLINE STORE TERMS</h2>
+							<h2 className={styles.header}>SECTION 1 - ONLINE STORE TERMS</h2>
 							<p>
 								By agreeing to these Terms of Service, you represent that you
 								are at least the age of majority in your state or province of
@@ -79,7 +79,7 @@ const Terms = () => {
 								immediate termination of your Services.
 							</p>
 
-							<h2>SECTION 2 - GENERAL CONDITIONS</h2>
+							<h2 className={styles.header}>SECTION 2 - GENERAL CONDITIONS</h2>
 							<p>
 								We reserve the right to refuse service to anyone for any reason
 								at any time.
@@ -104,7 +104,7 @@ const Terms = () => {
 								only and will not limit or otherwise affect these Terms.
 							</p>
 
-							<h2>
+							<h2 className={styles.header}>
 								SECTION 3 - ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION
 							</h2>
 							<p>
@@ -125,7 +125,9 @@ const Terms = () => {
 								responsibility to monitor changes to our site.
 							</p>
 
-							<h2>SECTION 4 - MODIFICATIONS TO THE SERVICE</h2>
+							<h2 className={styles.header}>
+								SECTION 4 - MODIFICATIONS TO THE SERVICE
+							</h2>
 							<p>
 								We reserve the right at any time to modify or discontinue the
 								Service (or any part or content thereof) without notice at any
@@ -137,7 +139,7 @@ const Terms = () => {
 								Service.
 							</p>
 
-							<h2>SECTION 5 - OPTIONAL TOOLS</h2>
+							<h2 className={styles.header}>SECTION 5 - OPTIONAL TOOLS</h2>
 							<p>
 								We may provide you with access to third-party tools over which
 								we neither monitor nor have any control nor input.
@@ -162,7 +164,7 @@ const Terms = () => {
 								subject to these Terms of Service.
 							</p>
 
-							<h2>SECTION 6 - THIRD-PARTY LINKS</h2>
+							<h2 className={styles.header}>SECTION 6 - THIRD-PARTY LINKS</h2>
 							<p>
 								Certain content, products and services available via our Service
 								may include materials from third-parties.
@@ -186,7 +188,9 @@ const Terms = () => {
 								third-party.{" "}
 							</p>
 
-							<h2>SECTION 7 - USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS</h2>
+							<h2 className={styles.header}>
+								SECTION 7 - USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS
+							</h2>
 							<p>
 								If, at our request, you send certain specific submissions (for
 								example contest entries) or without a request from us you send
@@ -222,17 +226,21 @@ const Terms = () => {
 								third-party.
 							</p>
 
-							<h2>SECTION 8 - PERSONAL INFORMATION</h2>
+							<h2 className={styles.header}>
+								SECTION 8 - PERSONAL INFORMATION
+							</h2>
 							<p>
 								Your submission of personal information through the site is
 								governed by our Privacy Policy. To view our Privacy Policy
 								click&nbsp;
 								<Link href="/contact">
-									<a className="link">here.</a>
+									<a className={styles.link}>here.</a>
 								</Link>
 							</p>
 
-							<h2>SECTION 9 - ERRORS, INACCURACIES AND OMISSIONS</h2>
+							<h2 className={styles.header}>
+								SECTION 9 - ERRORS, INACCURACIES AND OMISSIONS
+							</h2>
 							<p>
 								Occasionally there may be information on our site or in the
 								Service that contains typographical errors, inaccuracies or
@@ -254,7 +262,7 @@ const Terms = () => {
 								modified or updated.{" "}
 							</p>
 
-							<h2>SECTION 10 - PROHIBITED USES</h2>
+							<h2 className={styles.header}>SECTION 10 - PROHIBITED USES</h2>
 							<p>
 								In addition to other prohibitions as set forth in the Terms of
 								Service, you are prohibited from using the site or its content:
@@ -280,7 +288,7 @@ const Terms = () => {
 								of the prohibited uses.
 							</p>
 
-							<h2>
+							<h2 className={styles.header}>
 								SECTION 11 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY
 							</h2>
 							<p>
@@ -330,7 +338,7 @@ const Terms = () => {
 								to the maximum extent permitted by law.
 							</p>
 
-							<h2>SECTION 12 - INDEMNIFICATION</h2>
+							<h2 className={styles.header}>SECTION 12 - INDEMNIFICATION</h2>
 							<p>
 								You agree to indemnify, defend and hold harmless{" "}
 								<strong>Derivative Media Ltd</strong> and our parent,
@@ -343,7 +351,7 @@ const Terms = () => {
 								your violation of any law or the rights of a third-party.
 							</p>
 
-							<h2>SECTION 13 - SEVERABILITY</h2>
+							<h2 className={styles.header}>SECTION 13 - SEVERABILITY</h2>
 							<p>
 								In the event that any provision of these Terms of Service is
 								determined to be unlawful, void or unenforceable, such provision
@@ -354,7 +362,7 @@ const Terms = () => {
 								remaining provisions.
 							</p>
 
-							<h2>SECTION 14 - TERMINATION</h2>
+							<h2 className={styles.header}>SECTION 14 - TERMINATION</h2>
 							<p>
 								The obligations and liabilities of the parties incurred prior to
 								the termination date shall survive the termination of this
@@ -375,7 +383,7 @@ const Terms = () => {
 								deny you access to our Services (or any part thereof).
 							</p>
 
-							<h2>SECTION 15 - ENTIRE AGREEMENT</h2>
+							<h2 className={styles.header}>SECTION 15 - ENTIRE AGREEMENT</h2>
 							<p>
 								The failure of us to exercise or enforce any right or provision
 								of these Terms of Service shall not constitute a waiver of such
@@ -395,7 +403,7 @@ const Terms = () => {
 								shall not be construed against the drafting party.
 							</p>
 
-							<h2>SECTION 16 - GOVERNING LAW</h2>
+							<h2 className={styles.header}>SECTION 16 - GOVERNING LAW</h2>
 							<p>
 								These Terms of Service and any separate agreements whereby we
 								provide you Services shall be governed by and construed in
@@ -403,7 +411,9 @@ const Terms = () => {
 								7GU, United Kingdom.
 							</p>
 
-							<h2>SECTION 17 - CHANGES TO TERMS OF SERVICE</h2>
+							<h2 className={styles.header}>
+								SECTION 17 - CHANGES TO TERMS OF SERVICE
+							</h2>
 							<p>
 								You can review the most current version of the Terms of Service
 								at any time at this page.
@@ -420,105 +430,19 @@ const Terms = () => {
 								Service constitutes acceptance of those changes.
 							</p>
 
-							<h2>SECTION 18 - CONTACT INFORMATION</h2>
+							<h2 className={styles.header}>
+								SECTION 18 - CONTACT INFORMATION
+							</h2>
 							<p>
 								Questions about the Terms of Service should be sent to us&nbsp;
 								<Link href="/contact">
-									<a className="link">here.</a>
+									<a className={styles.link}>here.</a>
 								</Link>
 							</p>
 						</div>
 					</article>
 				</main>
 			</Vanilla>
-			<style jsx>
-				{`
-					.content {
-						margin-bottom: 5rem;
-						display: flex;
-						flex-grow: 1;
-						flex-direction: column;
-						line-height: ${theme.lineHeight};
-					}
-					.link {
-						text-decoration: none;
-						color: black;
-						font-weight: 900;
-					}
-					.main-title {
-						font-family: ${theme.font};
-						margin-top: 3.5rem;
-						font-size: 2.8em;
-						font-weight: 700;
-						color: #101010;
-						text-transform: uppercase;
-					}
-					.main-content {
-						font-family: ${theme.font};
-						font-size: ${theme.fontSize};
-						color: #101010;
-					}
-					.main-content p {
-						text-align: justify;
-					}
-					h2 {
-						text-transform: uppercase;
-						margin-top: 3rem;
-						line-height: 2.5rem;
-					}
-					@media only screen and (max-width: 960px) {
-						.content {
-							margin-bottom: 5rem;
-							width: 100%;
-							min-width: 100%;
-							display: flex;
-							flex-grow: 1;
-							flex-direction: column;
-							width: 70%;
-							margin: 0 auto;
-						}
-						.main-title {
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.fontSize};
-							font-weight: 300;
-							color: #101010;
-							width: 80%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-					}
-					@media only screen and (max-width: 560px) {
-						h2 {
-							text-transform: uppercase;
-							margin-top: 1.5rem;
-							line-height: 2rem;
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.mobileFontSize};
-							font-size: ${theme.mobileLineHeight};
-							font-weight: 300;
-							color: #101010;
-							width: 96%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-						.main-title {
-							font-family: ${theme.font};
-							margin-top: 2rem;
-							line-height: 2.5rem;
-							font-size: ${theme.mobileHeaderSize};
-							font-weight: 700;
-							color: #101010;
-							text-transform: uppercase;
-						}
-					}
-				`}
-			</style>
 		</Layout>
 	);
 };

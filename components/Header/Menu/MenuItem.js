@@ -1,40 +1,11 @@
 import { useState } from "react";
+import styles from "../styles/menuItemStyles.module.sass";
 const MenuItem = ({ delay, onClick, children }) => {
 	const [hover, setHover] = useState(false);
-	const styles = {
-		container: {
-			opacity: 1,
-			animation: "1s appear forwards",
-			position: "relative",
-			animationDelay: delay,
-		},
-		menuItem: {
-			// fontFamily: `'Open Sans', sans-serif`,
-			textDecoration: "none",
-			fontFamily: theme.font,
-			fontSize: "1.1rem",
-			padding: "1rem 0",
-			margin: "0 5%",
-			cursor: "pointer",
-			color: hover ? "gray" : "#fafafa",
-			transition: "color 0.2s ease-in-out",
-			animation: "0.5s slideIn forwards",
-			animationDelay: delay,
-			textTransform: "uppercase",
-		},
-		line: {
-			width: "90%",
-			height: "1px",
-			background: "gray",
-			margin: "0 auto",
-			animation: "0.5s shrink forwards",
-			animationDelay: delay,
-		},
-	};
 	return (
-		<div style={styles.container}>
+		<div className={`${styles.menuContainer} `}>
 			<div
-				style={styles.menuItem}
+				className={`${styles.menuItem} menu-item`}
 				onMouseEnter={() => {
 					setHover(true);
 				}}
@@ -45,7 +16,19 @@ const MenuItem = ({ delay, onClick, children }) => {
 			>
 				{children}
 			</div>
-			<div style={styles.line} />
+			<div className={`${styles.line} line-item`} />
+			<style jsx>{`
+				.container {
+					animation-delay: ${delay};
+				}
+				.menu-item {
+					color: ${hover ? "gray" : "#fafafa"};
+					animation-delay: delay;
+				}
+				.line-item {
+					animationdelay: ${delay};
+				}
+			`}</style>
 		</div>
 	);
 };

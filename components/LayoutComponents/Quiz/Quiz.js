@@ -13,7 +13,7 @@ import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import FacebookComments from "../../SocialMedia/FacebookComments";
 import LazyLoad from "react-lazyload";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
-
+import styles from "./styles/quizStyles.module.sass";
 const QuizDetails = ({ content, position, url, id, score }) => {
 	const details = JSON.parse(content.overview);
 	const questions = JSON.parse(content.questions);
@@ -45,7 +45,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 			: positionNumber + 1;
 
 	return (
-		<div className="section-padding">
+		<div className={styles.sectionPadding}>
 			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
 			<Headline
 				data={details}
@@ -111,7 +111,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 				<ScrollUpButton />
 			</LazyLoad>
 			<LazyLoad once={true}>
-				<hr className="break" />
+				<hr className={styles.break} />
 				<ShareButtonHoriz
 					data={closingSocialButtons}
 					url={shareUrl}
@@ -121,7 +121,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					position={"bottom_share_horiz"}
 				/>
 			</LazyLoad>
-			<hr className="break" />
+			<hr className={styles.break} />
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
 				category={category}
@@ -150,52 +150,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 			<LazyLoad once={true}>
 				<ScrollingContent id={id} title="Latest" type={"quiz"} />
 			</LazyLoad>
-			<hr className="break" />
-			<style jsx>
-				{`
-					.break {
-						border: 1px solid #dedede;
-						width: 100%;
-						margin: 0 auto;
-					}
-					.headline-image {
-						max-height: 550px;
-					}
-					.section-padding {
-						display: flex;
-						flex-direction: column;
-						margin: 0.15rem 2rem;
-					}
-					.section-brief {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						line-height: 2rem;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					.section-list {
-						margin: 0rem 1rem 1rem 1rem;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					ul {
-						margin: 0;
-					}
-					@media only screen and (max-width: 670px) {
-						.section-padding {
-							margin: 0 auto;
-							width: 96%;
-						}
-					}
-				`}
-			</style>
+			<hr className={styles.break} />
 		</div>
 	);
 };

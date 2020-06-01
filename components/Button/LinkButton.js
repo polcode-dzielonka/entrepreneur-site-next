@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
-import styles from "./styles/homeButtonStyles.module.css";
+import styles from "./styles/linkButtonStyles.module.sass";
 const SlideLinkButton = ({ label, href, imgSrc, srcset, imageAlt }) => {
 	return (
 		<div className={styles.linkSection}>

@@ -1,8 +1,10 @@
 import { FacebookProvider, Comments } from "react-facebook";
 import PropTypes from "prop-types";
+import styles from "./styles/facebookCommentStyles.module.sass";
+
 const FacebookPage = ({ url, numPostsVisible, orderBy }) => {
 	return (
-		<div className="social-container">
+		<div className={styles.socialContainer}>
 			<FacebookProvider appId={process.env.REACT_APP_FACEBOOK_APP_ID}>
 				<Comments
 					href={url}
@@ -11,25 +13,6 @@ const FacebookPage = ({ url, numPostsVisible, orderBy }) => {
 					orderBy={orderBy}
 				/>
 			</FacebookProvider>
-			<style jsx>{`
-				.social-container {
-					// margin: 3rem 0rem;
-					width: 100%;
-				}
-
-				@media only screen and (max-width: 1000px) {
-					.social-container {
-						margin: 0 auto;
-						padding: 1rem 0rem;
-						width: 100%;
-					}
-				}
-				@media only screen and (max-width: 480px) {
-					.social-container {
-						width: auto;
-					}
-				}
-			`}</style>
 		</div>
 	);
 };

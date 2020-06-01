@@ -2,7 +2,7 @@ import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import Vanilla from "../components/Layouts/vanillaLayout";
-
+import styles from "../styles/privacyStyles.module.sass";
 const Privacy = () => {
 	return (
 		<Layout>
@@ -11,10 +11,10 @@ const Privacy = () => {
 				<link rel="canonical" href={`${process.env.SITE_ADDRESS}/privacy`} />
 			</Head>
 			<Vanilla>
-				<main className="content">
-					<article className="article">
-						<h1 className="main-title">Privacy Policy</h1>
-						<div className="main-content">
+				<main className={styles.content}>
+					<article className={styles.article}>
+						<h1 className={styles.mainTitle}>Privacy Policy</h1>
+						<div className={styles.mainContent}>
 							<p>
 								The below is a Privacy Policy we have put together for our
 								users. Please read all the information below carefully and
@@ -29,16 +29,18 @@ const Privacy = () => {
 								revisit it regularly. Your use of this site, in any and all
 								forms, constitutes an acceptance of this Privacy Policy.
 							</p>
-							<ol>
-								<h2>1. Information Collection And Use</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>
+									1. Information Collection And Use
+								</h2>
 								While using our Site, we may ask you to provide us with certain
 								personally identifiable information that can be used to contact
 								or identify you. Personally identifiable information may
 								include, but is not limited to your name ("Personal
 								Information").
 							</ol>
-							<ol>
-								<h2>2. Log Data</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>2. Log Data</h2>
 								<p>
 									Like many site operators, we collect information that your
 									browser sends whenever you visit our Site ("Log Data"). The
@@ -67,8 +69,8 @@ const Privacy = () => {
 									policies addressing how they use such information.
 								</p>
 							</ol>
-							<ol>
-								<h2>3. Cookies</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>3. Cookies</h2>
 								<p>
 									Cookies are files with small amount of data, which may include
 									an anonymous unique identifier. Cookies are sent to your
@@ -123,8 +125,8 @@ const Privacy = () => {
 									browsers’ websites.
 								</p>
 							</ol>
-							<ol>
-								<h2>4. Third Party Tracking Tools</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>4. Third Party Tracking Tools</h2>
 								<p>
 									We also use third party tracking tools to improve the
 									performance and features of our Website. These third party
@@ -153,16 +155,16 @@ const Privacy = () => {
 									used by Google Analytics.
 								</p>
 							</ol>
-							<ol>
-								<h2>5. Security</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>5. Security</h2>
 								The security of your Personal Information is extremely important
 								to us, but remember that no method of transmission over the
 								Internet, or method of electronic storage, is 100% secure. While
 								we strive to use commercially acceptable means to protect your
 								Personal Information, we cannot guarantee its absolute security.
 							</ol>
-							<ol>
-								<h2>6. Links To Other Sites</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>6. Links To Other Sites</h2>
 								Our Service may contain links to other sites that are not
 								operated by us. If you click on a third party link, you will be
 								directed to that third party’s site. We strongly advise you to
@@ -171,8 +173,8 @@ const Privacy = () => {
 								privacy policies or practices of any third party sites or
 								services.
 							</ol>
-							<ol>
-								<h2>7. Links to Other Websites</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>7. Links to Other Websites</h2>
 								<p>
 									Our Website may contain links to other websites that are not
 									under our direct control. These websites may have their own
@@ -199,8 +201,8 @@ const Privacy = () => {
 								</p>
 							</ol>
 
-							<ol>
-								<h2>8. Automatic Information</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>8. Automatic Information</h2>
 								<p>
 									We automatically receive information from your web browser or
 									mobile device. This information includes the name of the
@@ -214,8 +216,8 @@ const Privacy = () => {
 									to help improve our Website.
 								</p>
 							</ol>
-							<ol>
-								<h2>9. Newsletters</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>9. Newsletters</h2>
 								<p>
 									On the Website, you may subscribe to our newsletter, which may
 									be used for advertising purposes. All newsletters sent may
@@ -228,8 +230,8 @@ const Privacy = () => {
 									will not be passed on to third parties.
 								</p>
 							</ol>
-							<ol>
-								<h2>10. Children's Information</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>10. Children's Information</h2>
 								<p>
 									The Website does not knowingly collect any personally
 									identifiable information from children under the age of 16. If
@@ -237,15 +239,17 @@ const Privacy = () => {
 									identifiable information of a child under the age of 16 in its
 									database, please contact us immediately&nbsp;
 									<Link href="/contact">
-										<a className="link">here</a>
+										<a className={styles.link}>here</a>
 									</Link>{" "}
 									and we will use our best efforts to promptly remove such
 									information from our records.
 								</p>
 							</ol>
 
-							<ol>
-								<h2>11. Changes to this Privacy Policy</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>
+									11. Changes to this Privacy Policy
+								</h2>
 								<p>
 									This Privacy Policy is effective as of 1st September 2019 and
 									will remain in effect except with respect to any changes in
@@ -273,12 +277,12 @@ const Privacy = () => {
 									provided us, or by placing a prominent notice on our website.
 								</p>
 							</ol>
-							<ol>
-								<h2>12. Contact Us</h2>
+							<ol className={styles.listStyle}>
+								<h2 className={styles.header}>12. Contact Us</h2>
 								If you have any questions about this Privacy Policy, please
 								contact us&nbsp;
 								<Link href="/contact">
-									<a className="link">here.</a>
+									<a className={styles.link}>here.</a>
 								</Link>
 							</ol>
 
@@ -287,97 +291,6 @@ const Privacy = () => {
 					</article>
 				</main>
 			</Vanilla>
-			<style jsx>
-				{`
-					.content {
-						margin-bottom: 5rem;
-						display: flex;
-						flex-grow: 1;
-						flex-direction: column;
-						line-height: ${theme.lineHeight};
-					}
-					.link {
-						text-decoration: none;
-						color: black;
-						font-weight: 900;
-					}
-					.main-title {
-						font-family: ${theme.font};
-						margin-top: 3.5rem;
-						font-size: 2.8em;
-						font-weight: 700;
-						color: #101010;
-						text-transform: uppercase;
-					}
-					.main-content {
-						font-family: ${theme.font};
-						font-size: ${theme.fontSize};
-						color: #101010;
-					}
-					.main-content p {
-						text-align: justify;
-					}
-					h2 {
-						text-transform: uppercase;
-						margin-top: 3rem;
-						line-height: 2.5rem;
-					}
-					@media only screen and (max-width: 960px) {
-						.content {
-							margin-bottom: 5rem;
-							width: 100%;
-							min-width: 100%;
-							display: flex;
-							flex-grow: 1;
-							flex-direction: column;
-							width: 70%;
-							margin: 0 auto;
-						}
-						.main-title {
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.fontSize};
-							font-weight: 300;
-							color: #101010;
-							width: 80%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-					}
-					@media only screen and (max-width: 560px) {
-						h2 {
-							text-transform: uppercase;
-							margin-top: 1.5rem;
-							line-height: 2rem;
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.mobileFontSize};
-							font-size: ${theme.mobileLineHeight};
-							font-weight: 300;
-							color: #101010;
-							width: 96%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-						.main-title {
-							font-family: ${theme.font};
-							margin-top: 2rem;
-							font-size: ${theme.mobileHeaderSize};
-							font-weight: 700;
-							color: #101010;
-							text-transform: uppercase;
-						}
-						ol {
-							padding: 0;
-							margin: 0;
-						}
-					}
-				`}
-			</style>
 		</Layout>
 	);
 };

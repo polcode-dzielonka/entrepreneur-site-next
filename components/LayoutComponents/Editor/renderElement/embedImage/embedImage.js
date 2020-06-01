@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImageLoader from "../../../../Loading/EditorImageLoader";
-
+import styles from "../styles/embedImage/embedImageStyles.module.sass";
 const EmbedImage = ({ attributes, element, children }) => {
 	const { data } = element;
 	const [embedImage, setEmbedImageUrl] = useState({
@@ -33,14 +33,7 @@ const EmbedImage = ({ attributes, element, children }) => {
 	};
 
 	return (
-		<div
-			{...attributes}
-			style={{
-				display: "block",
-				width: "100%",
-				margin: "0 auto",
-			}}
-		>
+		<div {...attributes} className={styles.embedWrapper}>
 			<ImageLoader
 				src={embedImage.imageUrl}
 				alt={embedImage.imageAlt}
@@ -56,27 +49,13 @@ const EmbedImage = ({ attributes, element, children }) => {
 						href={embedImage.imageAttributionLink}
 						target="_blank"
 						rel="noopener noreferrer"
+						className={styles.embed}
 					>
 						Credit:{embedImage.imageAttribution}
 					</a>
 				</span>
 			)}
-			<span className="comment">{embedImage.imageComment}</span>
-			<style jsx>
-				{`
-					a {
-						font-size: 1rem;
-						text-decoration: none;
-						float: right;
-					}
-					.comment {
-						font-size: 1rem;
-						text-decoration: none;
-						margin: 0;
-						text-transform: capitalize;
-					}
-				`}
-			</style>
+			<span className={styles.comment}>{embedImage.imageComment}</span>
 		</div>
 	);
 };

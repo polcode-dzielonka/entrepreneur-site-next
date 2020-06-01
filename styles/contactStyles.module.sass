@@ -27,7 +27,7 @@
 	border-radius: 0
 	border: 1px solid $primary
 
-	&::placeholder
+	&:placeholder
 		color: $primary
 
 .formBlurb
@@ -65,8 +65,9 @@
 	border-radius: 0
 	font-family: $font
 
-.formInput::placeholder,.textAreaInput::placeholder
-	color: grey
+.formInput,.textAreaInput
+	&:placeholder
+		color: grey
 
 	&:focus
 		outline: none

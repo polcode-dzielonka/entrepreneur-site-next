@@ -12,6 +12,7 @@ import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import FacebookComments from "../../SocialMedia/FacebookComments";
 import LazyLoad from "react-lazyload";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
+import styles from "./styles/slideShowStyles.module.sass";
 
 const SlideDetails = ({ content, position, latest, url, id }) => {
 	const details = JSON.parse(content.overview);
@@ -38,7 +39,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	const slideData = countdown ? slides["slides"] : slides["slides"];
 	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/opening`;
 	return (
-		<div className="section-padding">
+		<div className={styles.sectionPadding}>
 			<SectionBar title={`Lists`} titleColor="#111" titleSize="1.5rem" />
 			<Headline data={details} id={id} position={position} />
 
@@ -125,57 +126,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 			<LazyLoad once={true}>
 				<ScrollingContent id={id} title="Latest" type={"slideshow"} />
 			</LazyLoad>
-			<hr className="break" />
-			<style jsx>
-				{`
-					.break {
-						border: 1px solid #dedede;
-						width: 100%;
-						margin: 0 auto;
-					}
-					.headline-image {
-						max-height: 550px;
-					}
-					.link-wrapper {
-						margin: 1rem 0;
-					}
-					.section-padding {
-						display: flex;
-						flex-direction: column;
-						margin: 0.15rem 2rem;
-					}
-
-					.section-brief {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						line-height: 2rem;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					.section-list {
-						margin: 0rem 1rem 1rem 1rem;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					ul {
-						margin: 0;
-					}
-
-					@media only screen and (max-width: 670px) {
-						.section-padding {
-							margin: 0 auto;
-							width: 96%;
-						}
-					}
-				`}
-			</style>
+			<hr className={styles.break} />
 		</div>
 	);
 };

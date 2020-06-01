@@ -1,0 +1,162 @@
+@import "../../../styles/baseTheme"
+
+.container
+    width: 100%
+    background-color: $secondary
+    display: flex
+    flex-direction: column
+    margin: 2rem 0rem
+
+.content
+    font-size: 1rem
+    margin: 0 auto
+    padding: 0rem 2rem
+
+.headerContainer
+    width: 100%
+    margin: 0 auto
+    color: white
+    text-align: center
+    padding-top: 1rem
+
+.headerPrimary
+    font-size: 2rem
+    margin: 0 auto
+    padding: 0
+
+.headerSecondary
+    font-size: 1.2rem
+    margin: 0 auto
+    color: white
+    padding: 0rem 2rem
+
+.headerWrapper
+    width: 60%
+    margin: 0 auto
+    display: flex
+    flex-direction: row
+
+.iconHeader
+    width: 100%
+    display: flex
+    flex-direction: row
+    margin: 0 auto
+    text-align: center
+
+.iconWrapLeft
+    margin-left: 1rem
+
+.iconWrapRight
+    margin-right: 1rem
+
+.error
+    font-size: 1.9em
+    font-weight: 400
+    color: #2e2c2b
+    background: #fff
+    display: block
+    padding-left: 10px
+    display: flex
+    margin: 0px
+    width: 100%
+    border-radius: 0
+    font-family: $font
+    border: 1px solid $primary
+
+    &:placeholder
+        color: $primary
+
+.formContainer
+    margin: 0.5rem 0.5rem
+    padding: 0rem 2.5rem
+    display: flex
+    flex-direction: row
+
+.formGroup
+    position: relative
+    width: 80%
+    background: #fff
+    display: flex
+    height: 3rem
+
+.formLabel
+    position: absolute
+    width: 1px
+    height: 1px
+    margin: -1px
+    overflow: hidden
+
+.formInput
+    font-size: 1.9em
+    font-weight: 400
+    color: #2e2c2b
+    background: #fff
+    border: none
+    padding: 0px 10px
+    display: flex
+    margin: 0px
+    width: 100%
+    border-radius: 0
+    font-family: $font
+
+    &:placeholder
+        color: grey
+
+    &:focus
+        outline: none
+
+.link
+    color: #fefefe
+    font-weight: 900
+
+.recaptchaWrapper
+    margin: 0 auto
+    padding-top: 0.5rem
+
+.subscribe
+    font-family: $font
+    font-size: 1.5rem
+    height: 3rem
+
+    background-color: $primary
+    color: #fefefe
+    width: 100%
+    margin: 0
+
+    &:focus
+        display: none
+
+.subscribeWrapper
+    height: 100%
+    width: 20%
+
+@media only screen and (max-width: 800px) 
+    .formContainer
+        flex-direction: column
+        width: 90%
+        margin: 0 auto
+        padding: 0.7rem 0.5rem
+        text-align: center
+
+    .headerWrapper
+        width: 100%
+
+    .iconWrapLeft
+        margin-left: 0
+
+    .iconWrapRight
+        margin-right: 0
+
+    .subscribeWrapper
+        width: 100%
+        margin: 0
+        padding: 0
+
+    .formGroup
+        margin: 0
+        padding: 0
+        width: 100%
+
+@media only screen and (max-width: 1200px) 
+    .headerWrapper
+        width: 80%

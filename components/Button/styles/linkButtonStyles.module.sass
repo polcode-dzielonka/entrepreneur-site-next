@@ -1,19 +1,19 @@
-@import "../../../styles/baseTheme"
+@import "../../../styles/_baseTheme"
 
 .arrow
     width: 40%
 
-    &-wrapper
-        width: 20%
-        position: relative
-        display: flex
-        align-items: center
+.arrowWrapper
+    width: 20%
+    position: relative
+    display: flex
+    align-items: center
 
 .linkLabel
     font-size: 2rem
     text-align: center
 
-    :hover &
+    &:hover
         color: $primary
 
 .imgWrapper
@@ -63,7 +63,7 @@
     transition: all 0.2s ease
     padding: 1rem 0rem
 
-    :hover &
+    &:hover
         background: #fefefe
 
 .scrollText
@@ -75,25 +75,25 @@
     margin: 1rem 0
 
 @media only screen and (max-width: 450px) 
-.arrow
-    width: 60%
+    .arrow
+        width: 60%
 
-.imgWrapper
-    height: 100%
-    width: 40%
-    display: flex
-    padding-left: 0.25rem
+    .imgWrapper
+        height: 100%
+        width: 40%
+        display: flex
+        padding-left: 0.25rem
 
-.linkButton
-    padding: 0rem
-    margin: 1.2rem 0rem 0rem 0rem
+    .linkButton
+        padding: 0rem
+        margin: 1.2rem 0rem 0rem 0rem
 
-.linkLabel
-    font-size: 1.6rem
-    text-align: center
+    .linkLabel
+        font-size: 1.6rem
+        text-align: center
 
-.quickviewImage
-    width: 100%
+    .quickviewImage
+        width: 100%
 
-.scrollText
-    margin: 0.1rem 0
+    .scrollText
+        margin: 0.1rem 0

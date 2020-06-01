@@ -1,0 +1,68 @@
+@import "../../../../styles/baseTheme"
+
+.bodyContainer
+    display: flex
+    flex-direction: row
+    padding: 2rem
+    font-size: 10px
+    margin: 0 auto
+    max-width: $contentMaxWidth
+
+.button
+    width: 100%
+    height: 2.5rem
+    margin: 2rem 0
+    background-color: $secondary
+    cursor: pointer
+
+    &:focus
+        outline: none
+
+    &:hover
+        background-color: $primary
+
+.latestContainer
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+    max-width: 70%
+    padding: 0rem 0.75rem 0.75rem 0
+
+.mainLatestContainer
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+    max-width: 70%
+    padding: 0rem 0.75rem 0.75rem 0
+
+.sectionPadding
+    padding-right: 0.5rem
+
+.slideContainer
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+    max-width: 30%
+    padding: 0rem 0rem 0.75rem 0.5rem
+
+@media only screen and (max-width: 1000px) 
+    .bodyContainer
+        flex-direction: column
+        padding: 0rem
+
+    .latestContainer
+        max-width: 100%
+        padding: 1rem
+
+    .mainLatestContainer
+        max-width: 100%
+        padding: 3rem
+
+    .slideContainer
+        max-width: 100%
+        padding: 0
+        margin: 0rem 2.5rem
+
+@media only screen and (max-width: 646px) 
+    .slideContainer
+        margin: 0rem 1rem

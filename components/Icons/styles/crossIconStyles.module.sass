@@ -1,0 +1,32 @@
+.container
+    height: 16px
+    width: 16px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    text-align: center
+    margin: 0 auto
+    cursor: pointer
+    padding: 16px
+
+.line
+    height: 2px
+    width: 20px
+    background: white
+    margin: 0 auto
+    transition: all 0.2s ease
+
+.lineTop
+    transform: rotate(45deg)
+    transform-origin: top left
+    margin-bottom: 5px
+
+.lineMiddle
+    opacity: 0,
+    transform: translateX(-16px)
+
+.lineBottom
+    transform: translateX(-1px) rotate(-45deg)
+    transform-origin: top left
+    margin-top: 5px

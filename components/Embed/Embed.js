@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, memo } from "react";
 import SingleSocialLoader from "../Loading/SingleSocialLoader";
 import dynamic from "next/dynamic";
 import ImageLoader from "../Loading/ImageLoader";
-
+import styles from "./styles/embedStyles.module.sass";
 const EmbedUrl = ({
 	embed,
 	image,
@@ -41,6 +41,7 @@ const EmbedUrl = ({
 			{imageAltAttribution && (
 				<span>
 					<a
+						className={styles.embedImageAlt}
 						href={imageAltAttributionLink}
 						target="_blank"
 						rel="noopener noreferrer"
@@ -49,15 +50,6 @@ const EmbedUrl = ({
 					</a>
 				</span>
 			)}
-			<style jsx>
-				{`
-					a {
-						font-size: 1rem;
-						text-decoration: none;
-						float: right;
-					}
-				`}
-			</style>
 		</>
 	);
 };

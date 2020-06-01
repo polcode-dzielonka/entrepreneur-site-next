@@ -14,6 +14,8 @@ import Cookie from "js-cookie";
 import Link from "next/link";
 import ImageLoader from "../components/Loading/ImageLoader";
 import manualRequest from "../components/apiRequest/prodRequest";
+import styles from "../styles/newsletterStyles.module.sass";
+import baseTheme from "../theme/baseTheme.json";
 
 const Newsletter = ({ url }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
@@ -73,9 +75,9 @@ const Newsletter = ({ url }) => {
 				<link rel="canonical" href={`${process.env.SITE_ADDRESS}/newsletter`} />
 			</Head>
 			<Vanilla>
-				<main className="content">
-					<article className="article">
-						<h1 className="main-title">Newsletter</h1>
+				<main className={styles.content}>
+					<article className={styles.article}>
+						<h1 className={styles.mainTitle}>Newsletter</h1>
 					</article>
 					<ImageLoader
 						src={"/static/business_cover_photox1024.jpg"}
@@ -89,7 +91,7 @@ const Newsletter = ({ url }) => {
 						]}
 						styles={{ width: "100%", height: "100%" }}
 					/>
-					<form className="contact-form" onSubmit={handleSubmit}>
+					<form className={styles.contactForm} onSubmit={handleSubmit}>
 						<h3>
 							Be the first to get our latest content - straight to your inbox
 						</h3>
@@ -100,13 +102,17 @@ const Newsletter = ({ url }) => {
 						</p>
 						{emailSignUp.map((input, index) => {
 							return (
-								<div className="form-group" key={index}>
-									<label className="form-label">{input.label}</label>
+								<div className={styles.formGroup} key={index}>
+									<label className={styles.formLabel}>{input.label}</label>
 									<input
 										name={input.name}
 										required={input.required}
 										value={formData[input.name]}
-										className={errors[input.name] ? "error" : input.className}
+										className={
+											errors[input.name]
+												? styles.error
+												: styles[input.className]
+										}
 										type={input.type}
 										placeholder={
 											errors[input.name]
@@ -122,7 +128,7 @@ const Newsletter = ({ url }) => {
 						})}
 						<RippleButton
 							label={"Subscribe"}
-							color={theme.primary}
+							color={baseTheme.primary}
 							handler={null}
 							type="submit"
 						/>
@@ -143,9 +149,9 @@ const Newsletter = ({ url }) => {
 							<>
 								<p>
 									Uh Oh! Something went wrong - Please try again or Contact
-									support{" "}
+									support
 									<Link href="/contact">
-										<a className="link" target="_blank">
+										<a className={styles.link} target="_blank">
 											here.
 										</a>
 									</Link>
@@ -160,150 +166,6 @@ const Newsletter = ({ url }) => {
 					</form>
 				</main>
 			</Vanilla>
-			<style jsx>
-				{`
-					a {
-						color: #fefefe;
-						text-decoration: none;
-					}
-					.contact-form {
-						padding: 1.5rem;
-						margin-bottom: 4rem;
-					}
-					.content {
-						margin-right: 5rem;
-						margin-left: 5rem;
-						margin-bottom: 5rem;
-						display: flex;
-						flex-grow: 1;
-						flex-direction: column;
-						background-color: "#111";
-					}
-					.error {
-						font-size: 1.1em;
-						font-weight: 400;
-						color: #2e2c2b;
-						background: #fff;
-						display: block;
-						border: 0;
-						padding-left: 10px;
-						display: flex;
-						height: 2.5rem;
-						margin: 0px;
-						width: 100%;
-						border-radius: 0;
-						font-family: ${theme.font};
-						border: 1px solid ${theme.primary};
-					}
-					.error::placeholder {
-						color: ${theme.primary};
-					}
-					h3 {
-						font-size: 1.2em;
-						font-weight: 600;
-						color: ${theme.primary};
-						font-family: ${theme.font};
-						text-align: left;
-						text-transform: uppercase;
-						text-align: center;
-					}
-					p {
-						font-size: ${theme.fontSize};
-						font-weight: 600;
-						color: #fff;
-						font-family: ${theme.font};
-						text-align: left;
-						line-height: ${theme.lineHeight};
-					}
-					.form-group {
-						position: relative;
-						margin-bottom: 1rem;
-						margin-top: 1.5rem;
-						width: 100%;
-						padding: 0;
-						background: #fff;
-						display: flex;
-					}
-					.form-label {
-						position: absolute;
-						width: 1px;
-						height: 1px;
-						margin: -1px;
-						overflow: hidden;
-					}
-					.form-input {
-						font-size: 1.1em;
-						font-weight: 400;
-						color: #2e2c2b;
-						background: #fff;
-						display: block;
-						border: 0;
-						padding-left: 10px;
-						display: flex;
-						height: 2.5rem;
-						margin: 0px;
-						width: 100%;
-						border-radius: 0;
-						font-family: ${theme.font};
-					}
-					.form-input::placeholder {
-						color: grey;
-					}
-					.form-input:focus {
-						outline: none;
-					}
-					.main-title {
-						font-family: ${theme.font};
-						font-size: 2.8em;
-						font-weight: 700;
-						color: #fefefe;
-						text-transform: uppercase;
-						text-align: center;
-					}
-					strong {
-						color: white;
-						font-family: ${theme.font};
-						line-height: ${theme.lineHeight};
-						font-size: 0.9rem;
-					}
-
-					@media only screen and (max-width: 960px) {
-						.content {
-							margin-bottom: 5rem;
-							width: 100%;
-							min-width: 100%;
-							display: flex;
-							flex-grow: 1;
-							flex-direction: column;
-							width: 70%;
-							margin: 0 auto;
-						}
-						.main-title {
-							text-align: center;
-							font-size: 2rem;
-							line-height: 2.25rem;
-							margin-bottom: 0.5rem;
-						}
-						.contact-form {
-							padding: 0.25rem;
-							margin-bottom: 4rem;
-						}
-						p {
-							text-align: center;
-							font-size: ${theme.mobileFontSize};
-							line-height: ${theme.mobileLineHeight};
-						}
-						h3 {
-							font-size: ${theme.mobileFontSize};
-							line-height: ${theme.mobileLineHeight};
-						}
-						.form-group {
-							margin-bottom: 0.4rem;
-							margin-top: 0.7rem;
-						}
-					}
-				`}
-			</style>
 		</Layout>
 	);
 };

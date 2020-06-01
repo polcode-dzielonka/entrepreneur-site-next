@@ -11,7 +11,7 @@ import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
 import defaultValue from "../Editor/defaultValue";
 import LazyLoad from "react-lazyload";
 import NextLink from "../Editor/renderElement/ads/nextLink";
-
+import slideStyles from "./styles/slideStyles.module.sass";
 const Slides = ({
 	data,
 	showNumbers,
@@ -53,14 +53,15 @@ const Slides = ({
 		const showNumber = countdown
 			? data.length - slidePosition + 1
 			: slidePosition;
-
 		return (
-			<div className="bookend-wrapper" key={index}>
-				<h1 className="section-header">
-					{showNumbers && <span className="slide-position">{showNumber}</span>}
+			<div className={slideStyles.bookendWrapper} key={index}>
+				<h1 className={slideStyles.sectionHeader}>
+					{showNumbers && (
+						<span className={slideStyles.slidePosition}>{showNumber}</span>
+					)}
 					{slide}
 				</h1>
-				<h3 className="section-brief">{slideComment}</h3>
+				<h3 className={slideStyles.sectionBrief}>{slideComment}</h3>
 				<LazyLoad once={true}>
 					<Embed
 						embed={slideData["slideImage-embed"]}
@@ -73,7 +74,7 @@ const Slides = ({
 						noMaxHeight={true}
 					/>
 				</LazyLoad>
-				<div className="section-paragraph">
+				<div className={slideStyles.sectionParagraph}>
 					<Slate editor={editor} value={value}>
 						<Editable
 							readOnly={true}
@@ -111,9 +112,9 @@ const Slides = ({
 								titleSize="1.5rem"
 							/>
 							<NextLink
-								brief={midDataOverview[0].blurb}
+								brief={midDataOverview[0].brief}
 								title="Next Up:"
-								headline={midDataOverview[0].slideTitle}
+								headline={midDataOverview[0].headline}
 								image={midDataOverview[0].headlineImage}
 								imageAlt={midDataOverview[0].headlineImageAlt}
 								srcset={midDataOverview[0].srcset}
@@ -123,86 +124,6 @@ const Slides = ({
 						</LazyLoad>
 					</>
 				)}
-
-				<style jsx>
-					{`
-						.bookend-wrapper {
-							height: 100%;
-							width: 100%;
-							margin: 1rem 0;
-						}
-	
-						.section-brief {
-							margin: 1.5rem 0;
-							padding: 0;
-							font-size: 1.45rem;
-							font-weight: 300;
-							line-height: 2rem;
-							color: ${theme.secondary};
-							text-transform: capitalize;
-							font-family: ${theme.secondaryFont};
-						}
-
-						.section-header {
-							margin: 1.5rem 0;
-							padding: 0;
-							font-size: 3rem;
-							font-weight: 900;
-							line-height: 3rem;
-							text-transform: capitalize;
-							font-style:italic;
-							text-align:center;
-							border-bottom: 1px solid #9d9d9d;
-							border-top: 1px solid #9d9d9d;
-							padding:0.75rem 0 0.5rem;
-							font-family:${theme.font};
-							color:${theme.secondary};
-						}
-						.section-paragraph{
-							margin: 2rem auto;
-							width:85%;
-							padding: 0;
-							font-size: 1.45rem;
-							font-weight: 300;
-							line-height: 2rem;
-							color: ${theme.secondary};
-							font-family: ${theme.secondaryFont};
-						}
-						.slide-position{
-							font-size:32px
-							font-weight:900;
-							font-family:${theme.font};
-							color:${theme.primary};
-							margin-right:.5rem;
-						}
-						.slide-position:after{
-							content: ".";
-							display: inline-block;
-						}
-						@media only screen and (max-width: 670px) {
-							.section-header {
-								font-size: 2.4rem;
-								line-height: 2.75rem;
-								padding: 0.5rem;
-								margin: 0 auto;
-								font-style: normal;
-							}
-							.section-paragraph {
-								margin: 2rem 0 0 0;
-								width: 98%;
-							}
-						}
-						@media only screen and (max-width: 450px) {
-							.section-header {
-								font-size: 2rem;
-								line-height: 2.3rem;
-								padding: 0.5rem;
-								margin: 0.75rem 0;
-								font-style: normal;
-							}
-						}
-					`}
-				</style>
 			</div>
 		);
 	});

@@ -9,7 +9,7 @@ import LongAnswer from "./LongAnswer";
 import Cookie from "js-cookie";
 import router from "next/router";
 import prodRequest from "../../apiRequest/prodRequest";
-
+import styles from "./styles/questionStyles.module.sass";
 const Questions = ({
 	total,
 	questionData,
@@ -140,10 +140,10 @@ const Questions = ({
 		}
 	};
 	return (
-		<div className="bookend-wrapper">
-			<h1 className="section-header-score">Current Score: {score}</h1>
+		<div className={styles.bookendWrapper}>
+			<h1 className={styles.sectionHeaderScore}>Current Score: {score}</h1>
 			{!showAnswer && (
-				<div className="easing">
+				<div className={styles.easing}>
 					<Embed
 						embed={questionDetails["questionImage-embed"]}
 						image={questionImage}
@@ -157,7 +157,7 @@ const Questions = ({
 				</div>
 			)}
 			{showAnswer && (
-				<div className="easing">
+				<div className={styles.easing}>
 					<Embed
 						embed={questionDetails["answerImage-embed"]}
 						image={answerImage}
@@ -170,11 +170,11 @@ const Questions = ({
 					/>
 				</div>
 			)}
-			<h1 className="section-header">
-				<span className="question-position">{questionPosition}</span>
+			<h1 className={styles.sectionHeader}>
+				<span className={styles.questionPosition}>{questionPosition}</span>
 				{question}
 			</h1>
-			<div className="answer-wrap">
+			<div className={styles.answerWrap}>
 				{answers.map((answer, index) => {
 					return (
 						<QuizButton
@@ -220,126 +220,6 @@ const Questions = ({
 					}
 				/>
 			)}
-			<style jsx>
-				{`
-					.bookend-wrapper {
-						height: 100%;
-						width: 100%;
-					}
-					.easing {
-						animation: easingIn;
-						animation-duration: 2s;
-					}
-					.section-brief {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						line-height: 2rem;
-						color: ${theme.secondary};
-						text-transform: capitalize;
-						font-family: ${theme.secondaryFont};
-					}
-					.section-header-score {
-						margin-bottom: 1.5rem;
-						padding: 0;
-						margin-top: 0rem;
-						font-size: 3rem;
-						font-weight: 900;
-						line-height: 3rem;
-						text-transform: capitalize;
-						font-style: italic;
-						text-align: center;
-						border-bottom: 1px solid #9d9d9d;
-						border-top: 1px solid #9d9d9d;
-						padding: 0.75rem 0 0.5rem;
-						font-family: ${theme.font};
-						color: ${theme.secondary};
-					}
-					.section-header {
-						margin-bottom: 1.5rem;
-						padding: 0;
-						font-size: 3rem;
-						font-weight: 900;
-						line-height: 3rem;
-						text-transform: capitalize;
-						font-style: italic;
-						text-align: center;
-						border-bottom: 1px solid #9d9d9d;
-						border-top: 1px solid #9d9d9d;
-						padding: 0.75rem 0 0.5rem;
-						font-family: ${theme.font};
-						color: ${theme.secondary};
-					}
-					.section-paragraph {
-						margin: 2rem auto;
-						width: 85%;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						line-height: 2rem;
-						color: ${theme.secondary};
-						font-family: ${theme.secondaryFont};
-					}
-					.question-position {
-						font-weight: 900;
-						font-family: ${theme.font};
-						color: ${theme.primary};
-						margin-right: 0.5rem;
-					}
-					.question-position:after {
-						content: ".";
-						display: inline-block;
-					}
-					@keyframes easingIn {
-						from {
-							opacity: 0;
-						}
-						to {
-							opacity: 1;
-						}
-					}
-					@media only screen and (max-width: 670px) {
-						.answer-wrap {
-							margin: 0.75rem 0rem;
-						}
-						.section-header-score {
-							font-size: 2.4rem;
-							line-height: 2.75rem;
-							padding: 0.5rem;
-							margin: 0 auto;
-							font-style: normal;
-						}
-						.section-header {
-							font-size: 2.4rem;
-							line-height: 2.75rem;
-							padding: 0.5rem;
-							margin: 0 auto;
-							font-style: normal;
-						}
-						.section-paragraph {
-							margin: 2rem 0 0 0;
-							width: 98%;
-						}
-					}
-					@media only screen and (max-width: 450px) {
-						.section-header-score {
-							font-size: 1.75rem;
-							line-height: 2rem;
-							padding: 0.5rem;
-							margin: 0.75rem 0;
-							font-style: normal;
-						}
-						.section-header {
-							font-size: 1.75rem;
-							line-height: 2rem;
-							padding: 0.5rem;
-							margin: 0 auto;
-							font-style: normal;
-						}
-					}
-				`}
-			</style>
 		</div>
 	);
 };

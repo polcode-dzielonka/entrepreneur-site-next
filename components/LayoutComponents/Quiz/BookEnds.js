@@ -5,7 +5,8 @@ import { Slate, Editable } from "slate-react";
 import { createEditor } from "slate";
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
-
+import styles from "./styles/bookEndStyles.module.sass";
+import baseTheme from "../../../theme/baseTheme.json";
 const QuizBookEnds = ({
 	image,
 	imageAlt,
@@ -34,15 +35,15 @@ const QuizBookEnds = ({
 		0,
 	);
 	return (
-		<div className="bookend-wrapper">
+		<div className={styles.bookEndWrapper}>
 			{positionClosing && (
-				<h1 className="section-header">
+				<h1 className={`${styles.sectionHeader} section-header`}>
 					<div>
 						Final Score: {finalScore} out of {numberQuestions}
 					</div>
 				</h1>
 			)}
-			{positionOpening && <h1 className="section-header-open">{title}</h1>}
+			{positionOpening && <h1 className={styles.sectionHeaderOpen}>{title}</h1>}
 			<Embed
 				embed={embed}
 				image={image}
@@ -55,13 +56,13 @@ const QuizBookEnds = ({
 			/>
 
 			{positionClosing && (
-				<h1 className="section-header">
+				<h1 className={`${styles.sectionHeader} section-header`}>
 					{scoreComments[`scoreComment${commentNumber}`]}
 				</h1>
 			)}
 
 			<>
-				<div className="section-paragraph">
+				<div className={styles.sectionParagraph}>
 					<Slate editor={editor} value={value}>
 						<Editable
 							readOnly={true}
@@ -70,115 +71,16 @@ const QuizBookEnds = ({
 						/>
 					</Slate>
 				</div>
-				{positionClosing && <h1 className="end-header"> {title}</h1>}
+				{positionClosing && <h1 className={styles.endHeader}> {title}</h1>}
 			</>
 			<style jsx>
 				{`
-					.bookend-wrapper {
-						height: 100%;
-						width: 100%;
-						margin: 0;
-						padding: 0;
-					}
-					.end-header {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 2.5rem;
-						font-weight: 900;
-						line-height: 3rem;
-						text-transform: capitalize;
-						text-align: center;
-						padding: 0.5rem 0 0.5rem;
-						font-family: ${theme.font};
-						color: ${theme.secondary};
-					}
 					.section-header {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 3rem;
-						font-weight: 900;
-						line-height: 3rem;
-						text-transform: capitalize;
-						font-style: italic;
-						text-align: center;
-						border-bottom: 1px solid #9d9d9d;
-						border-top: 1px solid #9d9d9d;
-						padding: 0.75rem 0 0.5rem;
-						font-family: ${theme.font};
 						color: ${commentNumber === 1
-							? theme.quizCorrectOverlay
+							? "#5bc20f"
 							: commentNumber > 2
-							? theme.primary
-							: theme.secondary};
-					}
-					.section-header-open {
-						margin: 1.5rem 0;
-						padding: 0;
-						font-size: 3rem;
-						font-weight: 900;
-						line-height: 3rem;
-						text-transform: capitalize;
-						font-style: italic;
-						text-align: center;
-						border-bottom: 1px solid #9d9d9d;
-						border-top: 1px solid #9d9d9d;
-						padding: 0.75rem 0 0.5rem;
-						font-family: ${theme.font};
-						color: ${theme.secondary};
-					}
-
-					.section-paragraph {
-						margin: 2rem auto;
-						width: 85%;
-						padding: 0;
-						font-size: 1.45rem;
-						font-weight: 300;
-						line-height: 2rem;
-						color: ${theme.secondary};
-						font-family: ${theme.secondaryFont};
-					}
-					@media only screen and (max-width: 650px) {
-						.section-header-open {
-							font-size: 2.4rem;
-							line-height: 2.75rem;
-							padding: 0.5rem;
-							margin: 1.75rem 0;
-							font-style: normal;
-						}
-						.section-header {
-							font-size: 2.4rem;
-							line-height: 2.75rem;
-							padding: 0.5rem;
-							margin: 1.75rem 0;
-							font-style: normal;
-						}
-						.section-paragraph {
-							margin: 1.75rem auto;
-							width: 100%;
-						}
-						.end-header {
-							margin: 1.75rem auto;
-							width: 100%;
-						}
-					}
-
-					@media only screen and (max-width: 450px) {
-						.end-header {
-							margin: 1.75rem auto;
-							width: 100%;
-							font-size: 1.5rem;
-							line-height: 1.75rem;
-						}
-						.section-header-open {
-							font-size: 1.75rem;
-							line-height: 2rem;
-							margin: 0.5rem 0rem;
-						}
-						.section-header {
-							font-size: 1.75rem;
-							line-height: 2rem;
-							margin: 2rem 0rem;
-						}
+							? baseTheme.primary
+							: baseTheme.secondary};
 					}
 				`}
 			</style>

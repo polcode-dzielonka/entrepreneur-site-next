@@ -2,7 +2,7 @@ import { memo } from "react";
 import PropTypes from "prop-types";
 import SocialSvgFactory from "./utils/svgFactory";
 import createUtm from "../utm/createUtm";
-
+import styles from "./styles/shareButtonHorizStyles.module.sass";
 const HorizontalShareButtons = ({
 	data,
 	url,
@@ -82,12 +82,12 @@ const HorizontalShareButtons = ({
 		},
 	};
 	return (
-		<div className="button-container">
+		<div className={styles.buttonContainer}>
 			{data.map((button, index) => {
 				const { ShareButton } = button;
 				return (
 					<ShareButton
-						className="indiv-button"
+						className={styles.indivButton}
 						style={{
 							width: button.width,
 							backgroundColor: button.secondaryColor,
@@ -96,62 +96,13 @@ const HorizontalShareButtons = ({
 						key={index}
 						{...options[button.name]}
 					>
-						<div className="button-content">
+						<div className={styles.buttonContent}>
 							<SocialSvgFactory button={button} />
-							<span className="button-text">{button.text}</span>
+							<span className={styles.buttonText}>{button.text}</span>
 						</div>
 					</ShareButton>
 				);
 			})}
-			<style jsx>
-				{`
-					button {
-						border: none;
-						outline: none;
-						transition: all 0.15s ease;
-						align-items: center;
-						margin: 0.1rem;
-						border-radius: 4px;
-						padding: 0rem 1rem;
-					}
-					button:hover {
-						filter: brightness(120%);
-					}
-
-					.button-container {
-						margin: 1rem 0rem;
-						height: 100%;
-						display: flex;
-						flex-direction: row;
-					}
-					.button-content {
-						display: flex;
-						flex-direction: row;
-						align-items: center;
-						margin: 0 auto;
-					}
-					.button-text {
-						text-transform: uppercase;
-						color: #fff;
-						font-size: 1.1rem;
-						font-family: ${theme.font};
-					}
-					.indiv-button {
-						width: 20%;
-					}
-
-					@media only screen and (max-width: 760px) {
-						.button-text {
-							display: none;
-						}
-					}
-					@media only screen and (max-width: 450px) {
-						.button-text {
-							display: none;
-						}
-					}
-				`}
-			</style>
 		</div>
 	);
 };

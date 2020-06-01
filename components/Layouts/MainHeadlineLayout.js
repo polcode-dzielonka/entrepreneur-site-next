@@ -14,8 +14,8 @@ import Head from "next/head";
 import FacebookPage from "../SocialMedia/FacebookPage";
 import organisationData from "../StructuredData/organisation";
 import webPageData from "../StructuredData/webPage";
-import styles from "./styles/headlineLayout.module.css";
-
+import styles from "./styles/headlineLayout.module.sass";
+import baseTheme from "../../theme/baseTheme.json";
 const MainHeadlineLayout = ({
 	site,
 	headline,
@@ -50,25 +50,26 @@ const MainHeadlineLayout = ({
 					}}
 				/>
 			</Head>
-			<div className="home-container">
+			<div className={styles.homeContainer}>
 				<MainHeadline data={headline.items} />
 				<section className={styles.bodyContainer}>
 					<div className={styles.latestContainer}>
-						<div className={styles.sectionPadding}>
-							<SectionBar
-								title={pageTitle}
-								titleColor="#111"
-								titleSize="2rem"
-							/>
-						</div>
-						<LazyLoad once={true}>
+						<div className={styles.scrollingWrapper}>
+							<div className={styles.sectionPadding}>
+								<SectionBar
+									title={pageTitle}
+									titleColor="#111"
+									titleSize="2rem"
+								/>
+							</div>
 							<ScrollingArticles data={latest} />
-
-							<RippleButton
-								label={loadingMorePosts ? "Loading..." : "Load More!"}
-								color={theme.secondary}
-							/>
-						</LazyLoad>
+							<LazyLoad once={true}>
+								<RippleButton
+									label={loadingMorePosts ? "Loading..." : "Load More!"}
+									color={baseTheme.secondary}
+								/>
+							</LazyLoad>
+						</div>
 					</div>
 					<aside className={styles.slideContainer}>
 						<div className={styles.sectionPadding}>
@@ -103,9 +104,9 @@ const MainHeadlineLayout = ({
 	);
 };
 MainHeadlineLayout.propTypes = {
-	QUERY: PropTypes.String,
-	filter: PropTypes.Object,
-	limit: PropTypes.Int,
+	// QUERY: PropTypes.String,
+	// filter: PropTypes.Object,
+	// limit: PropTypes.Int,
 };
 
 MainHeadlineLayout.defaultProps = {

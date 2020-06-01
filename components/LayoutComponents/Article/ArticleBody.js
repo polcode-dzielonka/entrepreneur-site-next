@@ -13,7 +13,7 @@ import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import SectionBar from "../SectionBar";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
-
+import styles from "./styles/articleBodyStyles.module.sass";
 const ArticleBody = ({
 	content,
 	category,
@@ -29,7 +29,7 @@ const ArticleBody = ({
 
 	const value = JSON.parse(content.content);
 	return (
-		<div className="section-padding">
+		<div className={styles.sectionPadding}>
 			<Slate editor={editor} value={value}>
 				<Editable
 					readOnly={true}
@@ -68,24 +68,6 @@ const ArticleBody = ({
 			<LazyLoad>
 				<ScrollingContent id={id} type={"article"} />
 			</LazyLoad>
-			<style jsx>
-				{`
-					.section-padding {
-						margin: 2rem;
-						height: 100%;
-					}
-					@media only screen and (max-width: 670px) {
-						.section-padding {
-							margin: 0.8rem;
-						}
-					}
-					@media only screen and (max-width: 450px) {
-						.section-padding {
-							margin: 1.5rem 0rem 0rem 0rem;
-						}
-					}
-				`}
-			</style>
 		</div>
 	);
 };

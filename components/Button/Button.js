@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import Ripples from "./Ripples";
 import styles from "./styles/buttonStyles.module.sass";
+import baseTheme from "../../theme/baseTheme.json";
 const RippleButton = ({
 	loading,
 	handler,
@@ -16,15 +17,19 @@ const RippleButton = ({
 				onClick={handler}
 				type={type}
 				disabled={loading}
-				className="button"
-				styles={{ backgroundColor: color }}
+				className={`${styles.button} ripple-button`}
 			>
-				<div className={styles.submitButton}>{label}</div>
+				<div className={`${styles.submitButton} ripple-button-label`}>
+					{label}
+				</div>
 				<style jsx>{`
-					.button:hover {
+					.ripple-button {
+						background-color: ${color};
+					}
+					.ripple-button:hover {
 						background-color: ${hoverColor};
 					}
-					.submit-button:hover {
+					.ripple-button-label:hover {
 						background-color: ${hoverColor};
 					}
 				`}</style>
@@ -33,9 +38,9 @@ const RippleButton = ({
 	);
 };
 RippleButton.defaultProps = {
-	rippleColor: "#FFAB66",
-	color: "#ff4500",
-	hoverColor: "#ff4500",
+	rippleColor: baseTheme.rippleColor,
+	color: baseTheme.primary,
+	hoverColor: baseTheme.primary,
 	handler: () => {},
 	type: "button",
 };

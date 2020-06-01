@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import styles from "./styles/contentLayout.module.css";
+import styles from "./styles/contentLayout.module.sass";
 const Vanilla = props => {
 	const { children } = props;
 

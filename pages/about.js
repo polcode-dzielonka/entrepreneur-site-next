@@ -2,6 +2,7 @@ import Layout from "../components/Layouts/Layout";
 import Link from "next/link";
 import Vanilla from "../components/Layouts/vanillaLayout";
 import Head from "next/head";
+import styles from "../styles/aboutStyles.module.sass";
 const About = () => {
 	return (
 		<Layout>
@@ -10,10 +11,10 @@ const About = () => {
 				<link rel="canonical" href={`${process.env.SITE_ADDRESS}/about`} />
 			</Head>
 			<Vanilla>
-				<main className="content">
-					<article className="article">
-						<h1 className="main-title">About Us</h1>
-						<div className="main-content">
+				<main className={styles.content}>
+					<article className={styles.article}>
+						<h1 className={styles.mainTitle}>About Us</h1>
+						<div className={styles.mainContent}>
 							<p>
 								The idea of wealth can vary from person to person with the most
 								common being centered around the acquisition of material items -
@@ -44,8 +45,8 @@ const About = () => {
 							</p>
 							<p>This quote from Bob Dylan has always resonated with us...</p>
 
-							<div className="quote-container">
-								<blockquote>
+							<div className={styles.quoteContainer}>
+								<blockquote className={styles.block}>
 									<p>
 										A man is a success if he gets up in the morning and gets to
 										bed at night, and in between he does what he wants to do.”
@@ -76,152 +77,13 @@ const About = () => {
 							<p>
 								To contact us please fill out the form&nbsp;
 								<Link href="/contact">
-									<a className="link">here.</a>
+									<a className={styles.link}>here.</a>
 								</Link>
 							</p>
 						</div>
 					</article>
 				</main>
 			</Vanilla>
-			<style jsx>
-				{`
-					blockquote {
-						border: 0;
-						margin: 50px 50px 0px 50px;
-						padding: 0;
-						background: none;
-						color: gray;
-						font-family: Georgia, serif;
-						font-size: 1.5em;
-						font-style: italic;
-						line-height: 1.4 !important;
-						position: relative;
-						text-shadow: 0 1px white;
-						z-index: 600;
-					}
-					blockquote p {
-						color: #75808a;
-						line-height: 1.4 !important;
-					}
-					blockquote p:first-child:before {
-						content: "‘‘";
-						color: #81bedb;
-						font-size: 7.5em;
-						font-weight: 700;
-						opacity: 0.3;
-						position: absolute;
-						top: -0.4em;
-						left: -0.2em;
-						text-shadow: none;
-						z-index: -300;
-					}
-					cite {
-						color: black;
-						display: block;
-						font-size: 0.8em;
-						text-align: right;
-					}
-					cite span {
-						color: #5e5e5e;
-						font-size: 1em;
-						font-style: normal;
-						font-weight: 700;
-						letter-spacing: 1px;
-						text-transform: uppercase;
-						text-shadow: 0 1px white;
-					}
-					.content {
-						margin-bottom: 5rem;
-						display: flex;
-						flex-grow: 1;
-						flex-direction: column;
-						line-height: ${theme.lineHeight};
-					}
-					.link {
-						text-decoration: none;
-						color: black;
-						font-weight: 900;
-					}
-					.main-title {
-						font-family: ${theme.font};
-						margin-top: 3.5rem;
-						font-size: 2.8em;
-						font-weight: 700;
-						color: #101010;
-						text-transform: uppercase;
-					}
-					.main-content {
-						font-family: ${theme.font};
-						font-size: ${theme.fontSize};
-						color: #101010;
-					}
-					.main-content p {
-						text-align: justify;
-					}
-					.quote-container {
-						display: block;
-					}
-					@media only screen and (max-width: 960px) {
-						.content {
-							margin-bottom: 5rem;
-							width: 100%;
-							min-width: 100%;
-							display: flex;
-							flex-grow: 1;
-							flex-direction: column;
-							width: 70%;
-							margin: 0 auto;
-						}
-						.main-title {
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.fontSize};
-							font-weight: 300;
-							color: #101010;
-							width: 80%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-					}
-					@media only screen and (max-width: 560px) {
-						h2 {
-							text-transform: uppercase;
-							margin-top: 1.5rem;
-							line-height: 2rem;
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.mobileFontSize};
-							font-size: ${theme.mobileLineHeight};
-							font-weight: 300;
-							color: #101010;
-							width: 96%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-						.main-title {
-							font-family: ${theme.font};
-							margin-top: 2rem;
-							font-size: ${theme.mobileHeaderSize};
-							font-weight: 700;
-							color: #101010;
-							text-transform: uppercase;
-						}
-						blockquote {
-							border: 0;
-							margin: 25px;
-							margin-bottom: 10px;
-							font-size: 1.35em;
-						}
-						cite {
-							text-align: center;
-						}
-					}
-				`}
-			</style>
 		</Layout>
 	);
 };

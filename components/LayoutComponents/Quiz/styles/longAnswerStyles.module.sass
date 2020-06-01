@@ -1,0 +1,97 @@
+@import "../../../../styles/_baseTheme"
+
+.answerComment
+    padding: 0
+    margin: 0
+
+.bookendWrapper
+    height: 100%
+    width: 100%
+    margin: 0
+    padding: 0
+
+.editorAnswer
+    font-size: 2.5rem
+    text-align: justify
+    margin: 0 auto
+    padding-top: 0.5rem
+
+.editorBlock
+    font-size: 2.25rem
+    text-align: justify
+    font-color: blue
+    padding: 2rem
+
+.correct
+    width: 100%
+    display: flex
+    flex-direction: row
+    align-items: center
+    height: 100%
+    color: $quizCorrectOverlay
+
+    &Group
+        display: flex
+        flex-direction: row
+        text-align: center
+        margin: 0 auto
+
+    &Label
+        position: relative
+        height: 100%
+        margin-left: 1rem
+
+.incorrectLabel
+    position: relative
+    height: 100%
+    margin-left: -3.5rem
+    color: #d20000
+
+.correctImage
+    width: 25%
+
+.incorrectImage
+    width: 40%
+
+.incorrectWrapper
+    display: flex
+    flex-direction: row
+    align-items: center
+
+@media only screen and (max-width: 650px) 
+    .answerComment
+        font-size: 1.75rem
+
+    .answerCommentHeader
+        font-size: 1.75rem
+        padding: 0
+        margin: 0
+
+    .correctImage
+        width: 20%
+        height: 20%
+
+    .correctLabel
+        font-size: 1.75rem
+
+    .editorBlock
+        padding: 1rem
+
+    .incorrectImage
+        width: 20%
+
+    .incorrectLabel
+        font-size: 1.75rem
+
+@media only screen and (max-width: 450px) 
+    .answerComment
+        margin: 0.5rem 0
+
+    .answerCommentHeader
+        font-size: $fontSize
+        line-height: 1.6rem
+        padding: 0
+        margin: 0
+
+    .editorBlock
+        padding: 0.5rem

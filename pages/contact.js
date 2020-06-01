@@ -12,10 +12,10 @@ import validate from "../components/FormValidation/Validation";
 import Reaptcha from "reaptcha";
 import Vanilla from "../components/Layouts/vanillaLayout";
 import RippleButton from "../components/Button/Button";
-import styles from "../styles/contact.module.sass";
+import styles from "../styles/contactStyles.module.sass";
 import prodRequest from "../components/apiRequest/prodRequest";
 import { createContactForm } from "../graphql/emailSignUp";
-
+import baseTheme from "../theme/baseTheme.json";
 const Contact = ({ router }) => {
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [recaptcha, setRecaptcha] = useState(false);
@@ -157,7 +157,7 @@ const Contact = ({ router }) => {
 						</div>
 						<RippleButton
 							label={"Submit"}
-							color={theme.secondary}
+							color={baseTheme.secondary}
 							handler={null}
 							type="submit"
 						/>

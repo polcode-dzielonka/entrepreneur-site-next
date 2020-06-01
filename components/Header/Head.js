@@ -1,5 +1,6 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
+import baseTheme from "../../theme/baseTheme.json";
 const MainHead = () => {
 	return (
 		<Head>
@@ -14,7 +15,7 @@ const MainHead = () => {
 
 			<meta charSet="UTF-8"></meta>
 			<link rel="manifest" href="/static/manifest.json" />
-			<meta name="theme-color" content="#101010" />
+			<meta name="theme-color" content={baseTheme.secondary} />
 			<meta name="description" content={process.env.SITE_DESC} />
 			<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript" />
 			<meta name="twitter:site" content={process.env.TWITTER_SITE} />

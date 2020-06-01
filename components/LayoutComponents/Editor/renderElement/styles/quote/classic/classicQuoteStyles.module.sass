@@ -1,0 +1,67 @@
+/* center the blockquote in the page */
+.blockQuoteWrapper
+    margin: 1rem 1rem 3rem 1rem
+
+/* Blockquote main style */
+.blockQuote
+    position: relative
+    font-family: "Poppins", sans-serif
+    padding: 2px
+    width: 100%
+    max-width: 600px
+    z-index: 1
+    margin: auto
+
+    /* Blockquote right double quotes */
+    &:after
+        position: absolute
+        content: "”"
+        color: #dedede //191a1b;
+        font-size: 20rem
+        line-height: 1
+        left: calc(50% - 3rem)
+        bottom: -0.8em
+        z-index: 1
+
+    /* Blockquote background */
+    &:before
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        z-index: -1
+        background-color: #dedede
+        background-size: 400% 400%
+
+    /* Blockquote header */
+.header
+    position: relative
+    background-color: #fefefe
+    color: rgba(0, 0, 0, 0.54) //#55555; //#191a1b;
+    font-size: 2rem
+    text-align: center
+    font-weight: normal
+    line-height: 1
+    margin: 0
+    padding: 2rem 1rem 0.5rem 1rem //10px 30px; // 5px 30px;
+
+/* increase header size after 600px */
+@media all and (min-width: 600px) 
+    .header
+        font-size: 2.75rem
+
+    /* Blockquote subheader */
+    .authorHeader
+        position: relative
+        color: #ff058a
+        background-color: #fefefe
+        text-transform: uppercase
+        font-size: 1rem
+        text-align: center
+        font-weight: normal
+        line-height: 1
+        letter-spacing: 5px
+        margin: -5px 0 0 0
+        padding: 15px 20px 3rem 20px

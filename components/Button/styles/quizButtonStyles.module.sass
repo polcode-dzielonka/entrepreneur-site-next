@@ -1,0 +1,98 @@
+@import "../../../styles/baseTheme"
+
+.percentageBar
+    position: absolute
+    direction: ltr
+    height: 100%
+    top: 0
+    left: 0
+    z-index: 1
+
+    &Animation
+        height: 100%
+        animation: barMove
+        animation-duration: 2s
+
+.percentageLabel
+    position: absolute
+    display: flex
+    align-items: center
+    top: 50%
+    right: 10px
+    background-color: #fff
+    padding: 0
+    text-align: center
+    font-family: $font
+    width: 7.5%
+    height: 75%
+    font-size: 1rem
+    font-weight: 600
+    border-radius: 20px
+    transform: translateY(-50%)
+    z-index: 3
+
+.percentageLabelAnswer
+    margin: 0 auto
+
+.quizLabel
+    font-size: 2rem
+    text-align: center
+
+.label
+    text-align: center
+    width: 100%
+    z-index: 2
+    text-decoration: none
+    font-family: $font
+    color: #fefefe
+
+.quizButtonOverlay
+    position: relative
+    text-decoration: none
+    display: flex
+    flex-direction: row
+    align-items: center
+    width: 100%
+
+.quizButtonCorrect
+    position: relative
+    text-decoration: none
+    display: flex
+    flex-direction: row
+    align-itemsanimation-name: correctBar
+    animation-duration: 1s
+    width: 50%
+    background: $quizCorrect
+
+.quizSection
+    background: $quizButton
+    text-align: center
+    cursor: pointer
+    width: 100%
+    margin: 0
+    padding: 0
+    border: none
+
+    &:hover
+        border: none
+
+.quizCorrectSection
+    background: $quizCorrect
+    text-align: center
+    cursor: pointer
+    width: 100%
+    margin: 0
+    padding: 0
+    border: none
+
+@keyframes barMove
+    0%,
+    28%
+        width: 0%
+
+    100%
+        width: 100%
+
+@media only screen and (max-width: 670px) 
+    .linkSection
+        margin: 1.5rem 0

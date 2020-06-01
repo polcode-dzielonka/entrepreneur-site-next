@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Arrow from "./Arrow";
-
+import styles from "./styles/scrollUpStyles.module.sass";
 const ScrollUpButton = () => {
 	const [scrollButton, setScrollButton] = useState(false);
 
@@ -38,38 +38,10 @@ const ScrollUpButton = () => {
 	return (
 		<>
 			{scrollButton && (
-				<button className="scroll-up" onClick={handleScrollUp}>
+				<button className={styles.scrollUp} onClick={handleScrollUp}>
 					<Arrow fillColor="#fefefe" />
 				</button>
 			)}
-			<style jsx>{`
-				button {
-					background-color: ${theme.secondary};
-					border: 4px solid ${theme.primary};
-					width: 5rem;
-					height: 5rem;
-					margin: 0;
-					opacity: 0.7;
-				}
-				button:focus {
-					display: none;
-				}
-				.scroll-up {
-					position: fixed;
-					right: 3%;
-					top: 70%;
-					z-index: 100;
-				}
-				.up-arrow {
-					background-color: red;
-				}
-
-				@media only screen and (max-width: 760px) {
-					button {
-						display: none;
-					}
-				}
-			`}</style>
 		</>
 	);
 };

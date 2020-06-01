@@ -1,6 +1,7 @@
 import Layout from "../components/Layouts/Layout";
 import Head from "next/head";
 import Vanilla from "../components/Layouts/vanillaLayout";
+import styles from "../styles/cookieStyles.module.sass";
 const Cookies = () => {
 	return (
 		<Layout>
@@ -9,10 +10,10 @@ const Cookies = () => {
 				<link rel="canonical" href={`${process.env.SITE_ADDRESS}/cookies`} />
 			</Head>
 			<Vanilla>
-				<main className="content">
-					<article className="article">
-						<h1 className="main-title">Cookies</h1>
-						<div className="main-content">
+				<main className={styles.content}>
+					<article className={styles.article}>
+						<h1 className={styles.mainTitle}>Cookies</h1>
+						<div className={styles.mainContent}>
 							<p>
 								<strong>Derivative Media Ltd</strong> ("us","we",or "our") uses
 								cookies on our websites (the "Service"). By using the Service,
@@ -85,6 +86,7 @@ const Cookies = () => {
 											href="http://www.allaboutcookies.org/"
 											target="_blank"
 											rel="noopener noreferrer"
+											className={styles.cookieLink}
 										>
 											http://www.allaboutcookies.org/
 										</a>
@@ -99,6 +101,7 @@ const Cookies = () => {
 											href="https://www.networkadvertising.org/"
 											target="_blank"
 											rel="noopener noreferrer"
+											className={styles.cookieLink}
 										>
 											https://www.networkadvertising.org/
 										</a>
@@ -109,94 +112,6 @@ const Cookies = () => {
 					</article>
 				</main>
 			</Vanilla>
-			<style jsx>
-				{`
-					.content {
-						margin-bottom: 5rem;
-						display: flex;
-						flex-grow: 1;
-						flex-direction: column;
-						line-height: ${theme.lineHeight};
-					}
-					a {
-						text-decoration: none;
-						color: black;
-						font-weight: 900;
-					}
-					.main-title {
-						font-family: ${theme.font};
-						margin-top: 3.5rem;
-						font-size: 2.8em;
-						font-weight: 700;
-						color: #101010;
-						text-transform: uppercase;
-					}
-					.main-content {
-						font-family: ${theme.font};
-						font-size: ${theme.fontSize};
-						color: #101010;
-					}
-					.main-content p {
-						text-align: justify;
-					}
-					h2 {
-						text-transform: uppercase;
-						margin-top: 3rem;
-						line-height: 2.5rem;
-					}
-
-					@media only screen and (max-width: 960px) {
-						.content {
-							margin-bottom: 5rem;
-							width: 100%;
-							min-width: 100%;
-							display: flex;
-							flex-grow: 1;
-							flex-direction: column;
-							width: 70%;
-							margin: 0 auto;
-						}
-						.main-title {
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.fontSize};
-							font-weight: 300;
-							color: #101010;
-							width: 80%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-					}
-					@media only screen and (max-width: 560px) {
-						h2 {
-							text-transform: uppercase;
-							margin-top: 1.5rem;
-							line-height: 2rem;
-							text-align: center;
-						}
-						.main-content {
-							font-family: ${theme.font};
-							font-size: ${theme.mobileFontSize};
-							font-size: ${theme.mobileLineHeight};
-							font-weight: 300;
-							color: #101010;
-							width: 96%;
-							margin: 0 auto;
-							margin-bottom: 5rem;
-						}
-						.main-title {
-							font-family: ${theme.font};
-							margin-top: 2rem;
-							font-size: ${theme.mobileHeaderSize};
-							font-weight: 700;
-							color: #101010;
-							text-transform: uppercase;
-						}
-					}
-				`}
-			</style>
 		</Layout>
 	);
 };

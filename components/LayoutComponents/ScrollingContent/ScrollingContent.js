@@ -8,7 +8,7 @@ import sideHelper from "../../helper/sideBarHelper";
 import querySelect from "./utils/querySelect";
 import prodRequest from "../../apiRequest/prodRequest";
 import { filterUnique } from "../../../utils/handler";
-import styles from "./styles/scrollingContent.module.css";
+import styles from "./styles/scrollingContentStyles.module.sass";
 const limit = 5;
 const ScrollingContent = ({ id, title, type }) => {
 	const [QUERY, queryString, operationName] = querySelect(type);

@@ -1,0 +1,44 @@
+
+@keyframes fadeInImg
+    0%
+        opacity: 0
+
+    100%
+        opacity: 1
+
+.imageLink
+    font-size: 1rem
+    text-decoration: none
+    float: right
+
+.imgLoading
+    width: 100%
+    height: 100%
+    background: #f4f4f4
+
+.imgLoadingAnimation
+    width: 100%
+    height: 550px
+    background: #f4f4f4
+    opacity: 0
+
+.imgLoadingWithAnimation
+    opacity: 0
+    width: 100%
+    max-height: 550px
+    animation: fadeInImg cubic-bezier(0.23, 1, 0.32, 1) 1
+    animation-fill-mode: forwards
+    animation-duration: 0.7s
+    animation-delay: 0.1s
+    position: relative
+
+.imgLoaded
+    position: relative
+    width: 100%
+    object-fit: cover
+
+@media only screen and (max-width: 450px) 
+    .imgLoading
+        width: 100%
+        height: 250px
+        background: #f4f4f4

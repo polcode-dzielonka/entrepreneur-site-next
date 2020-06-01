@@ -1,0 +1,131 @@
+@import "../styles/_baseTheme"
+
+.content
+    margin-bottom: 5rem
+    display: flex
+    flex-grow: 1
+    flex-direction: column
+    line-height: $lineHeight
+
+.link
+    text-decoration: none
+    color: black
+    font-weight: 900
+
+.mainTitle
+    font-family: $font
+    margin-top: 3.5rem
+    font-size: 2.8em
+    font-weight: 700
+    color: #101010
+    text-transform: uppercase
+
+.mainContent
+    font-family: $font
+    font-size: $fontSize
+    color: #101010
+
+    & p
+        text-align: justify
+
+.quoteContainer
+    display: block
+
+    & blockquote
+        border: 0
+        margin: 50px 50px 0px 50px
+        padding: 0
+        background: none
+        color: gray
+        font-family: Georgia, serif
+        font-size: 1.5em
+        font-style: italic
+        line-height: 1.4 !important
+        position: relative
+        text-shadow: 0 1px white
+        z-index: 600
+
+        & p
+            color: #75808a
+            line-height: 1.4 !important
+
+        & p:first-child:before
+            content: "‘‘"
+            color: #81bedb
+            font-size: 7.5em
+            font-weight: 700
+            opacity: 0.3
+            position: absolute
+            top: -0.4em
+            left: -0.2em
+            text-shadow: none
+            z-index: -300
+
+    & cite
+        color: black
+        display: block
+        font-size: 0.8em
+        text-align: right
+
+        & span
+            color: #5e5e5e
+            font-size: 1em
+            font-style: normal
+            font-weight: 700
+            letter-spacing: 1px
+            text-transform: uppercase
+            text-shadow: 0 1px white
+
+@media only screen and (max-width: 960px) 
+    .content
+        margin-bottom: 5rem
+        width: 100%
+        min-width: 100%
+        display: flex
+        flex-grow: 1
+        flex-direction: column
+        width: 70%
+        margin: 0 auto
+
+    .mainTitle
+        text-align: center
+
+    .main-content
+        font-family: $font
+        font-size: $fontSize
+        font-weight: 300
+        color: #101010
+        width: 80%
+        margin: 0 auto
+        margin-bottom: 5rem
+
+@media only screen and (max-width: 560px) 
+
+    .mainContent
+        font-family: $font
+        font-size: $mobileFontSize
+        font-size: $mobileLineHeight
+        font-weight: 300
+        color: #101010
+        width: 96%
+        margin: 0 auto
+        margin-bottom: 5rem
+
+    .mainTitle
+        font-family: $font
+        margin-top: 2rem
+        font-size: $mobileHeaderSize
+        font-weight: 700
+        color: #101010
+        text-transform: uppercase
+
+    .quoteContainer
+
+        & blockquote
+            border: 0
+            margin: 25px
+            margin-bottom: 10px
+            font-size: 1.35em
+
+        & cite
+            text-align: center

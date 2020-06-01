@@ -13,9 +13,11 @@ import validate from "../../components/FormValidation/Validation";
 import SuccessModal from "./successModal";
 import Cookie from "js-cookie";
 import manualRequest from "../apiRequest/prodRequest";
-
+import styles from "./styles/signUpModalStyles.module.sass";
+import baseTheme from "../../theme/baseTheme.json";
 //Set Cookie Expiration if not signed up (in minutes)
 const cookieTime = 60;
+
 const SignUpModal = () => {
 	const { emailCookie, handleState } = useContext(Context);
 	const [formData, setFormData] = useState(INITIAL_STATE);
@@ -112,38 +114,44 @@ const SignUpModal = () => {
 	return (
 		<>
 			{emailCookie && showModal && widthModal && (
-				<div className="modal-background">
-					<div className="modal-box">
-						<div className="modal-content-wrapper">
-							<div className="modal-title">
-								<div className="modal-exit">
-									<div className="icon">
+				<div className={styles.modalBackground}>
+					<div className={styles.modalBox}>
+						<div className={styles.modalContentWrapper}>
+							<div className={styles.modalTitle}>
+								<div className={styles.modalExit}>
+									<div className={styles.icon}>
 										<CrossIcon onClick={() => changeEmailCookie(false)} />
 									</div>
 								</div>
-								<div className="header-container">
-									<div className="logo-wrapper">
+								<div className={styles.headerContainer}>
+									<div className={styles.logoWrapper}>
 										<img
 											src="/static/business_motivation.svg"
-											className="modal-logo"
+											className={styles.modalLogo}
 											alt="wealthmack_logo"
 										/>
 									</div>
-									<h1 className="header-primary">Keep Me Updated</h1>
+									<h1 className={`${styles.header} ${styles.headerPrimary}`}>
+										Keep Me Updated
+									</h1>
 
 									{!errors.badRequest && (
-										<h2 className="header-secondary">
+										<h2
+											className={`${styles.header} ${styles.headerSecondary}`}
+										>
 											Stay up to date with the most inspirational Business and
 											Personal Development content on the internet.
 										</h2>
 									)}
 									{errors.badRequest && (
 										<>
-											<h2 className="header-secondary">
+											<h2
+												className={`${styles.header} ${styles.headerSecondary}`}
+											>
 												Uh Oh! Something went wrong - Please try again or
 												Contact support{" "}
 												<Link href="/contact">
-													<a className="link" target="_blank">
+													<a className={styles.link} target="_blank">
 														here.
 													</a>
 												</Link>
@@ -151,17 +159,21 @@ const SignUpModal = () => {
 										</>
 									)}
 								</div>
-								<form className="form-container" onSubmit={handleSubmit}>
+								<form className={styles.formContainer} onSubmit={handleSubmit}>
 									{emailSignUp.map((input, index) => {
 										return (
-											<div className="form-group" key={index}>
-												<label className="form-label">{input.label}</label>
+											<div className={styles.formGroup} key={index}>
+												<label className={styles.formLabel}>
+													{input.label}
+												</label>
 												<input
 													name={input.name}
 													required={input.required}
 													value={formData[input.name]}
 													className={
-														errors[input.name] ? "error" : input.className
+														errors[input.name]
+															? styles.error
+															: styles[input.className]
 													}
 													type={input.type}
 													placeholder={
@@ -176,21 +188,24 @@ const SignUpModal = () => {
 											</div>
 										);
 									})}
-									<div className="cookie-wrapper">
-										<Ripples color={theme.rippleColor}>
-											<button className="subscribe" onClick={changeEmailCookie}>
+									<div className={styles.cookieWrapper}>
+										<Ripples color={baseTheme.rippleColor}>
+											<button
+												className={styles.subscribe}
+												onClick={changeEmailCookie}
+											>
 												Subscribe
 											</button>
 										</Ripples>
 										<Ripples
-											color={theme.rippleColor}
+											color={baseTheme.rippleColor}
 											styling={{
 												marginBottom: "0px",
 												marginTop: "0px",
 											}}
 										>
 											<button
-												className="non-subscribe"
+												className={styles.nonSubscribe}
 												onClick={() => changeEmailCookie(false)}
 											>
 												No Thanks I don't want expert knowledge of how to build
@@ -199,13 +214,13 @@ const SignUpModal = () => {
 										</Ripples>
 									</div>
 								</form>
-								<div className="header-container">
-									<p className="modal-content">
+								<div className={styles.headerContainer}>
+									<p className={styles.modalContent}>
 										By clicking Submit, you are subscribing to receive
 										newsletters from Derivative Media Ltd. Your data will be
 										processed in accordance with our{" "}
 										<Link href="/cookies">
-											<a className="link" target="_blank">
+											<a className={styles.link} target="_blank">
 												Privacy and Cookie Policy.
 											</a>
 										</Link>
@@ -220,214 +235,6 @@ const SignUpModal = () => {
 				successModal={successModal}
 				setSuccessModal={setSuccessModal}
 			/>
-			<style jsx>{`
-				.cookie-wrapper {
-					margin: 0;
-				}
-				h1,
-				h2,
-				h3 {
-					color: #fefefe;
-					margin: 0 auto;
-					position: relative;
-					text-align: center;
-					width: 100%;
-					padding: 0;
-					margin: 0;
-				}
-				.header-container {
-					padding: 0rem 2rem;
-				}
-				.header-primary {
-					font-size: 3.75rem;
-				}
-				.header-secondary {
-					font-size: 1.75rem;
-				}
-				.error {
-					font-size: 1.1em;
-					font-weight: 400;
-					color: #2e2c2b;
-					background: #fff;
-					display: block;
-					border: 0;
-					padding-left: 10px;
-					display: flex;
-					height: 2.5rem;
-					margin: 0px;
-					width: 100%;
-					border-radius: 0;
-					font-family: ${theme.font};
-					border: 1px solid ${theme.primary};
-				}
-				.error::placeholder {
-					color: ${theme.primary};
-				}
-				.form-container {
-					margin: 0.5rem 0.5rem;
-					padding: 0rem 2.5rem;
-				}
-				.form-group {
-					position: relative;
-					margin-top: 0.5rem;
-					width: 100%;
-					background: #fff;
-					display: flex;
-				}
-				.form-label {
-					position: absolute;
-					width: 1px;
-					height: 1px;
-					margin: -1px;
-					overflow: hidden;
-				}
-				.form-input {
-					font-size: 1.3em;
-					font-weight: 400;
-					color: #2e2c2b;
-					background: #fff;
-					border: 0;
-					padding: 0px 10px;
-					display: flex;
-					height: 2.5rem;
-					margin: 0px;
-					width: 100%;
-					border-radius: 0;
-					font-family: ${theme.font};
-				}
-				.form-input::placeholder {
-					color: grey;
-				}
-				.form-input:focus {
-					outline: none;
-				}
-
-				.link {
-					color: #fefefe;
-					font-weight: 900;
-				}
-				.logo-wrapper {
-					display: flex;
-					width: 100%;
-					height: 100%;
-					align-items: center;
-					margin: 0 auto;
-				}
-				.modal-background {
-					height: 100%;
-					width: 100%;
-					position: fixed;
-					top: 0;
-					left: 0;
-					z-index: 500;
-					background-color: rgb(0, 0, 0); /* Fallback color */
-					background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
-				}
-				.modal-box {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					height: 58%;
-					position: fixed;
-					background-color: ${theme.secondary};
-					top: 15%;
-					left: 20%;
-					right: 20%;
-					z-index: 1000;
-					margin: 0 auto;
-					max-width: 750px;
-					border: none;
-					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-						0 6px 20px 0 rgba(0, 0, 0, 0.19);
-					animation-name: animateTop;
-					animation-duration: 1s;
-				}
-				.modal-content-wrapper {
-					height: 100%;
-					width: 100%;
-				}
-				.modal-content {
-					color: #fefefe;
-					padding-left: 0.2rem;
-				}
-				.modal-exit {
-					display: flex;
-					flex-direction: row;
-					align-items: flex-end;
-					justify-content: flex-end;
-				}
-				.modal-logo {
-					height: 75px;
-					opacity: 1;
-					background-color: white;
-					align-items: center;
-					margin: 0 auto;
-					border: 1px solid white;
-				}
-				.modal-title {
-					margin: 0 auto;
-					position: absolute;
-					width: 100%;
-					display: flex;
-					flex-direction: column;
-				}
-				@keyframes animateTop {
-					from {
-						top: -100%;
-						opacity: 1;
-					}
-					to {
-						top: 15%;
-						opacity: 1;
-					}
-				}
-				button {
-					background-color: ${theme.primary};
-					color: #fefefe;
-					width: 100%;
-					border: none;
-					margin: 0;
-				}
-				button:focus {
-					display: none;
-				}
-				.subscribe {
-					font-family: ${theme.font};
-					font-size: 2rem;
-				}
-				.non-subscribe {
-					font-family: ${theme.font};
-					font-size: 1.2rem;
-				}
-
-				@media only screen and (max-width: 1081px) {
-					.modal-box {
-						height: 56%;
-						width: 75%;
-						left: 0;
-						right: 0;
-					}
-
-					.header-primary {
-						font-size: 3.5rem;
-					}
-					.header-secondary {
-						font-size: 1.5rem;
-					}
-				}
-				@media only screen and (max-width: 800px) {
-					.modal-box {
-						height: 64%;
-						width: 90%;
-					}
-					.header-primary {
-						font-size: 3.5rem;
-					}
-					.header-secondary {
-						font-size: 1.5rem;
-					}
-				}
-			`}</style>
 		</>
 	);
 };

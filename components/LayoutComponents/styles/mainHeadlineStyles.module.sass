@@ -1,0 +1,289 @@
+@import "../../../styles/_baseTheme"
+
+.headerSection
+    padding: 2rem
+    font-size: 10px
+    margin: 0 auto
+    background-color: $tertiary
+
+.headlineContainer
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    height: 450px
+    max-width: $contentMaxWidth
+    margin: 0 auto
+
+.headlineImageContainer
+    width: 60%
+    position: relative
+    cursor: pointer
+    padding-bottom: 0.25rem
+
+.headlineImageMain
+    display: flex
+    height: 100%
+    width: 100%
+    background-color: $secondary
+
+    &:hover
+        filter: brightness(120%)
+
+.headlineImageMainWrapper
+    height: 100%
+    width: 100%
+
+.info
+    position: absolute
+    left: 0
+    bottom: 0
+    text-decoration: none
+
+.infoTitle
+    position: relative
+    width: 100%
+    padding: 0.5rem
+    text-transform: uppercase
+    background: rgba(16, 16, 16, 0.75)
+
+.infoLink
+    color: #fff
+    font-size: 2.5rem
+    font-weight: 700
+    letter-spacing: -0.02em
+    line-height: 1.2
+    margin: 1.25rem
+    margin-bottom: 0.55rem
+    text-decoration: none
+    display: -webkit-box
+    -webkit-line-clamp: 3
+    overflow: hidden
+    text-overflow: ellipsis
+    -webkit-box-orient: vertical
+    transition: all 0.2s ease
+    font-family: $font
+
+    &:hover
+        color: $primary
+
+.subHeadlineContainer
+    display: flex
+    width: 40%
+    position: relative
+    height: 100%
+    flex-direction: column
+
+.subHeadlineImage
+    display: flex
+    height: 100%
+    width: 100%
+    background-color: $secondary
+
+    &:hover
+        filter: brightness(120%)
+
+.subHeadlineImageWrap
+    display: flex
+    height: 100%
+    width: 50%
+
+.subArticle
+    height: calc(100% / 3)
+    width: 100%
+    padding: 0rem 0rem 0.25rem 0.25rem
+
+.subHeadlineAnchor
+    width: 100%
+    display: flex
+    height: 100%
+    flex-direction: row
+    text-decoration: none
+
+.subTitleContainer
+    width: 55%
+
+.subInfo
+    display: flex
+    width: 100%
+    position: relative
+
+.subCategory
+    font-size: 0.95rem
+    text-transform: uppercase
+    color: #fefefe
+    padding-right: 0.85rem
+    letter-spacing: 1px
+    padding-bottom: 2rem
+    float: right
+    font-family: $font
+
+.subCategoryWrapper
+    height: 30%
+
+.subTitle
+    font-size: 1.1rem
+    text-transform: uppercase
+    color: #fefefe
+    margin: 0
+    padding: 0rem 0.55rem 0rem 0.55rem
+    letter-spacing: 1px
+    line-height: 1.5em
+    overflow: hidden
+    -webkit-line-clamp: 3
+    text-overflow: ellipsis
+    font-family: $font
+
+    &:hover
+        color: $primary
+
+.subTitleWrap
+    height: 65%
+    color: white
+    text-decoration: none
+    font-weight: 700
+
+@media only screen and (max-width: 1000px) 
+    .headerSection
+        padding: 0rem
+
+    .headlineContainer
+        flex-direction: column
+        height: 100%
+        padding: 1rem
+
+    .headlineImageContainer
+        width: 100%
+        margin-bottom: 1rem
+
+    .sectionHead
+        display: none
+
+    .subArticle:after
+        overflow: hidden
+        width: 100%
+        height: 3px
+        background: $primary
+        content: " "
+        vertical-align: middle
+        display: inline-block
+        margin: 1rem 0rem 1rem 0rem
+
+    .subHeadlineContainer
+        width: 100%
+        flex-direction: column
+
+    .subHeadlineImageWrap
+        width: 100%
+
+    .subTitleContainer
+        width: 100%
+
+    .subTitle
+        font-size: 1.65rem
+
+    .subTitleWrap
+        height: 80%
+
+@media only screen and (max-width: 670px) 
+    .headlineContainer
+        padding: 0
+        padding-top: 2rem
+
+    .headlineImageContainer
+        padding-bottom: 0.25rem
+        margin-bottom: 0.15rem
+
+    .infoLink
+        font-size: 1.6rem
+        letter-spacing: -0.02em
+        line-height: 1.9rem
+        margin: 0.7rem
+        // padding: 0.75rem 0rem;
+
+    .info
+        width: 100%
+
+    .infoTitle
+        position: relative
+        width: 100%
+        height: 100%
+        padding: 0.15rem 0rem
+        margin: 0
+        text-transform: uppercase
+        background: rgba(16, 16, 16, 0.75)
+
+    .subArticle
+        height: 9rem
+        margin: 1rem 0
+
+        &:after
+            height: 1px
+            margin: 1rem 0rem
+
+    .subHeadlineImageWrap
+        width: 80%
+
+    .subHeadlineImage
+        width: 100%
+
+    .subTitle
+        font-size: 1.15rem
+        margin: 0
+        padding: 0 0.35rem
+        text-transform: capitalize
+
+    .subTitleWrap
+        height: 50%
+
+@media only screen and (max-width: 480px) 
+    .headlineContainer
+        padding: 0
+        padding-top: 2rem
+
+    .headlineImageContainer
+        padding-bottom: 0.25rem
+
+    .infoLink
+        font-size: 1.45rem
+        letter-spacing: -0.02em
+        line-height: 1.5rem
+        margin: 0.2rem // 0.2rem;
+        padding: 0.2rem // 0.2rem;
+        -webkit-line-clamp: 4
+
+    .info
+        width: 100%
+
+    .infoTitle
+        position: relative
+        width: 100%
+        height: 100%
+        padding: 0.35rem 0rem
+        margin: 0
+        text-transform: uppercase
+        background: rgba(16, 16, 16, 0.75)
+
+    .subArticle
+        height: 8.5rem
+
+        &:after
+            height: 1px
+            margin: 0.9rem 0rem
+
+    .subCategoryWrapper
+        display: none
+
+    .subHeadlineImageWrap
+        width: 80%
+
+    .subHeadlineImage
+        width: 100%
+
+    .subTitle
+        font-size: 1.1rem
+        line-height: 1.2rem
+        margin: 0
+        text-transform: capitalize
+
+    .subTitleWrap
+        height: 60%
