@@ -1,4 +1,5 @@
-import styles from "./styles/SlideShowLoadingStyles.module.sass";
+import styles from "./styles/slideShowLoadingStyles.module.sass";
+
 const SlideShowLoading = () => {
 	return ["", "", "", ""].map((article, index) => {
 		return (
