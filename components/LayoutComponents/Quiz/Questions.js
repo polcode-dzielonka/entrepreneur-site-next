@@ -112,34 +112,38 @@ const Questions = ({
 			<h1 className={styles.sectionHeaderScore}>
 				Current Score: {currentScore}
 			</h1>
-			{!showAnswer && (
-				<div className={styles.easing}>
-					<Embed
-						embed={questionDetails["questionImage-embed"]}
-						image={questionImage}
-						imageAlt={questionImageAlt}
-						imageAltAttribution={questionImageAttribution}
-						imageAltAttributionLink={questionImageAttributionLink}
-						srcset={questionSrcset}
-						styles={{ width: "100%", height: "100%" }}
-						noMaxHeight={true}
-					/>
-				</div>
-			)}
-			{showAnswer && (
-				<div className={styles.easing}>
-					<Embed
-						embed={questionDetails["answerImage-embed"]}
-						image={answerImage}
-						imageAlt={answerImageAlt}
-						imageAltAttribution={answerImageAttribution}
-						imageAltAttributionLink={answerImageAttributionLink}
-						srcset={answerSrcset}
-						styles={{ width: "100%", height: "100%" }}
-						noMaxHeight={true}
-					/>
-				</div>
-			)}
+			<div>
+				{!showAnswer && (
+					<div className={styles.easing}>
+						<Embed
+							embed={questionDetails["questionImage-embed"]}
+							image={questionImage}
+							imageAlt={questionImageAlt}
+							imageAltAttribution={questionImageAttribution}
+							imageAltAttributionLink={questionImageAttributionLink}
+							srcset={questionSrcset}
+							styles={{ width: "100%", height: "100%" }}
+							noMaxHeight={true}
+						/>
+					</div>
+				)}
+			</div>
+			<div>
+				{showAnswer && (
+					<div className={styles.easing}>
+						<Embed
+							embed={questionDetails["answerImage-embed"]}
+							image={answerImage}
+							imageAlt={answerImageAlt}
+							imageAltAttribution={answerImageAttribution}
+							imageAltAttributionLink={answerImageAttributionLink}
+							srcset={answerSrcset}
+							styles={{ width: "100%", height: "100%" }}
+							noMaxHeight={true}
+						/>
+					</div>
+				)}
+			</div>
 			<h1 className={styles.sectionHeader}>
 				<span className={styles.questionPosition}>{questionPosition}</span>
 				{question}

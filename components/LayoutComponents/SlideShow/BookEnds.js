@@ -25,46 +25,52 @@ const BookEnds = ({
 
 	return (
 		<div className={styles.bookendWrapper}>
-			{position === "opening" && (
-				<>
-					<h1 className={styles.sectionHeader}>{title}</h1>
-					<div className={styles.sectionParagraph}>
-						<Slate editor={editor} value={value}>
-							<Editable
-								readOnly={true}
-								renderElement={renderElement}
-								renderLeaf={renderLeaf}
-							/>
-						</Slate>
-					</div>
-				</>
-			)}
-			{showHeadlineImage && (
-				<Embed
-					embed={embed}
-					image={image}
-					imageAlt={imageAlt}
-					imageAltAttribution={imageAltAttribution}
-					imageAltAttributionLink={imageAltAttributionLink}
-					srcset={srcset}
-					styles={{ width: "100%", height: "100%" }}
-					noMaxHeight={true}
-				/>
-			)}
-			{position === "closing" && (
-				<>
-					<h1 className={styles.sectionHeader}> {title}</h1>
-					<div className={styles.sectionParagraph}>
-						<Slate editor={editor} value={value}>
-							<Editable
-								readOnly={true}
-								renderElement={renderElement}
-								renderLeaf={renderLeaf}
-							/>
-						</Slate>
-					</div>
-				</>
-			)}
+			<div>
+				{position === "opening" && (
+					<>
+						<h1 className={styles.sectionHeader}>{title}</h1>
+						<div className={styles.sectionParagraph}>
+							<Slate editor={editor} value={value}>
+								<Editable
+									readOnly={true}
+									renderElement={renderElement}
+									renderLeaf={renderLeaf}
+								/>
+							</Slate>
+						</div>
+					</>
+				)}
+			</div>
+			<div>
+				{showHeadlineImage && (
+					<Embed
+						embed={embed}
+						image={image}
+						imageAlt={imageAlt}
+						imageAltAttribution={imageAltAttribution}
+						imageAltAttributionLink={imageAltAttributionLink}
+						srcset={srcset}
+						styles={{ width: "100%", height: "100%" }}
+						noMaxHeight={true}
+					/>
+				)}
+			</div>
+			<div>
+				{position === "closing" && (
+					<>
+						<h1 className={styles.sectionHeader}> {title}</h1>
+						<div className={styles.sectionParagraph}>
+							<Slate editor={editor} value={value}>
+								<Editable
+									readOnly={true}
+									renderElement={renderElement}
+									renderLeaf={renderLeaf}
+								/>
+							</Slate>
+						</div>
+					</>
+				)}
+			</div>
 		</div>
 	);
 };

@@ -57,16 +57,18 @@ const QuickSlides = ({
 				{slide}
 			</h1>
 			<h3 className={styles.sectionBrief}>{slideComment}</h3>
-			<Embed
-				embed={slideDetails["slideImage-embed"]}
-				image={slideImage}
-				imageAlt={slideImageAlt}
-				imageAltAttribution={slideImageAttribution}
-				imageAltAttributionLink={slideImageAttributionLink}
-				srcset={srcset}
-				styles={{ width: "100%", height: "100%" }}
-				noMaxHeight={true}
-			/>
+			<div>
+				<Embed
+					embed={slideDetails["slideImage-embed"]}
+					image={slideImage}
+					imageAlt={slideImageAlt}
+					imageAltAttribution={slideImageAttribution}
+					imageAltAttributionLink={slideImageAttributionLink}
+					srcset={srcset}
+					styles={{ width: "100%", height: "100%" }}
+					noMaxHeight={true}
+				/>
+			</div>
 			<div className={styles.sectionParagraph}>
 				<Slate editor={editor} value={value}>
 					<Editable

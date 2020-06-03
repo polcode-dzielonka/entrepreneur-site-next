@@ -54,62 +54,65 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 				position={position}
 				totalQuestions={content.numQuestions}
 			/>
-
-			{(position === "opening" || position === "closing") && (
-				<>
-					<BookEnds
-						position={position}
-						image={questions[position][0][`${position}Image`]}
-						imageAlt={questions[position][0][`${position}ImageAlt`]}
-						imageAltAttribution={
-							questions[position][0][`${position}ImageAttribution`]
-						}
-						imageAltAttributionLink={
-							questions[position][0][`${position}ImageAttributionLink`]
-						}
-						title={questions[position][0][`${position}`]}
-						details={
-							questions[position][0][`${position}QuizDetails`]
-								? questions[position][0][`${position}QuizDetails`]
-								: undefined
-						}
-						embed={questions[position][0][`${position}Image-embed`]}
-						scoreComments={scoreCommentsDetails}
-						finalScore={currentScore}
-						numberQuestions={content.numQuestions}
-						srcset={questions[position][0].srcset}
-					/>
-					{position === "opening" && (
-						<QuickViewButton
-							label="Start"
-							imgSrc={details[0].headlineImage}
-							srcset={details[0].srcset}
-							href={`${nextHref}/1`}
-							refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
-							imageAlt={details[0].headlineImageAlt}
+			<div>
+				{(position === "opening" || position === "closing") && (
+					<>
+						<BookEnds
+							position={position}
+							image={questions[position][0][`${position}Image`]}
+							imageAlt={questions[position][0][`${position}ImageAlt`]}
+							imageAltAttribution={
+								questions[position][0][`${position}ImageAttribution`]
+							}
+							imageAltAttributionLink={
+								questions[position][0][`${position}ImageAttributionLink`]
+							}
+							title={questions[position][0][`${position}`]}
+							details={
+								questions[position][0][`${position}QuizDetails`]
+									? questions[position][0][`${position}QuizDetails`]
+									: undefined
+							}
+							embed={questions[position][0][`${position}Image-embed`]}
+							scoreComments={scoreCommentsDetails}
+							finalScore={currentScore}
+							numberQuestions={content.numQuestions}
+							srcset={questions[position][0].srcset}
 						/>
-					)}
-				</>
-			)}
-			{position !== "opening" && position !== "closing" && (
-				<Questions
-					total={content.numQuestions}
-					questionData={questions.questions.filter(
-						x => x.questionPosition === positionNumber,
-					)}
-					nextQuestionData={questions.questions.filter(
-						x => x.questionPosition === positionNumber + 1,
-					)}
-					position={position}
-					linkImage={headlineImage}
-					nextHref={`${nextHref}/${quizEndRef}`}
-					id={id}
-					currentScore={currentScore}
-					setCurrentScore={setCurrentScore}
-					questions={questions}
-					randomiseAnswers={randomiseAnswers}
-				/>
-			)}
+						{position === "opening" && (
+							<QuickViewButton
+								label="Start"
+								imgSrc={details[0].headlineImage}
+								srcset={details[0].srcset}
+								href={`${nextHref}/1`}
+								refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
+								imageAlt={details[0].headlineImageAlt}
+							/>
+						)}
+					</>
+				)}
+			</div>
+			<div>
+				{position !== "opening" && position !== "closing" && (
+					<Questions
+						total={content.numQuestions}
+						questionData={questions.questions.filter(
+							x => x.questionPosition === positionNumber,
+						)}
+						nextQuestionData={questions.questions.filter(
+							x => x.questionPosition === positionNumber + 1,
+						)}
+						position={position}
+						linkImage={headlineImage}
+						nextHref={`${nextHref}/${quizEndRef}`}
+						id={id}
+						currentScore={currentScore}
+						setCurrentScore={setCurrentScore}
+						questions={questions}
+						randomiseAnswers={randomiseAnswers}
+					/>
+				)}
+			</div>
 			<LazyLoad once={true}>
 				<ScrollUpButton />
 			</LazyLoad>

@@ -62,18 +62,20 @@ const Slides = ({
 					{slide}
 				</h1>
 				<h3 className={slideStyles.sectionBrief}>{slideComment}</h3>
-				<LazyLoad once={true}>
-					<Embed
-						embed={slideData["slideImage-embed"]}
-						image={slideImage}
-						imageAlt={slideImageAlt}
-						imageAltAttribution={slideImageAttribution}
-						imageAltAttributionLink={slideImageAttributionLink}
-						srcset={srcset}
-						styles={{ width: "100%", height: "100%" }}
-						noMaxHeight={true}
-					/>
-				</LazyLoad>
+				<div>
+					<LazyLoad once={true}>
+						<Embed
+							embed={slideData["slideImage-embed"]}
+							image={slideImage}
+							imageAlt={slideImageAlt}
+							imageAltAttribution={slideImageAttribution}
+							imageAltAttributionLink={slideImageAttributionLink}
+							srcset={srcset}
+							styles={{ width: "100%", height: "100%" }}
+							noMaxHeight={false}
+						/>
+					</LazyLoad>
+				</div>
 				<div className={slideStyles.sectionParagraph}>
 					<Slate editor={editor} value={value}>
 						<Editable

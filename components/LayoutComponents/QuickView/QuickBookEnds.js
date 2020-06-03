@@ -24,16 +24,18 @@ const BookEnds = ({
 	return (
 		<div className={styles.bookEndWrapper}>
 			<h1 className={styles.sectionHeader}>{title}</h1>
-			<Embed
-				embed={embed}
-				image={image}
-				imageAlt={imageAlt}
-				imageAltAttribution={imageAltAttribution}
-				imageAltAttributionLink={imageAltAttributionLink}
-				srcset={srcset}
-				styles={{ width: "100%", height: "100%" }}
-				noMaxHeight={true}
-			/>
+			<div>
+				<Embed
+					embed={embed}
+					image={image}
+					imageAlt={imageAlt}
+					imageAltAttribution={imageAltAttribution}
+					imageAltAttributionLink={imageAltAttributionLink}
+					srcset={srcset}
+					styles={{ width: "100%", height: "100%" }}
+					noMaxHeight={true}
+				/>
+			</div>
 			<>
 				<div className={styles.sectionParagraph}>
 					<Slate editor={editor} value={value}>

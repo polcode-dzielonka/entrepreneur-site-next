@@ -44,17 +44,18 @@ const QuizBookEnds = ({
 				</h1>
 			)}
 			{positionOpening && <h1 className={styles.sectionHeaderOpen}>{title}</h1>}
-			<Embed
-				embed={embed}
-				image={image}
-				imageAlt={imageAlt}
-				imageAltAttribution={imageAltAttribution}
-				imageAltAttributionLink={imageAltAttributionLink}
-				srcset={srcset}
-				styles={{ width: "100%", height: "100%" }}
-				noMaxHeight={true}
-			/>
-
+			<div>
+				<Embed
+					embed={embed}
+					image={image}
+					imageAlt={imageAlt}
+					imageAltAttribution={imageAltAttribution}
+					imageAltAttributionLink={imageAltAttributionLink}
+					srcset={srcset}
+					styles={{ width: "100%", height: "100%" }}
+					noMaxHeight={true}
+				/>
+			</div>
 			{positionClosing && (
 				<h1 className={`${styles.sectionHeader} section-header`}>
 					{scoreComments[`scoreComment${commentNumber}`]}

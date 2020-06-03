@@ -51,55 +51,59 @@ const QuickView = ({ content, position, url, id }) => {
 				position={position}
 				totalSlides={content.numSlides}
 			/>
-			{(position === "opening" || position === "closing") && (
-				<>
-					<BookEnds
-						position={position}
-						image={slides[position][0][`${position}Image`]}
-						imageAlt={slides[position][0][`${position}ImageAlt`]}
-						imageAltAttribution={
-							slides[position][0][`${position}ImageAttribution`]
-						}
-						imageAltAttributionLink={
-							slides[position][0][`${position}ImageAttributionLink`]
-						}
-						title={slides[position][0][`${position}`]}
-						details={
-							slides[position][0][`${position}SlideDetails`]
-								? slides[position][0][`${position}SlideDetails`]
-								: undefined
-						}
-						embed={slides[position][0][`${position}Image-embed`]}
-						srcset={slides[position][0].srcset}
-					/>
-					{position === "opening" && (
-						<QuickViewButton
-							label="Next"
-							imgSrc={details[0].headlineImage}
-							srcset={details[0].srcset}
-							href={`${nextHref}/1`}
-							refPath={`/[url]/quickview/[slideId]/slides/[slideContentId]`}
-							imageAlt={details[0].headlineImageAlt}
+			<div>
+				{(position === "opening" || position === "closing") && (
+					<>
+						<BookEnds
+							position={position}
+							image={slides[position][0][`${position}Image`]}
+							imageAlt={slides[position][0][`${position}ImageAlt`]}
+							imageAltAttribution={
+								slides[position][0][`${position}ImageAttribution`]
+							}
+							imageAltAttributionLink={
+								slides[position][0][`${position}ImageAttributionLink`]
+							}
+							title={slides[position][0][`${position}`]}
+							details={
+								slides[position][0][`${position}SlideDetails`]
+									? slides[position][0][`${position}SlideDetails`]
+									: undefined
+							}
+							embed={slides[position][0][`${position}Image-embed`]}
+							srcset={slides[position][0].srcset}
 						/>
-					)}
-				</>
-			)}
-			{position !== "opening" && position !== "closing" && (
-				<QuickSlides
-					total={content.numSlides}
-					slideData={slides.slides.filter(
-						x => x.slidePosition === positionNumber,
-					)}
-					nextSlideData={slides.slides.filter(
-						x => x.slidePosition === positionNumber + 1,
-					)}
-					showNumbers={showNumbers}
-					position={position}
-					countdown={countdown}
-					linkImage={details[0][`headlineImage`]}
-					nextHref={`${nextHref}/${slideEndRef}`}
-				/>
-			)}
+						{position === "opening" && (
+							<QuickViewButton
+								label="Next"
+								imgSrc={details[0].headlineImage}
+								srcset={details[0].srcset}
+								href={`${nextHref}/1`}
+								refPath={`/[url]/quickview/[slideId]/slides/[slideContentId]`}
+								imageAlt={details[0].headlineImageAlt}
+							/>
+						)}
+					</>
+				)}
+			</div>
+			<div>
+				{position !== "opening" && position !== "closing" && (
+					<QuickSlides
+						total={content.numSlides}
+						slideData={slides.slides.filter(
+							x => x.slidePosition === positionNumber,
+						)}
+						nextSlideData={slides.slides.filter(
+							x => x.slidePosition === positionNumber + 1,
+						)}
+						showNumbers={showNumbers}
+						position={position}
+						countdown={countdown}
+						linkImage={details[0][`headlineImage`]}
+						nextHref={`${nextHref}/${slideEndRef}`}
+					/>
+				)}
+			</div>
 			<LazyLoad once={true}>
 				<ScrollUpButton />
 			</LazyLoad>

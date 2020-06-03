@@ -55,14 +55,16 @@ const BookEnds = ({ data, id, position }) => {
 				<li className={styles.sectionBrief}>{slideTitle}</li>
 				<li className={styles.sectionBrief}>{blurb}</li>
 			</ul>
-			<ImageLoader
-				src={headlineImage}
-				alt={headlineImageAlt}
-				animation={false}
-				srcset={srcset}
-				styles={{ width: "100%", height: "100%" }}
-				noMaxHeight={true}
-			/>
+			<div>
+				<ImageLoader
+					src={headlineImage}
+					alt={headlineImageAlt}
+					animation={false}
+					srcset={srcset}
+					styles={{ width: "100%", height: "100%" }}
+					noMaxHeight={true}
+				/>
+			</div>
 			<hr className={styles.break} />
 			<LazyLoad once={true}>
 				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
