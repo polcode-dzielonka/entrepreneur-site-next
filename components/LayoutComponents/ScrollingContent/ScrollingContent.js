@@ -96,7 +96,8 @@ const ScrollingContent = ({ id, title, type }) => {
 					headline,
 					category,
 					contentLink,
-				} = sideHelper(content, "slideshow");
+					refPath,
+				} = sideHelper(content, type);
 
 				if (index % 4 === 0) {
 					return (
@@ -108,6 +109,7 @@ const ScrollingContent = ({ id, title, type }) => {
 							index={index}
 							key={index}
 							contentLink={contentLink}
+							refPath={refPath}
 						/>
 					);
 				}
@@ -120,6 +122,7 @@ const ScrollingContent = ({ id, title, type }) => {
 						index={index}
 						key={index}
 						contentLink={contentLink}
+						refPath={refPath}
 					/>
 				);
 			})}

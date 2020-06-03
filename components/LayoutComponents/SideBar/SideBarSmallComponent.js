@@ -10,12 +10,13 @@ const SideBarContent = ({
 	headline,
 	category,
 	url,
+	refPath,
 	contentLink,
 	srcset,
 }) => {
 	return (
 		<article className={styles.sideContent} key={key}>
-			<Link href={contentLink}>
+			<Link href={refPath} as={contentLink}>
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>
 						<LazyLoad once={true}>
@@ -31,12 +32,12 @@ const SideBarContent = ({
 				</a>
 			</Link>
 			<div className={styles.sideTitleInfo}>
-				<Link href={contentLink}>
+				<Link href={refPath} as={contentLink}>
 					<a className={styles.infoLink}>{headline}</a>
 				</Link>
 				<div className={styles.sideTitle}>
 					<div className={styles.sideTitle}>
-						<Link href={contentLink}>
+						<Link href={refPath} as={contentLink}>
 							<a className={styles.categoryLink}>{category}</a>
 						</Link>
 					</div>

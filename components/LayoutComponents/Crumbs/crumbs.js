@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "./styles/crumbStyles.module.sass";
-const Crumbs = ({ home, category, headline, headlineUrl }) => {
+const Crumbs = ({ home, category, headline, headlineUrl, refPath }) => {
 	return (
 		<>
 			<Head>
@@ -53,7 +53,7 @@ const Crumbs = ({ home, category, headline, headlineUrl }) => {
 					</Link>
 					<span className={styles.seperator}>/</span>
 
-					<Link href={`${headlineUrl}`}>
+					<Link href={refPath} as={`${headlineUrl}`}>
 						<a className={styles.crumbLink}>{headline}</a>
 					</Link>
 				</div>

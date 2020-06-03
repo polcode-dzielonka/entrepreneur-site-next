@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import QuizLayout from "../../../../../components/Layouts/QuizLayout";
 import Cookie from "js-cookie";
+import { useRouter } from "next/router";
+
 import { QUIZ } from "../../../../../graphql/indivQuiz";
 import QuickViewLoading from "../../../../../components/Loading/Layouts/QuizLoadingLayout";
 import prodRequest from "../../../../../components/apiRequest/prodRequest";
@@ -22,6 +24,8 @@ const Questions = ({
 	quizId,
 	score,
 }) => {
+	const router = useRouter();
+
 	if (
 		!individual.data ||
 		!headline.data ||
@@ -36,12 +40,18 @@ const Questions = ({
 			? JSON.parse(Cookie.get("temp-quiz-session"))
 			: false;
 
-		if (!tempQuizCookie && questionId === "opening") {
-			Cookie.set("temp-quiz-session", JSON.stringify(true));
-		} else if (!tempQuizCookie && questionId !== "opening") {
-			router.push(`/${url}/quiz/${quizId}/questions/opening`);
-		} else if (tempQuizCookie && questionId === "closing") {
-			Cookie.remove("temp-quiz-session");
+		if (!tempQuizCookie) {
+			if (questionId === "opening") {
+				Cookie.set("temp-quiz-session", JSON.stringify(true));
+			} else if (questionId !== "opening") {
+				router.push(`/${url}/quiz/${quizId}/questions/opening`);
+			}
+		} else if (tempQuizCookie) {
+			if (questionId === "closing") {
+				Cookie.remove("temp-quiz-session");
+			} else if (questionId !== "opening") {
+				router.push(`/${url}/quiz/${quizId}/questions/opening`);
+			}
 		}
 	}, []);
 

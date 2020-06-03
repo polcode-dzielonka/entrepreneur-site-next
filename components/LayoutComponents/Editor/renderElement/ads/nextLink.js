@@ -1,20 +1,32 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "../styles/ads/nextLinkStyles.module.sass";
-const NextLink = ({ brief, headline, image, url, title, srcset, imageAlt }) => {
+import sideHelper from "../../../../helper/sideBarHelper";
+
+const NextLink = ({ data, type, id }) => {
+	const {
+		headlineImage,
+		headlineImageAlt,
+		headline,
+		brief,
+		url,
+		refPath,
+		contentLink,
+		srcset,
+	} = sideHelper(data, type, true, id);
 	return (
 		<div className={styles.linkSection}>
-			<div className={styles.scrollText}>{title}</div>
+			<div className={styles.scrollText}>{headline}</div>
 			<div className={styles.linkButton}>
-				<Link href={url}>
+				<Link href={refPath} as={contentLink}>
 					<a className={styles.quickViewLink}>
 						<div className={styles.imgWrapper}>
 							<img
-								src={image}
+								src={headlineImage}
 								className={styles.quickViewImage}
 								srcSet={srcset ? srcset : []}
 								sizes="150px"
-								alt={imageAlt}
+								alt={headlineImageAlt}
 							/>
 						</div>
 						<div className={styles.label}>

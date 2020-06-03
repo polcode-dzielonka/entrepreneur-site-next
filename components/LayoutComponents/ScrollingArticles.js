@@ -20,7 +20,10 @@ const ScrollingArticles = ({ data }) => {
 		if (index === 0) {
 			return (
 				<article key={index} className={styles.largeImageContainer}>
-					<Link href={`/${urlDescription}/article/${id}`}>
+					<Link
+						href={`/[url]/article/[id]`}
+						as={`/${urlDescription}/article/${id}`}
+					>
 						<a className={styles.largeImageMainWrapper}>
 							<LazyLoad once={true}>
 								<img
@@ -35,12 +38,18 @@ const ScrollingArticles = ({ data }) => {
 					</Link>
 					<div className={styles.largeInfoFirst}>
 						<div className={styles.infoTitle}>
-							<Link href={`/${urlDescription}/article/${id}`}>
+							<Link
+								href={`/[url]/article/[id]`}
+								as={`/${urlDescription}/article/${id}`}
+							>
 								<a className={styles.infoLink}>{headline}</a>
 							</Link>
 							{headline.length < 70 && (
 								<h2 className={styles.infoTitle}>
-									<Link href={`/${urlDescription}/article/${id}`}>
+									<Link
+										href={`/[url]/article/[id]`}
+										as={`/${urlDescription}/article/${id}`}
+									>
 										<a className={styles.categoryLink}>{category}</a>
 									</Link>
 								</h2>
@@ -53,7 +62,10 @@ const ScrollingArticles = ({ data }) => {
 
 		return (
 			<article className={styles.headerSection} key={index}>
-				<Link href={`/${urlDescription}/article/${id}`}>
+				<Link
+					href={`/[url]/article/[id]`}
+					as={`/${urlDescription}/article/${id}`}
+				>
 					<a className={styles.scrollImageAnchor}>
 						<div className={styles.scrollImageWrapper}>
 							<LazyLoad once={true}>

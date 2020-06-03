@@ -78,6 +78,7 @@ const QuickView = ({ content, position, url, id }) => {
 							imgSrc={details[0].headlineImage}
 							srcset={details[0].srcset}
 							href={`${nextHref}/1`}
+							refPath={`/[url]/quickview/[slideId]/slides/[slideContentId]`}
 							imageAlt={details[0].headlineImageAlt}
 						/>
 					)}
@@ -120,6 +121,7 @@ const QuickView = ({ content, position, url, id }) => {
 				category={category}
 				headline={title}
 				headlineUrl={shareUrl}
+				refPath={`/[url]/quickview/[slideId]/slides/[slideContentId]`}
 			/>
 			<LazyLoad once={true}>
 				<QuickEmailSignUp />

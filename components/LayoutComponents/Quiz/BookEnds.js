@@ -1,7 +1,8 @@
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
 import { Slate, Editable } from "slate-react";
+import { useRouter } from "next/router";
 import { createEditor } from "slate";
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
@@ -24,7 +25,6 @@ const QuizBookEnds = ({
 	const editor = useMemo(() => createEditor(), []);
 	const renderElement = useCallback(props => <RenderElement {...props} />, []);
 	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
-
 	const value = details;
 	const positionOpening = position === "opening";
 	const positionClosing = position === "closing";
@@ -97,7 +97,6 @@ QuizBookEnds.propTypes = {
 	details: PropTypes.Object,
 	embed: PropTypes.string,
 	scoreComments: PropTypes.string,
-	finalScore: PropTypes.Bool,
 	numberQuestions: PropTypes.Bool,
 	srcset: PropTypes.array,
 };

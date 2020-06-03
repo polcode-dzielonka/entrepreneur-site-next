@@ -100,7 +100,9 @@ const VerticalShareButtons = ({
 							<div className={styles.buttonContent}>
 								<SocialSvgFactory button={button} />
 								<span className={styles.buttonText}>{button.text}</span>
-								{ShareCount && <ShareCount className={styles.shareCount} />}
+								{ShareCount && (
+									<ShareCount className={styles.shareCount} url={url} />
+								)}
 							</div>
 						</ShareButton>
 					);

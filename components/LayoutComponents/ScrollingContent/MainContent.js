@@ -10,10 +10,11 @@ const MainScrollingContent = ({
 	index,
 	srcset,
 	contentLink,
+	refPath,
 }) => {
 	return (
 		<article className={styles.sideContent} key={index}>
-			<Link href={contentLink}>
+			<Link href={refPath} as={contentLink}>
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>
 						<LazyLoad once={true}>
@@ -30,11 +31,11 @@ const MainScrollingContent = ({
 			</Link>
 			<div className={styles.sideTitleInfo}>
 				<h1 className={styles.sideTitle}>
-					<Link href={contentLink}>
+					<Link href={refPath} as={contentLink}>
 						<a className={styles.infoLink}>{headline}</a>
 					</Link>
 					<h2 className={styles.sideTitle}>
-						<Link href={contentLink}>
+						<Link href={refPath} as={contentLink}>
 							<a className={styles.categoryLink}>{category}</a>
 						</Link>
 					</h2>

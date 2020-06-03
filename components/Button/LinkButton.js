@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "./styles/linkButtonStyles.module.sass";
-const SlideLinkButton = ({ label, href, imgSrc, srcset, imageAlt }) => {
+const SlideLinkButton = ({
+	label,
+	href,
+	refPath,
+	imgSrc,
+	srcset,
+	imageAlt,
+}) => {
 	return (
 		<div className={styles.linkSection}>
 			<div className={styles.scrollText}>
@@ -11,7 +18,7 @@ const SlideLinkButton = ({ label, href, imgSrc, srcset, imageAlt }) => {
 				Click the button below to start the Slideshow.
 			</div>
 			<div className={styles.linkButton}>
-				<Link href={href}>
+				<Link href={refPath} as={href}>
 					<a className={styles.quickViewLink}>
 						<div className={styles.imgWrapper}>
 							<img

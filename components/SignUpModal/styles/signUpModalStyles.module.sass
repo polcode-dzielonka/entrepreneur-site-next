@@ -146,15 +146,6 @@
     display: flex
     flex-direction: column
 
-@keyframes animateTop
-    0%
-        opacity: 1
-    top: -100%
-
-    100%
-    top: 15%
-        opacity: 1
-
 .subscribe
     font-family: $font
     font-size: 2rem
@@ -178,6 +169,13 @@
 
     &:focus
         display: none
+
+@keyframes animateTop
+    0%
+        opacity: 1
+
+    100%
+        opacity: 1
 
 @media only screen and (max-width: 1081px) 
     .modalBox

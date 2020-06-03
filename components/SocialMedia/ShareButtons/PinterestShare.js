@@ -8,7 +8,6 @@ import createShareButton from "../utils/createShareButton";
 function pinterestLink(url, { media, description }) {
 	assert(url, "pinterest.url");
 	assert(media, "pinterest.media");
-
 	return (
 		"https://pinterest.com/pin/create/button/" +
 		objectToGetParams({

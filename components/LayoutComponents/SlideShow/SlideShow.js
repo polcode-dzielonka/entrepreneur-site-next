@@ -106,6 +106,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				category={category}
 				headline={title}
 				headlineUrl={url}
+				refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 			/>
 
 			<LazyLoad once={true}>

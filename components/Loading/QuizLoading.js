@@ -4,8 +4,8 @@ const QuizLoading = () => {
 		if (index === 0) {
 			return (
 				<div className={styles.banner} key={index}>
-					<div className={style.title}></div>
-					<div className={style.title}></div>
+					<div className={styles.title}></div>
+					<div className={styles.title}></div>
 					<div className={styles.category}></div>
 				</div>
 			);

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SectionBar from "../SectionBar";
 import PropTypes from "prop-types";
 import BookEnds from "./BookEnds";
@@ -26,7 +27,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 		randomiseAnswers,
 	} = details[0];
 	const positionNumber = Number(position);
-
+	const [currentScore, setCurrentScore] = useState(0);
 	if (
 		positionNumber > content.numQuestions &&
 		position !== "opening" &&
@@ -74,7 +75,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						}
 						embed={questions[position][0][`${position}Image-embed`]}
 						scoreComments={scoreCommentsDetails}
-						finalScore={score}
+						finalScore={currentScore}
 						numberQuestions={content.numQuestions}
 						srcset={questions[position][0].srcset}
 					/>
@@ -84,6 +85,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							imgSrc={details[0].headlineImage}
 							srcset={details[0].srcset}
 							href={`${nextHref}/1`}
+							refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
 							imageAlt={details[0].headlineImageAlt}
 						/>
 					)}
@@ -102,7 +104,8 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					linkImage={headlineImage}
 					nextHref={`${nextHref}/${quizEndRef}`}
 					id={id}
-					currentScore={score}
+					currentScore={currentScore}
+					setCurrentScore={setCurrentScore}
 					questions={questions}
 					randomiseAnswers={randomiseAnswers}
 				/>
@@ -127,6 +130,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 				category={category}
 				headline={title}
 				headlineUrl={shareUrl}
+				refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
 			/>
 
 			<LazyLoad once={true}>

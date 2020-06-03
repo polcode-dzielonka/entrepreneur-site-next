@@ -40,6 +40,7 @@ const NextArticleAd = ({ children, attributes }) => {
 			setNextInfo({
 				showNext: true,
 				url: `/${urlDescription}/article/${id}`,
+				refPath: `/[url]/article/[id]`,
 				image: headlineImage,
 				headline: headline,
 				brief: brief,
@@ -52,11 +53,14 @@ const NextArticleAd = ({ children, attributes }) => {
 		<div className={styles.siteAd} {...attributes}>
 			{nextInfo.showNext && (
 				<NextLink
-					url={nextInfo.url}
-					image={nextInfo.image}
-					headline={nextInfo.headline}
-					brief={nextInfo.brief}
-					imageAlt={nextInfo.imageAlt}
+					data={nextInfo}
+					type={"article"}
+					// url={nextInfo.url}
+					// refPath={nextInfo.refPath}
+					// image={nextInfo.image}
+					// headline={nextInfo.headline}
+					// brief={nextInfo.brief}
+					// imageAlt={nextInfo.imageAlt}
 				/>
 			)}
 			{children}

@@ -10,6 +10,7 @@ const SideBarContent = ({ data, type }) => {
 			headline,
 			category,
 			url,
+			refPath,
 			contentLink,
 			srcset,
 		} = sideHelper(article, type);
@@ -23,6 +24,7 @@ const SideBarContent = ({ data, type }) => {
 					headline={headline}
 					category={category}
 					url={url}
+					refPath={refPath}
 					contentLink={contentLink}
 					srcset={srcset}
 				/>

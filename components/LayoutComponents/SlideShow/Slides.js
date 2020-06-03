@@ -111,15 +111,7 @@ const Slides = ({
 								titleColor="#111"
 								titleSize="1.5rem"
 							/>
-							<NextLink
-								brief={midDataOverview[0].brief}
-								title="Next Up:"
-								headline={midDataOverview[0].headline}
-								image={midDataOverview[0].headlineImage}
-								imageAlt={midDataOverview[0].headlineImageAlt}
-								srcset={midDataOverview[0].srcset}
-								url={`/${midDataOverview[0].slideUrl}/slideshow/${midDataId}/slides/opening`}
-							/>
+							<NextLink data={midDataOverview} type="article" id={midDataId} />
 							<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
 						</LazyLoad>
 					</>

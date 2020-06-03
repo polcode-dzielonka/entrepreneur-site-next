@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "./styles/quickViewButtonStyles.module.sass";
-const SlideLinkButton = ({
+
+const QuickViewButton = ({
 	label,
 	href,
+	refPath,
 	imgSrc,
 	handler,
 	srcset,
@@ -12,7 +14,7 @@ const SlideLinkButton = ({
 	return (
 		<div className={styles.linkSection}>
 			<button className={styles.linkButton} onClick={handler}>
-				<Link href={href}>
+				<Link href={refPath} as={href}>
 					<a className={styles.quickViewLink}>
 						<div className={styles.imgWrapper}>
 							<img
@@ -40,11 +42,11 @@ const SlideLinkButton = ({
 	);
 };
 
-SlideLinkButton.defaultProps = {
+QuickViewButton.defaultProps = {
 	href: "/newsletter",
 	handler: () => {},
 };
-SlideLinkButton.propTypes = {
+QuickViewButton.propTypes = {
 	href: PropTypes.String,
 	label: PropTypes.String,
 	imgSrc: PropTypes.String,
@@ -53,4 +55,4 @@ SlideLinkButton.propTypes = {
 	srcset: PropTypes.Array,
 };
 
-export default SlideLinkButton;
+export default QuickViewButton;

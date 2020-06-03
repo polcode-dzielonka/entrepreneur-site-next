@@ -58,6 +58,7 @@ const ArticleBody = ({
 				category={category}
 				headline={headline}
 				headlineUrl={url}
+				refPath={`/[url]/article/[id]`}
 			/>
 			<LazyLoad once={true}>
 				<QuickEmailSignUp />

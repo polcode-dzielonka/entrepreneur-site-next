@@ -10,10 +10,11 @@ const SubScrollingContent = ({
 	index,
 	srcset,
 	contentLink,
+	refPath,
 }) => {
 	return (
 		<article className={styles.sideContent} key={index}>
-			<Link href={contentLink}>
+			<Link href={refPath} as={contentLink}>
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>
 						<LazyLoad once={true}>
@@ -30,11 +31,11 @@ const SubScrollingContent = ({
 			</Link>
 			<div className={styles.sideTitleInfo}>
 				<div className={styles.sideTitle}>
-					<Link href={contentLink}>
+					<Link href={refPath} as={contentLink}>
 						<a className={styles.infoLink}>{headline}</a>
 					</Link>
 					<div className={styles.sideTitle}>
-						<Link href={contentLink}>
+						<Link href={refPath} as={contentLink}>
 							<a className={styles.categoryLink}>{category}</a>
 						</Link>
 					</div>

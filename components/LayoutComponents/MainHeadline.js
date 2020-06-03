@@ -40,7 +40,10 @@ const MainHeadline = ({ data }) => {
 							</LazyLoad>
 						</a>
 					</Link>
-					<Link href={`/${urlDescription}/article/${id}`}>
+					<Link
+						href={`/[url]/article/[id]`}
+						as={`/${urlDescription}/article/${id}`}
+					>
 						<a className={styles.info}>
 							<h1 className={styles.infoTitle}>
 								<span className={styles.infoLink}>{headline}</span>
