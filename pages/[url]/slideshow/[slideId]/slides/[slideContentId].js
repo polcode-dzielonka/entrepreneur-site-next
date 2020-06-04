@@ -43,6 +43,8 @@ const Slide = ({
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+	context.res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate");
+
 	const { url, slideId, slideContentId } = context.params;
 
 	// Fetch data from external API

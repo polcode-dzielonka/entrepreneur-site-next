@@ -72,6 +72,8 @@ const Questions = ({
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+	context.res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate");
+
 	const { questionId, url, quizId, score } = context.params;
 	const scoreCheck = score ? score : null;
 	// Fetch data from external API

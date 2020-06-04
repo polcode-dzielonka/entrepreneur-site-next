@@ -21,6 +21,8 @@ const Article = ({ individual, quiz, slide, id, url }) => {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
+	context.res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate");
+
 	// Fetch data from external API
 	const { id, url } = context.params;
 
