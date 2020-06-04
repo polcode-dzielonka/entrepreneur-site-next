@@ -32,7 +32,9 @@ const Home = ({ site, headline, latest, quiz, slide }) => {
 };
 
 // This gets called on every request
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+	context.res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
+
 	// Fetch data from external API
 	const querys = [
 		{
