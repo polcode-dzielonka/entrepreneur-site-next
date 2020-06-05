@@ -1,8 +1,5 @@
 import { useState } from "react";
 import Layout from "../Layouts/Layout";
-import ErrorMessage from "../error";
-import { QUIZ, SLIDE, HEADLINES } from "../../graphql/headline";
-import HeadlineLoading from "../Loading/Layouts/HeadlineLoadingLayout";
 import PropTypes from "prop-types";
 import {
 	ScrollingArticles,

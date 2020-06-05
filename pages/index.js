@@ -1,16 +1,10 @@
 import MainHeadlineLayout from "../components/Layouts/MainHeadlineLayout";
-import {
-	ALL_POSTS_QUERY,
-	QUIZ,
-	SLIDE,
-	HEADLINES,
-	LATEST,
-} from "../graphql/headline";
+import { QUIZ, SLIDE, HEADLINES, LATEST } from "../graphql/headline";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";
 import { filterUnique } from "../utils/handler";
-const Home = ({ site, headline, latest, quiz, slide }) => {
-	if (!site.data || !headline.data || !latest.data || !quiz.data || !slide.data)
+const Home = ({ headline, latest, quiz, slide }) => {
+	if (!headline.data || !latest.data || !quiz.data || !slide.data)
 		return <MainHeadlineLoading />;
 
 	const newLatestArticles = filterUnique(
@@ -19,7 +13,6 @@ const Home = ({ site, headline, latest, quiz, slide }) => {
 	);
 	return (
 		<MainHeadlineLayout
-			site={site.data.getProductionSite}
 			headline={headline.data.listProductionArticles}
 			latest={newLatestArticles}
 			quiz={quiz.data.listProductionQuizs}
@@ -37,11 +30,6 @@ export async function getServerSideProps(context) {
 
 	// Fetch data from external API
 	const querys = [
-		{
-			query: ALL_POSTS_QUERY,
-			variables: { id: process.env.REACT_APP_SITE_ID },
-			operationName: "GetProductionSite",
-		},
 		{
 			query: HEADLINES,
 			variables: {
@@ -74,7 +62,7 @@ export async function getServerSideProps(context) {
 			operationName: "ListProductionSlideshows",
 		},
 	];
-	const [site, headline, latest, quiz, slide] = await Promise.all(
+	const [headline, latest, quiz, slide] = await Promise.all(
 		querys.map(query =>
 			prodRequest({
 				query: query.query,
@@ -85,7 +73,7 @@ export async function getServerSideProps(context) {
 	);
 
 	// Pass data to the page via props
-	return { props: { site, headline, latest, quiz, slide } };
+	return { props: { headline, latest, quiz, slide } };
 }
 
 export default Home;

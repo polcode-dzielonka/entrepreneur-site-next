@@ -1,8 +1,7 @@
 import ArticleLayout from "../../../components/Layouts/ArticleLayout";
 import { ARTICLE } from "../../../graphql/indivArticle";
-import { HEADLINES, SLIDE, QUIZ } from "../../../graphql/headline";
+import { SLIDE, QUIZ } from "../../../graphql/headline";
 import prodRequest from "../../../components/apiRequest/prodRequest";
-import SlideLoading from "../../../components/Loading/Layouts/SlideShowLoading";
 
 const Article = ({ individual, quiz, slide, id, url }) => {
 	if (!individual.data || !quiz.data || !slide.data)

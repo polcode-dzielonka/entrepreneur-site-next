@@ -92,7 +92,6 @@ export const HEADLINES = /* GraphQL */ `
 				production
 				overview
 				developmentId
-				content
 				schedule
 				original
 				scheduleTime
@@ -120,7 +119,6 @@ export const LATEST = /* GraphQL */ `
 				production
 				overview
 				developmentId
-				content
 				schedule
 				original
 				scheduleTime
@@ -144,7 +142,6 @@ export const QUIZ = /* GraphQL */ `
 				production
 				overview
 				developmentId
-				questions
 				original
 				numQuestions
 				createdAt
@@ -180,9 +177,7 @@ export const SLIDE = /* GraphQL */ `
 				production
 				overview
 				developmentId
-				slides
 				original
-				numSlides
 				createdAt
 				updatedAt
 				tags
@@ -218,7 +213,6 @@ export const LATEST_HEADLINES = /* GraphQL */ `
 				production
 				overview
 				developmentId
-				content
 				schedule
 				original
 				scheduleTime
@@ -246,7 +240,6 @@ export const LATEST_QUIZ = /* GraphQL */ `
 				production
 				overview
 				developmentId
-				questions
 				original
 				numQuestions
 				createdAt
@@ -283,7 +276,6 @@ export const LATEST_SLIDE = /* GraphQL */ `
 				production
 				overview
 				developmentId
-				slides
 				original
 				numSlides
 				createdAt

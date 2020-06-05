@@ -1,10 +1,4 @@
-import {
-	ALL_POSTS_QUERY,
-	QUIZ,
-	SLIDE,
-	HEADLINES,
-	LATEST,
-} from "../graphql/headline";
+import { QUIZ, SLIDE, HEADLINES } from "../graphql/headline";
 import HeadlineLayout from "../components/Layouts/HeadlineLayout";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";

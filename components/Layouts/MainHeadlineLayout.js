@@ -17,7 +17,6 @@ import webPageData from "../StructuredData/webPage";
 import styles from "./styles/headlineLayout.module.sass";
 import baseTheme from "../../theme/baseTheme.json";
 const MainHeadlineLayout = ({
-	site,
 	headline,
 	latest,
 	quiz,
