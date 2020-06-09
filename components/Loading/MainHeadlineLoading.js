@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
 import styles from "./styles/mainHeadlineStyles.module.sass";
+import SectionBar from "../LayoutComponents/SectionBar";
+
 const MainHeadlineLoading = () => {
 	return (
 		<section className={styles.headerSection}>
+			<div className={styles.sectionHead}>
+				<SectionBar title="Featured" titleColor="#fefefe" titleSize="1.25rem" />
+			</div>
 			<div className={styles.headlineContainer}>
 				<article className={styles.headlineImageContainer}>
 					<div className={styles.banner}>

@@ -40,8 +40,8 @@ export const ADVERT_ARTICLE = /* GraphQL */ `
 	}
 `;
 export const NEXT_ARTICLE = /* GraphQL */ `
-	query ListProductionArticles($limit: Int) {
-		listProductionArticles(limit: $limit) {
+	query ListProductionArticles($limit: Int, $id: String) {
+		listProductionArticles(limit: $limit, id: $id) {
 			items {
 				id
 				headlineImage

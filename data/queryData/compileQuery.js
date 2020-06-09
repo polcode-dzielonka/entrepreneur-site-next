@@ -7,6 +7,7 @@ export const HEADLINE_QUERY = {
 	variables: {
 		filter: { mainHeadline: true },
 		limit: 4,
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",
 };
@@ -14,6 +15,7 @@ export const LATEST_QUERY = {
 	query: LATEST,
 	variables: {
 		limit: 10,
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",
 };
@@ -38,6 +40,7 @@ export const MOTIVATION_QUERY = {
 	query: HEADLINES,
 	variables: {
 		filter: { category: "motivation" },
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",
 };
@@ -46,6 +49,7 @@ export const NETWORTH_QUERY = {
 	query: HEADLINES,
 	variables: {
 		filter: { category: "networth" },
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",
 };
@@ -54,6 +58,7 @@ export const PEOPLE_QUERY = {
 	query: HEADLINES,
 	variables: {
 		filter: { category: "people" },
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",
 };
@@ -62,6 +67,7 @@ export const QUOTE_QUERY = {
 	query: HEADLINES,
 	variables: {
 		filter: { category: "quotes" },
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",
 };

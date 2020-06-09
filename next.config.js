@@ -1,7 +1,9 @@
 const { parsed: localEnv } = require("dotenv").config();
 const webpack = require("webpack");
-
-module.exports = {
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+	enabled: process.env.ANALYZE === "true",
+});
+module.exports = withBundleAnalyzer({
 	target: "serverless",
 	webpack(config) {
 		config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
@@ -27,7 +29,8 @@ module.exports = {
 		SITE_IMAGE_WIDTH: "1024",
 		SITE_IMAGE_HEIGHT: "573",
 		SITE_DESC:
-			"Dedicated to providing aspiring entrepreneurs and those who wish to improve their lives with some of the most inspirational and motivating content on the internet",
+			"Dedicated to providing motivation to aspiring entrepreneurs and those who wish to improve their lives and achieve success in the business world",
+
 		TWITTER_SITE: "@WealthMack",
 		GOOGLE_VERIFICATION_ID: "",
 		SITE_ADDRESS: "https://www.wealthmack.com",
@@ -44,4 +47,4 @@ module.exports = {
 		},
 		catchAllRouting: true,
 	},
-};
+});

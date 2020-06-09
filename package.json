@@ -30,6 +30,7 @@
 		"swr": "^0.2.2"
 	},
 	"devDependencies": {
+		"@next/bundle-analyzer": "^9.4.4",
 		"eslint": "7.1.0",
 		"eslint-plugin-react": "7.20.0"
 	}

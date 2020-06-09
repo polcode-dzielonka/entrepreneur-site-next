@@ -40,7 +40,7 @@ const Home = ({ headline, latest, quiz, slide }) => {
 			latest={newLatestArticles}
 			quiz={quizCache.data.listProductionQuizs}
 			slide={slideShowCache.data.listProductionSlideshows}
-			title="WealthMack"
+			title="WealthMack - Providing Business Motivation and Inspiration for those who want to be the Best version of themselves"
 			pageTitle={"Latest"}
 			canonical=""
 		/>

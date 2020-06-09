@@ -80,8 +80,9 @@ export const HEADLINES = /* GraphQL */ `
 	query ListProductionArticles(
 		$filter: CreateProductionArticleInput
 		$limit: Int
+		$id: String
 	) {
-		listProductionArticles(filter: $filter, limit: $limit) {
+		listProductionArticles(id: $id, filter: $filter, limit: $limit) {
 			items {
 				id
 				headlineImage
@@ -99,10 +100,11 @@ export const HEADLINES = /* GraphQL */ `
 
 export const LATEST = /* GraphQL */ `
 	query ListProductionArticles(
+		$id: String
 		$filter: CreateProductionArticleInput
 		$limit: Int
 	) {
-		listProductionArticles(filter: $filter, limit: $limit) {
+		listProductionArticles(id: $id, filter: $filter, limit: $limit) {
 			items {
 				id
 				headlineImage
@@ -165,9 +167,11 @@ export const LATEST_HEADLINES = /* GraphQL */ `
 	query ListProductionArticles(
 		$filter: CreateProductionArticleInput
 		$limit: Int
+		$id: String
 		$nextToken: String
 	) {
 		listProductionArticles(
+			id: $id
 			filter: $filter
 			limit: $limit
 			nextToken: $nextToken
