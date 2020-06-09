@@ -195,7 +195,6 @@ const Questions = ({
 						setButtonDisabled(false);
 						setSelected(false);
 						setCorrect(false);
-						setLoading(true);
 					}}
 				/>
 			)}

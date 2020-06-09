@@ -2,21 +2,15 @@ import { useEffect } from "react";
 import QuizLayout from "../../../../../components/Layouts/QuizLayout";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
-
 import { QUIZ } from "../../../../../graphql/indivQuiz";
 import QuickViewLoading from "../../../../../components/Loading/Layouts/QuizLoadingLayout";
 import prodRequest from "../../../../../components/apiRequest/prodRequest";
-import {
-	HEADLINES,
-	SLIDE,
-	QUIZ as QUIZ_CONTENT,
-	LATEST,
-} from "../../../../../graphql/headline";
+import { quizQuery } from "../../../../../data/queryData/querys";
+import useSWR from "swr";
 
 const Questions = ({
 	individual,
 	headline,
-	latest,
 	quiz,
 	slide,
 	questionId,
@@ -26,13 +20,34 @@ const Questions = ({
 }) => {
 	const router = useRouter();
 
-	if (
-		!individual.data ||
-		!headline.data ||
-		!latest.data ||
-		!quiz.data ||
-		!slide.data
-	)
+	const { data: individualQuizCache } = useSWR(
+		`individualQuiz-${quizId}`,
+		() =>
+			prodRequest({
+				query: QUIZ,
+				variables: { id: quizId },
+				operationName: "GetProductionQuiz",
+			}),
+		{ initialData: individual },
+	);
+
+	const { data: headlineCache } = useSWR(
+		"latestArticles",
+		() => prodRequest(quizQuery[0]),
+		{ initialData: headline },
+	);
+	const { data: quizCache } = useSWR(
+		"headlineQuizs",
+		() => prodRequest(quizQuery[1]),
+		{ initialData: quiz },
+	);
+	const { data: slideShowCache } = useSWR(
+		"headlineSlideshows",
+		() => prodRequest(quizQuery[2]),
+		{ initialData: slide },
+	);
+
+	if (!individualQuizCache || !headlineCache || !quizCache || !slideShowCache)
 		return <QuickViewLoading />;
 
 	useEffect(() => {
@@ -57,11 +72,11 @@ const Questions = ({
 
 	return (
 		<QuizLayout
-			individual={individual.data.getProductionQuiz}
-			headline={headline.data.listProductionArticles}
-			latest={latest.data.listProductionArticles}
-			quiz={quiz.data.listProductionQuizs}
-			slide={slide.data.listProductionSlideshows}
+			individual={individualQuizCache.data.getProductionQuiz}
+			headline={headlineCache.data.listProductionArticles}
+			// latest={headlineCache.data.listProductionArticles}
+			quiz={quizCache.data.listProductionQuizs}
+			slide={slideShowCache.data.listProductionSlideshows}
 			id={quizId}
 			position={questionId}
 			url={url}
@@ -76,46 +91,16 @@ export async function getServerSideProps(context) {
 
 	const { questionId, url, quizId, score } = context.params;
 	const scoreCheck = score ? score : null;
+
 	// Fetch data from external API
-	const querys = [
-		{
-			query: QUIZ,
-			variables: { id: quizId },
-			operationName: "GetProductionQuiz",
-		},
-		{
-			query: HEADLINES,
-			variables: {
-				filter: { mainHeadline: true },
-			},
-			operationName: "ListProductionArticles",
-		},
-		{
-			query: LATEST,
-			variables: {
-				limit: 10,
-			},
-			operationName: "ListProductionArticles",
-		},
-		{
-			query: QUIZ_CONTENT,
-			variables: {
-				filter: { mainHeadline: true },
-				limit: 5,
-			},
-			operationName: "ListProductionQuizs",
-		},
-		{
-			query: SLIDE,
-			variables: {
-				longForm: "true",
-				limit: 5,
-			},
-			operationName: "ListProductionSlideshows",
-		},
-	];
-	const [individual, headline, latest, quiz, slide] = await Promise.all(
-		querys.map(query =>
+	const QUIZ_QUERY = {
+		query: QUIZ,
+		variables: { id: quizId },
+		operationName: "GetProductionQuiz",
+	};
+
+	const [individual, headline, quiz, slide] = await Promise.all(
+		[QUIZ_QUERY, ...quizQuery].map(query =>
 			prodRequest({
 				query: query.query,
 				variables: query.variables,
@@ -129,7 +114,6 @@ export async function getServerSideProps(context) {
 		props: {
 			individual,
 			headline,
-			latest,
 			quiz,
 			slide,
 			questionId,

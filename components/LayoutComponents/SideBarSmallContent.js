@@ -8,10 +8,10 @@ const SideBarSmallContent = ({ data, type }) => {
 			headlineImageAlt,
 			headline,
 			category,
-			url,
+			urlDescription,
 			refPath,
 			contentLink,
-			srcset,
+			headlineImageSrcset,
 		} = sideHelper(content, type);
 
 		return (
@@ -22,10 +22,10 @@ const SideBarSmallContent = ({ data, type }) => {
 				headlineImageAlt={headlineImageAlt}
 				headline={headline}
 				category={category}
-				url={url}
+				url={urlDescription}
 				refPath={refPath}
 				contentLink={contentLink}
-				srcset={srcset}
+				srcset={headlineImageSrcset}
 			/>
 		);
 	});

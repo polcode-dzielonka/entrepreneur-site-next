@@ -1,39 +1,59 @@
 import SlideLayout from "../../../../../components/Layouts/SlideShowLayout";
 import { SLIDESHOW } from "../../../../../graphql/indivSlideShow";
-import {
-	HEADLINES,
-	SLIDE,
-	QUIZ,
-	LATEST,
-} from "../../../../../graphql/headline";
 import SlideLoading from "../../../../../components/Loading/Layouts/SlideShowLoading";
 import prodRequest from "../../../../../components/apiRequest/prodRequest";
+import { slideShowQuery } from "../../../../../data/queryData/querys";
+import useSWR from "swr";
 
 const Slide = ({
 	individual,
 	headline,
-	latest,
 	quiz,
 	slide,
 	url,
 	slideId,
 	slideContentId,
 }) => {
+	const { data: individualSlideshowCache } = useSWR(
+		`individualSlideshow-${slideId}`,
+		() =>
+			prodRequest({
+				query: SLIDESHOW,
+				variables: { id: slideId },
+				operationName: "GetProductionSlideshow",
+			}),
+		{ initialData: individual },
+	);
+
+	const { data: headlineCache } = useSWR(
+		"latestArticles",
+		() => prodRequest(slideShowQuery[0]),
+		{ initialData: headline },
+	);
+	const { data: quizCache } = useSWR(
+		"headlineQuizs",
+		() => prodRequest(slideShowQuery[1]),
+		{ initialData: quiz },
+	);
+	const { data: slideShowCache } = useSWR(
+		"headlineSlideshows",
+		() => prodRequest(slideShowQuery[2]),
+		{ initialData: slide },
+	);
 	if (
-		!individual.data ||
-		!headline.data ||
-		!latest.data ||
-		!quiz.data ||
-		!slide.data
+		!individualSlideshowCache ||
+		!headlineCache ||
+		!quizCache ||
+		!slideShowCache
 	)
 		return <SlideLoading />;
 	return (
 		<SlideLayout
-			individual={individual.data.getProductionSlideshow}
-			headline={headline.data.listProductionArticles}
-			latest={latest.data.listProductionArticles}
-			quiz={quiz.data.listProductionQuizs}
-			slide={slide.data.listProductionSlideshows}
+			individual={individualSlideshowCache.data.getProductionSlideshow}
+			headline={headlineCache.data.listProductionArticles}
+			latest={headlineCache.data.listProductionArticles}
+			quiz={quizCache.data.listProductionQuizs}
+			slide={slideShowCache.data.listProductionSlideshows}
 			id={slideId}
 			position={slideContentId}
 			url={url}
@@ -48,45 +68,14 @@ export async function getServerSideProps(context) {
 	const { url, slideId, slideContentId } = context.params;
 
 	// Fetch data from external API
-	const querys = [
-		{
-			query: SLIDESHOW,
-			variables: { id: slideId },
-			operationName: "GetProductionSlideshow",
-		},
-		{
-			query: HEADLINES,
-			variables: {
-				filter: { mainHeadline: true },
-			},
-			operationName: "ListProductionArticles",
-		},
-		{
-			query: LATEST,
-			variables: {
-				filter: { mainHeadline: false },
-			},
-			operationName: "ListProductionArticles",
-		},
-		{
-			query: QUIZ,
-			variables: {
-				filter: { mainHeadline: true },
-				limit: 5,
-			},
-			operationName: "ListProductionQuizs",
-		},
-		{
-			query: SLIDE,
-			variables: {
-				longForm: "true",
-				limit: 5,
-			},
-			operationName: "ListProductionSlideshows",
-		},
-	];
-	const [individual, headline, latest, quiz, slide] = await Promise.all(
-		querys.map(query =>
+	const SLIDESHOW_QUERY = {
+		query: SLIDESHOW,
+		variables: { id: slideId },
+		operationName: "GetProductionSlideshow",
+	};
+
+	const [individual, headline, quiz, slide] = await Promise.all(
+		[SLIDESHOW_QUERY, ...slideShowQuery].map(query =>
 			prodRequest({
 				query: query.query,
 				variables: query.variables,
@@ -100,7 +89,6 @@ export async function getServerSideProps(context) {
 		props: {
 			individual,
 			headline,
-			latest,
 			quiz,
 			slide,
 			url,

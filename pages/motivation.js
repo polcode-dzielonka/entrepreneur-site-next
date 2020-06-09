@@ -1,16 +1,32 @@
-import { QUIZ, SLIDE, HEADLINES } from "../graphql/headline";
 import HeadlineLayout from "../components/Layouts/HeadlineLayout";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";
+import { motivationHeadlineQuery } from "../data/queryData/querys";
+import useSWR from "swr";
 
 const Motivation = ({ headline, quiz, slide }) => {
-	if (!headline.data || !quiz.data || !slide.data)
+	const { data: headlineCache } = useSWR(
+		"motivationHeadlineArticles",
+		() => prodRequest(motivationHeadlineQuery[0]),
+		{ initialData: headline },
+	);
+	const { data: quizCache } = useSWR(
+		"headlineQuizs",
+		() => prodRequest(motivationHeadlineQuery[1]),
+		{ initialData: quiz },
+	);
+	const { data: slideShowCache } = useSWR(
+		"headlineSlideshows",
+		() => prodRequest(motivationHeadlineQuery[2]),
+		{ initialData: slide },
+	);
+	if (!headlineCache || !quizCache || !slideShowCache)
 		return <MainHeadlineLoading />;
 	return (
 		<HeadlineLayout
-			headline={headline.data.listProductionArticles}
-			quiz={quiz.data.listProductionQuizs}
-			slide={slide.data.listProductionSlideshows}
+			headline={headlineCache.data.listProductionArticles}
+			quiz={quizCache.data.listProductionQuizs}
+			slide={slideShowCache.data.listProductionSlideshows}
 			title="Motivation"
 			pageTitle="Motivation"
 			canonical="motivation"
@@ -22,35 +38,8 @@ const Motivation = ({ headline, quiz, slide }) => {
 export async function getServerSideProps(context) {
 	context.res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
 
-	// Fetch data from external API
-	const querys = [
-		{
-			query: HEADLINES,
-			variables: {
-				filter: { category: "motivation" },
-			},
-			operationName: "ListProductionArticles",
-		},
-
-		{
-			query: QUIZ,
-			variables: {
-				filter: { mainHeadline: true },
-				// limit: 5,
-			},
-			operationName: "ListProductionQuizs",
-		},
-		{
-			query: SLIDE,
-			variables: {
-				longForm: "true",
-				// limit: 5,
-			},
-			operationName: "ListProductionSlideshows",
-		},
-	];
 	const [headline, quiz, slide] = await Promise.all(
-		querys.map(query =>
+		motivationHeadlineQuery.map(query =>
 			prodRequest({
 				query: query.query,
 				variables: query.variables,

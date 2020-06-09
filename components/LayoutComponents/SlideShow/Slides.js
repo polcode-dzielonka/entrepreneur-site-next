@@ -48,7 +48,7 @@ const Slides = ({
 			arrayNumber && arrayNumber < latest.items.length
 				? latest.items[arrayNumber - 1]
 				: null;
-		const midDataOverview = adData ? JSON.parse(adData.overview) : null;
+		const midDataOverview = adData ? adData : null;
 		const midDataId = adData ? adData.id : null;
 		const showNumber = countdown
 			? data.length - slidePosition + 1

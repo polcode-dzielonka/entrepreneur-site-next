@@ -7,16 +7,17 @@ import LazyLoad from "react-lazyload";
 const MainHeadline = ({ data }) => {
 	const headlineData = data[0];
 	const subHeadlineData = data.filter((x, index) => index !== 0);
-	const { id } = headlineData;
-	const overview = JSON.parse(headlineData.overview);
 	const {
+		id,
 		headlineImage,
 		headlineImageAlt,
+		headlineImageSrcset,
 		headline,
 		category,
+		kicker,
 		urlDescription,
-		srcset,
-	} = overview[0];
+	} = headlineData;
+
 	return (
 		<section className={styles.headerSection}>
 			<div className={styles.sectionHead}>
@@ -32,7 +33,7 @@ const MainHeadline = ({ data }) => {
 							<LazyLoad once={true}>
 								<img
 									className={styles.headlineImageMain}
-									srcSet={srcset ? srcset : []}
+									srcSet={headlineImageSrcset ? headlineImageSrcset : []}
 									sizes="450px" //"330px"
 									src={headlineImage}
 									alt={headlineImageAlt}
@@ -53,15 +54,17 @@ const MainHeadline = ({ data }) => {
 				</article>
 				<div className={styles.subHeadlineContainer}>
 					{subHeadlineData.map((head, index) => {
-						const overview = JSON.parse(head.overview);
-						const { id } = head;
 						const {
+							id,
 							headlineImage,
 							headlineImageAlt,
+							headlineImageSrcset,
 							headline,
+							category,
+							kicker,
 							urlDescription,
-							srcset,
-						} = overview[0];
+						} = head;
+
 						return (
 							<article className={styles.subArticle} key={index}>
 								<Link
@@ -75,7 +78,9 @@ const MainHeadline = ({ data }) => {
 													className={styles.subHeadlineImage}
 													src={headlineImage}
 													alt={headlineImageAlt}
-													srcSet={srcset ? srcset : []}
+													srcSet={
+														headlineImageSrcset ? headlineImageSrcset : []
+													}
 													sizes="350px"
 												/>
 											</LazyLoad>

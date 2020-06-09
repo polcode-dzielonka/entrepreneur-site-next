@@ -90,9 +90,6 @@ const QuickSlides = ({
 							? nextSlideData[0].slideImageAlt
 							: "Next Slide Image"
 					}
-					handler={() => {
-						setLoading(true);
-					}}
 				/>
 			</LazyLoad>
 		</div>

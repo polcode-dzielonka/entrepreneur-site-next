@@ -16,6 +16,8 @@ import organisationData from "../StructuredData/organisation";
 import webPageData from "../StructuredData/webPage";
 import styles from "./styles/headlineLayout.module.sass";
 import baseTheme from "../../theme/baseTheme.json";
+import useSWR from "swr";
+
 const MainHeadlineLayout = ({
 	headline,
 	latest,
@@ -26,6 +28,22 @@ const MainHeadlineLayout = ({
 	canonical,
 }) => {
 	const [loadingMorePosts, setLoadingMorePosts] = useState(false);
+
+	const loadMore = () => {
+		setLoadingMorePosts(true);
+		// const { data: loadMoreArticles } = useSWR("LoadMoreArticles", () =>
+		// 	prodRequest({
+		// 		query: HEADLINES,
+		// 		variables: {
+		// 			filter: { mainHeadline: true },
+		// 			limit: 4,
+		// 			token: "ESRFERSF",
+		// 		},
+		// 		operationName: "ListProductionArticles",
+		// 	}),
+		// );
+	};
+
 	return (
 		<Layout>
 			<Head>
@@ -66,6 +84,7 @@ const MainHeadlineLayout = ({
 								<RippleButton
 									label={loadingMorePosts ? "Loading..." : "Load More!"}
 									color={baseTheme.secondary}
+									handler={loadMore}
 								/>
 							</LazyLoad>
 						</div>

@@ -84,19 +84,13 @@ export const HEADLINES = /* GraphQL */ `
 		listProductionArticles(filter: $filter, limit: $limit) {
 			items {
 				id
-				authorId
-				authorName
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				schedule
-				original
-				scheduleTime
-				createdAt
-				updatedAt
+				kicker
+				urlDescription
 			}
 			nextToken
 		}
@@ -111,19 +105,13 @@ export const LATEST = /* GraphQL */ `
 		listProductionArticles(filter: $filter, limit: $limit) {
 			items {
 				id
-				authorId
-				authorName
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				schedule
-				original
-				scheduleTime
-				createdAt
-				updatedAt
+				kicker
+				urlDescription
 			}
 			nextToken
 		}
@@ -135,23 +123,13 @@ export const QUIZ = /* GraphQL */ `
 		listProductionQuizs(filter: $filter, limit: $limit) {
 			items {
 				id
-				authorId
-				authorName
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				original
-				numQuestions
-				createdAt
-				updatedAt
-				tags
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				mainHeadline
-				sideHeadline
-				bottomHeadline
-				shareCount
+				kicker
+				urlDescription
 			}
 			nextToken
 		}
@@ -170,22 +148,13 @@ export const SLIDE = /* GraphQL */ `
 		) {
 			items {
 				id
-				authorId
-				authorName
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				original
-				createdAt
-				updatedAt
-				tags
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				mainHeadline
-				sideHeadline
-				bottomHeadline
-				shareCount
+				kicker
+				urlDescription
 			}
 			nextToken
 		}
@@ -205,19 +174,13 @@ export const LATEST_HEADLINES = /* GraphQL */ `
 		) {
 			items {
 				id
-				authorId
-				authorName
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				schedule
-				original
-				scheduleTime
-				createdAt
-				updatedAt
+				kicker
+				urlDescription
 			}
 			nextToken
 		}
@@ -233,23 +196,13 @@ export const LATEST_QUIZ = /* GraphQL */ `
 		listProductionQuizs(filter: $filter, limit: $limit, nextToken: $nextToken) {
 			items {
 				id
-				authorId
-				authorName
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				original
-				numQuestions
-				createdAt
-				updatedAt
-				tags
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				mainHeadline
-				sideHeadline
-				bottomHeadline
-				shareCount
+				kicker
+				urlDescription
 			}
 			nextToken
 		}
@@ -269,23 +222,13 @@ export const LATEST_SLIDE = /* GraphQL */ `
 		) {
 			items {
 				id
-				authorId
-				authorName
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				original
-				numSlides
-				createdAt
-				updatedAt
-				tags
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				mainHeadline
-				sideHeadline
-				bottomHeadline
-				shareCount
+				kicker
+				urlDescription
 			}
 			nextToken
 		}

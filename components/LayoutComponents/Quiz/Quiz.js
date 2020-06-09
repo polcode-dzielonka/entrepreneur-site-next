@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionBar from "../SectionBar";
 import PropTypes from "prop-types";
 import BookEnds from "./BookEnds";
@@ -28,6 +28,11 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 	} = details[0];
 	const positionNumber = Number(position);
 	const [currentScore, setCurrentScore] = useState(0);
+
+	useEffect(() => {
+		setCurrentScore(0);
+	}, [id]);
+
 	if (
 		positionNumber > content.numQuestions &&
 		position !== "opening" &&

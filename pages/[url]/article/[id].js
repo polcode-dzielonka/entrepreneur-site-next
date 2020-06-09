@@ -1,18 +1,41 @@
 import ArticleLayout from "../../../components/Layouts/ArticleLayout";
-import { ARTICLE } from "../../../graphql/indivArticle";
-import { SLIDE, QUIZ } from "../../../graphql/headline";
 import prodRequest from "../../../components/apiRequest/prodRequest";
-
+import { articleQuery } from "../../../data/queryData/querys";
+import useSWR from "swr";
+import { ARTICLE } from "../../../graphql/indivArticle";
 const Article = ({ individual, quiz, slide, id, url }) => {
-	if (!individual.data || !quiz.data || !slide.data)
+	const { data: individualArticleCache } = useSWR(
+		`individualArticle-${id}`,
+		() =>
+			prodRequest({
+				query: ARTICLE,
+				variables: {
+					id,
+				},
+				operationName: "GetProductionArticle",
+			}),
+		{ initialData: individual },
+	);
+	const { data: quizCache } = useSWR(
+		"headlineQuizs",
+		() => prodRequest(articleQuery[0]),
+		{ initialData: quiz },
+	);
+	const { data: slideShowCache } = useSWR(
+		"headlineSlideshows",
+		() => prodRequest(articleQuery[1]),
+		{ initialData: slide },
+	);
+
+	if (!individualArticleCache || !quizCache || !slideShowCache)
 		return <MainHeadlineLoading />;
 
 	return (
 		<ArticleLayout
 			id={id}
-			individual={individual.data.getProductionArticle}
-			quiz={quiz.data.listProductionQuizs}
-			slide={slide.data.listProductionSlideshows}
+			individual={individualArticleCache.data.getProductionArticle}
+			quiz={quizCache.data.listProductionQuizs}
+			slide={slideShowCache.data.listProductionSlideshows}
 			url={url}
 		/>
 	);
@@ -24,34 +47,16 @@ export async function getServerSideProps(context) {
 
 	// Fetch data from external API
 	const { id, url } = context.params;
+	const ARTICLE_QUERY = {
+		query: ARTICLE,
+		variables: {
+			id,
+		},
+		operationName: "GetProductionArticle",
+	};
 
-	const querys = [
-		{
-			query: ARTICLE,
-			variables: {
-				id,
-			},
-			operationName: "GetProductionArticle",
-		},
-		{
-			query: QUIZ,
-			variables: {
-				filter: { mainHeadline: true },
-				// limit: 5,
-			},
-			operationName: "ListProductionQuizs",
-		},
-		{
-			query: SLIDE,
-			variables: {
-				longForm: "true",
-				// limit: 5,
-			},
-			operationName: "ListProductionSlideshows",
-		},
-	];
 	const [individual, quiz, slide] = await Promise.all(
-		querys.map(query =>
+		[ARTICLE_QUERY, ...articleQuery].map(query =>
 			prodRequest({
 				query: query.query,
 				variables: query.variables,

@@ -31,7 +31,6 @@ export const ADVERT_ARTICLE = /* GraphQL */ `
 			production
 			overview
 			developmentId
-			content
 			schedule
 			original
 			scheduleTime
@@ -45,20 +44,13 @@ export const NEXT_ARTICLE = /* GraphQL */ `
 		listProductionArticles(limit: $limit) {
 			items {
 				id
-				authorId
-				authorName
+				headlineImage
+				headlineImageAlt
+				headlineImageSrcset
+				headline
 				category
-				viewCount
-				development
-				production
-				overview
-				developmentId
-				content
-				schedule
-				original
-				scheduleTime
-				createdAt
-				updatedAt
+				kicker
+				urlDescription
 			}
 			nextToken
 		}

@@ -95,8 +95,9 @@ const ScrollingContent = ({ id, title, type }) => {
 					headlineImageAlt,
 					headline,
 					category,
-					contentLink,
 					refPath,
+					contentLink,
+					headlineImageSrcset,
 				} = sideHelper(content, type);
 
 				if (index % 4 === 0) {
@@ -109,6 +110,7 @@ const ScrollingContent = ({ id, title, type }) => {
 							index={index}
 							key={index}
 							contentLink={contentLink}
+							srcset={headlineImageSrcset}
 							refPath={refPath}
 						/>
 					);
@@ -122,6 +124,7 @@ const ScrollingContent = ({ id, title, type }) => {
 						index={index}
 						key={index}
 						contentLink={contentLink}
+						srcset={headlineImageSrcset}
 						refPath={refPath}
 					/>
 				);

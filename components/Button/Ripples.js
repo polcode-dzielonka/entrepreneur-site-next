@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const Ripple = props => {
 	const { children, styling } = props;
-
 	const [boxStyle, setBoxStyle] = useState({
 		position: "relative",
 		display: "inline-flex",
@@ -69,7 +68,6 @@ const Ripple = props => {
 				backgroundColor: color,
 			},
 		});
-
 		if (buttonClick) buttonClick(ev);
 	};
 	return (
@@ -81,8 +79,9 @@ const Ripple = props => {
 };
 Ripple.propTypes = {
 	children: PropTypes.Object,
+	label: PropTypes.String,
 	color: PropTypes.String,
-	buttonClick: PropTypes.Func,
+	buttonClick: PropTypes.func,
 	during: PropTypes.Int,
 	styling: PropTypes.Object,
 };

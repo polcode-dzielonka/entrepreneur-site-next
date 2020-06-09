@@ -4,12 +4,10 @@ import styles from "./styles/sideBarSmallComponentStyles.module.sass";
 
 const SideBarContent = ({
 	key,
-	type,
 	headlineImage,
 	headlineImageAlt,
 	headline,
 	category,
-	url,
 	refPath,
 	contentLink,
 	srcset,

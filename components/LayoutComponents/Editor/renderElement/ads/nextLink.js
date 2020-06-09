@@ -8,11 +8,10 @@ const NextLink = ({ data, type, id }) => {
 		headlineImage,
 		headlineImageAlt,
 		headline,
-		brief,
-		url,
+		kicker,
 		refPath,
 		contentLink,
-		srcset,
+		headlineImageSrcset,
 	} = sideHelper(data, type, true, id);
 	return (
 		<div className={styles.linkSection}>
@@ -24,14 +23,14 @@ const NextLink = ({ data, type, id }) => {
 							<img
 								src={headlineImage}
 								className={styles.quickViewImage}
-								srcSet={srcset ? srcset : []}
+								srcSet={headlineImageSrcset ? headlineImageSrcset : []}
 								sizes="150px"
 								alt={headlineImageAlt}
 							/>
 						</div>
 						<div className={styles.label}>
 							<div className={styles.linkLabel}>{headline}</div>
-							<div className={styles.linkLabelBrief}>{brief}</div>
+							<div className={styles.linkLabelBrief}>{kicker}</div>
 						</div>
 						<div className={styles.arrowWrapper}>
 							<img

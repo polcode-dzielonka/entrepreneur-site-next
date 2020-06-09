@@ -13,8 +13,20 @@ const SideBarContent = ({
 	contentLink,
 	srcset,
 }) => {
+	const prefetchItem = project => {
+		// return fetch(`https://api.github.com/repos/${project}`).then(data => {
+		// 	mutate(`/api/data?id=${project}`, data, false);
+		// 	return data;
+		// });
+		// console.log("SHABBA", project);
+	};
+
 	return (
-		<article className={styles.sideContent} key={key}>
+		<article
+			// onMouseEnter={() => prefetchItem(contentLink)}
+			className={styles.sideContent}
+			key={key}
+		>
 			<Link href={refPath} as={contentLink}>
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>

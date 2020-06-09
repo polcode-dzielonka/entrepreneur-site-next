@@ -9,10 +9,9 @@ const SideBarContent = ({ data, type }) => {
 			headlineImageAlt,
 			headline,
 			category,
-			url,
 			refPath,
 			contentLink,
-			srcset,
+			headlineImageSrcset,
 		} = sideHelper(article, type);
 
 		return (
@@ -23,10 +22,9 @@ const SideBarContent = ({ data, type }) => {
 					headlineImageAlt={headlineImageAlt}
 					headline={headline}
 					category={category}
-					url={url}
 					refPath={refPath}
 					contentLink={contentLink}
-					srcset={srcset}
+					srcset={headlineImageSrcset}
 				/>
 			</Fragment>
 		);

@@ -4,18 +4,16 @@ import LazyLoad from "react-lazyload";
 import styles from "./styles/scrollingArticleStyles.module.sass";
 const ScrollingArticles = ({ data }) => {
 	return data.map((article, index) => {
-		const { id } = article;
-
-		const overview = JSON.parse(article.overview);
 		const {
+			id,
 			headlineImage,
 			headlineImageAlt,
+			headlineImageSrcset,
 			headline,
 			category,
 			kicker,
 			urlDescription,
-			srcset,
-		} = overview[0];
+		} = article;
 
 		if (index === 0) {
 			return (
@@ -30,7 +28,7 @@ const ScrollingArticles = ({ data }) => {
 									className={styles.largeImageMain}
 									src={headlineImage}
 									alt={headlineImageAlt}
-									srcSet={srcset ? srcset : []}
+									srcSet={headlineImageSrcset ? headlineImageSrcset : []}
 									sizes="330px"
 								/>
 							</LazyLoad>
@@ -73,7 +71,7 @@ const ScrollingArticles = ({ data }) => {
 									className={styles.scrollImageMain}
 									src={headlineImage}
 									alt={headlineImageAlt}
-									srcSet={srcset ? srcset : []}
+									srcSet={headlineImageSrcset ? headlineImageSrcset : []}
 									sizes="330px"
 								/>
 							</LazyLoad>

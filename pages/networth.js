@@ -1,22 +1,34 @@
-import {
-	ALL_POSTS_QUERY,
-	QUIZ,
-	SLIDE,
-	HEADLINES,
-	LATEST,
-} from "../graphql/headline";
 import HeadlineLayout from "../components/Layouts/HeadlineLayout";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";
+import { networthHeadlineQuery } from "../data/queryData/querys";
+import useSWR from "swr";
 
 const Networth = ({ headline, quiz, slide }) => {
-	if (!headline.data || !quiz.data || !slide.data)
+	const { data: headlineCache } = useSWR(
+		"networthHeadlineArticles",
+		() => prodRequest(networthHeadlineQuery[0]),
+		{ initialData: headline },
+	);
+	const { data: quizCache } = useSWR(
+		"headlineQuizs",
+		() => prodRequest(networthHeadlineQuery[1]),
+		{ initialData: quiz },
+	);
+	const { data: slideShowCache } = useSWR(
+		"headlineSlideshows",
+		() => prodRequest(networthHeadlineQuery[2]),
+		{ initialData: slide },
+	);
+
+	if (!headlineCache || !quizCache || !slideShowCache)
 		return <MainHeadlineLoading />;
+
 	return (
 		<HeadlineLayout
-			headline={headline.data.listProductionArticles}
-			quiz={quiz.data.listProductionQuizs}
-			slide={slide.data.listProductionSlideshows}
+			headline={headlineCache.data.listProductionArticles}
+			quiz={quizCache.data.listProductionQuizs}
+			slide={slideShowCache.data.listProductionSlideshows}
 			title="Networth"
 			pageTitle="Networth"
 			canonical="networth"
@@ -28,35 +40,8 @@ const Networth = ({ headline, quiz, slide }) => {
 export async function getServerSideProps(context) {
 	context.res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
 
-	// Fetch data from external API
-	const querys = [
-		{
-			query: HEADLINES,
-			variables: {
-				filter: { category: "networth" },
-			},
-			operationName: "ListProductionArticles",
-		},
-
-		{
-			query: QUIZ,
-			variables: {
-				filter: { mainHeadline: true },
-				// limit: 5,
-			},
-			operationName: "ListProductionQuizs",
-		},
-		{
-			query: SLIDE,
-			variables: {
-				longForm: "true",
-				// limit: 5,
-			},
-			operationName: "ListProductionSlideshows",
-		},
-	];
 	const [headline, quiz, slide] = await Promise.all(
-		querys.map(query =>
+		networthHeadlineQuery.map(query =>
 			prodRequest({
 				query: query.query,
 				variables: query.variables,

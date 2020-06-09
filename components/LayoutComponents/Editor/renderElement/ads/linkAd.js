@@ -10,8 +10,11 @@ const NextArticleAd = ({ children, attributes }) => {
 		showNext: false,
 		url: "",
 		image: "",
+		imageAlt: "",
 		headline: "",
 		brief: "",
+		category: "",
+		srcset: [""],
 	});
 	useEffect(() => {
 		const { id } = router.router.query;
@@ -34,16 +37,27 @@ const NextArticleAd = ({ children, attributes }) => {
 			const selectedArticle = data.listProductionArticles.items.filter(
 				x => x.id !== postId,
 			);
-			const overview = JSON.parse(selectedArticle[0].overview);
-			const { brief, headlineImage, headline, urlDescription } = overview[0];
-			const { id } = selectedArticle[0];
+
+			const {
+				id,
+				headlineImage,
+				headlineImageAlt,
+				headlineImageSrcset,
+				headline,
+				category,
+				kicker,
+				urlDescription,
+			} = selectedArticle[0];
 			setNextInfo({
 				showNext: true,
 				url: `/${urlDescription}/article/${id}`,
 				refPath: `/[url]/article/[id]`,
 				image: headlineImage,
+				imageAlt: headlineImageAlt,
 				headline: headline,
-				brief: brief,
+				brief: kicker,
+				srcset: headlineImageSrcset,
+				category: category,
 			});
 		} catch (err) {
 			console.log("Error with request", err);
