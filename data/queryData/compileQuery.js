@@ -24,6 +24,7 @@ export const QUIZ_QUERY = {
 	variables: {
 		filter: { mainHeadline: true },
 		limit: 5,
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionQuizs",
 };
@@ -32,6 +33,7 @@ export const SLIDE_LONGFORM_QUERY = {
 	variables: {
 		longForm: "true",
 		limit: 5,
+		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionSlideshows",
 };

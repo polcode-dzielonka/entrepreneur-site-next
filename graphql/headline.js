@@ -121,8 +121,12 @@ export const LATEST = /* GraphQL */ `
 `;
 
 export const QUIZ = /* GraphQL */ `
-	query ListProductionQuizs($filter: CreateProductionQuizInput, $limit: Int) {
-		listProductionQuizs(filter: $filter, limit: $limit) {
+	query ListProductionQuizs(
+		$filter: CreateProductionQuizInput
+		$limit: Int
+		$id: String
+	) {
+		listProductionQuizs(id: $id, filter: $filter, limit: $limit) {
 			items {
 				id
 				headlineImage
@@ -142,8 +146,10 @@ export const SLIDE = /* GraphQL */ `
 		$filter: CreateProductionSlideshowInput
 		$longForm: String
 		$limit: Int
+		$id: String
 	) {
 		listProductionSlideshows(
+			id: $id
 			filter: $filter
 			limit: $limit
 			longForm: $longForm
@@ -196,8 +202,14 @@ export const LATEST_QUIZ = /* GraphQL */ `
 		$filter: CreateProductionQuizInput
 		$limit: Int
 		$nextToken: String
+		$id: String
 	) {
-		listProductionQuizs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+		listProductionQuizs(
+			id: $id
+			filter: $filter
+			limit: $limit
+			nextToken: $nextToken
+		) {
 			items {
 				id
 				headlineImage
@@ -215,11 +227,13 @@ export const LATEST_QUIZ = /* GraphQL */ `
 
 export const LATEST_SLIDE = /* GraphQL */ `
 	query ListProductionSlideshows(
+		$id: String
 		$limit: Int
 		$nextToken: String
 		$longForm: String
 	) {
 		listProductionSlideshows(
+			id: $id
 			limit: $limit
 			nextToken: $nextToken
 			longForm: $longForm
