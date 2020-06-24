@@ -20,6 +20,7 @@ const QuickSlides = ({
 	nextSlideData,
 	showNumbers,
 	countdown,
+	cpcMarker,
 }) => {
 	const slideDetails = slideData[0];
 	const {
@@ -78,20 +79,22 @@ const QuickSlides = ({
 					/>
 				</Slate>
 			</div>
-			<LazyLoad once={true}>
-				<QuickViewButton
-					label="Next"
-					imgSrc={nextSlideData[0] ? nextSlideData[0].slideImage : slideImage}
-					href={nextHref}
-					refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
-					srcset={nextSlideData[0] ? nextSlideData[0].srcset : srcset}
-					imageAlt={
-						nextSlideData[0]
-							? nextSlideData[0].slideImageAlt
-							: "Next Slide Image"
-					}
-				/>
-			</LazyLoad>
+			{cpcMarker && (
+				<LazyLoad once={true}>
+					<QuickViewButton
+						label="Next"
+						imgSrc={nextSlideData[0] ? nextSlideData[0].slideImage : slideImage}
+						href={nextHref}
+						refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+						srcset={nextSlideData[0] ? nextSlideData[0].srcset : srcset}
+						imageAlt={
+							nextSlideData[0]
+								? nextSlideData[0].slideImageAlt
+								: "Next Slide Image"
+						}
+					/>
+				</LazyLoad>
+			)}
 		</div>
 	);
 };

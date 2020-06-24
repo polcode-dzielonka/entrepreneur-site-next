@@ -61,7 +61,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	return (
 		<div className={styles.sectionPadding}>
 			<SectionBar title={`Lists`} titleColor="#111" titleSize="1.5rem" />
-			{cpcMarker && (
+			{(cpcMarker || (!cpcMarker && position !== "opening")) && (
 				<>
 					<div>
 						<QuickHeadline
@@ -119,12 +119,13 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 								countdown={countdown}
 								linkImage={details[0][`headlineImage`]}
 								nextHref={`${nextHref}/${slideEndRef}`}
+								cpcMarker={cpcMarker}
 							/>
 						)}
 					</div>
 				</>
 			)}
-			{!cpcMarker && (
+			{!cpcMarker && position === "opening" && (
 				<>
 					<Headline data={details} id={id} position={position} />
 					<BookEnds
