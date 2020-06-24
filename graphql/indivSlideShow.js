@@ -9,6 +9,7 @@ export const SLIDESHOW = /* GraphQL */ `
 			production
 			overview
 			developmentId
+			showHeadlineSlide
 			slides
 			numSlides
 			original

@@ -1,15 +1,15 @@
 import { useMemo, useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Embed from "../../Embed/Embed";
+import Embed from "../../../Embed/Embed";
 import { Slate, Editable } from "slate-react";
 import { createEditor } from "slate";
-import RenderElement from "../Editor/renderElement/renderElement";
-import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
-import defaultValue from "../Editor/defaultValue";
-import QuickViewButton from "../../Button/QuickViewButton";
+import RenderElement from "../../Editor/renderElement/renderElement";
+import RenderLeaf from "../../Editor/renderLeaf/renderLeaf";
+import defaultValue from "../../Editor/defaultValue";
+import QuickViewButton from "../../../Button/QuickViewButton";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/quickSlideStyles.module.sass";
-import SingleLoader from "../../Loading/SingleLoader";
+import SingleLoader from "../../../Loading/SingleLoader";
 
 const QuickSlides = ({
 	total,
@@ -83,7 +83,7 @@ const QuickSlides = ({
 					label="Next"
 					imgSrc={nextSlideData[0] ? nextSlideData[0].slideImage : slideImage}
 					href={nextHref}
-					refPath={`/[url]/quickview/[slideId]/slides/[slideContentId]`}
+					refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 					srcset={nextSlideData[0] ? nextSlideData[0].srcset : srcset}
 					imageAlt={
 						nextSlideData[0]

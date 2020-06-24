@@ -22,7 +22,6 @@ const BookEnds = ({
 	const editor = useMemo(() => createEditor(), []);
 	const renderElement = useCallback(props => <RenderElement {...props} />, []);
 	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
-
 	return (
 		<div className={styles.bookendWrapper}>
 			<div>

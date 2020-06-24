@@ -7,7 +7,7 @@ import ArticleHead from "./Article/ArticleHead";
 import ArticleBody from "./Article/ArticleBody";
 import QuizComponent from "./Quiz/Quiz";
 import SlideShowComponent from "./SlideShow/SlideShow";
-import QuickViewComponent from "./QuickView/QuickView";
+import QuickViewComponent from "./SlideShow/QuickView/QuickView";
 export {
 	MainHeadline,
 	ScrollingArticles,
@@ -18,5 +18,4 @@ export {
 	ArticleBody,
 	QuizComponent,
 	SlideShowComponent,
-	QuickViewComponent,
 };

@@ -4,6 +4,7 @@ const links = [
 	// { href: "/quotes", label: "Quotes" },
 	// { href: "/networth", label: "Net Worth" },
 	// { href: "/quiz", label: "Quiz" },
+	// { href: "/inspiring-stories", label: "Inspiring Stories" },
 ];
 const mobileLinks = [
 	{ href: "/", label: "Home" },
@@ -12,6 +13,7 @@ const mobileLinks = [
 	// { href: "/quotes", label: "Quotes" },
 	// { href: "/networth", label: "Net Worth" },
 	// { href: "/quiz", label: "Quiz" },
+	// { href: "/inspiring-stories", label: "Inspiring Stories" },
 	{ href: "/newsletter", label: "Newsletter" },
 ];
 const footerLinks = [

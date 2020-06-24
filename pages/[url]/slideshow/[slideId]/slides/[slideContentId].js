@@ -67,6 +67,12 @@ export async function getServerSideProps(context) {
 
 	const { url, slideId, slideContentId } = context.params;
 
+	const { utm_content } = context.query;
+	//Set Cookie Here If Url has Query data UTM from CPC Provider
+	if (utm_content) {
+		context.res.setHeader("Set-Cookie", "CPC=true; Max-Age=18000");
+	}
+
 	// Fetch data from external API
 	const SLIDESHOW_QUERY = {
 		query: SLIDESHOW,

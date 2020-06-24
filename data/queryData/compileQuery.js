@@ -31,7 +31,6 @@ export const QUIZ_QUERY = {
 export const SLIDE_LONGFORM_QUERY = {
 	query: SLIDE,
 	variables: {
-		longForm: "true",
 		limit: 5,
 		id: process.env.REACT_APP_SITE_ID,
 	},

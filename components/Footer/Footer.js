@@ -1,6 +1,7 @@
 import { footerLinks, socialLinks } from "../../data/data";
 import Link from "next/link";
 import styles from "./styles/footerStyles.module.sass";
+import LazyLoad from "react-lazyload";
 const Footer = ({ menuOpen, onClick }) => {
 	return (
 		<footer className={styles.footer}>
@@ -27,11 +28,13 @@ const Footer = ({ menuOpen, onClick }) => {
 										rel="noopener noreferrer"
 										className={styles.footerItemSocial}
 									>
-										<img
-											className={styles.socialImage}
-											src={icon}
-											alt={altName}
-										/>
+										<LazyLoad once={true}>
+											<img
+												className={styles.socialImage}
+												src={icon}
+												alt={altName}
+											/>
+										</LazyLoad>
 									</a>
 								</li>
 							);

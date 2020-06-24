@@ -18,7 +18,7 @@
     width: 60%
     position: relative
     cursor: pointer
-    padding-bottom: 0.25rem
+    // padding-bottom: 0.25rem
 
 .headlineImageMain
     display: flex
@@ -66,6 +66,11 @@
     &:hover
         color: $primary
 
+.subHeadlineAnchor
+    padding: 0
+    margin: 0
+    height: 100%
+
 .subHeadlineContainer
     display: flex
     width: 40%
@@ -78,7 +83,6 @@
     height: 100%
     width: 100%
     background-color: $secondary
-
     &:hover
         filter: brightness(120%)
 
@@ -86,11 +90,15 @@
     display: flex
     height: 100%
     width: 50%
+    object-fit: fit
 
 .subArticle
     height: calc(100% / 3)
     width: 100%
-    padding: 0rem 0rem 0.25rem 0.25rem
+
+.subArticleWrapper
+    height: 100%
+    padding: 0rem 0rem 0rem 0.25rem
 
 .subHeadlineAnchor
     width: 100%
@@ -142,7 +150,7 @@
     text-decoration: none
     font-weight: 700
 
-@media only screen and (max-width: 1000px) 
+@media only screen and (max-width: 1000px)
     .headerSection
         padding: 0rem
 
@@ -184,7 +192,7 @@
     .subTitleWrap
         height: 80%
 
-@media only screen and (max-width: 670px) 
+@media only screen and (max-width: 670px)
     .headlineContainer
         padding: 0
         padding-top: 2rem
@@ -235,7 +243,7 @@
     .subTitleWrap
         height: 50%
 
-@media only screen and (max-width: 480px) 
+@media only screen and (max-width: 480px)
     .headlineContainer
         padding: 0
         padding-top: 2rem

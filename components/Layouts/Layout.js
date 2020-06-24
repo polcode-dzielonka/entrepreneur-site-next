@@ -6,6 +6,7 @@ import CookieBanner from "../cookies/cookieBanner";
 import DefaultHeader from "../Header/Head";
 import PropTypes from "prop-types";
 import styles from "./styles/layoutStyles.module.sass";
+import LazyLoad from "react-lazyload";
 import baseTheme from "../../theme/baseTheme.json";
 const Layout = props => {
 	const { background, children } = props;
@@ -24,7 +25,9 @@ const Layout = props => {
 			{menuOpen && <Menu onClick={e => onClick()} />}
 			<div className={styles.pageLayout}>{children}</div>
 			<CookieBanner />
-			<Footer />
+			<LazyLoad once={true}>
+				<Footer />
+			</LazyLoad>
 			<style jsx>{`
 				:global(body) {
 					margin: 0px;

@@ -1,10 +1,10 @@
 import { useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
-import Embed from "../../Embed/Embed";
+import Embed from "../../../Embed/Embed";
 import { Slate, Editable } from "slate-react";
 import { createEditor } from "slate";
-import RenderElement from "../Editor/renderElement/renderElement";
-import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
+import RenderElement from "../../Editor/renderElement/renderElement";
+import RenderLeaf from "../../Editor/renderLeaf/renderLeaf";
 import styles from "./styles/quickBookEndStyles.module.sass";
 const BookEnds = ({
 	image,

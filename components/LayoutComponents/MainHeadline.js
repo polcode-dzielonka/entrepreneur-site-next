@@ -67,34 +67,36 @@ const MainHeadline = ({ data }) => {
 
 						return (
 							<article className={styles.subArticle} key={index}>
-								<Link
-									href={`/[url]/article/[id]`}
-									as={`/${urlDescription}/article/${id}`}
-								>
-									<a className={styles.subHeadlineAnchor}>
-										<div className={styles.subHeadlineImageWrap}>
-											<LazyLoad once={true}>
-												<img
-													className={styles.subHeadlineImage}
-													src={headlineImage}
-													alt={headlineImageAlt}
-													srcSet={
-														headlineImageSrcset ? headlineImageSrcset : []
-													}
-													sizes="350px"
-												/>
-											</LazyLoad>
-										</div>
-										<div className={styles.subTitleContainer}>
-											<div className={styles.subTitleWrap}>
-												<h2 className={styles.subTitle}>{headline}</h2>
+								<div className={styles.subArticleWrapper}>
+									<Link
+										href={`/[url]/article/[id]`}
+										as={`/${urlDescription}/article/${id}`}
+									>
+										<a className={styles.subHeadlineAnchor}>
+											<div className={styles.subHeadlineImageWrap}>
+												<LazyLoad once={true}>
+													<img
+														className={styles.subHeadlineImage}
+														src={headlineImage}
+														alt={headlineImageAlt}
+														srcSet={
+															headlineImageSrcset ? headlineImageSrcset : []
+														}
+														sizes="350px"
+													/>
+												</LazyLoad>
 											</div>
-											<div className={styles.subCategoryWrapper}>
-												<h2 className={styles.subCategory}>{category}</h2>
+											<div className={styles.subTitleContainer}>
+												<div className={styles.subTitleWrap}>
+													<h2 className={styles.subTitle}>{headline}</h2>
+												</div>
+												<div className={styles.subCategoryWrapper}>
+													<h2 className={styles.subCategory}>{category}</h2>
+												</div>
 											</div>
-										</div>
-									</a>
-								</Link>
+										</a>
+									</Link>
+								</div>
 							</article>
 						);
 					})}

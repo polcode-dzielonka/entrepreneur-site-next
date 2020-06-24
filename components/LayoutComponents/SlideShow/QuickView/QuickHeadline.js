@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import DynamicHeader from "../../Header/DynamicHeader";
-import ShareButtonVert from "../../SocialMedia/ShareButtonsVert";
-import { sideSocialButtons } from "../../SocialMedia/data";
-import ShowMeta from "../../showMeta/showMeta";
+import DynamicHeader from "../../../Header/DynamicHeader";
+import ShareButtonVert from "../../../SocialMedia/ShareButtonsVert";
+import { sideSocialButtons } from "../../../SocialMedia/data";
+import ShowMeta from "../../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/quickHeadlineStyles.module.sass";
 const QuickHeadline = ({ data, id, position, totalSlides }) => {
@@ -19,8 +19,8 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 		authorName,
 		slideTags,
 	} = data[0];
-	const canonical = `${process.env.SITE_ADDRESS}/${slideUrl}/quickview/${id}/slides/${position}`;
-	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/quickview/${id}/slides/opening`;
+	const canonical = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${position}`;
+	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/opening`;
 
 	const nextEndpoint =
 		position === "opening"
@@ -41,11 +41,11 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 	const next =
 		position === "closing"
 			? null
-			: `${process.env.SITE_ADDRESS}/${slideUrl}/quickview/${id}/slides/${nextEndpoint}`;
+			: `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${nextEndpoint}`;
 	const prev =
 		position === "opening"
 			? null
-			: `${process.env.SITE_ADDRESS}/${slideUrl}/quickview/${id}/slides/${prevEndpoint}`;
+			: `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${prevEndpoint}`;
 	return (
 		<div className={styles.bookendWrapper}>
 			<DynamicHeader

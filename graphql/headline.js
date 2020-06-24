@@ -144,22 +144,17 @@ export const QUIZ = /* GraphQL */ `
 export const SLIDE = /* GraphQL */ `
 	query ListProductionSlideshows(
 		$filter: CreateProductionSlideshowInput
-		$longForm: String
 		$limit: Int
 		$id: String
 	) {
-		listProductionSlideshows(
-			id: $id
-			filter: $filter
-			limit: $limit
-			longForm: $longForm
-		) {
+		listProductionSlideshows(id: $id, filter: $filter, limit: $limit) {
 			items {
 				id
 				headlineImage
 				headlineImageAlt
 				headlineImageSrcset
 				headline
+				showHeadlineSlide
 				category
 				kicker
 				urlDescription
@@ -226,24 +221,15 @@ export const LATEST_QUIZ = /* GraphQL */ `
 `;
 
 export const LATEST_SLIDE = /* GraphQL */ `
-	query ListProductionSlideshows(
-		$id: String
-		$limit: Int
-		$nextToken: String
-		$longForm: String
-	) {
-		listProductionSlideshows(
-			id: $id
-			limit: $limit
-			nextToken: $nextToken
-			longForm: $longForm
-		) {
+	query ListProductionSlideshows($id: String, $limit: Int, $nextToken: String) {
+		listProductionSlideshows(id: $id, limit: $limit, nextToken: $nextToken) {
 			items {
 				id
 				headlineImage
 				headlineImageAlt
 				headlineImageSrcset
 				headline
+				showHeadlineSlide
 				category
 				kicker
 				urlDescription

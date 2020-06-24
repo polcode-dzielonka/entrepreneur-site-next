@@ -1,9 +1,9 @@
 const { parsed: localEnv } = require("dotenv").config();
 const webpack = require("webpack");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-	enabled: process.env.ANALYZE === "true",
-});
-module.exports = withBundleAnalyzer({
+// const withBundleAnalyzer = require("@next/bundle-analyzer")({
+// 	enabled: process.env.ANALYZE === "true",
+// });
+module.exports = {
 	target: "serverless",
 	webpack(config) {
 		config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
@@ -47,4 +47,4 @@ module.exports = withBundleAnalyzer({
 		},
 		catchAllRouting: true,
 	},
-});
+};

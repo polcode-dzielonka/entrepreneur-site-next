@@ -2,7 +2,6 @@ import App from "next/app";
 import UserContext from "../utils/Context";
 import Cookie from "js-cookie";
 import SignUp from "../components/SignUpModal/signUpModal";
-import Router from "next/router";
 import TagManager from "react-gtm-module";
 
 const tagManagerArgs = {
@@ -12,6 +11,7 @@ class OverviewApp extends App {
 	state = {
 		cookie: false,
 		emailCookie: true,
+		cpcMarker: false,
 	};
 
 	componentDidMount() {
@@ -22,7 +22,12 @@ class OverviewApp extends App {
 		const cookieEmailMarker = Cookie.get("wealth-cookie-email-signup")
 			? JSON.parse(Cookie.get("wealth-cookie-email-signup"))
 			: true;
-		this.setState({ cookie: cookieMarker, emailCookie: cookieEmailMarker });
+		const cpcMarker = Cookie.get("CPC") ? JSON.parse(Cookie.get("CPC")) : false;
+		this.setState({
+			cookie: cookieMarker,
+			emailCookie: cookieEmailMarker,
+			cpcMarker,
+		});
 	}
 
 	handleState = value => {
@@ -40,6 +45,7 @@ class OverviewApp extends App {
 					cookie: this.state.cookie,
 					handleState: this.handleState,
 					emailCookie: this.state.emailCookie,
+					cpcMarker: this.state.cpcMarker,
 				}}
 			>
 				<SignUp />
