@@ -41,6 +41,10 @@ const EmbedImage = ({ attributes, element, children }) => {
 				animation={true}
 				sizes="330px"
 				noMaxHeight={true}
+				styles={{
+					width: "100%",
+					centerize: true,
+				}}
 			/>
 			{children}
 			{embedImage.imageAttribution && (
