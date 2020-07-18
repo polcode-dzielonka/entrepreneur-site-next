@@ -9,10 +9,10 @@ import styles from "./styles/bookEndStyles.module.sass";
 const BookEnds = ({
 	image,
 	imageAlt,
+	imagePath,
 	imageAltAttribution,
 	imageAltAttributionLink,
 	showHeadlineImage,
-	srcset,
 	title,
 	details,
 	position,
@@ -46,9 +46,9 @@ const BookEnds = ({
 						embed={embed}
 						image={image}
 						imageAlt={imageAlt}
+						imagePath={imagePath}
 						imageAltAttribution={imageAltAttribution}
 						imageAltAttributionLink={imageAltAttributionLink}
-						srcset={srcset}
 						styles={{ width: "100%", height: "100%" }}
 						noMaxHeight={true}
 					/>
@@ -77,12 +77,12 @@ BookEnds.propTypes = {
 	position: PropTypes.string,
 	image: PropTypes.string,
 	imageAlt: PropTypes.string,
+	imagePath: PropTypes.string,
 	imageAltAttribution: PropTypes.string,
 	imageAltAttributionLink: PropTypes.string,
 	title: PropTypes.string,
 	details: PropTypes.Object,
 	embed: PropTypes.string,
-	srcset: PropTypes.array,
 };
 BookEnds.defaultProps = {
 	details: [

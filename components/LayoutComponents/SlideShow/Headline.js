@@ -15,6 +15,7 @@ const BookEnds = ({ data, id, position }) => {
 	const {
 		headlineImage,
 		headlineImageAlt,
+		headlineImagePath,
 		headlineImageAttribution,
 		headlineImageAttributionLink,
 		category,
@@ -22,7 +23,6 @@ const BookEnds = ({ data, id, position }) => {
 		blurb,
 		slideTitle,
 		slideUrl,
-		srcset,
 		showDate,
 		displayDate,
 		showAuthor,
@@ -58,8 +58,8 @@ const BookEnds = ({ data, id, position }) => {
 				<ImageLoader
 					src={headlineImage}
 					alt={headlineImageAlt}
+					imagePath={headlineImagePath}
 					animation={false}
-					srcset={srcset}
 					styles={{ width: "100%", height: "100%" }}
 					noMaxHeight={true}
 				/>

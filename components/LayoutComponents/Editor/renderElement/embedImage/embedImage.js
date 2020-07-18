@@ -6,9 +6,9 @@ const EmbedImage = ({ attributes, element, children }) => {
 	const [embedImage, setEmbedImageUrl] = useState({
 		imageUrl: "",
 		imageAlt: "",
+		imagePath: "",
 		imageAttribution: "",
 		imageAttributionLink: "",
-		srcset: [],
 	});
 
 	useEffect(() => {
@@ -18,16 +18,16 @@ const EmbedImage = ({ attributes, element, children }) => {
 	const handleImageEmbed = () => {
 		const embedImageUrl = data.imageUrl;
 		const embedImageAlt = data.imageAlt;
+		const embedImagePath = data.imagePath;
 		const embedImageAttribution = data.imageAttribution;
 		const embedImageAttributionLink = data.imageAttributionLink;
-		const embedImageSrcset = data.srcset ? data.srcset : [];
 		const embedImageComment = data.imageComment;
 		setEmbedImageUrl({
 			imageUrl: embedImageUrl,
 			imageAlt: embedImageAlt,
 			imageAttribution: embedImageAttribution,
 			imageAttributionLink: embedImageAttributionLink,
-			srcset: embedImageSrcset,
+			imagePath: embedImagePath,
 			imageComment: embedImageComment,
 		});
 	};
@@ -37,8 +37,8 @@ const EmbedImage = ({ attributes, element, children }) => {
 			<ImageLoader
 				src={embedImage.imageUrl}
 				alt={embedImage.imageAlt}
+				imagePath={embedImage.imagePath}
 				animation={true}
-				srcset={embedImage.srcset}
 				sizes="330px"
 				noMaxHeight={true}
 			/>
@@ -67,6 +67,7 @@ EmbedImage.defaultProps = {
 			imageAlt: "",
 			imageAttribution: "",
 			imageAttributionLink: "",
+			imagePath: "",
 		},
 	},
 };

@@ -1,17 +1,18 @@
 import Link from "next/link";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/sideBarComponentStyles.module.sass";
+import CloudImage from "../../Image/cloudImage";
+import { getImagePath } from "../../helper/imageUrlHelper";
+
 const SideBarContent = ({
 	key,
-	type,
 	headlineImage,
 	headlineImageAlt,
+	headlineImagePath,
 	headline,
 	category,
-	url,
 	refPath,
 	contentLink,
-	srcset,
 }) => {
 	const prefetchItem = project => {
 		// return fetch(`https://api.github.com/repos/${project}`).then(data => {
@@ -31,13 +32,17 @@ const SideBarContent = ({
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>
 						<LazyLoad once={true}>
-							<img
-								className={styles.sideImageMain}
-								src={headlineImage}
-								alt={headlineImageAlt}
-								srcSet={srcset ? srcset : []}
-								sizes="180px"
-							/>
+							<div className={styles.sideImageMain}>
+								<CloudImage
+									imagePath={
+										headlineImagePath
+											? headlineImagePath
+											: getImagePath(headlineImage)
+									}
+									imageAlt={headlineImageAlt}
+									layout={"sideLarge"}
+								/>
+							</div>
 						</LazyLoad>
 					</div>
 				</a>

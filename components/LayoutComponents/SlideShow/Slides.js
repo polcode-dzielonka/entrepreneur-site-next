@@ -28,10 +28,10 @@ const Slides = ({
 			slideComment,
 			slideImage,
 			slideImageAlt,
+			slideImagePath,
 			slideImageAttribution,
 			slideImageAttributionLink,
 			slidePosition,
-			srcset,
 		} = slideData;
 		const value = slideData.slideDetails
 			? slideData.slideDetails
@@ -70,7 +70,7 @@ const Slides = ({
 							imageAlt={slideImageAlt}
 							imageAltAttribution={slideImageAttribution}
 							imageAltAttributionLink={slideImageAttributionLink}
-							srcset={srcset}
+							imagePath={slideImagePath}
 							styles={{ width: "100%", height: "100%" }}
 							noMaxHeight={false}
 						/>
@@ -128,7 +128,7 @@ Slides.propTypes = {
 	image: PropTypes.String,
 	headline: PropTypes.String,
 	brief: PropTypes.String,
-	srcset: PropTypes.Array,
+	imagePath: PropTypes.String,
 };
 Slides.defaultProps = {
 	latest: [],

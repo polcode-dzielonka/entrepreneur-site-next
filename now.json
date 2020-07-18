@@ -21,7 +21,8 @@
 		"SITEMAP_URL": "@sitemap_url",
 		"RSS_URL": "@rss_url",
 		"SITE_NAME": "@site_name",
-		"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id"
+		"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id",
+		"CLOUDFRONT_IMAGE_DOMAIN": "https://assets.wealthmack.com"
 	},
 	"build": {
 		"env": {
@@ -37,7 +38,8 @@
 			"SITEMAP_URL": "@sitemap_url",
 			"RSS_URL": "@rss_url",
 			"SITE_NAME": "@site_name",
-			"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id"
+			"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id",
+			"CLOUDFRONT_IMAGE_DOMAIN": "https://assets.wealthmack.com"
 		}
 	}
 }

@@ -2,13 +2,16 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/subContentStyles.module.sass";
+import CloudImage from "../../Image/cloudImage";
+import { getImagePath } from "../../helper/imageUrlHelper";
+
 const SubScrollingContent = ({
 	category,
 	headline,
 	headlineImage,
 	headlineImageAlt,
+	headlineImagePath,
 	index,
-	srcset,
 	contentLink,
 	refPath,
 }) => {
@@ -18,13 +21,17 @@ const SubScrollingContent = ({
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>
 						<LazyLoad once={true}>
-							<img
-								className={styles.sideImageMain}
-								src={headlineImage}
-								alt={headlineImageAlt}
-								srcSet={srcset ? srcset : []}
-								sizes="330px"
-							/>
+							<div className={styles.sideImageMain}>
+								<CloudImage
+									imagePath={
+										headlineImagePath
+											? headlineImagePath
+											: getImagePath(headlineImage)
+									}
+									imageAlt={headlineImageAlt}
+									layout={"sideLarge"}
+								/>
+							</div>
 						</LazyLoad>
 					</div>
 				</a>
@@ -47,9 +54,9 @@ const SubScrollingContent = ({
 SubScrollingContent.propTypes = {
 	category: PropTypes.String,
 	headline: PropTypes.String,
+	headlineImagePath: PropTypes.String,
 	headlineImage: PropTypes.String,
 	headlineImageAlt: PropTypes.String,
 	index: PropTypes.int,
-	srcset: PropTypes.array,
 };
 export default SubScrollingContent;

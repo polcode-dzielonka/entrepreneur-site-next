@@ -3,7 +3,8 @@ import Link from "next/link";
 import SectionBar from "./SectionBar";
 import styles from "./styles/mainHeadlineStyles.module.sass";
 import LazyLoad from "react-lazyload";
-
+import CloudImage from "../Image/cloudImage";
+import { getImagePath } from "../helper/imageUrlHelper";
 const MainHeadline = ({ data }) => {
 	const headlineData = data[0];
 	const subHeadlineData = data.filter((x, index) => index !== 0);
@@ -11,13 +12,10 @@ const MainHeadline = ({ data }) => {
 		id,
 		headlineImage,
 		headlineImageAlt,
-		headlineImageSrcset,
+		headlineImagePath,
 		headline,
-		category,
-		kicker,
 		urlDescription,
 	} = headlineData;
-
 	return (
 		<section className={styles.headerSection}>
 			<div className={styles.sectionHead}>
@@ -31,13 +29,17 @@ const MainHeadline = ({ data }) => {
 					>
 						<a className={styles.headlineImageMainWrapper}>
 							<LazyLoad once={true}>
-								<img
-									className={styles.headlineImageMain}
-									srcSet={headlineImageSrcset ? headlineImageSrcset : []}
-									sizes="450px" //"330px"
-									src={headlineImage}
-									alt={headlineImageAlt}
-								/>
+								<div className={styles.headlineImageMain}>
+									<CloudImage
+										imagePath={
+											headlineImagePath
+												? headlineImagePath
+												: getImagePath(headlineImage)
+										}
+										imageAlt={headlineImageAlt}
+										layout="headline"
+									/>
+								</div>
 							</LazyLoad>
 						</a>
 					</Link>
@@ -58,8 +60,8 @@ const MainHeadline = ({ data }) => {
 							id,
 							headlineImage,
 							headlineImageAlt,
-							headlineImageSrcset,
 							headline,
+							headlineImagePath,
 							category,
 							kicker,
 							urlDescription,
@@ -75,15 +77,17 @@ const MainHeadline = ({ data }) => {
 										<a className={styles.subHeadlineAnchor}>
 											<div className={styles.subHeadlineImageWrap}>
 												<LazyLoad once={true}>
-													<img
-														className={styles.subHeadlineImage}
-														src={headlineImage}
-														alt={headlineImageAlt}
-														srcSet={
-															headlineImageSrcset ? headlineImageSrcset : []
-														}
-														sizes="350px"
-													/>
+													<div className={styles.subHeadlineImage}>
+														<CloudImage
+															imagePath={
+																headlineImagePath
+																	? headlineImagePath
+																	: getImagePath(headlineImage)
+															}
+															imageAlt={headlineImageAlt}
+															layout="subHeadline"
+														/>
+													</div>
 												</LazyLoad>
 											</div>
 											<div className={styles.subTitleContainer}>

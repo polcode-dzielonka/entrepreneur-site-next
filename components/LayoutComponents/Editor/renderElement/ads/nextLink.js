@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "../styles/ads/nextLinkStyles.module.sass";
 import sideHelper from "../../../../helper/sideBarHelper";
-
+import CloudImage from "../../../../Image/cloudImage";
+import { getImagePath } from "../../../../helper/imageUrlHelper";
 const NextLink = ({ data, type, id }) => {
 	const {
 		headlineImage,
@@ -11,7 +12,7 @@ const NextLink = ({ data, type, id }) => {
 		kicker,
 		refPath,
 		contentLink,
-		headlineImageSrcset,
+		headlineImagePath,
 	} = sideHelper(data, type, true, id);
 	return (
 		<div className={styles.linkSection}>
@@ -20,13 +21,17 @@ const NextLink = ({ data, type, id }) => {
 				<Link href={refPath} as={contentLink}>
 					<a className={styles.quickViewLink}>
 						<div className={styles.imgWrapper}>
-							<img
-								src={headlineImage}
-								className={styles.quickViewImage}
-								srcSet={headlineImageSrcset ? headlineImageSrcset : []}
-								sizes="150px"
-								alt={headlineImageAlt}
-							/>
+							<div className={styles.quickViewImage}>
+								<CloudImage
+									imagePath={
+										headlineImagePath
+											? headlineImagePath
+											: getImagePath(headlineImage)
+									}
+									imageAlt={headlineImageAlt}
+									layout={"nextButton"}
+								/>
+							</div>
 						</div>
 						<div className={styles.label}>
 							<div className={styles.linkLabel}>{headline}</div>
@@ -58,7 +63,7 @@ NextLink.propTypes = {
 	url: PropTypes.String,
 	title: PropTypes.String,
 	imageAlt: PropTypes.String,
-	srcset: PropTypes.Array,
+	imagePath: PropTypes.String,
 };
 
 export default NextLink;

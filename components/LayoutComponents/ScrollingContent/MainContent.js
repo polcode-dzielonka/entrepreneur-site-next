@@ -2,13 +2,15 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/mainContentStyles.module.sass";
+import CloudImage from "../../Image/cloudImage";
+import { getImagePath } from "../../helper/imageUrlHelper";
 const MainScrollingContent = ({
 	category,
 	headline,
 	headlineImage,
 	headlineImageAlt,
+	headlineImagePath,
 	index,
-	srcset,
 	contentLink,
 	refPath,
 }) => {
@@ -18,13 +20,17 @@ const MainScrollingContent = ({
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>
 						<LazyLoad once={true}>
-							<img
-								className={styles.sideImageMain}
-								src={headlineImage}
-								alt={headlineImageAlt}
-								srcSet={srcset ? srcset : []}
-								sizes="330px"
-							/>
+							<div className={styles.sideImageMain}>
+								<CloudImage
+									imagePath={
+										headlineImagePath
+											? headlineImagePath
+											: getImagePath(headlineImage)
+									}
+									imageAlt={headlineImageAlt}
+									layout={"headline"}
+								/>
+							</div>
 						</LazyLoad>
 					</div>
 				</a>
@@ -48,8 +54,8 @@ MainScrollingContent.propTypes = {
 	category: PropTypes.String,
 	headline: PropTypes.String,
 	headlineImage: PropTypes.String,
+	headlineImagePath: PropTypes.String,
 	headlineImageAlt: PropTypes.String,
 	index: PropTypes.int,
-	srcset: PropTypes.array,
 };
 export default MainScrollingContent;

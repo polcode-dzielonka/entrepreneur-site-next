@@ -3,19 +3,23 @@ import PropTypes from "prop-types";
 export const config = { amp: "hybrid" };
 import { useAmp } from "next/amp";
 import loaderStyles from "./styles/imageLoaderStyles.module.sass";
+import CloudImage from "../Image/cloudImage";
+import { getImagePath } from "../helper/imageUrlHelper";
 const ImageLoader = ({
 	src,
 	alt,
 	animation,
 	styles,
-	srcset,
 	imageAltAttribution,
 	imageAltAttributionLink,
+	imagePath,
 	noMaxHeight,
 }) => {
 	const [classStyle, setClassStyle] = useState(
 		animation ? "imgLoadingAnimation" : "imgLoading",
 	);
+	const imageCheck = imagePath || src.indexOf("content-factory-media") > 1;
+
 	const isAmp = useAmp();
 
 	const onLoad = () => {
@@ -28,15 +32,19 @@ const ImageLoader = ({
 	return (
 		<>
 			{!isAmp && (
-				<img
-					src={src}
-					alt={alt}
-					style={styles}
-					className={loaderStyles.classStyle}
-					onLoad={onLoad}
-					srcSet={srcset}
-					sizes="350px"
-				/>
+				<div className={loaderStyles[classStyle]}>
+					{imageCheck && (
+						<CloudImage
+							imagePath={imagePath ? imagePath : getImagePath(src)}
+							imageAlt={alt}
+							layout={"content"}
+							onLoad={onLoad}
+						/>
+					)}
+					{!imageCheck && (
+						<img src={src} alt={alt} style={styles} onLoad={onLoad} />
+					)}
+				</div>
 			)}
 			{isAmp && (
 				<amp-img
@@ -45,8 +53,6 @@ const ImageLoader = ({
 					style={styles}
 					className={loaderStyles.classStyle}
 					onLoad={onLoad}
-					srcSet={srcset}
-					sizes="350px"
 				/>
 			)}
 			{imageAltAttribution && (
@@ -76,7 +82,7 @@ ImageLoader.propTypes = {
 	alt: PropTypes.string,
 	animation: PropTypes.boolean,
 	styles: PropTypes.object,
-	srcset: PropTypes.array,
+	imagePath: PropTypes.string,
 	imageAltAttribution: PropTypes.string,
 	imageAltAttributionLink: PropTypes.string,
 	noMaxHeight: PropTypes.boolean,

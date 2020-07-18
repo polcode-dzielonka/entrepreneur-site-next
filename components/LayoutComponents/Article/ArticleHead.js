@@ -20,11 +20,11 @@ const ArticleHead = ({ overview, id }) => {
 		headline,
 		headlineImage,
 		headlineImageAlt,
+		headlineImagePath,
 		brief,
 		bulletHeadlines,
 		bulletHeadlinesDetails,
 		urlDescription,
-		srcset,
 		showDate,
 		displayDate,
 		showAuthor,
@@ -49,8 +49,8 @@ const ArticleHead = ({ overview, id }) => {
 			<h3 className={styles.sectionCategory}>{category}</h3>
 			<ImageLoader
 				src={headlineImage}
-				srcset={srcset}
 				alt={headlineImageAlt}
+				imagePath={headlineImagePath}
 				animation={false}
 				styles={{ width: "100%", height: "100%" }}
 				noMaxHeight={true}

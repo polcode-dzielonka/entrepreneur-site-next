@@ -7,7 +7,7 @@ const SideHelper = (content, type, nextLink = false, nextId) => {
 		id,
 		headlineImage,
 		headlineImageAlt,
-		headlineImageSrcset,
+		headlineImagePath,
 		headline,
 		category,
 		kicker,
@@ -35,7 +35,7 @@ const SideHelper = (content, type, nextLink = false, nextId) => {
 		urlDescription,
 		refPath,
 		contentLink,
-		headlineImageSrcset,
+		headlineImagePath,
 	};
 };
 

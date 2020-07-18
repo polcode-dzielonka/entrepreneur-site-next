@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import LazyLoad from "react-lazyload";
+import CloudImage from "../Image/cloudImage";
+import { getImagePath } from "../helper/imageUrlHelper";
 import styles from "./styles/scrollingArticleStyles.module.sass";
 const ScrollingArticles = ({ data }) => {
 	return data.map((article, index) => {
@@ -8,7 +10,7 @@ const ScrollingArticles = ({ data }) => {
 			id,
 			headlineImage,
 			headlineImageAlt,
-			headlineImageSrcset,
+			headlineImagePath,
 			headline,
 			category,
 			kicker,
@@ -24,13 +26,17 @@ const ScrollingArticles = ({ data }) => {
 					>
 						<a className={styles.largeImageMainWrapper}>
 							<LazyLoad once={true}>
-								<img
-									className={styles.largeImageMain}
-									src={headlineImage}
-									alt={headlineImageAlt}
-									srcSet={headlineImageSrcset ? headlineImageSrcset : []}
-									sizes="330px"
-								/>
+								<div className={styles.largeImageMain}>
+									<CloudImage
+										imagePath={
+											headlineImagePath
+												? headlineImagePath
+												: getImagePath(headlineImage)
+										}
+										imageAlt={headlineImageAlt}
+										layout={"content"}
+									/>
+								</div>
 							</LazyLoad>
 						</a>
 					</Link>
@@ -67,13 +73,17 @@ const ScrollingArticles = ({ data }) => {
 					<a className={styles.scrollImageAnchor}>
 						<div className={styles.scrollImageWrapper}>
 							<LazyLoad once={true}>
-								<img
-									className={styles.scrollImageMain}
-									src={headlineImage}
-									alt={headlineImageAlt}
-									srcSet={headlineImageSrcset ? headlineImageSrcset : []}
-									sizes="330px"
-								/>
+								<div className={styles.scrollImageMain}>
+									<CloudImage
+										imagePath={
+											headlineImagePath
+												? headlineImagePath
+												: getImagePath(headlineImage)
+										}
+										imageAlt={headlineImageAlt}
+										layout={"scrolling"}
+									/>
+								</div>
 							</LazyLoad>
 							<div className={styles.scrollTitleContainer}>
 								<div className={styles.scrollTitlePad}>

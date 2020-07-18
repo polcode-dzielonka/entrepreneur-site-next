@@ -11,10 +11,10 @@ const NextArticleAd = ({ children, attributes }) => {
 		url: "",
 		image: "",
 		imageAlt: "",
+		imagePath: "",
 		headline: "",
 		brief: "",
 		category: "",
-		srcset: [""],
 	});
 	useEffect(() => {
 		const { id } = router.router.query;
@@ -42,7 +42,7 @@ const NextArticleAd = ({ children, attributes }) => {
 				id,
 				headlineImage,
 				headlineImageAlt,
-				headlineImageSrcset,
+				headlineImagePath,
 				headline,
 				category,
 				kicker,
@@ -54,9 +54,9 @@ const NextArticleAd = ({ children, attributes }) => {
 				refPath: `/[url]/article/[id]`,
 				image: headlineImage,
 				imageAlt: headlineImageAlt,
+				imagePath: headlineImagePath,
 				headline: headline,
 				brief: kicker,
-				srcset: headlineImageSrcset,
 				category: category,
 			});
 		} catch (err) {

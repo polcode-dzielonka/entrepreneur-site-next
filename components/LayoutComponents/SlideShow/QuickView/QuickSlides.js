@@ -28,10 +28,10 @@ const QuickSlides = ({
 		slideComment,
 		slideImage,
 		slideImageAlt,
+		slideImagePath,
 		slideImageAttribution,
 		slideImageAttributionLink,
 		slidePosition,
-		srcset,
 	} = slideDetails;
 
 	const value = slideDetails.slideDetails
@@ -65,7 +65,7 @@ const QuickSlides = ({
 					imageAlt={slideImageAlt}
 					imageAltAttribution={slideImageAttribution}
 					imageAltAttributionLink={slideImageAttributionLink}
-					srcset={srcset}
+					imagePath={slideImagePath}
 					styles={{ width: "100%", height: "100%" }}
 					noMaxHeight={true}
 				/>
@@ -85,8 +85,12 @@ const QuickSlides = ({
 						label="Next"
 						imgSrc={nextSlideData[0] ? nextSlideData[0].slideImage : slideImage}
 						href={nextHref}
+						imagePath={
+							nextSlideData[0]
+								? nextSlideData[0].slideImagePath
+								: slideImagePath
+						}
 						refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
-						srcset={nextSlideData[0] ? nextSlideData[0].srcset : srcset}
 						imageAlt={
 							nextSlideData[0]
 								? nextSlideData[0].slideImageAlt

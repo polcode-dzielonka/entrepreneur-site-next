@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
+import CloudImage from "../Image/cloudImage";
 import styles from "./styles/linkButtonStyles.module.sass";
+import { getImagePath } from "../helper/imageUrlHelper";
 const SlideLinkButton = ({
 	label,
 	href,
 	refPath,
 	imgSrc,
-	srcset,
+	imagePath,
 	imageAlt,
 }) => {
 	return (
@@ -21,13 +23,13 @@ const SlideLinkButton = ({
 				<Link href={refPath} as={href}>
 					<a className={styles.quickViewLink}>
 						<div className={styles.imgWrapper}>
-							<img
-								src={imgSrc}
-								srcSet={srcset}
-								sizes="150px"
-								className={styles.quickViewImage}
-								alt={imageAlt}
-							/>
+							<div className={styles.quickViewImage}>
+								<CloudImage
+									imagePath={imagePath ? imagePath : getImagePath(imgSrc)}
+									imageAlt={imageAlt}
+									layout={"nextButton"}
+								/>
+							</div>
 						</div>
 						<div className={styles.label}>
 							<div className={styles.linkLabel}>{label}</div>
@@ -54,7 +56,7 @@ SlideLinkButton.propTypes = {
 	label: PropTypes.String,
 	imgSrc: PropTypes.String,
 	imageAlt: PropTypes.String,
-	srcset: PropTypes.array,
+	imagePath: PropTypes.String,
 };
 
 export default SlideLinkButton;

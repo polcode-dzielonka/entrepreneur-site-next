@@ -1,16 +1,17 @@
 import Link from "next/link";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/sideBarSmallComponentStyles.module.sass";
-
+import CloudImage from "../../Image/cloudImage";
+import { getImagePath } from "../../helper/imageUrlHelper";
 const SideBarContent = ({
 	key,
 	headlineImage,
 	headlineImageAlt,
 	headline,
+	headlineImagePath,
 	category,
 	refPath,
 	contentLink,
-	srcset,
 }) => {
 	return (
 		<article className={styles.sideContent} key={key}>
@@ -18,13 +19,17 @@ const SideBarContent = ({
 				<a className={styles.sideHeadlineAnchor}>
 					<div className={styles.sideImageWrapper}>
 						<LazyLoad once={true}>
-							<img
-								className={styles.sideImageMain}
-								src={headlineImage}
-								alt={headlineImageAlt}
-								srcSet={srcset ? srcset : []}
-								sizes="150px"
-							/>
+							<div className={styles.sideImageMain}>
+								<CloudImage
+									imagePath={
+										headlineImagePath
+											? headlineImagePath
+											: getImagePath(headlineImage)
+									}
+									imageAlt={headlineImageAlt}
+									layout={"sideSmall"}
+								/>
+							</div>
 						</LazyLoad>
 					</div>
 				</a>

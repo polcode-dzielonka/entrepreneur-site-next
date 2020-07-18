@@ -30,6 +30,7 @@ const Questions = ({
 		answerImage,
 		answerImageAlt,
 		answerImageAttribution,
+		answerImagePath,
 		answerImageAttributionLink,
 		correctAnswerDetails,
 		inCorrectAnswerDetails,
@@ -38,13 +39,12 @@ const Questions = ({
 		question,
 		questionImage,
 		questionImageAlt,
+		questionImagePath,
 		questionImageAttribution,
 		questionImageAttributionLink,
 		questionPosition,
 		correctAnswerComment,
 		incorrectAnswerComment,
-		questionSrcset,
-		answerSrcset,
 	} = questionDetails;
 
 	const answerInfo = {
@@ -119,9 +119,9 @@ const Questions = ({
 							embed={questionDetails["questionImage-embed"]}
 							image={questionImage}
 							imageAlt={questionImageAlt}
+							imagePath={questionImagePath}
 							imageAltAttribution={questionImageAttribution}
 							imageAltAttributionLink={questionImageAttributionLink}
-							srcset={questionSrcset}
 							styles={{ width: "100%", height: "100%" }}
 							noMaxHeight={true}
 						/>
@@ -135,9 +135,9 @@ const Questions = ({
 							embed={questionDetails["answerImage-embed"]}
 							image={answerImage}
 							imageAlt={answerImageAlt}
+							imagePath={answerImagePath}
 							imageAltAttribution={answerImageAttribution}
 							imageAltAttributionLink={answerImageAttributionLink}
-							srcset={answerSrcset}
 							styles={{ width: "100%", height: "100%" }}
 							noMaxHeight={true}
 						/>
@@ -180,10 +180,10 @@ const Questions = ({
 					}
 					href={`${nextHref}?score=${currentScore}`}
 					refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
-					srcset={
+					imagePath={
 						nextQuestionData[0]
-							? nextQuestionData[0].questionSrcset
-							: questionSrcset
+							? nextQuestionData[0].questionImagePath
+							: questionImagePath
 					}
 					imageAlt={
 						nextQuestionData[0]

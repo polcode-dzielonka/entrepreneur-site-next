@@ -33,7 +33,6 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 		countdown,
 		title,
 		slideUrl,
-		srcset,
 		headlineImageAlt,
 	} = details[0];
 	const positionNumber = Number(position);
@@ -76,6 +75,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 									position={position}
 									image={slides[position][0][`${position}Image`]}
 									imageAlt={slides[position][0][`${position}ImageAlt`]}
+									imagePath={slides[position][0][`${position}ImagePath`]}
 									imageAltAttribution={
 										slides[position][0][`${position}ImageAttribution`]
 									}
@@ -89,13 +89,12 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 											: undefined
 									}
 									embed={slides[position][0][`${position}Image-embed`]}
-									srcset={slides[position][0].srcset}
 								/>
 								{position === "opening" && (
 									<QuickViewButton
 										label="Next"
 										imgSrc={details[0].headlineImage}
-										srcset={details[0].srcset}
+										imagePath={details[0].imagePath}
 										href={`${nextHref}/1`}
 										refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 										imageAlt={details[0].headlineImageAlt}
@@ -135,7 +134,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						imageAlt={bookEndOpening.openingImageAlt}
 						imageAltAttribution={bookEndOpening.openingImageAttribution}
 						imageAltAttributionLink={bookEndOpening.openingImageAttributionLink}
-						srcset={bookEndOpening.srcset}
+						imagePath={bookEndOpening.imagePath}
 						title={bookEndOpening.opening}
 						details={
 							bookEndOpening.openingSlideDetails
@@ -163,7 +162,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						imageAlt={bookEndClosing.closingImageAlt}
 						imageAltAttribution={bookEndClosing.closingImageAttribution}
 						imageAltAttributionLink={bookEndClosing.closingImageAttributionLink}
-						srcset={bookEndClosing.srcset}
+						imagePath={bookEndClosing.imagePath}
 						title={bookEndClosing.closing}
 						details={
 							bookEndClosing.closingSlideDetails

@@ -66,6 +66,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							position={position}
 							image={questions[position][0][`${position}Image`]}
 							imageAlt={questions[position][0][`${position}ImageAlt`]}
+							imagePath={questions[position][0][`${position}ImagePath`]}
 							imageAltAttribution={
 								questions[position][0][`${position}ImageAttribution`]
 							}
@@ -82,13 +83,12 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							scoreComments={scoreCommentsDetails}
 							finalScore={currentScore}
 							numberQuestions={content.numQuestions}
-							srcset={questions[position][0].srcset}
 						/>
 						{position === "opening" && (
 							<QuickViewButton
 								label="Start"
 								imgSrc={details[0].headlineImage}
-								srcset={details[0].srcset}
+								imagePath={details[0].headlineImagePath}
 								href={`${nextHref}/1`}
 								refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
 								imageAlt={details[0].headlineImageAlt}

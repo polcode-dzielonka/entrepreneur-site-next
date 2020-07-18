@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "./styles/quickViewButtonStyles.module.sass";
+import CloudImage from "../Image/cloudImage";
+import { getImagePath } from "../helper/imageUrlHelper";
 
 const QuickViewButton = ({
 	label,
@@ -8,7 +10,7 @@ const QuickViewButton = ({
 	refPath,
 	imgSrc,
 	handler,
-	srcset,
+	imagePath,
 	imageAlt,
 }) => {
 	return (
@@ -17,13 +19,13 @@ const QuickViewButton = ({
 				<Link href={refPath} as={href}>
 					<a className={styles.quickViewLink}>
 						<div className={styles.imgWrapper}>
-							<img
-								src={imgSrc}
-								srcSet={srcset}
-								sizes="150px"
-								className={styles.quickViewImage}
-								alt={imageAlt}
-							/>
+							<div className={styles.quickViewImage}>
+								<CloudImage
+									imagePath={imagePath ? imagePath : getImagePath(imgSrc)}
+									imageAlt={imageAlt}
+									layout={"nextButton"}
+								/>
+							</div>
 						</div>
 						<div className={styles.label}>
 							<div className={styles.linkLabel}>{label} </div>
@@ -52,7 +54,7 @@ QuickViewButton.propTypes = {
 	imgSrc: PropTypes.String,
 	imageAlt: PropTypes.String,
 	handler: PropTypes.Func,
-	srcset: PropTypes.Array,
+	imagePath: PropTypes.Array,
 };
 
 export default QuickViewButton;

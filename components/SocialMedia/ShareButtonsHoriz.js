@@ -2,6 +2,7 @@ import { memo } from "react";
 import PropTypes from "prop-types";
 import SocialSvgFactory from "./utils/svgFactory";
 import createUtm from "../utm/createUtm";
+import { getImagePath, newImageUrl } from "../helper/imageUrlHelper";
 import styles from "./styles/shareButtonHorizStyles.module.sass";
 const HorizontalShareButtons = ({
 	data,
@@ -14,6 +15,8 @@ const HorizontalShareButtons = ({
 	facebookQuote,
 	position,
 }) => {
+	const newImage = getImagePath(image);
+	const newImageString = newImageUrl(newImage);
 	const options = {
 		facebook: {
 			quote: facebookQuote,
@@ -30,7 +33,7 @@ const HorizontalShareButtons = ({
 			separator: ":- ",
 		},
 		Pinterest: {
-			media: image,
+			media: newImageString,
 			description: brief,
 		},
 		Whatsapp: {

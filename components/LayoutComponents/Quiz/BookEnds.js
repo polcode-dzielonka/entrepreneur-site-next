@@ -11,6 +11,7 @@ import baseTheme from "../../../theme/baseTheme.json";
 const QuizBookEnds = ({
 	image,
 	imageAlt,
+	imagePath,
 	imageAltAttribution,
 	imageAltAttributionLink,
 	title,
@@ -20,7 +21,6 @@ const QuizBookEnds = ({
 	scoreComments,
 	finalScore,
 	numberQuestions,
-	srcset,
 }) => {
 	const editor = useMemo(() => createEditor(), []);
 	const renderElement = useCallback(props => <RenderElement {...props} />, []);
@@ -49,9 +49,9 @@ const QuizBookEnds = ({
 					embed={embed}
 					image={image}
 					imageAlt={imageAlt}
+					imagePath={imagePath}
 					imageAltAttribution={imageAltAttribution}
 					imageAltAttributionLink={imageAltAttributionLink}
-					srcset={srcset}
 					styles={{ width: "100%", height: "100%" }}
 					noMaxHeight={true}
 				/>
@@ -92,6 +92,7 @@ QuizBookEnds.propTypes = {
 	position: PropTypes.string,
 	image: PropTypes.string,
 	imageAlt: PropTypes.string,
+	imagePath: PropTypes.string,
 	imageAltAttribution: PropTypes.string,
 	imageAltAttributionLink: PropTypes.string,
 	title: PropTypes.string,
@@ -99,7 +100,6 @@ QuizBookEnds.propTypes = {
 	embed: PropTypes.string,
 	scoreComments: PropTypes.string,
 	numberQuestions: PropTypes.Bool,
-	srcset: PropTypes.array,
 };
 
 QuizBookEnds.defaultProps = {

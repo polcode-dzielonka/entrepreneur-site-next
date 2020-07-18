@@ -87,7 +87,7 @@ export const HEADLINES = /* GraphQL */ `
 				id
 				headlineImage
 				headlineImageAlt
-				headlineImageSrcset
+				headlineImagePath
 				headline
 				category
 				kicker
@@ -109,7 +109,7 @@ export const LATEST = /* GraphQL */ `
 				id
 				headlineImage
 				headlineImageAlt
-				headlineImageSrcset
+				headlineImagePath
 				headline
 				category
 				kicker
@@ -131,7 +131,7 @@ export const QUIZ = /* GraphQL */ `
 				id
 				headlineImage
 				headlineImageAlt
-				headlineImageSrcset
+				headlineImagePath
 				headline
 				category
 				kicker
@@ -152,7 +152,7 @@ export const SLIDE = /* GraphQL */ `
 				id
 				headlineImage
 				headlineImageAlt
-				headlineImageSrcset
+				headlineImagePath
 				headline
 				showHeadlineSlide
 				category
@@ -181,7 +181,7 @@ export const LATEST_HEADLINES = /* GraphQL */ `
 				id
 				headlineImage
 				headlineImageAlt
-				headlineImageSrcset
+				headlineImagePath
 				headline
 				category
 				kicker
@@ -209,7 +209,7 @@ export const LATEST_QUIZ = /* GraphQL */ `
 				id
 				headlineImage
 				headlineImageAlt
-				headlineImageSrcset
+				headlineImagePath
 				headline
 				category
 				kicker
@@ -227,7 +227,7 @@ export const LATEST_SLIDE = /* GraphQL */ `
 				id
 				headlineImage
 				headlineImageAlt
-				headlineImageSrcset
+				headlineImagePath
 				headline
 				showHeadlineSlide
 				category

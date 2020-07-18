@@ -9,7 +9,7 @@ const EmbedUrl = ({
 	imageAlt,
 	imageAltAttribution,
 	imageAltAttributionLink,
-	srcset,
+	imagePath,
 	styles,
 	noMaxHeight,
 }) => {
@@ -24,8 +24,8 @@ const EmbedUrl = ({
 				<ImageLoader
 					src={image}
 					alt={imageAlt ? imageAlt : imageAltAttribution}
+					imagePath={imagePath}
 					animation={false}
-					srcset={srcset}
 					styles={styles}
 					noMaxHeight={noMaxHeight}
 				/>
