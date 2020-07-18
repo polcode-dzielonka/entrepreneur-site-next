@@ -29,7 +29,7 @@ const ImageLoader = ({ src, alt, animation, styles, imagePath }) => {
 						/>
 					)}
 					{!imageCheck && (
-						<img imagePath={src} alt={alt} style={styles} onLoad={onLoad} />
+						<img src={src} alt={alt} style={styles} onLoad={onLoad} />
 					)}
 				</div>
 			)}
