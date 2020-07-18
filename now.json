@@ -22,7 +22,7 @@
 		"RSS_URL": "@rss_url",
 		"SITE_NAME": "@site_name",
 		"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id",
-		"CLOUDFRONT_IMAGE_DOMAIN": "https://assets.wealthmack.com"
+		"CLOUDFRONT_IMAGE_DOMAIN": "@cloudfront-domain"
 	},
 	"build": {
 		"env": {
@@ -39,7 +39,7 @@
 			"RSS_URL": "@rss_url",
 			"SITE_NAME": "@site_name",
 			"REACT_APP_GOOGLE_TAG_ID": "@google_tag_id",
-			"CLOUDFRONT_IMAGE_DOMAIN": "https://assets.wealthmack.com"
+			"CLOUDFRONT_IMAGE_DOMAIN": "@cloudfront-domain"
 		}
 	}
 }

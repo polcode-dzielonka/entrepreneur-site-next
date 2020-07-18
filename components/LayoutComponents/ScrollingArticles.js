@@ -34,7 +34,7 @@ const ScrollingArticles = ({ data }) => {
 												: getImagePath(headlineImage)
 										}
 										imageAlt={headlineImageAlt}
-										layout={"content"}
+										layout={"headline"}
 									/>
 								</div>
 							</LazyLoad>

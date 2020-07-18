@@ -36,7 +36,7 @@ module.exports = {
 		SITE_ADDRESS: "https://www.wealthmack.com",
 		COOKIE_ACCEPT_EXPIRY: "365",
 		FACEBOOK_PAGE_URL: "https://www.facebook.com/WealthMack-103552984448329/",
-		CLOUDFRONT_IMAGE_DOMAIN: "https://assets.wealthmack.com",
+		CLOUDFRONT_IMAGE_DOMAIN: process.env.CLOUDFRONT_IMAGE_DOMAIN,
 	},
 	experimental: {
 		modern: true,
