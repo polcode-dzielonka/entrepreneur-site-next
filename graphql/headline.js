@@ -89,6 +89,8 @@ export const HEADLINES = /* GraphQL */ `
 				headlineImageAlt
 				headlineImagePath
 				headline
+				headlineImageCrop
+				headlineImageCropInfo
 				category
 				kicker
 				urlDescription
@@ -110,6 +112,8 @@ export const LATEST = /* GraphQL */ `
 				headlineImage
 				headlineImageAlt
 				headlineImagePath
+				headlineImageCrop
+				headlineImageCropInfo
 				headline
 				category
 				kicker
@@ -132,6 +136,8 @@ export const QUIZ = /* GraphQL */ `
 				headlineImage
 				headlineImageAlt
 				headlineImagePath
+				headlineImageCrop
+				headlineImageCropInfo
 				headline
 				category
 				kicker
@@ -153,6 +159,8 @@ export const SLIDE = /* GraphQL */ `
 				headlineImage
 				headlineImageAlt
 				headlineImagePath
+				headlineImageCrop
+				headlineImageCropInfo
 				headline
 				showHeadlineSlide
 				category
@@ -182,6 +190,8 @@ export const LATEST_HEADLINES = /* GraphQL */ `
 				headlineImage
 				headlineImageAlt
 				headlineImagePath
+				headlineImageCrop
+				headlineImageCropInfo
 				headline
 				category
 				kicker
@@ -210,6 +220,8 @@ export const LATEST_QUIZ = /* GraphQL */ `
 				headlineImage
 				headlineImageAlt
 				headlineImagePath
+				headlineImageCrop
+				headlineImageCropInfo
 				headline
 				category
 				kicker
@@ -228,6 +240,8 @@ export const LATEST_SLIDE = /* GraphQL */ `
 				headlineImage
 				headlineImageAlt
 				headlineImagePath
+				headlineImageCrop
+				headlineImageCropInfo
 				headline
 				showHeadlineSlide
 				category

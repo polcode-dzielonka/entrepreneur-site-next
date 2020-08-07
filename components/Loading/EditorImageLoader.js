@@ -5,7 +5,15 @@ import { useAmp } from "next/amp";
 import loadStyles from "./styles/editorImageLoaderStyles.module.sass";
 import CloudImage from "../Image/cloudImage";
 import { getImagePath } from "../helper/imageUrlHelper";
-const ImageLoader = ({ src, alt, animation, styles, imagePath }) => {
+const ImageLoader = ({
+	src,
+	alt,
+	animation,
+	styles,
+	imagePath,
+	imageCrop,
+	imageCropInfo,
+}) => {
 	const imageCheck = imagePath || src.indexOf("content-factory-media") > 1;
 	const [classStyle, setClassStyle] = useState(
 		animation ? "imgLoadingAnimation" : "imgLoading",
@@ -26,6 +34,8 @@ const ImageLoader = ({ src, alt, animation, styles, imagePath }) => {
 							imageAlt={alt}
 							layout={"content"}
 							onLoad={onLoad}
+							imageCrop={imageCrop}
+							imageCropInfo={imageCropInfo}
 						/>
 					)}
 					{!imageCheck && (
@@ -53,6 +63,8 @@ ImageLoader.propTypes = {
 	animation: PropTypes.boolean,
 	styles: PropTypes.object,
 	imagePath: PropTypes.string,
+	imageCrop: PropTypes.string,
+	imageCropInfo: PropTypes.string,
 };
 
 ImageLoader.defaultProps = {

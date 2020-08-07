@@ -80,14 +80,7 @@ const Newsletter = ({ url }) => {
 						<h1 className={styles.mainTitle}>Newsletter</h1>
 					</article>
 
-					<figure
-						style={{
-							padding: 0,
-							margin: 0,
-							width: "100%",
-							height: "100%",
-						}}
-					>
+					<figure className={styles.imageFigure}>
 						<picture>
 							{newsletterProps["newsletter"].map(image => {
 								return (
@@ -101,12 +94,7 @@ const Newsletter = ({ url }) => {
 								);
 							})}
 							<img
-								style={{
-									display: "flex",
-									height: "100%",
-									width: "100%",
-									objectFit: "fit",
-								}}
+								className={styles.mainTitle}
 								alt={process.env.SITE_NAME}
 								src={"/static/business_cover_photox1024.jpg"}
 							/>

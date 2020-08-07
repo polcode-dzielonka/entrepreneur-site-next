@@ -13,6 +13,8 @@ const MainHeadline = ({ data }) => {
 		headlineImage,
 		headlineImageAlt,
 		headlineImagePath,
+		headlineImageCrop,
+		headlineImageCropInfo,
 		headline,
 		urlDescription,
 	} = headlineData;
@@ -38,6 +40,8 @@ const MainHeadline = ({ data }) => {
 										}
 										imageAlt={headlineImageAlt}
 										layout="headline"
+										imageCrop={headlineImageCrop}
+										imageCropInfo={headlineImageCropInfo}
 									/>
 								</div>
 							</LazyLoad>
@@ -62,6 +66,8 @@ const MainHeadline = ({ data }) => {
 							headlineImageAlt,
 							headline,
 							headlineImagePath,
+							headlineImageCrop,
+							headlineImageCropInfo,
 							category,
 							kicker,
 							urlDescription,
@@ -85,6 +91,8 @@ const MainHeadline = ({ data }) => {
 																	: getImagePath(headlineImage)
 															}
 															imageAlt={headlineImageAlt}
+															imageCrop={headlineImageCrop}
+															imageCropInfo={headlineImageCropInfo}
 															layout="subHeadline"
 														/>
 													</div>

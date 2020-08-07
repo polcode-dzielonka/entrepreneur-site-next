@@ -241,25 +241,25 @@
 		{
 			"path": "/static/business_cover_photox256.jpg 256w",
 			"width": "256px",
-			"media": "(min-width: 1024px)",
+			"media": "(max-width: 256px)",
 			"widthMarker": "256w"
 		},
 		{
 			"path": "/static/business_cover_photox512.jpg 512w",
 			"width": "512px",
-			"media": "(min-width: 768px)",
+			"media": "(max-width: 512px)",
 			"widthMarker": "512w"
 		},
 		{
 			"path": "/static/business_cover_photox768.jpg 768w",
 			"width": "768px",
-			"media": "(min-width: 480px)",
+			"media": "(max-width: 768px)",
 			"widthMarker": "768w"
 		},
 		{
 			"path": "/static/business_cover_photox1024.jpg 1024w",
 			"width": "1024px",
-			"media": "(min-width: 0px)",
+			"media": "(min-width: 768px)",
 			"widthMarker": "1024w"
 		}
 	]

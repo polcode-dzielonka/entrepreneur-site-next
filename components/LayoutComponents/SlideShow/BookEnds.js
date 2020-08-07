@@ -6,12 +6,15 @@ import { createEditor } from "slate";
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import styles from "./styles/bookEndStyles.module.sass";
+
 const BookEnds = ({
 	image,
 	imageAlt,
 	imagePath,
 	imageAltAttribution,
 	imageAltAttributionLink,
+	imageCrop,
+	imageCropInfo,
 	showHeadlineImage,
 	title,
 	details,
@@ -49,6 +52,8 @@ const BookEnds = ({
 						imagePath={imagePath}
 						imageAltAttribution={imageAltAttribution}
 						imageAltAttributionLink={imageAltAttributionLink}
+						imageCrop={imageCrop}
+						imageCropInfo={imageCropInfo}
 						styles={{ width: "100%", height: "100%" }}
 						noMaxHeight={true}
 					/>

@@ -8,6 +8,8 @@ const SideBarContent = ({ data, type }) => {
 			headlineImage,
 			headlineImageAlt,
 			headlineImagePath,
+			headlineImageCrop,
+			headlineImageCropInfo,
 			headline,
 			category,
 			refPath,
@@ -21,6 +23,8 @@ const SideBarContent = ({ data, type }) => {
 					headlineImage={headlineImage}
 					headlineImageAlt={headlineImageAlt}
 					headlineImagePath={headlineImagePath}
+					headlineImageCrop={headlineImageCrop}
+					headlineImageCropInfo={headlineImageCropInfo}
 					headline={headline}
 					category={category}
 					refPath={refPath}

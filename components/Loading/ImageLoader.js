@@ -13,6 +13,8 @@ const ImageLoader = ({
 	imageAltAttribution,
 	imageAltAttributionLink,
 	imagePath,
+	imageCrop,
+	imageCropInfo,
 	noMaxHeight,
 }) => {
 	const [classStyle, setClassStyle] = useState(
@@ -38,6 +40,8 @@ const ImageLoader = ({
 							imagePath={imagePath ? imagePath : getImagePath(src)}
 							imageAlt={alt}
 							layout={"content"}
+							imageCrop={imageCrop}
+							imageCropInfo={imageCropInfo}
 							onLoad={onLoad}
 						/>
 					)}
@@ -85,6 +89,8 @@ ImageLoader.propTypes = {
 	imagePath: PropTypes.string,
 	imageAltAttribution: PropTypes.string,
 	imageAltAttributionLink: PropTypes.string,
+	imageCrop: PropTypes.string,
+	imageCropInfo: PropTypes.string,
 	noMaxHeight: PropTypes.boolean,
 };
 

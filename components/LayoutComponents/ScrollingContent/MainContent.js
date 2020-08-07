@@ -10,6 +10,8 @@ const MainScrollingContent = ({
 	headlineImage,
 	headlineImageAlt,
 	headlineImagePath,
+	headlineImageCrop,
+	headlineImageCropInfo,
 	index,
 	contentLink,
 	refPath,
@@ -28,6 +30,8 @@ const MainScrollingContent = ({
 											: getImagePath(headlineImage)
 									}
 									imageAlt={headlineImageAlt}
+									imageCrop={headlineImageCrop}
+									imageCropInfo={headlineImageCropInfo}
 									layout={"headline"}
 								/>
 							</div>

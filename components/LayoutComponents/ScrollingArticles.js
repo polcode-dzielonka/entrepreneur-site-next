@@ -11,6 +11,8 @@ const ScrollingArticles = ({ data }) => {
 			headlineImage,
 			headlineImageAlt,
 			headlineImagePath,
+			headlineImageCrop,
+			headlineImageCropInfo,
 			headline,
 			category,
 			kicker,
@@ -35,6 +37,8 @@ const ScrollingArticles = ({ data }) => {
 										}
 										imageAlt={headlineImageAlt}
 										layout={"headline"}
+										imageCrop={headlineImageCrop}
+										imageCropInfo={headlineImageCropInfo}
 									/>
 								</div>
 							</LazyLoad>
@@ -82,6 +86,8 @@ const ScrollingArticles = ({ data }) => {
 										}
 										imageAlt={headlineImageAlt}
 										layout={"scrolling"}
+										imageCrop={headlineImageCrop}
+										imageCropInfo={headlineImageCropInfo}
 									/>
 								</div>
 							</LazyLoad>

@@ -11,6 +11,8 @@ const SubScrollingContent = ({
 	headlineImage,
 	headlineImageAlt,
 	headlineImagePath,
+	headlineImageCrop,
+	headlineImageCropInfo,
 	index,
 	contentLink,
 	refPath,
@@ -29,6 +31,8 @@ const SubScrollingContent = ({
 											: getImagePath(headlineImage)
 									}
 									imageAlt={headlineImageAlt}
+									imageCrop={headlineImageCrop}
+									imageCropInfo={headlineImageCropInfo}
 									layout={"sideLarge"}
 								/>
 							</div>

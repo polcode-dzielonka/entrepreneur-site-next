@@ -73,6 +73,8 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							imageAltAttributionLink={
 								questions[position][0][`${position}ImageAttributionLink`]
 							}
+							imageCrop={questions[position][0][`${position}Crop`]}
+							imageCropInfo={questions[position][0][`${position}CropInfo`]}
 							title={questions[position][0][`${position}`]}
 							details={
 								questions[position][0][`${position}QuizDetails`]
@@ -89,6 +91,8 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 								label="Start"
 								imgSrc={details[0].headlineImage}
 								imagePath={details[0].headlineImagePath}
+								imageCrop={details[0].headlineImageCrop}
+								imageCropInfo={details[0].headlineImageCropInfo}
 								href={`${nextHref}/1`}
 								refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
 								imageAlt={details[0].headlineImageAlt}

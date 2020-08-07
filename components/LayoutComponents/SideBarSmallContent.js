@@ -7,6 +7,8 @@ const SideBarSmallContent = ({ data, type }) => {
 			headlineImage,
 			headlineImageAlt,
 			headlineImagePath,
+			headlineImageCrop,
+			headlineImageCropInfo,
 			headline,
 			category,
 			urlDescription,
@@ -21,6 +23,8 @@ const SideBarSmallContent = ({ data, type }) => {
 				headlineImage={headlineImage}
 				headlineImageAlt={headlineImageAlt}
 				headlineImagePath={headlineImagePath}
+				headlineImageCrop={headlineImageCrop}
+				headlineImageCropInfo={headlineImageCropInfo}
 				headline={headline}
 				category={category}
 				url={urlDescription}

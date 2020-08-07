@@ -18,6 +18,8 @@ const BookEnds = ({ data, id, position }) => {
 		headlineImagePath,
 		headlineImageAttribution,
 		headlineImageAttributionLink,
+		headlineImageCrop,
+		headlineImageCropInfo,
 		category,
 		title,
 		blurb,
@@ -59,6 +61,8 @@ const BookEnds = ({ data, id, position }) => {
 					src={headlineImage}
 					alt={headlineImageAlt}
 					imagePath={headlineImagePath}
+					imageCrop={headlineImageCrop}
+					imageCropInfo={headlineImageCropInfo}
 					animation={false}
 					styles={{ width: "100%", height: "100%" }}
 					noMaxHeight={true}

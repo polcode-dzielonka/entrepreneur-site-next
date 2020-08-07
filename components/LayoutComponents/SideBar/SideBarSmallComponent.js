@@ -9,6 +9,8 @@ const SideBarContent = ({
 	headlineImageAlt,
 	headline,
 	headlineImagePath,
+	headlineImageCrop,
+	headlineImageCropInfo,
 	category,
 	refPath,
 	contentLink,
@@ -27,6 +29,8 @@ const SideBarContent = ({
 											: getImagePath(headlineImage)
 									}
 									imageAlt={headlineImageAlt}
+									imageCrop={headlineImageCrop}
+									imageCropInfo={headlineImageCropInfo}
 									layout={"sideSmall"}
 								/>
 							</div>

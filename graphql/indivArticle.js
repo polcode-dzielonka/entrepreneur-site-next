@@ -47,6 +47,8 @@ export const NEXT_ARTICLE = /* GraphQL */ `
 				headlineImage
 				headlineImageAlt
 				headlineImagePath
+				headlineImageCrop
+				headlineImageCropInfo
 				headline
 				category
 				kicker

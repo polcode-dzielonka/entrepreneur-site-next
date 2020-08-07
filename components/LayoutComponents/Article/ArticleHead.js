@@ -21,6 +21,8 @@ const ArticleHead = ({ overview, id }) => {
 		headlineImage,
 		headlineImageAlt,
 		headlineImagePath,
+		headlineImageCrop,
+		headlineImageCropInfo,
 		brief,
 		bulletHeadlines,
 		bulletHeadlinesDetails,
@@ -51,6 +53,8 @@ const ArticleHead = ({ overview, id }) => {
 				src={headlineImage}
 				alt={headlineImageAlt}
 				imagePath={headlineImagePath}
+				headlineImageCrop={headlineImageCrop}
+				headlineImageCropInfo={headlineImageCropInfo}
 				animation={false}
 				styles={{ width: "100%", height: "100%" }}
 				noMaxHeight={true}

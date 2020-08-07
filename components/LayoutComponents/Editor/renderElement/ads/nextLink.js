@@ -13,6 +13,8 @@ const NextLink = ({ data, type, id }) => {
 		refPath,
 		contentLink,
 		headlineImagePath,
+		headlineImageCrop,
+		headlineImageCropInfo,
 	} = sideHelper(data, type, true, id);
 	return (
 		<div className={styles.linkSection}>
@@ -30,6 +32,8 @@ const NextLink = ({ data, type, id }) => {
 									}
 									imageAlt={headlineImageAlt}
 									layout={"nextButton"}
+									imageCrop={headlineImageCrop}
+									imageCropInfo={headlineImageCropInfo}
 								/>
 							</div>
 						</div>

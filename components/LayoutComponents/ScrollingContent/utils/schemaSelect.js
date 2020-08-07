@@ -4,6 +4,8 @@ const schemaType = (type, data) => {
 			return {
 				headlineImage: data.headlineImage,
 				headlineImageAlt: data.headlineImageAlt,
+				headlineImageCrop: data.headlineImageCrop,
+				headlineImageCropInfo: data.headlineImageCropInfo,
 				headline: data.headline,
 				category: data.category,
 				kicker: data.kicker,
@@ -12,6 +14,8 @@ const schemaType = (type, data) => {
 			return {
 				headlineImage: data.headlineImage,
 				headlineImageAlt: data.headlineImageAlt,
+				headlineImageCrop: data.headlineImageCrop,
+				headlineImageCropInfo: data.headlineImageCropInfo,
 				headline: data.title,
 				category: data.category,
 				kicker: data.blurb,
@@ -20,6 +24,8 @@ const schemaType = (type, data) => {
 			return {
 				headlineImage: data.headlineImage,
 				headlineImageAlt: data.headlineImageAlt,
+				headlineImageCrop: data.headlineImageCrop,
+				headlineImageCropInfo: data.headlineImageCropInfo,
 				headline: data.title,
 				category: data.category,
 				kicker: data.blurb,

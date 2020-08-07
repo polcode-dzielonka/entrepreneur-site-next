@@ -76,6 +76,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 									image={slides[position][0][`${position}Image`]}
 									imageAlt={slides[position][0][`${position}ImageAlt`]}
 									imagePath={slides[position][0][`${position}ImagePath`]}
+									imageCrop={slides[position][0][`${position}Crop`]}
+									imageCropInfo={slides[position][0][`${position}CropInfo`]}
 									imageAltAttribution={
 										slides[position][0][`${position}ImageAttribution`]
 									}
@@ -135,6 +137,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						imageAltAttribution={bookEndOpening.openingImageAttribution}
 						imageAltAttributionLink={bookEndOpening.openingImageAttributionLink}
 						imagePath={bookEndOpening.imagePath}
+						imageCrop={bookEndOpening.imageCrop}
+						imageCropInfo={bookEndOpening.imageCropInfo}
 						title={bookEndOpening.opening}
 						details={
 							bookEndOpening.openingSlideDetails
@@ -163,6 +167,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						imageAltAttribution={bookEndClosing.closingImageAttribution}
 						imageAltAttributionLink={bookEndClosing.closingImageAttributionLink}
 						imagePath={bookEndClosing.imagePath}
+						imageCrop={bookEndClosing.imageCrop}
+						imageCropInfo={bookEndClosing.imageCropInfo}
 						title={bookEndClosing.closing}
 						details={
 							bookEndClosing.closingSlideDetails

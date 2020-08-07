@@ -1,25 +1,40 @@
 import React from "react";
 import params from "./layout";
 import { newImageUrl } from "../helper/imageUrlHelper";
-const CloudImageComponent = ({ imagePath, imageAlt, layout, onLoad }) => {
-	const cloudfrontUrl = newImageUrl(imagePath);
+import styles from "./styles/cloudStyles.module.sass";
 
+const CloudImageComponent = ({
+	imagePath,
+	imageAlt,
+	layout,
+	onLoad,
+	imageCrop,
+	imageCropInfo,
+}) => {
+	const cloudfrontUrl = newImageUrl(imagePath);
 	const layoutParams = params[layout] ? params[layout] : params["content"];
 	return (
-		<figure
-			style={{
-				padding: 0,
-				margin: 0,
-				width: "100%",
-				height: "100%",
-			}}
-		>
+		<figure className={styles.cloudWrapper}>
 			<picture>
 				{layoutParams.map(imageProps => {
-					const parameterUrl = Object.keys(imageProps.imageParams)
-						.map(key => `${key}=${imageProps.imageParams[key]}`)
-						.join("&");
+					let cropParams = null;
 
+					if (imageCrop && imageCropInfo) {
+						const parsedInfo = imageCropInfo; //JSON.parse(imageCropInfo);
+						cropParams = {
+							crop: imageCrop,
+							x: (parsedInfo.x, 2).toFixed(2),
+							y: (parsedInfo.y, 2).toFixed(2),
+							aspect: parsedInfo.aspect ? parsedInfo.aspect.toFixed(2) : 1.7,
+						};
+					}
+					const parameterList = {
+						...imageProps.imageParams,
+						...cropParams,
+					};
+					const parameterUrl = Object.keys(parameterList)
+						.map(key => `${key}=${parameterList[key]}`)
+						.join("&");
 					return (
 						<source
 							srcSet={`${cloudfrontUrl}?${parameterUrl} ${Math.round(
@@ -37,12 +52,7 @@ const CloudImageComponent = ({ imagePath, imageAlt, layout, onLoad }) => {
 					);
 				})}
 				<img
-					style={{
-						display: "flex",
-						height: "100%",
-						width: "100%",
-						objectFit: "fit",
-					}}
+					className={styles.baseImage}
 					alt={imageAlt}
 					src={cloudfrontUrl}
 					onLoad={onLoad}

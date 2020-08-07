@@ -8,6 +8,8 @@ const SideHelper = (content, type, nextLink = false, nextId) => {
 		headlineImage,
 		headlineImageAlt,
 		headlineImagePath,
+		headlineImageCrop,
+		headlineImageCropInfo,
 		headline,
 		category,
 		kicker,
@@ -36,6 +38,8 @@ const SideHelper = (content, type, nextLink = false, nextId) => {
 		refPath,
 		contentLink,
 		headlineImagePath,
+		headlineImageCrop,
+		headlineImageCropInfo,
 	};
 };
 
