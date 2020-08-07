@@ -2,31 +2,14 @@ import HeadlineLayout from "../components/Layouts/HeadlineLayout";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";
 import { motivationHeadlineQuery } from "../data/queryData/querys";
-import useSWR from "swr";
 
 const Motivation = ({ headline, quiz, slide }) => {
-	const { data: headlineCache } = useSWR(
-		"motivationHeadlineArticles",
-		() => prodRequest(motivationHeadlineQuery[0]),
-		{ initialData: headline },
-	);
-	const { data: quizCache } = useSWR(
-		"headlineQuizs",
-		() => prodRequest(motivationHeadlineQuery[1]),
-		{ initialData: quiz },
-	);
-	const { data: slideShowCache } = useSWR(
-		"headlineSlideshows",
-		() => prodRequest(motivationHeadlineQuery[2]),
-		{ initialData: slide },
-	);
-	if (!headlineCache || !quizCache || !slideShowCache)
-		return <MainHeadlineLoading />;
+	if (!headline || !quiz || !slide) return <MainHeadlineLoading />;
 	return (
 		<HeadlineLayout
-			headline={headlineCache.data.listProductionArticles}
-			quiz={quizCache.data.listProductionQuizs}
-			slide={slideShowCache.data.listProductionSlideshows}
+			headline={headline.data.listProductionArticles}
+			quiz={quiz.data.listProductionQuizs}
+			slide={slide.data.listProductionSlideshows}
 			title="Motivation"
 			pageTitle="Motivation"
 			canonical="motivation"
@@ -34,10 +17,7 @@ const Motivation = ({ headline, quiz, slide }) => {
 	);
 };
 
-// This gets called on every request
-export async function getServerSideProps(context) {
-	context.res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
-
+export async function getStaticProps() {
 	const [headline, quiz, slide] = await Promise.all(
 		motivationHeadlineQuery.map(query =>
 			prodRequest({
@@ -48,8 +28,12 @@ export async function getServerSideProps(context) {
 		),
 	);
 
-	// Pass data to the page via props
-	return { props: { headline, quiz, slide } };
+	return {
+		props: { headline, quiz, slide },
+		// Next.js will attempt to re-generate the page:
+		// - When a request comes in
+		// - At most once every second
+		revalidate: 10, // In seconds
+	};
 }
-
 export default Motivation;

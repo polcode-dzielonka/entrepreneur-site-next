@@ -3,38 +3,10 @@ import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadi
 import prodRequest from "../components/apiRequest/prodRequest";
 import { filterUnique } from "../utils/handler";
 import { mainHeadlineQuery } from "../data/queryData/querys";
-import useSWR from "swr";
 
 const Home = ({ headline, latest, quiz, slide }) => {
-	// const { data: headlineCache } = useSWR(
-	// 	"headlineArticles",
-	// 	() => prodRequest(mainHeadlineQuerys[0]),
-	// 	{ initialData: headline },
-	// );
-	// const { data: latestCache } = useSWR(
-	// 	"latestArticles",
-	// 	() => prodRequest(mainHeadlineQuerys[1]),
-	// 	{ initialData: latest },
-	// );
-	// const { data: quizCache } = useSWR(
-	// 	"headlineQuizs",
-	// 	() => prodRequest(mainHeadlineQuerys[2]),
-	// 	{ initialData: quiz },
-	// );
-	// const { data: slideShowCache } = useSWR(
-	// 	"headlineSlideshows",
-	// 	() => prodRequest(mainHeadlineQuerys[3]),
-	// 	{ initialData: slide },
-	// );
-
-	// if (!headlineCache || !latestCache || !quizCache || !slideShowCache)
-	// 	return <MainHeadlineLoading />;
 	if (!headline || !latest || !quiz || !slide) return <MainHeadlineLoading />;
 
-	// const newLatestArticles = filterUnique(
-	// 	latestCache.data.listProductionArticles.items,
-	// 	headlineCache.data.listProductionArticles.items,
-	// );
 	const newLatestArticles = filterUnique(
 		latest.data.listProductionArticles.items,
 		headline.data.listProductionArticles.items,
