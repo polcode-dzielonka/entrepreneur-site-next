@@ -79,27 +79,28 @@ const Newsletter = ({ url }) => {
 					<article className={styles.article}>
 						<h1 className={styles.mainTitle}>Newsletter</h1>
 					</article>
-
-					<figure className={styles.imageFigure}>
-						<picture>
-							{newsletterProps["newsletter"].map(image => {
-								return (
-									<source
-										srcSet={image.path}
-										data-srcSet={image.path}
-										type={`image/jpg`}
-										sizes={image.width}
-										media={image.media ? image.media : null}
-									/>
-								);
-							})}
-							<img
-								className={styles.mainTitle}
-								alt={process.env.SITE_NAME}
-								src={"/static/business_cover_photox1024.jpg"}
-							/>
-						</picture>
-					</figure>
+					<div>
+						<figure className={styles.imageFigure}>
+							<picture>
+								{newsletterProps["newsletter"].map(image => {
+									return (
+										<source
+											srcSet={image.path}
+											data-srcSet={image.path}
+											type={`image/jpg`}
+											sizes={image.width}
+											media={image.media ? image.media : null}
+										/>
+									);
+								})}
+								<img
+									className={styles.mainImage}
+									alt={process.env.SITE_NAME}
+									src={"/static/business_cover_photox1024.jpg"}
+								/>
+							</picture>
+						</figure>
+					</div>
 					<form className={styles.contactForm} onSubmit={handleSubmit}>
 						<h3>
 							Be the first to get our latest content - straight to your inbox

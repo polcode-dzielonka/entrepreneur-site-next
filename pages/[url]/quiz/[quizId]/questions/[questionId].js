@@ -6,7 +6,6 @@ import { QUIZ } from "../../../../../graphql/indivQuiz";
 import QuickViewLoading from "../../../../../components/Loading/Layouts/QuizLoadingLayout";
 import prodRequest from "../../../../../components/apiRequest/prodRequest";
 import { quizQuery } from "../../../../../data/queryData/querys";
-import useSWR from "swr";
 
 const Questions = ({
 	individual,
@@ -20,35 +19,7 @@ const Questions = ({
 }) => {
 	const router = useRouter();
 
-	const { data: individualQuizCache } = useSWR(
-		`individualQuiz-${quizId}`,
-		() =>
-			prodRequest({
-				query: QUIZ,
-				variables: { id: quizId },
-				operationName: "GetProductionQuiz",
-			}),
-		{ initialData: individual },
-	);
-
-	const { data: headlineCache } = useSWR(
-		"latestArticles",
-		() => prodRequest(quizQuery[0]),
-		{ initialData: headline },
-	);
-	const { data: quizCache } = useSWR(
-		"headlineQuizs",
-		() => prodRequest(quizQuery[1]),
-		{ initialData: quiz },
-	);
-	const { data: slideShowCache } = useSWR(
-		"headlineSlideshows",
-		() => prodRequest(quizQuery[2]),
-		{ initialData: slide },
-	);
-
-	if (!individualQuizCache || !headlineCache || !quizCache || !slideShowCache)
-		return <QuickViewLoading />;
+	if (!individual || !headline || !quiz || !slide) return <QuickViewLoading />;
 
 	useEffect(() => {
 		const tempQuizCookie = Cookie.get("temp-quiz-session")
@@ -72,11 +43,11 @@ const Questions = ({
 
 	return (
 		<QuizLayout
-			individual={individualQuizCache.data.getProductionQuiz}
-			headline={headlineCache.data.listProductionArticles}
+			individual={individual.data.getProductionQuiz}
+			headline={headline.data.listProductionArticles}
 			// latest={headlineCache.data.listProductionArticles}
-			quiz={quizCache.data.listProductionQuizs}
-			slide={slideShowCache.data.listProductionSlideshows}
+			quiz={quiz.data.listProductionQuizs}
+			slide={slide.data.listProductionSlideshows}
 			id={quizId}
 			position={questionId}
 			url={url}
@@ -85,20 +56,15 @@ const Questions = ({
 	);
 };
 
-// This gets called on every request
-export async function getServerSideProps(context) {
-	context.res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate");
-
+export async function getStaticProps(context) {
 	const { questionId, url, quizId, score } = context.params;
 	const scoreCheck = score ? score : null;
-
 	// Fetch data from external API
 	const QUIZ_QUERY = {
 		query: QUIZ,
 		variables: { id: quizId },
 		operationName: "GetProductionQuiz",
 	};
-
 	const [individual, headline, quiz, slide] = await Promise.all(
 		[QUIZ_QUERY, ...quizQuery].map(query =>
 			prodRequest({
@@ -109,7 +75,6 @@ export async function getServerSideProps(context) {
 		),
 	);
 
-	// Pass data to the page via props
 	return {
 		props: {
 			individual,
@@ -121,7 +86,27 @@ export async function getServerSideProps(context) {
 			quizId,
 			score: scoreCheck,
 		},
+		// Next.js will attempt to re-generate the page:
+		// - When a request comes in
+		// - At most once every second
+		revalidate: 10, // In seconds
 	};
+}
+
+// This function gets called at build time
+export async function getStaticPaths() {
+	// Call an external API endpoint to get posts
+	// const res = await fetch('https://.../posts')
+	// const posts = await res.json()
+
+	// // Get the paths we want to pre-render based on posts
+	// const paths = posts.map((post) => ({
+	//   params: { id: post.id },
+	// }))
+
+	// We'll pre-render only these paths at build time.
+	// { fallback: false } means other routes should 404.
+	return { paths: [], fallback: true };
 }
 
 export default Questions;

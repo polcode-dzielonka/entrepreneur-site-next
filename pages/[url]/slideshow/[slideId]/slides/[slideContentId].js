@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import SlideLayout from "../../../../../components/Layouts/SlideShowLayout";
 import { SLIDESHOW } from "../../../../../graphql/indivSlideShow";
 import SlideLoading from "../../../../../components/Loading/Layouts/SlideShowLoading";
 import prodRequest from "../../../../../components/apiRequest/prodRequest";
 import { slideShowQuery } from "../../../../../data/queryData/querys";
-import useSWR from "swr";
+import Cookie from "js-cookie";
+import { useRouter } from "next/router";
 
 const Slide = ({
 	individual,
@@ -13,47 +15,27 @@ const Slide = ({
 	url,
 	slideId,
 	slideContentId,
+	query,
 }) => {
-	const { data: individualSlideshowCache } = useSWR(
-		`individualSlideshow-${slideId}`,
-		() =>
-			prodRequest({
-				query: SLIDESHOW,
-				variables: { id: slideId },
-				operationName: "GetProductionSlideshow",
-			}),
-		{ initialData: individual },
-	);
+	if (!individual || !headline || !quiz || !slide) return <SlideLoading />;
+	const router = useRouter();
 
-	const { data: headlineCache } = useSWR(
-		"latestArticles",
-		() => prodRequest(slideShowQuery[0]),
-		{ initialData: headline },
-	);
-	const { data: quizCache } = useSWR(
-		"headlineQuizs",
-		() => prodRequest(slideShowQuery[1]),
-		{ initialData: quiz },
-	);
-	const { data: slideShowCache } = useSWR(
-		"headlineSlideshows",
-		() => prodRequest(slideShowQuery[2]),
-		{ initialData: slide },
-	);
-	if (
-		!individualSlideshowCache ||
-		!headlineCache ||
-		!quizCache ||
-		!slideShowCache
-	)
-		return <SlideLoading />;
+	//Set Cookie Here If Url has Query data UTM from CPC Provider
+	useEffect(() => {
+		if (router.query.utm_content) {
+			Cookie.set("CPC", JSON.stringify(true), {
+				expires: 0.25,
+			});
+		}
+	}, []);
+
 	return (
 		<SlideLayout
-			individual={individualSlideshowCache.data.getProductionSlideshow}
-			headline={headlineCache.data.listProductionArticles}
-			latest={headlineCache.data.listProductionArticles}
-			quiz={quizCache.data.listProductionQuizs}
-			slide={slideShowCache.data.listProductionSlideshows}
+			individual={individual.data.getProductionSlideshow}
+			headline={headline.data.listProductionArticles}
+			latest={headline.data.listProductionArticles}
+			quiz={quiz.data.listProductionQuizs}
+			slide={slide.data.listProductionSlideshows}
 			id={slideId}
 			position={slideContentId}
 			url={url}
@@ -61,18 +43,8 @@ const Slide = ({
 	);
 };
 
-// This gets called on every request
-export async function getServerSideProps(context) {
-	context.res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate");
-
+export async function getStaticProps(context) {
 	const { url, slideId, slideContentId } = context.params;
-
-	const { utm_content } = context.query;
-	//Set Cookie Here If Url has Query data UTM from CPC Provider
-	if (utm_content) {
-		context.res.setHeader("Set-Cookie", "CPC=true; Max-Age=18000");
-	}
-
 	// Fetch data from external API
 	const SLIDESHOW_QUERY = {
 		query: SLIDESHOW,
@@ -90,7 +62,6 @@ export async function getServerSideProps(context) {
 		),
 	);
 
-	// Pass data to the page via props
 	return {
 		props: {
 			individual,
@@ -100,8 +71,28 @@ export async function getServerSideProps(context) {
 			url,
 			slideId,
 			slideContentId,
+			query: context.query ? context.query : {},
 		},
+		// Next.js will attempt to re-generate the page:
+		// - When a request comes in
+		// - At most once every second
+		revalidate: 10, // In seconds
 	};
 }
 
+// This function gets called at build time
+export async function getStaticPaths() {
+	// Call an external API endpoint to get posts
+	// const res = await fetch('https://.../posts')
+	// const posts = await res.json()
+
+	// // Get the paths we want to pre-render based on posts
+	// const paths = posts.map((post) => ({
+	//   params: { id: post.id },
+	// }))
+
+	// We'll pre-render only these paths at build time.
+	// { fallback: false } means other routes should 404.
+	return { paths: [], fallback: true };
+}
 export default Slide;
