@@ -8,6 +8,20 @@ import LongAnswer from "./LongAnswer";
 import prodRequest from "../../apiRequest/prodRequest";
 import styles from "./styles/questionStyles.module.sass";
 import SingleLoader from "../../Loading/SingleLoader";
+import dynamic from "next/dynamic";
+
+const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
+	ssr: false,
+});
+const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
+	ssr: false,
+});
+import {
+	AMAZON_KINDLE_CODE_SQUARE,
+	AMAZON_MUSIC_WIDE_BANNER,
+} from "../../ads/code/amazonBusiness";
+import { FIVERR_SQUARE } from "../../ads/code/fiverr";
+
 const Questions = ({
 	total,
 	questionData,
@@ -109,8 +123,9 @@ const Questions = ({
 	if (loading) return <SingleLoader />;
 	return (
 		<div className={styles.bookendWrapper}>
-			<h1 className={styles.sectionHeaderScore}>
-				Current Score: {currentScore}
+			<h1 className={styles.sectionHeader}>
+				<span className={styles.questionPosition}>{questionPosition}</span>
+				{question}
 			</h1>
 			<div>
 				{!showAnswer && (
@@ -143,10 +158,15 @@ const Questions = ({
 						/>
 					</div>
 				)}
+				<div>
+					<MultiAdsWrapper
+						adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
+						adCodeTwo={FIVERR_SQUARE}
+					/>
+				</div>
 			</div>
-			<h1 className={styles.sectionHeader}>
-				<span className={styles.questionPosition}>{questionPosition}</span>
-				{question}
+			<h1 className={styles.sectionHeaderScore}>
+				Current Score: {currentScore}
 			</h1>
 			<div className={styles.answerWrap}>
 				<QuizButton
@@ -198,6 +218,9 @@ const Questions = ({
 					}}
 				/>
 			)}
+			<div>
+				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+			</div>
 		</div>
 	);
 };

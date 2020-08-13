@@ -5,6 +5,7 @@ import { sideSocialButtons } from "../../../SocialMedia/data";
 import ShowMeta from "../../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/quickHeadlineStyles.module.sass";
+
 const QuickHeadline = ({ data, id, position, totalSlides }) => {
 	const {
 		blurb,
@@ -68,6 +69,7 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 				showAuthor={showAuthor}
 				authorName={authorName}
 			/>
+
 			<LazyLoad once={true}>
 				<ShareButtonVert
 					data={sideSocialButtons}

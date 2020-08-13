@@ -19,7 +19,12 @@ import QuickViewButton from "../../Button/QuickViewButton";
 import QuickSlides from "./QuickView/QuickSlides";
 import QuickBookEnds from "./QuickView/QuickBookEnds";
 import QuickHeadline from "./QuickView/QuickHeadline";
+import dynamic from "next/dynamic";
 
+const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
+	ssr: false,
+});
+import { AMAZON_MUSIC_WIDE_BANNER } from "../../ads/code/amazonBusiness";
 const SlideDetails = ({ content, position, latest, url, id }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
@@ -106,6 +111,9 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						)}
 					</div>
 					<div>
+						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+					</div>
+					<div>
 						{position !== "opening" && position !== "closing" && (
 							<QuickSlides
 								total={content.numSlides}
@@ -147,7 +155,9 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						}
 						embed={bookEndOpening["openingImage-embed"]}
 					/>
-
+					<div>
+						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+					</div>
 					<Slides
 						data={slideData}
 						showNumbers={showNumbers}
@@ -177,6 +187,9 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						}
 						embed={bookEndClosing["closingImage-embed"]}
 					/>
+					<div>
+						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+					</div>
 				</>
 			)}
 			<LazyLoad once={true}>

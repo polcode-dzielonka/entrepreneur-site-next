@@ -1,0 +1,1 @@
+export const FIVERR_SQUARE = `<a href="https://track.fiverr.com/visit/?bta=136057&nci=7020" Target="_Top"><img border="0" src="https://fiverr.ck-cdn.com/tn/serve/?cid=7267323"  width="250" height="250"></a>`;

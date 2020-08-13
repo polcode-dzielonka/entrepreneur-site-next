@@ -13,7 +13,14 @@ import QuickEmailSignUp from "../../SignUpModal/quickEmailSignup";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import SectionBar from "../SectionBar";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
+import dynamic from "next/dynamic";
 import styles from "./styles/articleBodyStyles.module.sass";
+const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
+	ssr: false,
+});
+import { ETORO_BANNER } from "../../ads/code/eToro";
+import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
+
 const ArticleBody = ({
 	content,
 	category,
@@ -40,6 +47,7 @@ const ArticleBody = ({
 			<LazyLoad once={true}>
 				<ScrollUpButton />
 			</LazyLoad>
+			<AdWrapper adCode={ETORO_BANNER} />
 
 			<br />
 			<LazyLoad once={true}>
@@ -63,6 +71,7 @@ const ArticleBody = ({
 			<LazyLoad once={true}>
 				<QuickEmailSignUp />
 			</LazyLoad>
+			<AdWrapper adCode={AMAZON_BUSINESS_AD_RECT} />
 
 			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="2rem" />
 			<FacebookComments url={url} numPostsVisible={5} orderBy="reverse_time" />

@@ -10,6 +10,19 @@ import QuickViewButton from "../../../Button/QuickViewButton";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/quickSlideStyles.module.sass";
 import SingleLoader from "../../../Loading/SingleLoader";
+import dynamic from "next/dynamic";
+
+const MultiAdsWrapper = dynamic(() => import("../../../ads/twoAdsWrapper"), {
+	ssr: false,
+});
+const AdWrapper = dynamic(() => import("../../../ads/adWrapper"), {
+	ssr: false,
+});
+import {
+	AMAZON_KINDLE_CODE_SQUARE,
+	AMAZON_MUSIC_WIDE_BANNER,
+} from "../../../ads/code/amazonBusiness";
+import { FIVERR_SQUARE } from "../../../ads/code/fiverr";
 
 const QuickSlides = ({
 	total,
@@ -70,6 +83,12 @@ const QuickSlides = ({
 					noMaxHeight={true}
 				/>
 			</div>
+			<div>
+				<MultiAdsWrapper
+					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
+					adCodeTwo={FIVERR_SQUARE}
+				/>
+			</div>
 			<div className={styles.sectionParagraph}>
 				<Slate editor={editor} value={value}>
 					<Editable
@@ -99,6 +118,9 @@ const QuickSlides = ({
 					/>
 				</LazyLoad>
 			)}
+			<div>
+				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+			</div>
 		</div>
 	);
 };

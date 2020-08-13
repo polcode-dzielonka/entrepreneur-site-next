@@ -2,12 +2,25 @@ import { useMemo, useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
 import { Slate, Editable } from "slate-react";
-import { useRouter } from "next/router";
 import { createEditor } from "slate";
 import RenderElement from "../Editor/renderElement/renderElement";
 import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import styles from "./styles/bookEndStyles.module.sass";
 import baseTheme from "../../../theme/baseTheme.json";
+import dynamic from "next/dynamic";
+
+const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
+	ssr: false,
+});
+const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
+	ssr: false,
+});
+
+import {
+	AMAZON_KINDLE_CODE_SQUARE,
+	AMAZON_MUSIC_WIDE_BANNER,
+} from "../../ads/code/amazonBusiness";
+import { FIVERR_SQUARE } from "../../ads/code/fiverr";
 const QuizBookEnds = ({
 	image,
 	imageAlt,
@@ -34,8 +47,12 @@ const QuizBookEnds = ({
 			Object.keys(scoreComments).length,
 		0,
 	);
+
 	return (
 		<div className={styles.bookEndWrapper}>
+			<div>
+				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+			</div>
 			{positionClosing && (
 				<h1 className={`${styles.sectionHeader} section-header`}>
 					<div>
@@ -44,7 +61,7 @@ const QuizBookEnds = ({
 				</h1>
 			)}
 			{positionOpening && <h1 className={styles.sectionHeaderOpen}>{title}</h1>}
-			<div>
+			<div className={styles.imageWrap}>
 				<Embed
 					embed={embed}
 					image={image}
@@ -61,7 +78,12 @@ const QuizBookEnds = ({
 					{scoreComments[`scoreComment${commentNumber}`]}
 				</h1>
 			)}
-
+			<div>
+				<MultiAdsWrapper
+					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
+					adCodeTwo={FIVERR_SQUARE}
+				/>
+			</div>
 			<>
 				<div className={styles.sectionParagraph}>
 					<Slate editor={editor} value={value}>

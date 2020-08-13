@@ -1,0 +1,2 @@
+export const ETORO_COPY_TRADER = `<a href="https://partners.etoro.com/B11740_A93543_TClick_Swmack.aspx" Target="_Top"><img border="0" src="https://partners.etoro.com/B11740_A93543_TGet_Swmack.aspx" alt=" " width="300" height="600" /></a>`;
+export const ETORO_BANNER = `<a href="https://partners.etoro.com/B11741_A93543_TClick.aspx" Target="_Top"><img border="0" src="https://partners.etoro.com/B11741_A93543_TGet.aspx" alt=" " width="728" height="90" /></a>`;

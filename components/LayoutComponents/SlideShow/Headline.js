@@ -11,6 +11,19 @@ import SectionBar from "../SectionBar";
 import ShowMeta from "../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/headlineStyles.module.sass";
+import dynamic from "next/dynamic";
+
+const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
+	ssr: false,
+});
+const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
+	ssr: false,
+});
+import {
+	AMAZON_MUSIC_WIDE_BANNER,
+	AMAZON_KINDLE_CODE_SQUARE,
+} from "../../ads/code/amazonBusiness";
+import { FIVERR_SQUARE } from "../../ads/code/fiverr";
 const BookEnds = ({ data, id, position }) => {
 	const {
 		headlineImage,
@@ -52,6 +65,9 @@ const BookEnds = ({ data, id, position }) => {
 				showAuthor={showAuthor}
 				authorName={authorName}
 			/>
+			<div>
+				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+			</div>
 			<ul className={styles.listWrapper}>
 				<li className={styles.sectionBrief}>{slideTitle}</li>
 				<li className={styles.sectionBrief}>{blurb}</li>
@@ -69,6 +85,12 @@ const BookEnds = ({ data, id, position }) => {
 				/>
 			</div>
 			<hr className={styles.break} />
+			<div>
+				<MultiAdsWrapper
+					adCodeOne={FIVERR_SQUARE}
+					adCodeTwo={AMAZON_KINDLE_CODE_SQUARE}
+				/>
+			</div>
 			<LazyLoad once={true}>
 				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
 				<ShareButtonVert

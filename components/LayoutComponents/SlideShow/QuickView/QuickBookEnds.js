@@ -6,6 +6,21 @@ import { createEditor } from "slate";
 import RenderElement from "../../Editor/renderElement/renderElement";
 import RenderLeaf from "../../Editor/renderLeaf/renderLeaf";
 import styles from "./styles/quickBookEndStyles.module.sass";
+import dynamic from "next/dynamic";
+
+const MultiAdsWrapper = dynamic(() => import("../../../ads/twoAdsWrapper"), {
+	ssr: false,
+});
+const AdWrapper = dynamic(() => import("../../../ads/adWrapper"), {
+	ssr: false,
+});
+
+import {
+	AMAZON_KINDLE_CODE_SQUARE,
+	AMAZON_MUSIC_WIDE_BANNER,
+} from "../../../ads/code/amazonBusiness";
+import { FIVERR_SQUARE } from "../../../ads/code/fiverr";
+
 const BookEnds = ({
 	image,
 	imageAlt,
@@ -23,8 +38,11 @@ const BookEnds = ({
 	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
 	return (
 		<div className={styles.bookEndWrapper}>
-			<h1 className={styles.sectionHeader}>{title}</h1>
 			<div>
+				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+			</div>
+			<h1 className={styles.sectionHeader}>{title}</h1>
+			<div className={styles.imageWrap}>
 				<Embed
 					embed={embed}
 					image={image}
@@ -34,6 +52,12 @@ const BookEnds = ({
 					imagePath={imagePath}
 					styles={{ width: "100%", height: "100%" }}
 					noMaxHeight={true}
+				/>
+			</div>
+			<div>
+				<MultiAdsWrapper
+					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
+					adCodeTwo={FIVERR_SQUARE}
 				/>
 			</div>
 			<>

@@ -9,6 +9,7 @@ import {
 import FacebookPage from "../SocialMedia/FacebookPage";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/contentLayout.module.sass";
+import { ETORO_COPY_TRADER } from "../ads/code/eToro";
 
 const Article = ({ id, individual, quiz, slide, url }) => {
 	return (
@@ -21,14 +22,19 @@ const Article = ({ id, individual, quiz, slide, url }) => {
 					<div className={styles.sectionPadding}>
 						<SectionBar title="Popular" titleColor="#111" titleSize="1.7rem" />
 					</div>
-					<SideBarContent data={slide.items} type="slideshow" />
+					<SideBarContent data={slide.items} type="slideshow" showAd={true} />
 					<LazyLoad once={true}>
 						<FacebookPage />
 					</LazyLoad>
 					<div className={styles.sectionPadding}>
 						<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
 					</div>
-					<SideBarSmallContent data={quiz.items} type="quiz" />
+					<SideBarSmallContent
+						data={quiz.items}
+						type="quiz"
+						showAd={true}
+						adCode={ETORO_COPY_TRADER}
+					/>
 				</aside>
 			</main>
 		</Layout>

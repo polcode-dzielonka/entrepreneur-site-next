@@ -1,0 +1,47 @@
+.advert
+    display: flex
+    flex-direction: row
+    padding: 7px 0px
+
+    &:before,&::after
+        content: ""
+        flex: 1 1
+        border-bottom: 1px solid  #d9d9d9
+        margin: auto
+
+    &:before
+        margin-right: 10px
+
+    &:after
+        margin-left: 10px
+.adHeader
+    text-align: center
+    font-size: 11px
+    font-weight: 400
+    color: #999999
+    text-transform: uppercase
+    margin-bottom: 7px
+    width: 100%
+
+.adWrap
+    border-bottom: 1px solid #d9d9d9
+    padding-bottom: 7px
+    margin-bottom: 20px
+
+.multiAdWrap
+    display: flex
+    flex-direction: row
+
+.multiSideAdSquareWrap
+    margin: 0 auto
+
+.sideAdSquareWrap
+    margin: 0 auto
+
+@media only screen and (max-width: 670px) 
+    .multiAdWrap
+        flex-direction: column
+
+    .multiSideAdSquareWrap
+        margin: 0 auto
+        padding: 15px 0px

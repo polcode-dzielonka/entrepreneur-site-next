@@ -12,6 +12,14 @@ import defaultValue from "../Editor/defaultValue";
 import LazyLoad from "react-lazyload";
 import NextLink from "../Editor/renderElement/ads/nextLink";
 import slideStyles from "./styles/slideStyles.module.sass";
+import dynamic from "next/dynamic";
+
+const MultiAdWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
+	ssr: false,
+});
+import { AMAZON_KINDLE_CODE_SQUARE } from "../../ads/code/amazonBusiness";
+import { FIVERR_SQUARE } from "../../ads/code/fiverr";
+
 const Slides = ({
 	data,
 	showNumbers,
@@ -117,6 +125,16 @@ const Slides = ({
 							<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
 						</LazyLoad>
 					</>
+				)}
+				{index % 3 === 0 && (
+					<div>
+						<div>
+							<MultiAdWrapper
+								adCodeOne={FIVERR_SQUARE}
+								adCodeTwo={AMAZON_KINDLE_CODE_SQUARE}
+							/>
+						</div>
+					</div>
 				)}
 			</div>
 		);

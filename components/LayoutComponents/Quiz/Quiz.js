@@ -15,6 +15,12 @@ import FacebookComments from "../../SocialMedia/FacebookComments";
 import LazyLoad from "react-lazyload";
 import ScrollingContent from "../ScrollingContent/ScrollingContent";
 import styles from "./styles/quizStyles.module.sass";
+import dynamic from "next/dynamic";
+
+const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
+	ssr: false,
+});
+import { AMAZON_MUSIC_WIDE_BANNER } from "../../ads/code/amazonBusiness";
 const QuizDetails = ({ content, position, url, id, score }) => {
 	const details = JSON.parse(content.overview);
 	const questions = JSON.parse(content.questions);
@@ -100,6 +106,9 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						)}
 					</>
 				)}
+			</div>
+			<div>
+				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
 			</div>
 			<div>
 				{position !== "opening" && position !== "closing" && (

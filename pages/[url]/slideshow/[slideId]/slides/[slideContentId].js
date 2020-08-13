@@ -6,6 +6,7 @@ import prodRequest from "../../../../../components/apiRequest/prodRequest";
 import { slideShowQuery } from "../../../../../data/queryData/querys";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
+import parseUrl from "../../../../../components/helper/parseUrl";
 
 const Slide = ({
 	individual,
@@ -17,17 +18,15 @@ const Slide = ({
 	slideContentId,
 	query,
 }) => {
-	if (!individual || !headline || !quiz || !slide) return <SlideLoading />;
 	const router = useRouter();
 
-	//Set Cookie Here If Url has Query data UTM from CPC Provider
-	useEffect(() => {
-		if (router.query.utm_content) {
-			Cookie.set("CPC", JSON.stringify(true), {
-				expires: 0.25,
-			});
-		}
-	}, []);
+	if (parseUrl(router.asPath)) {
+		Cookie.set("CPC", JSON.stringify(true), {
+			expires: 0.25,
+		});
+	}
+
+	if (!individual || !headline || !quiz || !slide) return <SlideLoading />;
 
 	return (
 		<SlideLayout
@@ -45,6 +44,7 @@ const Slide = ({
 
 export async function getStaticProps(context) {
 	const { url, slideId, slideContentId } = context.params;
+
 	// Fetch data from external API
 	const SLIDESHOW_QUERY = {
 		query: SLIDESHOW,
