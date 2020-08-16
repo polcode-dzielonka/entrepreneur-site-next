@@ -23,8 +23,8 @@ const ScrollingArticles = ({ data }) => {
 			return (
 				<article key={index} className={styles.largeImageContainer}>
 					<Link
-						href={`/[url]/article/[id]`}
-						as={`/${urlDescription}/article/${id}`}
+						href={`/[category]/[url]/article/[id]`}
+						as={`/${category}/${urlDescription}/article/${id}`}
 					>
 						<a className={styles.largeImageMainWrapper}>
 							<LazyLoad once={true}>
@@ -47,16 +47,16 @@ const ScrollingArticles = ({ data }) => {
 					<div className={styles.largeInfoFirst}>
 						<div className={styles.infoTitle}>
 							<Link
-								href={`/[url]/article/[id]`}
-								as={`/${urlDescription}/article/${id}`}
+								href={`/[category]/[url]/article/[id]`}
+								as={`/${category}/${urlDescription}/article/${id}`}
 							>
 								<a className={styles.infoLink}>{headline}</a>
 							</Link>
 							{headline.length < 70 && (
 								<h2 className={styles.infoTitle}>
 									<Link
-										href={`/[url]/article/[id]`}
-										as={`/${urlDescription}/article/${id}`}
+										href={`/[category]/[url]/article/[id]`}
+										as={`/${category}/${urlDescription}/article/${id}`}
 									>
 										<a className={styles.categoryLink}>{category}</a>
 									</Link>
@@ -71,8 +71,8 @@ const ScrollingArticles = ({ data }) => {
 		return (
 			<article className={styles.headerSection} key={index}>
 				<Link
-					href={`/[url]/article/[id]`}
-					as={`/${urlDescription}/article/${id}`}
+					href={`/[category]/[url]/article/[id]`}
+					as={`/${category}/${urlDescription}/article/${id}`}
 				>
 					<a className={styles.scrollImageAnchor}>
 						<div className={styles.scrollImageWrapper}>

@@ -1,6 +1,7 @@
 const links = [
 	{ href: "/people", label: "People" },
 	{ href: "/motivation", label: "Motivation" },
+	// { href: "/business label: "Business" },
 	// { href: "/quotes", label: "Quotes" },
 	// { href: "/networth", label: "Net Worth" },
 	// { href: "/quiz", label: "Quiz" },
@@ -10,6 +11,7 @@ const mobileLinks = [
 	{ href: "/", label: "Home" },
 	{ href: "/people", label: "People" },
 	{ href: "/motivation", label: "Motivation" },
+	// { href: "/business label: "Business" },
 	// { href: "/quotes", label: "Quotes" },
 	// { href: "/networth", label: "Net Worth" },
 	// { href: "/quiz", label: "Quiz" },

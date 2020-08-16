@@ -109,7 +109,7 @@ const QuickSlides = ({
 								? nextSlideData[0].slideImagePath
 								: slideImagePath
 						}
-						refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+						refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 						imageAlt={
 							nextSlideData[0]
 								? nextSlideData[0].slideImageAlt

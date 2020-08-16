@@ -1,8 +1,8 @@
-import ArticleLayout from "../../../components/Layouts/ArticleLayout";
-import prodRequest from "../../../components/apiRequest/prodRequest";
-import { articleQuery } from "../../../data/queryData/querys";
-import { ARTICLE } from "../../../graphql/indivArticle";
-import MainHeadlineLoading from "../../../components/Loading/Layouts/MainHeadlineLoadingLayout";
+import ArticleLayout from "../../../../components/Layouts/ArticleLayout";
+import prodRequest from "../../../../components/apiRequest/prodRequest";
+import { articleQuery } from "../../../../data/queryData/querys";
+import { ARTICLE } from "../../../../graphql/indivArticle";
+import MainHeadlineLoading from "../../../../components/Loading/Layouts/MainHeadlineLoadingLayout";
 
 const Article = ({ individual, quiz, slide, id, url }) => {
 	if (!individual || !quiz || !slide) return <MainHeadlineLoading />;

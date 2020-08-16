@@ -16,6 +16,7 @@ const MainHeadline = ({ data }) => {
 		headlineImageCrop,
 		headlineImageCropInfo,
 		headline,
+		category,
 		urlDescription,
 	} = headlineData;
 	return (
@@ -26,8 +27,8 @@ const MainHeadline = ({ data }) => {
 			<div className={styles.headlineContainer}>
 				<article className={styles.headlineImageContainer}>
 					<Link
-						href={`/[url]/article/[id]`}
-						as={`/${urlDescription}/article/${id}`}
+						href={`/[category]/[url]/article/[id]`}
+						as={`/${category}/${urlDescription}/article/${id}`}
 					>
 						<a className={styles.headlineImageMainWrapper}>
 							<LazyLoad once={true}>
@@ -48,8 +49,8 @@ const MainHeadline = ({ data }) => {
 						</a>
 					</Link>
 					<Link
-						href={`/[url]/article/[id]`}
-						as={`/${urlDescription}/article/${id}`}
+						href={`/[category]/[url]/article/[id]`}
+						as={`/${category}/${urlDescription}/article/${id}`}
 					>
 						<a className={styles.info}>
 							<h1 className={styles.infoTitle}>
@@ -77,8 +78,8 @@ const MainHeadline = ({ data }) => {
 							<article className={styles.subArticle} key={index}>
 								<div className={styles.subArticleWrapper}>
 									<Link
-										href={`/[url]/article/[id]`}
-										as={`/${urlDescription}/article/${id}`}
+										href={`/[category]/[url]/article/[id]`}
+										as={`/${category}/${urlDescription}/article/${id}`}
 									>
 										<a className={styles.subHeadlineAnchor}>
 											<div className={styles.subHeadlineImageWrap}>

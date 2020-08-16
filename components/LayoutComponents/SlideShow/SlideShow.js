@@ -54,8 +54,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	const bookEndOpening = slides["opening"][0];
 	const bookEndClosing = slides["closing"][0];
 	const slideData = countdown ? slides["slides"] : slides["slides"];
-	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/opening`;
-	const nextHref = `/${slideUrl}/slideshow/${id}/slides`;
+	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${slideUrl}/slideshow/${id}/slides/opening`;
+	const nextHref = `/${category}/${slideUrl}/slideshow/${id}/slides`;
 	const showOpeningSlide = content.showHeadlineSlide === "true" ? true : false;
 	const slideEndRef =
 		positionNumber + 1 === content.numSlides + 1
@@ -103,7 +103,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 										imgSrc={details[0].headlineImage}
 										imagePath={details[0].imagePath}
 										href={`${nextHref}/1`}
-										refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+										refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 										imageAlt={details[0].headlineImageAlt}
 									/>
 								)}
@@ -211,7 +211,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				category={category}
 				headline={title}
 				headlineUrl={url}
-				refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+				refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 			/>
 			<LazyLoad once={true}>
 				<QuickEmailSignUp />

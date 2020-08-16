@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import SlideLayout from "../../../../../components/Layouts/SlideShowLayout";
-import { SLIDESHOW } from "../../../../../graphql/indivSlideShow";
-import SlideLoading from "../../../../../components/Loading/Layouts/SlideShowLoading";
-import prodRequest from "../../../../../components/apiRequest/prodRequest";
-import { slideShowQuery } from "../../../../../data/queryData/querys";
+import SlideLayout from "../../../../../../components/Layouts/SlideShowLayout";
+import { SLIDESHOW } from "../../../../../../graphql/indivSlideShow";
+import SlideLoading from "../../../../../../components/Loading/Layouts/SlideShowLoading";
+import prodRequest from "../../../../../../components/apiRequest/prodRequest";
+import { slideShowQuery } from "../../../../../../data/queryData/querys";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
-import parseUrl from "../../../../../components/helper/parseUrl";
+import parseUrl from "../../../../../../components/helper/parseUrl";
 
 const Slide = ({
 	individual,

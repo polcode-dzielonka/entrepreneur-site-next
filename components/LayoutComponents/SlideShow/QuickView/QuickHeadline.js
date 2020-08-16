@@ -20,8 +20,8 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 		authorName,
 		slideTags,
 	} = data[0];
-	const canonical = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${position}`;
-	const shareUrl = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/opening`;
+	const canonical = `${process.env.SITE_ADDRESS}/${category}/${slideUrl}/slideshow/${id}/slides/${position}`;
+	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${slideUrl}/slideshow/${id}/slides/opening`;
 
 	const nextEndpoint =
 		position === "opening"
@@ -42,11 +42,11 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 	const next =
 		position === "closing"
 			? null
-			: `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${nextEndpoint}`;
+			: `${process.env.SITE_ADDRESS}/${category}/${slideUrl}/slideshow/${id}/slides/${nextEndpoint}`;
 	const prev =
 		position === "opening"
 			? null
-			: `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${prevEndpoint}`;
+			: `${process.env.SITE_ADDRESS}/${category}/${slideUrl}/slideshow/${id}/slides/${prevEndpoint}`;
 	return (
 		<div className={styles.bookendWrapper}>
 			<DynamicHeader

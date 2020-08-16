@@ -44,7 +44,7 @@ const BookEnds = ({ data, id, position }) => {
 		authorName,
 		slideTags,
 	} = data[0];
-	const canonical = `${process.env.SITE_ADDRESS}/${slideUrl}/slideshow/${id}/slides/${position}`;
+	const canonical = `${process.env.SITE_ADDRESS}/${category}/${slideUrl}/slideshow/${id}/slides/${position}`;
 	return (
 		<div className={styles.bookendWrapper}>
 			<DynamicHeader

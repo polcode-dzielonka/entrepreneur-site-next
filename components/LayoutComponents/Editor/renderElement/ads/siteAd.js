@@ -27,10 +27,16 @@ const SiteAd = ({ children, attributes }) => {
 			const { data } = await prodRequest(queryData);
 
 			const overview = JSON.parse(data.data.getProductionArticle.overview);
-			const { brief, headlineImage, headline, urlDescription } = overview[0];
+			const {
+				brief,
+				headlineImage,
+				headline,
+				urlDescription,
+				category,
+			} = overview[0];
 			const { id } = data.data.getProductionArticle;
 			setShareInfo({
-				url: `${process.env.SITE_ADDRESS}/${urlDescription}/article/${id}`,
+				url: `${process.env.SITE_ADDRESS}/${category}/${urlDescription}/article/${id}`,
 				image: headlineImage,
 				headline: headline,
 				brief: brief,

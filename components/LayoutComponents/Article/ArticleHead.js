@@ -40,7 +40,7 @@ const ArticleHead = ({ overview, id }) => {
 		authorName,
 		tags,
 	} = details[0];
-	const canonical = `${process.env.SITE_ADDRESS}/${urlDescription}/article/${id}`;
+	const canonical = `${process.env.SITE_ADDRESS}/${category}/${urlDescription}/article/${id}`;
 	return (
 		<div className={styles.sectionPadding}>
 			<DynamicHeader

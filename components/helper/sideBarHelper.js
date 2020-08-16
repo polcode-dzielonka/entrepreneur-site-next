@@ -17,17 +17,17 @@ const SideHelper = (content, type, nextLink = false, nextId) => {
 	} = content;
 	const contentId = nextLink ? nextId : id;
 	if (type === "article") {
-		refPath = `/[url]/article/[id]`;
+		refPath = `/[category]/[url]/article/[id]`;
 		endpoint = "";
 	} else if (type === "quiz") {
-		refPath = `/[url]/quiz/[quizId]/questions/[questionId]`;
+		refPath = `/[category]/[url]/quiz/[quizId]/questions/[questionId]`;
 		endpoint = `questions/opening`;
 	} else if (type === "slideshow") {
-		refPath = `/[url]/slideshow/[slideId]/slides/[slideContentId]`;
+		refPath = `/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`;
 		endpoint = `slides/opening`;
 	}
 
-	contentLink = `/${urlDescription}/${type}/${contentId}/${endpoint}`;
+	contentLink = `/${category}/${urlDescription}/${type}/${contentId}/${endpoint}`;
 	return {
 		headlineImage,
 		headlineImageAlt,

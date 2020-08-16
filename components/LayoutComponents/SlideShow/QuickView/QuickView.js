@@ -32,9 +32,9 @@ const QuickView = ({ content, position, url, id }) => {
 	) {
 		return <ErrorLoader />;
 	}
-	const nextHref = `/${url}/slideshow/${id}/slides`;
-	const shareUrl = `${process.env.SITE_ADDRESS}/${url}/slideshow/${id}/slides/opening`;
-	const commentsUrl = `${process.env.SITE_ADDRESS}/${url}/slideshow/${id}/slides/closing`;
+	const nextHref = `/${category}/${url}/slideshow/${id}/slides`;
+	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/slideshow/${id}/slides/opening`;
+	const commentsUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/slideshow/${id}/slides/closing`;
 	const slideEndRef =
 		positionNumber + 1 === content.numSlides + 1
 			? "closing"
@@ -71,7 +71,7 @@ const QuickView = ({ content, position, url, id }) => {
 				category={category}
 				headline={title}
 				headlineUrl={shareUrl}
-				refPath={`/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+				refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 			/>
 			<LazyLoad once={true}>
 				<QuickEmailSignUp />

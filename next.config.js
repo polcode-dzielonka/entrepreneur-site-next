@@ -38,14 +38,11 @@ module.exports = {
 		FACEBOOK_PAGE_URL: "https://www.facebook.com/WealthMack-103552984448329/",
 		CLOUDFRONT_IMAGE_DOMAIN: process.env.CLOUDFRONT_IMAGE_DOMAIN,
 	},
-	experimental: {
-		modern: true,
-		async rewrites() {
-			return [
-				{ source: "/sitemap.xml", destination: "/api/sitemap" },
-				{ source: "/rss", destination: "/api/rss" },
-			];
-		},
-		catchAllRouting: true,
+	async rewrites() {
+		return [
+			{ source: "/sitemap.xml", destination: "/api/sitemap" },
+			{ source: "/rss", destination: "/api/rss" },
+		];
 	},
+	catchAllRouting: true,
 };

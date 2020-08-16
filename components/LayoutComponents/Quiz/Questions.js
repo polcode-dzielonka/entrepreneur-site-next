@@ -199,7 +199,7 @@ const Questions = ({
 							: questionImage
 					}
 					href={`${nextHref}?score=${currentScore}`}
-					refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
+					refPath={`/[category]/[url]/quiz/[quizId]/questions/[questionId]`}
 					imagePath={
 						nextQuestionData[0]
 							? nextQuestionData[0].questionImagePath

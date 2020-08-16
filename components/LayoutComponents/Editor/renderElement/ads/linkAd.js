@@ -52,8 +52,8 @@ const NextArticleAd = ({ children, attributes }) => {
 			} = selectedArticle[0];
 			setNextInfo({
 				showNext: true,
-				url: `/${urlDescription}/article/${id}`,
-				refPath: `/[url]/article/[id]`,
+				url: `/${category}/${urlDescription}/article/${id}`,
+				refPath: `/[category]/[url]/article/[id]`,
 				image: headlineImage,
 				imageAlt: headlineImageAlt,
 				imagePath: headlineImagePath,

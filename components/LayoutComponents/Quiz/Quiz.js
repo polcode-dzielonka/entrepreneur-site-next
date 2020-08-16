@@ -47,9 +47,9 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 		return <ErrorLoader />;
 	}
 
-	const nextHref = `/${url}/quiz/${id}/questions`;
-	const shareUrl = `${process.env.SITE_ADDRESS}/${url}/quiz/${id}/questions/opening`;
-	const commentsUrl = `${process.env.SITE_ADDRESS}/${url}/quiz/${id}/questions/closing`;
+	const nextHref = `/${category}/${url}/quiz/${id}/questions`;
+	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/quiz/${id}/questions/opening`;
+	const commentsUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/quiz/${id}/questions/closing`;
 
 	const quizEndRef =
 		positionNumber + 1 === content.numQuestions + 1
@@ -100,7 +100,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 								imageCrop={details[0].headlineImageCrop}
 								imageCropInfo={details[0].headlineImageCropInfo}
 								href={`${nextHref}/1`}
-								refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
+								refPath={`/[category]/[url]/quiz/[quizId]/questions/[questionId]`}
 								imageAlt={details[0].headlineImageAlt}
 							/>
 						)}
@@ -151,7 +151,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 				category={category}
 				headline={title}
 				headlineUrl={shareUrl}
-				refPath={`/[url]/quiz/[quizId]/questions/[questionId]`}
+				refPath={`/[category]/[url]/quiz/[quizId]/questions/[questionId]`}
 			/>
 
 			<LazyLoad once={true}>

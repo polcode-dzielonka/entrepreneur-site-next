@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import QuizLayout from "../../../../../components/Layouts/QuizLayout";
+import QuizLayout from "../../../../../../components/Layouts/QuizLayout";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
-import { QUIZ } from "../../../../../graphql/indivQuiz";
-import QuickViewLoading from "../../../../../components/Loading/Layouts/QuizLoadingLayout";
-import prodRequest from "../../../../../components/apiRequest/prodRequest";
-import { quizQuery } from "../../../../../data/queryData/querys";
+import { QUIZ } from "../../../../../../graphql/indivQuiz";
+import QuickViewLoading from "../../../../../../components/Loading/Layouts/QuizLoadingLayout";
+import prodRequest from "../../../../../../components/apiRequest/prodRequest";
+import { quizQuery } from "../../../../../../data/queryData/querys";
 
 const Questions = ({
 	individual,

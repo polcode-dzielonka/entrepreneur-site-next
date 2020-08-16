@@ -20,8 +20,8 @@ const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 		authorName,
 		quizTags,
 	} = data[0];
-	const canonical = `${process.env.SITE_ADDRESS}/${quizUrl}/quiz/${id}/questions/${position}`;
-	const shareUrl = `${process.env.SITE_ADDRESS}/${quizUrl}/quiz/${id}/questions/opening`;
+	const canonical = `${process.env.SITE_ADDRESS}/${category}/${quizUrl}/quiz/${id}/questions/${position}`;
+	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${quizUrl}/quiz/${id}/questions/opening`;
 
 	const nextEndpoint =
 		position === "opening"
@@ -42,11 +42,11 @@ const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 	const next =
 		position === "closing"
 			? null
-			: `${process.env.SITE_ADDRESS}/${quizUrl}/quiz/${id}/questions/${nextEndpoint}`;
+			: `${process.env.SITE_ADDRESS}/${category}/${quizUrl}/quiz/${id}/questions/${nextEndpoint}`;
 	const prev =
 		position === "opening"
 			? null
-			: `${process.env.SITE_ADDRESS}/${quizUrl}/quiz/${id}/questions/${prevEndpoint}`;
+			: `${process.env.SITE_ADDRESS}/${category}/${quizUrl}/quiz/${id}/questions/${prevEndpoint}`;
 	return (
 		<div className={styles.bookendWrapper}>
 			<DynamicHeader

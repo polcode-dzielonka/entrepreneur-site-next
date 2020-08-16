@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Vanilla from "../components/Layouts/vanillaLayout";
 import styles from "../styles/termStyles.module.sass";
+
 const Terms = () => {
 	return (
 		<Layout>
