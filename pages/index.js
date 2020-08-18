@@ -21,6 +21,8 @@ const Home = ({ headline, latest, quiz, slide }) => {
 			title="WealthMack - Providing Business Motivation and Inspiration for those who want to be the Best version of themselves"
 			pageTitle={"Latest"}
 			canonical=""
+			latestNextToken={latest.data.listProductionArticles.nextToken}
+			latestSortIndex={latest.data.listProductionArticles.sortIndex}
 		/>
 	);
 };
@@ -35,7 +37,6 @@ export async function getStaticProps() {
 			}),
 		),
 	);
-
 	return {
 		props: { headline, latest, quiz, slide },
 		// Next.js will attempt to re-generate the page:

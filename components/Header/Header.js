@@ -48,13 +48,7 @@ const Header = ({ menuOpen, onClick }) => {
 							))}
 						</div>
 					</div>
-
 					<div className={styles.headSocialLinks}>
-						<Link href="/newsletter">
-							<a className={styles.newsNavMenuItem}>
-								<span className={styles.navMenuLink}>Newsletter</span>
-							</a>
-						</Link>
 						<div className={styles.socialWrapper}>
 							{socialLinks.map(({ href, icon, altName }, index) => (
 								<div

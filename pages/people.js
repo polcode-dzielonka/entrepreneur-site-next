@@ -2,6 +2,7 @@ import HeadlineLayout from "../components/Layouts/HeadlineLayout";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";
 import { peopleHeadlineQuery } from "../data/queryData/querys";
+import { HEADLINES } from "../graphql/headline";
 
 const People = ({ headline, quiz, slide }) => {
 	if (!headline || !quiz || !slide) return <MainHeadlineLoading />;
@@ -14,6 +15,11 @@ const People = ({ headline, quiz, slide }) => {
 			title="People"
 			pageTitle="People"
 			canonical="people"
+			latestNextToken={headline.data.listProductionArticles.nextToken}
+			latestSortIndex={headline.data.listProductionArticles.sortIndex}
+			nextQuery={HEADLINES}
+			queryFilter={{ category: "people" }}
+			queryOpName="ListProductionArticles"
 		/>
 	);
 };

@@ -81,8 +81,16 @@ export const HEADLINES = /* GraphQL */ `
 		$filter: CreateProductionArticleInput
 		$limit: Int
 		$id: String
+		$nextToken: String
+		$sortIndex: String
 	) {
-		listProductionArticles(id: $id, filter: $filter, limit: $limit) {
+		listProductionArticles(
+			id: $id
+			filter: $filter
+			limit: $limit
+			nextToken: $nextToken
+			sortIndex: $sortIndex
+		) {
 			items {
 				id
 				headlineImage
@@ -96,6 +104,7 @@ export const HEADLINES = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;
@@ -105,8 +114,16 @@ export const LATEST = /* GraphQL */ `
 		$id: String
 		$filter: CreateProductionArticleInput
 		$limit: Int
+		$nextToken: String
+		$sortIndex: String
 	) {
-		listProductionArticles(id: $id, filter: $filter, limit: $limit) {
+		listProductionArticles(
+			id: $id
+			filter: $filter
+			limit: $limit
+			nextToken: $nextToken
+			sortIndex: $sortIndex
+		) {
 			items {
 				id
 				headlineImage
@@ -120,6 +137,7 @@ export const LATEST = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;
@@ -129,8 +147,16 @@ export const QUIZ = /* GraphQL */ `
 		$filter: CreateProductionQuizInput
 		$limit: Int
 		$id: String
+		$nextToken: String
+		$sortIndex: String
 	) {
-		listProductionQuizs(id: $id, filter: $filter, limit: $limit) {
+		listProductionQuizs(
+			id: $id
+			filter: $filter
+			limit: $limit
+			nextToken: $nextToken
+			sortIndex: $sortIndex
+		) {
 			items {
 				id
 				headlineImage
@@ -144,6 +170,7 @@ export const QUIZ = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;
@@ -152,8 +179,16 @@ export const SLIDE = /* GraphQL */ `
 		$filter: CreateProductionSlideshowInput
 		$limit: Int
 		$id: String
+		$nextToken: String
+		$sortIndex: String
 	) {
-		listProductionSlideshows(id: $id, filter: $filter, limit: $limit) {
+		listProductionSlideshows(
+			id: $id
+			filter: $filter
+			limit: $limit
+			nextToken: $nextToken
+			sortIndex: $sortIndex
+		) {
 			items {
 				id
 				headlineImage
@@ -168,6 +203,7 @@ export const SLIDE = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;
@@ -178,12 +214,14 @@ export const LATEST_HEADLINES = /* GraphQL */ `
 		$limit: Int
 		$id: String
 		$nextToken: String
+		$sortIndex: String
 	) {
 		listProductionArticles(
 			id: $id
 			filter: $filter
 			limit: $limit
 			nextToken: $nextToken
+			sortIndex: $sortIndex
 		) {
 			items {
 				id
@@ -198,6 +236,7 @@ export const LATEST_HEADLINES = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;
@@ -207,6 +246,7 @@ export const LATEST_QUIZ = /* GraphQL */ `
 		$filter: CreateProductionQuizInput
 		$limit: Int
 		$nextToken: String
+		$sortIndex: String
 		$id: String
 	) {
 		listProductionQuizs(
@@ -214,6 +254,7 @@ export const LATEST_QUIZ = /* GraphQL */ `
 			filter: $filter
 			limit: $limit
 			nextToken: $nextToken
+			sortIndex: $sortIndex
 		) {
 			items {
 				id
@@ -228,13 +269,24 @@ export const LATEST_QUIZ = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;
 
 export const LATEST_SLIDE = /* GraphQL */ `
-	query ListProductionSlideshows($id: String, $limit: Int, $nextToken: String) {
-		listProductionSlideshows(id: $id, limit: $limit, nextToken: $nextToken) {
+	query ListProductionSlideshows(
+		$id: String
+		$limit: Int
+		$nextToken: String
+		$sortIndex: String
+	) {
+		listProductionSlideshows(
+			id: $id
+			limit: $limit
+			nextToken: $nextToken
+			sortIndex: $sortIndex
+		) {
 			items {
 				id
 				headlineImage
@@ -249,6 +301,7 @@ export const LATEST_SLIDE = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;

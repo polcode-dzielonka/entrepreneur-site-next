@@ -40,8 +40,18 @@ export const ADVERT_ARTICLE = /* GraphQL */ `
 	}
 `;
 export const NEXT_ARTICLE = /* GraphQL */ `
-	query ListProductionArticles($limit: Int, $id: String) {
-		listProductionArticles(limit: $limit, id: $id) {
+	query ListProductionArticles(
+		$limit: Int
+		$id: String
+		$nextToken: String
+		$sortIndex: String
+	) {
+		listProductionArticles(
+			limit: $limit
+			id: $id
+			nextToken: $nextToken
+			sortIndex: $sortIndex
+		) {
 			items {
 				id
 				headlineImage
@@ -55,6 +65,7 @@ export const NEXT_ARTICLE = /* GraphQL */ `
 				urlDescription
 			}
 			nextToken
+			sortIndex
 		}
 	}
 `;

@@ -17,6 +17,8 @@ import webPageData from "../StructuredData/webPage";
 import styles from "./styles/headlineLayout.module.sass";
 import baseTheme from "../../theme/baseTheme.json";
 import useSWR from "swr";
+import prodRequest from "../../components/apiRequest/prodRequest";
+import { LATEST } from "../../graphql/headline";
 
 const MainHeadlineLayout = ({
 	headline,
@@ -26,22 +28,36 @@ const MainHeadlineLayout = ({
 	title,
 	pageTitle,
 	canonical,
+	latestNextToken,
+	latestSortIndex,
 }) => {
+	const [token, setToken] = useState(latestNextToken ? latestNextToken : null);
+	const [sortIndex, setSortIndex] = useState(
+		latestSortIndex ? latestSortIndex : null,
+	);
 	const [loadingMorePosts, setLoadingMorePosts] = useState(false);
+	const [latestContent, setLatestContent] = useState(latest ? latest : []);
 
-	const loadMore = () => {
+	const loadMore = async () => {
 		setLoadingMorePosts(true);
-		// const { data: loadMoreArticles } = useSWR("LoadMoreArticles", () =>
-		// 	prodRequest({
-		// 		query: HEADLINES,
-		// 		variables: {
-		// 			filter: { mainHeadline: true },
-		// 			limit: 4,
-		// 			token: "ESRFERSF",
-		// 		},
-		// 		operationName: "ListProductionArticles",
-		// 	}),
-		// );
+		if (!token) return;
+		const { data: loadMoreArticles } = await prodRequest({
+			query: LATEST,
+			variables: {
+				filter: { mainHeadline: true },
+				limit: 4,
+				nextToken: token,
+				sortIndex: sortIndex,
+			},
+			operationName: "ListProductionArticles",
+		});
+
+		const addLatestContent = latestContent.concat(
+			loadMoreArticles.listProductionArticles.items,
+		);
+		setLatestContent(addLatestContent);
+		setToken(loadMoreArticles.listProductionArticles.nextToken);
+		setSortIndex(loadMoreArticles.listProductionArticles.sortIndex);
 	};
 
 	return (
@@ -79,14 +95,16 @@ const MainHeadlineLayout = ({
 									titleSize="2rem"
 								/>
 							</div>
-							<ScrollingArticles data={latest} />
-							<LazyLoad once={true}>
-								<RippleButton
-									label={loadingMorePosts ? "Loading..." : "Load More!"}
-									color={baseTheme.secondary}
-									handler={loadMore}
-								/>
-							</LazyLoad>
+							<ScrollingArticles data={latestContent} />
+							{token && (
+								<LazyLoad once={true}>
+									<RippleButton
+										label={loadingMorePosts ? "Loading..." : "Load More!"}
+										color={baseTheme.secondary}
+										handler={loadMore}
+									/>
+								</LazyLoad>
+							)}
 						</div>
 					</div>
 					<aside className={styles.slideContainer}>

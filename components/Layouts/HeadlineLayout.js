@@ -15,14 +15,45 @@ import styles from "./styles/headlineLayout.module.sass";
 import baseTheme from "../../theme/baseTheme.json";
 const HeadlineLayout = ({
 	headline,
-	latest,
 	quiz,
 	slide,
 	title,
 	pageTitle,
 	canonical,
+	latestNextToken,
+	latestSortIndex,
+	nextQuery,
+	queryFilter,
+	queryOpName,
 }) => {
+	const [token, setToken] = useState(latestNextToken ? latestNextToken : null);
+	const [sortIndex, setSortIndex] = useState(
+		latestSortIndex ? latestSortIndex : null,
+	);
 	const [loadingMorePosts, setLoadingMorePosts] = useState(false);
+	const [latestContent, setLatestContent] = useState(headline ? headline : []);
+
+	const loadMore = async () => {
+		setLoadingMorePosts(true);
+		if (!token) return;
+		const { data: loadMoreArticles } = await prodRequest({
+			query: nextQuery,
+			variables: {
+				filter: queryFilter,
+				limit: 4,
+				nextToken: token,
+				sortIndex: sortIndex,
+			},
+			operationName: queryOpName,
+		});
+
+		const addLatestContent = latestContent.concat(
+			loadMoreArticles[queryOpName].items,
+		);
+		setLatestContent(addLatestContent);
+		setToken(loadMoreArticles[queryOpName].nextToken);
+		setSortIndex(loadMoreArticles[queryOpName].sortIndex);
+	};
 
 	return (
 		<Layout>
@@ -74,12 +105,14 @@ const HeadlineLayout = ({
 								</LazyLoad>
 							</div>
 							<ScrollingArticles data={headline.items} />
-							<LazyLoad once={true}>
-								<RippleButton
-									label={loadingMorePosts ? "Loading..." : "Load More!"}
-									color={baseTheme.secondary}
-								/>
-							</LazyLoad>
+							{token && (
+								<LazyLoad once={true}>
+									<RippleButton
+										label={loadingMorePosts ? "Loading..." : "Load More!"}
+										color={baseTheme.secondary}
+									/>
+								</LazyLoad>
+							)}
 						</div>
 					</div>
 					<aside className={styles.slideContainer}>

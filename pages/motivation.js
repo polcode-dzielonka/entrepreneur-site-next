@@ -2,6 +2,7 @@ import HeadlineLayout from "../components/Layouts/HeadlineLayout";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";
 import { motivationHeadlineQuery } from "../data/queryData/querys";
+import { HEADLINES } from "../graphql/headline";
 
 const Motivation = ({ headline, quiz, slide }) => {
 	if (!headline || !quiz || !slide) return <MainHeadlineLoading />;
@@ -13,6 +14,11 @@ const Motivation = ({ headline, quiz, slide }) => {
 			title="Motivation"
 			pageTitle="Motivation"
 			canonical="motivation"
+			latestNextToken={headline.data.listProductionArticles.nextToken}
+			latestSortIndex={headline.data.listProductionArticles.sortIndex}
+			nextQuery={HEADLINES}
+			queryFilter={{ category: "motivation" }}
+			queryOpName="ListProductionArticles"
 		/>
 	);
 };
