@@ -10,13 +10,12 @@ const EmbedImage = ({ attributes, element, children }) => {
 		imageAttribution: "",
 		imageAttributionLink: "",
 	});
-
 	useEffect(() => {
 		handleImageEmbed();
 	}, []);
 
 	const handleImageEmbed = () => {
-		const embedImageUrl = data.imageUrl;
+		const embedImageUrl = data.image;
 		const embedImageAlt = data.imageAlt;
 		const embedImagePath = data.imagePath;
 		const embedImageAttribution = data.imageAttribution;

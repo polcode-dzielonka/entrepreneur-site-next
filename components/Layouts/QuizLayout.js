@@ -6,11 +6,13 @@ import {
 	SectionBar,
 	QuizComponent,
 } from "../LayoutComponents";
-import FacebookPage from "../SocialMedia/FacebookPage";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/contentLayout.module.sass";
 import { ETORO_COPY_TRADER } from "../ads/code/eToro";
-
+import dynamic from "next/dynamic";
+const FacebookPage = dynamic(() => import("../SocialMedia/FacebookPage"), {
+	ssr: false,
+});
 const Quiz = ({
 	individual,
 	headline,

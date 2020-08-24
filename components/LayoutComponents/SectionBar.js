@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import styles from "./styles/sectionBarStyles.module.sass";
 const SectionBar = ({ title, titleColor, titleSize }) => {
 	return (
-		<>
+		<div>
 			<div className={styles.featuredContent}>
 				<h1 className={`${styles.sectionTitle} section-title`}>
 					<span>{title}</span>
@@ -17,7 +17,7 @@ const SectionBar = ({ title, titleColor, titleSize }) => {
 					}
 				`}
 			</style>
-		</>
+		</div>
 	);
 };
 export default SectionBar;

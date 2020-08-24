@@ -53,21 +53,20 @@ const ArticleHead = ({ overview, id }) => {
 				updatedAt={displayDate}
 				tags={tags}
 			/>
-			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
-			<h1 className={styles.sectionHeading}>{headline}</h1>
-			<h3 className={styles.sectionCategory}>{category}</h3>
+			<SectionBar title={`${category}`} titleColor="#111" titleSize="1rem" />
+			<h1 className={styles.sectionHeading}>{headline} </h1>
 			<AdWrapper adCode={ETORO_BANNER} />
 			<ImageLoader
 				src={headlineImage}
 				alt={headlineImageAlt}
 				imagePath={headlineImagePath}
-				headlineImageCrop={headlineImageCrop}
-				headlineImageCropInfo={headlineImageCropInfo}
+				imageCrop={headlineImageCrop}
+				imageCropInfo={headlineImageCropInfo}
 				animation={false}
 				styles={{ width: "100%", height: "100%" }}
 				noMaxHeight={true}
 			/>
-			<h3 className={styles.sectionBrief}>{brief}</h3>
+			{brief && <h3 className={styles.sectionBrief}>{brief}</h3>}
 			{bulletHeadlines > 0 && (
 				<ul className={styles.sectionList}>
 					{Object.keys(bulletHeadlinesDetails).map((bullet, index) => {
@@ -104,7 +103,7 @@ const ArticleHead = ({ overview, id }) => {
 				/>
 			</LazyLoad>
 			<hr className={styles.break} />
-			<AdWrapper adCode={AMAZON_BUSINESS_AD_RECT} />
+			{/* <AdWrapper adCode={AMAZON_BUSINESS_AD_RECT} /> */}
 
 			<ArticleBody
 				content={overview}

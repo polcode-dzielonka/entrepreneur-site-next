@@ -8,17 +8,21 @@ import {
 	SideBarSmallContent,
 	SectionBar,
 } from "../LayoutComponents";
-import RippleButton from "../Button/Button";
 import LazyLoad from "react-lazyload";
 import Head from "next/head";
-import FacebookPage from "../SocialMedia/FacebookPage";
 import organisationData from "../StructuredData/organisation";
 import webPageData from "../StructuredData/webPage";
 import styles from "./styles/headlineLayout.module.sass";
 import baseTheme from "../../theme/baseTheme.json";
-import useSWR from "swr";
 import prodRequest from "../../components/apiRequest/prodRequest";
 import { LATEST } from "../../graphql/headline";
+import dynamic from "next/dynamic";
+const FacebookPage = dynamic(() => import("../SocialMedia/FacebookPage"), {
+	ssr: false,
+});
+const RippleButton = dynamic(() => import("../Button/Button"), {
+	ssr: false,
+});
 
 const MainHeadlineLayout = ({
 	headline,
@@ -40,7 +44,10 @@ const MainHeadlineLayout = ({
 
 	const loadMore = async () => {
 		setLoadingMorePosts(true);
-		if (!token) return;
+		if (!token) {
+			setLoadingMorePosts(false);
+			return;
+		}
 		const { data: loadMoreArticles } = await prodRequest({
 			query: LATEST,
 			variables: {
@@ -58,6 +65,7 @@ const MainHeadlineLayout = ({
 		setLatestContent(addLatestContent);
 		setToken(loadMoreArticles.listProductionArticles.nextToken);
 		setSortIndex(loadMoreArticles.listProductionArticles.sortIndex);
+		setLoadingMorePosts(false);
 	};
 
 	return (
@@ -109,18 +117,18 @@ const MainHeadlineLayout = ({
 					</div>
 					<aside className={styles.slideContainer}>
 						<div className={styles.sectionPadding}>
-							<SectionBar
-								title="Popular"
-								titleColor="#111"
-								titleSize="1.7rem"
-							/>
+							<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
 						</div>
 						<SideBarContent data={quiz.items} type="quiz" />
 						<LazyLoad once={true}>
 							<FacebookPage />
 						</LazyLoad>
 						<div className={styles.sectionPadding}>
-							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
+							<SectionBar
+								title="Popular"
+								titleColor="#111"
+								titleSize="1.7rem"
+							/>
 						</div>
 						{/* <SideBarSmallContent
 							data={quiz.data.listProductionQuizs.items}

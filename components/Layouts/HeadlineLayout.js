@@ -7,12 +7,18 @@ import {
 	SideBarSmallContent,
 	SectionBar,
 } from "../LayoutComponents";
-import RippleButton from "../Button/Button";
 import Head from "next/head";
 import LazyLoad from "react-lazyload";
-import FacebookPage from "../SocialMedia/FacebookPage";
 import styles from "./styles/headlineLayout.module.sass";
 import baseTheme from "../../theme/baseTheme.json";
+import dynamic from "next/dynamic";
+const FacebookPage = dynamic(() => import("../SocialMedia/FacebookPage"), {
+	ssr: false,
+});
+const RippleButton = dynamic(() => import("../Button/Button"), {
+	ssr: false,
+});
+
 const HeadlineLayout = ({
 	headline,
 	quiz,
@@ -35,7 +41,10 @@ const HeadlineLayout = ({
 
 	const loadMore = async () => {
 		setLoadingMorePosts(true);
-		if (!token) return;
+		if (!token) {
+			setLoadingMorePosts(false);
+			return;
+		}
 		const { data: loadMoreArticles } = await prodRequest({
 			query: nextQuery,
 			variables: {
@@ -53,6 +62,7 @@ const HeadlineLayout = ({
 		setLatestContent(addLatestContent);
 		setToken(loadMoreArticles[queryOpName].nextToken);
 		setSortIndex(loadMoreArticles[queryOpName].sortIndex);
+		setLoadingMorePosts(false);
 	};
 
 	return (
