@@ -54,12 +54,6 @@ const BookEnds = ({
 					noMaxHeight={true}
 				/>
 			</div>
-			<div>
-				<MultiAdsWrapper
-					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
-					adCodeTwo={FIVERR_SQUARE}
-				/>
-			</div>
 			<>
 				<div className={styles.sectionParagraph}>
 					<Slate editor={editor} value={value}>
@@ -71,6 +65,12 @@ const BookEnds = ({
 					</Slate>
 				</div>
 			</>
+			<div>
+				<MultiAdsWrapper
+					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
+					adCodeTwo={FIVERR_SQUARE}
+				/>
+			</div>
 		</div>
 	);
 };
