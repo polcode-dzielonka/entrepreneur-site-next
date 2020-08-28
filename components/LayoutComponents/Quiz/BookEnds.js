@@ -78,12 +78,6 @@ const QuizBookEnds = ({
 					{scoreComments[`scoreComment${commentNumber}`]}
 				</h1>
 			)}
-			<div>
-				<MultiAdsWrapper
-					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
-					adCodeTwo={FIVERR_SQUARE}
-				/>
-			</div>
 			<>
 				<div className={styles.sectionParagraph}>
 					<Slate editor={editor} value={value}>
@@ -94,8 +88,14 @@ const QuizBookEnds = ({
 						/>
 					</Slate>
 				</div>
-				{positionClosing && <h1 className={styles.endHeader}> {title}</h1>}
+				{positionClosing && <div className={styles.endHeader}>{title}</div>}
 			</>
+			<div>
+				<MultiAdsWrapper
+					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
+					adCodeTwo={FIVERR_SQUARE}
+				/>
+			</div>
 			<style jsx>
 				{`
 					.section-header {

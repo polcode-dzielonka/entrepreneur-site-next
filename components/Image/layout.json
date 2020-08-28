@@ -56,15 +56,8 @@
 			"imageParams": { "format": "jpg", "q": 60, "width": 224 },
 			"sizes": "224px",
 			"ratio": 1,
-			"media": "(min-width: 480px)",
-			"widthMarker": "224w"
-		},
-		{
-			"imageParams": { "format": "jpg", "q": 60, "width": 145 },
-			"sizes": "145px",
-			"ratio": 1,
 			"media": "(min-width: 0px)",
-			"widthMarker": "145w"
+			"widthMarker": "224w"
 		}
 	],
 	"scrolling": [
@@ -90,15 +83,8 @@
 			"imageParams": { "format": "jpg", "q": 75, "width": 224 },
 			"sizes": "224px",
 			"ratio": 1,
-			"media": "(min-width: 480px)",
-			"widthMarker": "224w"
-		},
-		{
-			"imageParams": { "format": "jpg", "q": 75, "width": 145 },
-			"sizes": "145px",
-			"ratio": 1,
 			"media": "(min-width: 0px)",
-			"widthMarker": "145w"
+			"widthMarker": "224w"
 		}
 	],
 	"sideLarge": [

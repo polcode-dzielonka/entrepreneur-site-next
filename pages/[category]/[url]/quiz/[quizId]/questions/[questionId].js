@@ -15,6 +15,7 @@ const Questions = ({
 	questionId,
 	url,
 	quizId,
+	category,
 	score,
 }) => {
 	const router = useRouter();
@@ -30,13 +31,13 @@ const Questions = ({
 			if (questionId === "opening") {
 				Cookie.set("temp-quiz-session", JSON.stringify(true));
 			} else if (questionId !== "opening") {
-				router.push(`/${url}/quiz/${quizId}/questions/opening`);
+				router.push(`/${category}/${url}/quiz/${quizId}/questions/opening`);
 			}
 		} else if (tempQuizCookie) {
 			if (questionId === "closing") {
 				Cookie.remove("temp-quiz-session");
 			} else if (questionId !== "opening") {
-				router.push(`/${url}/quiz/${quizId}/questions/opening`);
+				router.push(`/${category}/${url}/quiz/${quizId}/questions/opening`);
 			}
 		}
 	}, []);
@@ -57,7 +58,7 @@ const Questions = ({
 };
 
 export async function getStaticProps(context) {
-	const { questionId, url, quizId, score } = context.params;
+	const { category, questionId, url, quizId, score } = context.params;
 	const scoreCheck = score ? score : null;
 	// Fetch data from external API
 	const QUIZ_QUERY = {
@@ -84,6 +85,7 @@ export async function getStaticProps(context) {
 			questionId,
 			url,
 			quizId,
+			category,
 			score: scoreCheck,
 		},
 		// Next.js will attempt to re-generate the page:

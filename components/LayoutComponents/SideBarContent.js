@@ -10,12 +10,12 @@ import {
 	AMAZON_AD_CODE,
 	AMAZON_KINDLE_CODE_SQUARE,
 } from "../ads/code/amazonBusiness";
-const SideBarContent = ({ data, type, showAd = false }) => {
+const SideBarContent = ({ data, type, showAd = false, limit = 0 }) => {
+	const slicedData = limit > 0 ? data.slice(0, limit) : data;
 	return (
 		<>
 			{showAd && <AdWrapper adCode={AMAZON_AD_CODE} />}
-
-			{data.map((article, index) => {
+			{slicedData.map((article, index) => {
 				const {
 					headlineImage,
 					headlineImageAlt,

@@ -29,21 +29,19 @@ const LongAnswer = ({
 									src={"/static/tickx128.png"}
 									alt="correct-tick-icon"
 								/>
-								<div className={styles.correctLabel}>Correct</div>
 							</div>
 						</div>
 					)}
 					{!correct && (
 						<div className={styles.correct}>
 							<div className={styles.correctGroup}>
-								<div className={styles.incorrectWrapper}>
+								<div className={styles.correctGroup}>
 									<img
 										className={styles.incorrectImage}
 										src={"/static/deletex128.png"}
 										alt="incorrect-cross-icon"
 									/>
 								</div>
-								<div className={styles.incorrectLabel}>Wrong</div>
 							</div>
 						</div>
 					)}
@@ -52,9 +50,9 @@ const LongAnswer = ({
 						<Slate editor={editor} value={answer}>
 							{
 								<div className={styles.answerComment}>
-									<h3 className={styles.answerCommentHeader}>
+									<div className={styles.answerCommentHeader}>
 										{correct ? correctAnswerComment : incorrectAnswerComment}
-									</h3>
+									</div>
 								</div>
 							}
 							<Editable

@@ -23,6 +23,7 @@ import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
 const ArticleHead = ({ overview, id }) => {
 	const details = JSON.parse(overview.overview);
 	const {
+		articleHeadline,
 		category,
 		headline,
 		headlineImage,
@@ -53,8 +54,10 @@ const ArticleHead = ({ overview, id }) => {
 				updatedAt={displayDate}
 				tags={tags}
 			/>
-			<SectionBar title={`${category}`} titleColor="#111" titleSize="1rem" />
-			<h1 className={styles.sectionHeading}>{headline} </h1>
+			<SectionBar title={category} titleColor="#111" titleSize="1rem" />
+			<h1 className={styles.sectionHeading}>
+				{articleHeadline ? articleHeadline : headline}
+			</h1>
 			<AdWrapper adCode={ETORO_BANNER} />
 			<ImageLoader
 				src={headlineImage}

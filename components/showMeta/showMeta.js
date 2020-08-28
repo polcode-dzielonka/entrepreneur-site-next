@@ -9,12 +9,12 @@ const ShowMeta = ({ showDate, displayDate, showAuthor, authorName }) => {
 	return (
 		<>
 			{showDate && (
-				<h3 className={styles.sectionMeta}>
+				<div className={styles.sectionMeta}>
 					{dayjs(displayDate).format("Do MMM YYYY")}
-				</h3>
+				</div>
 			)}
 			{showAuthor && authorName && (
-				<h3 className={styles.sectionMeta}>By: {authorName}</h3>
+				<div className={styles.sectionMeta}>By: {authorName}</div>
 			)}
 		</>
 	);

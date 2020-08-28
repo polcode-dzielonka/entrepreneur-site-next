@@ -62,7 +62,6 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 				tags={slideTags}
 			/>
 			<h1 className={styles.sectionHeading}>{title}</h1>
-			<h3 className={styles.sectionCategory}>{category}</h3>
 			<ShowMeta
 				showDate={showDate}
 				displayDate={displayDate}

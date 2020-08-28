@@ -2,7 +2,7 @@
 .bodyContainer
 	display: flex
 	flex-direction: row
-	padding: 2rem
+	padding: 0.5rem 0rem 2rem 0rem
 	font-size: 10px
 	margin: 0 auto
 	max-width: $contentMaxWidth
@@ -30,7 +30,7 @@
 @media only screen and (max-width: 1000px) 
 	.bodyContainer
 		flex-direction: column
-		padding: 0rem
+		padding: 0rem 0rem 2rem 0rem
 
 	.latestContainer
 		max-width: 100%
@@ -39,3 +39,7 @@
 	.slideContainer
 		max-width: 100%
 		padding: 0
+
+@media only screen and (max-width: 650px) 
+	.bodyContainer
+		padding: 1rem 0rem 2rem 0rem

@@ -14,7 +14,6 @@ const ImageLoader = ({
 	imageCrop,
 	imageCropInfo,
 }) => {
-	console.log("SRC", src);
 	const imageCheck = imagePath || src.indexOf("content-factory-media") > 1;
 	const [classStyle, setClassStyle] = useState(
 		animation ? "imgLoadingAnimation" : "imgLoading",

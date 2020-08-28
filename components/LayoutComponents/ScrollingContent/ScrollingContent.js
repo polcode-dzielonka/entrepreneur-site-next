@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ScrollingArticlesLoading from "../../Loading/ScrollingArticlesLoading";
 import PropTypes from "prop-types";
 import SubScrollingContent from "./SubContent";
-import MainScrollingContent from "./MainContent";
+// import MainScrollingContent from "./MainContent";
 import SectionBar from "../SectionBar";
 import sideHelper from "../../helper/sideBarHelper";
 import querySelect from "./utils/querySelect";
@@ -86,10 +86,12 @@ const ScrollingContent = ({ id, title, type }) => {
 		return <ScrollingArticlesLoading height="200px" />;
 	return (
 		<div className={styles.scrollingWrapper}>
-			<SectionBar title={title} titleColor="#111" titleSize="2rem" />
+			<div className={styles.sectionWrapper}>
+				<SectionBar title={title} titleColor="#111" titleSize="1rem" />
+			</div>
+
 			{content.map((content, index) => {
 				if (content.id === id) return null;
-
 				const {
 					headlineImage,
 					headlineImageAlt,
@@ -100,25 +102,26 @@ const ScrollingContent = ({ id, title, type }) => {
 					headlineImagePath,
 					headlineImageCrop,
 					headlineImageCropInfo,
+					kicker,
 				} = sideHelper(content, type);
 
-				if (index % 4 === 0) {
-					return (
-						<MainScrollingContent
-							category={category}
-							headline={headline}
-							headlineImage={headlineImage}
-							headlineImagePath={headlineImagePath}
-							headlineImageAlt={headlineImageAlt}
-							headlineImageCrop={headlineImageCrop}
-							headlineImageCropInfo={headlineImageCropInfo}
-							index={index}
-							key={index}
-							contentLink={contentLink}
-							refPath={refPath}
-						/>
-					);
-				}
+				// if (index % 4 === 0) {
+				// 	return (
+				// 		<MainScrollingContent
+				// 			category={category}
+				// 			headline={headline}
+				// 			headlineImage={headlineImage}
+				// 			headlineImagePath={headlineImagePath}
+				// 			headlineImageAlt={headlineImageAlt}
+				// 			headlineImageCrop={headlineImageCrop}
+				// 			headlineImageCropInfo={headlineImageCropInfo}
+				// 			index={index}
+				// 			key={index}
+				// 			contentLink={contentLink}
+				// 			refPath={refPath}
+				// 		/>
+				// 	);
+				// }
 				return (
 					<SubScrollingContent
 						category={category}
@@ -132,6 +135,7 @@ const ScrollingContent = ({ id, title, type }) => {
 						key={index}
 						contentLink={contentLink}
 						refPath={refPath}
+						kicker={kicker}
 					/>
 				);
 			})}

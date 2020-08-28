@@ -14,6 +14,7 @@
 
     &:after
         margin-left: 10px
+
 .adHeader
     text-align: center
     font-size: 11px
@@ -24,9 +25,12 @@
     width: 100%
 
 .adWrap
-    border-bottom: 1px solid #d9d9d9
-    padding-bottom: 7px
-    margin-bottom: 20px
+    padding: 0px
+
+.breaker
+    width: 100%
+    border-top: 1px solid #d9d9d9
+    // margin-bottom: 20px
 
 .multiAdWrap
     display: flex
@@ -39,6 +43,11 @@
     margin: 0 auto
 
 @media only screen and (max-width: 670px) 
+    .adWrap
+        padding: 20px
+    .breaker
+        width: 95%
+
     .multiAdWrap
         flex-direction: column
 

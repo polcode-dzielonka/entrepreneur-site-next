@@ -101,10 +101,10 @@ const MainHeadline = ({ data }) => {
 											</div>
 											<div className={styles.subTitleContainer}>
 												<div className={styles.subTitleWrap}>
-													<h2 className={styles.subTitle}>{headline}</h2>
+													<h3 className={styles.subTitle}>{headline}</h3>
 												</div>
 												<div className={styles.subCategoryWrapper}>
-													<h2 className={styles.subCategory}>{category}</h2>
+													<div className={styles.subCategory}>{category}</div>
 												</div>
 											</div>
 										</a>

@@ -14,9 +14,9 @@
 
 .infoLink
     color: $secondary
-    font-size: 1.2rem
+    font-size: 1.6rem
+    line-height: 2rem
     letter-spacing: -0.02em
-    line-height: 1.2
     margin: 0 0.5rem
     margin-bottom: 0.55rem
     text-decoration: none
@@ -31,13 +31,23 @@
     &:hover
         color: $primary
 
+.kicker
+    color: $secondary
+    font-size: 0.9rem
+    line-height: 1.2rem
+    margin: 0
+    font-family: $font
+
+    &Wrap
+        padding-left: 7px
+
 .sideContent
     margin-bottom: 0.5rem
     position: relative
     cursor: pointer
     display: flex
     flex-direction: row
-    width: 50%
+    width: 100%
 
 .sideHeadlineAnchor
     width: 40%
@@ -53,7 +63,7 @@
 
 .sideImageMain
     display: flex
-    height: 7.5rem
+    height: 12rem
     width: 100%
     background-color: $secondary
 
@@ -69,24 +79,21 @@
     position: relative
     width: 100%
     padding: 0.5rem
-    text-transform: uppercase
+    text-transform: capitalize
     margin: 0
     padding: 0
     overflow: hidden
 
-@media only screen and (max-width: 1000px) 
-    .sideContent
-        width: 100%
-
-    .infoLink
-        font-size: 2.5rem
-
-    .sideImageMain
-        height: 12rem
-
 @media only screen and (max-width: 645px) 
+    .categoryLink
+        font-size: 0.8rem
+
     .infoLink
-        font-size: 1.5rem
+        font-size: 1.2rem
+        line-height: 1.45rem
+
+    .kicker
+        display: none
 
     .sideImageMain
         height: 8rem

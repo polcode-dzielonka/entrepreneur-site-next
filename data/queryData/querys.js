@@ -4,7 +4,7 @@ import {
 	QUIZ_QUERY,
 	SLIDE_LONGFORM_QUERY,
 	MOTIVATION_QUERY,
-	NETWORTH_QUERY,
+	BUSINESS_QUERY,
 	PEOPLE_QUERY,
 	QUOTE_QUERY,
 } from "./compileQuery";
@@ -22,8 +22,8 @@ export const motivationHeadlineQuery = [
 	SLIDE_LONGFORM_QUERY,
 ];
 
-export const networthHeadlineQuery = [
-	NETWORTH_QUERY,
+export const businessHeadlineQuery = [
+	BUSINESS_QUERY,
 	QUIZ_QUERY,
 	SLIDE_LONGFORM_QUERY,
 ];

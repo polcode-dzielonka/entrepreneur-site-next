@@ -100,24 +100,24 @@ const MainHeadlineLayout = ({
 								<SectionBar
 									title={pageTitle}
 									titleColor="#111"
-									titleSize="2rem"
+									titleSize="1.25rem"
 								/>
 							</div>
 							<ScrollingArticles data={latestContent} />
-							{token && (
-								<LazyLoad once={true}>
-									<RippleButton
-										label={loadingMorePosts ? "Loading..." : "Load More!"}
-										color={baseTheme.secondary}
-										handler={loadMore}
-									/>
-								</LazyLoad>
-							)}
 						</div>
+						{token && (
+							<LazyLoad once={true}>
+								<RippleButton
+									label={loadingMorePosts ? "Loading..." : "More"}
+									color={baseTheme.secondary}
+									handler={loadMore}
+								/>
+							</LazyLoad>
+						)}
 					</div>
 					<aside className={styles.slideContainer}>
 						<div className={styles.sectionPadding}>
-							<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
+							<SectionBar title="Quiz" titleColor="#111" titleSize="1.25rem" />
 						</div>
 						<SideBarContent data={quiz.items} type="quiz" />
 						<LazyLoad once={true}>
@@ -127,7 +127,7 @@ const MainHeadlineLayout = ({
 							<SectionBar
 								title="Popular"
 								titleColor="#111"
-								titleSize="1.7rem"
+								titleSize="1.25rem"
 							/>
 						</div>
 						{/* <SideBarSmallContent

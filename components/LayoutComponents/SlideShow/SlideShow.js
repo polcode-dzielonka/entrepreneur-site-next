@@ -64,7 +64,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 
 	return (
 		<div className={styles.sectionPadding}>
-			<SectionBar title={`Lists`} titleColor="#111" titleSize="1.5rem" />
+			<SectionBar title={category} titleColor="#111" titleSize="1rem" />
 			{(cpcMarker || (!cpcMarker && position !== "opening")) && (
 				<>
 					<div>
@@ -73,6 +73,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 							id={id}
 							position={position}
 							totalSlides={content.numSlides}
+							cpcMarker={cpcMarker}
 						/>
 						{(position === "opening" || position === "closing") && (
 							<>
@@ -220,7 +221,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				<SectionBar
 					title="Leave a Comment"
 					titleColor="#111"
-					titleSize="2rem"
+					titleSize="1rem"
 				/>
 			</LazyLoad>
 			<FacebookComments

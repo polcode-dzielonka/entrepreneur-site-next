@@ -16,6 +16,7 @@ const SubScrollingContent = ({
 	index,
 	contentLink,
 	refPath,
+	kicker,
 }) => {
 	return (
 		<article className={styles.sideContent} key={index}>
@@ -41,16 +42,17 @@ const SubScrollingContent = ({
 				</a>
 			</Link>
 			<div className={styles.sideTitleInfo}>
-				<div className={styles.sideTitle}>
-					<Link href={refPath} as={contentLink}>
-						<a className={styles.infoLink}>{headline}</a>
-					</Link>
+				<Link href={refPath} as={contentLink}>
 					<div className={styles.sideTitle}>
-						<Link href={refPath} as={contentLink}>
+						<a className={styles.infoLink}>{headline}</a>
+						<div className={styles.kickerWrap}>
+							<a className={styles.kicker}>{kicker}</a>
+						</div>
+						<div className={styles.sideTitle}>
 							<a className={styles.categoryLink}>{category}</a>
-						</Link>
+						</div>
 					</div>
-				</div>
+				</Link>
 			</div>
 		</article>
 	);

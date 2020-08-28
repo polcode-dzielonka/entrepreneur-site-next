@@ -6,10 +6,17 @@ import dynamic from "next/dynamic";
 const AdWrapper = dynamic(() => import("../ads/adWrapper"), {
 	ssr: false,
 });
-const SideBarSmallContent = ({ data, type, showAd = false, adCode }) => {
+const SideBarSmallContent = ({
+	data,
+	type,
+	showAd = false,
+	adCode,
+	limit = 0,
+}) => {
+	const slicedData = limit > 0 ? data.slice(0, limit) : data;
 	return (
 		<>
-			{data.map((content, index) => {
+			{slicedData.map((content, index) => {
 				const {
 					headlineImage,
 					headlineImageAlt,

@@ -2,7 +2,7 @@
 
 .categoryLink
     color: $secondary
-    font-size: 1rem
+    font-size: 0.8rem
     margin: 0
     text-decoration: none
     float: right
@@ -14,8 +14,8 @@
 
 .infoLink
     color: $secondary
-    font-size: 1.2rem
-    letter-spacing: -0.02em
+    font-size: 1rem
+    letter-spacing: 0.02em
     line-height: $fontSize
     padding: 0 0.25rem
     text-decoration: none
@@ -26,11 +26,13 @@
         color: $primary
 
 .sideContent
-    margin-bottom: 0.5rem
     position: relative
     cursor: pointer
     display: flex
     flex-direction: row
+    margin-bottom: 10px
+    padding-bottom: 10px
+    border-bottom: 1px solid #dedede
 
 .sideHeadlineAnchor
     width: 40%
@@ -46,7 +48,7 @@
 
 .sideImageMain
     display: flex
-    height: 7.5rem
+    height: 7rem
     width: 100%
     background-color: $secondary
 
@@ -60,34 +62,39 @@
 
 .sideTitle
     width: 100%
-    text-transform: uppercase
+    text-transform: capitalize
     margin: 0
     padding: 0
 
 @media only screen and (max-width: 1000px) 
+    .categoryLink
+        color: $primary
+        font-size: 1.4rem
 
     .infoLink
-        font-size: 2.5rem
+        font-size: 2rem
+        line-height: 2.5rem
 
     .sideImageMain
-        height: 12rem
+        height: 50%
 
-@media only screen and (max-width: 645px) 
+@media only screen and (max-width: 680px) 
+    .categoryLink
+        font-size: 0.8rem
 
     .infoLink
-        font-size: 1.5rem
-        line-height: 1.7rem
-
-    .sideImageMain
-        height: 8rem
+        font-size: 1.1rem
+        line-height: 1.4rem
 
 @media only screen and (max-width: 460px) 
+    .categoryLink
+        font-size: 0.8rem
 
     .infoLink
-        font-size: 1.35rem
-        line-height: 1.5rem
+        font-size: 1.05rem
+        line-height: 1.3rem
         font-weight: 900
         padding: 0rem 0.5rem
 
     .sideImageMain
-        height: 8rem
+        height: 7rem

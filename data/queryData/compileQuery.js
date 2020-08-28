@@ -14,7 +14,7 @@ export const HEADLINE_QUERY = {
 export const LATEST_QUERY = {
 	query: LATEST,
 	variables: {
-		limit: 10,
+		limit: 14,
 		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",
@@ -46,10 +46,10 @@ export const MOTIVATION_QUERY = {
 	operationName: "ListProductionArticles",
 };
 
-export const NETWORTH_QUERY = {
+export const BUSINESS_QUERY = {
 	query: HEADLINES,
 	variables: {
-		filter: { category: "networth" },
+		filter: { category: "business" },
 		id: process.env.REACT_APP_SITE_ID,
 	},
 	operationName: "ListProductionArticles",

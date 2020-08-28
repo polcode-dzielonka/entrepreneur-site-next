@@ -110,7 +110,7 @@ const HeadlineLayout = ({
 									<SectionBar
 										title={pageTitle}
 										titleColor="#111"
-										titleSize="2rem"
+										titleSize="1rem"
 									/>
 								</LazyLoad>
 							</div>
@@ -118,7 +118,7 @@ const HeadlineLayout = ({
 							{token && (
 								<LazyLoad once={true}>
 									<RippleButton
-										label={loadingMorePosts ? "Loading..." : "Load More!"}
+										label={loadingMorePosts ? "Loading..." : "More"}
 										color={baseTheme.secondary}
 									/>
 								</LazyLoad>
@@ -127,18 +127,14 @@ const HeadlineLayout = ({
 					</div>
 					<aside className={styles.slideContainer}>
 						<div className={styles.sectionPadding}>
-							<SectionBar
-								title="Popular"
-								titleColor="#111"
-								titleSize="1.7rem"
-							/>
+							<SectionBar title="Quiz" titleColor="#111" titleSize="1rem" />
 						</div>
 						<SideBarContent data={quiz.items} type="quiz" />
 						<LazyLoad once={true}>
 							<FacebookPage />
 						</LazyLoad>
 						<div className={styles.sectionPadding}>
-							<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
+							<SectionBar title="Popular" titleColor="#111" titleSize="1rem" />
 						</div>
 						<SideBarSmallContent data={slide.items} type="slideshow" />
 					</aside>

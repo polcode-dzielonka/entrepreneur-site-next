@@ -1,7 +1,7 @@
 const links = [
-	{ href: "/people", label: "People" },
+	{ href: "/business", label: "Business" },
 	{ href: "/motivation", label: "Motivation" },
-	// { href: "/business", label: "Business" },
+	{ href: "/people", label: "People" },
 	// { href: "/case-study", label: "Case-Study" },
 	// { href: "/review", label: "Review" },
 	// { href: "/entertainment", label: "Entertainment" },
@@ -9,9 +9,9 @@ const links = [
 ];
 const mobileLinks = [
 	{ href: "/", label: "Home" },
-	{ href: "/people", label: "People" },
+	{ href: "/business", label: "Business" },
 	{ href: "/motivation", label: "Motivation" },
-	// { href: "/business", label: "Business" },
+	{ href: "/people", label: "People" },
 	// { href: "/case-study", label: "Case-Study" },
 	// { href: "/review", label: "Review" },
 	// { href: "/entertainment", label: "Entertainment" },

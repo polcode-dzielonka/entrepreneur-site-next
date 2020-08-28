@@ -6,15 +6,11 @@ import LazyLoad from "react-lazyload";
 import SiteAd from "./ads/siteAd";
 import LinkAd from "./ads/linkAd";
 import styles from "./styles/renderElementStyles.module.sass";
-const paragraphFontSize = 1.35;
-const paragraphLineHeight = 2.5;
+
 const Embed = dynamic(() => import("./embed/embed"), {
 	ssr: false,
 	loading: () => <SingleLoader />,
 });
-
-const formatSize = 18;
-const lineHeight = 1.75;
 
 const RenderElement = props => {
 	const { attributes, children, element } = props;
@@ -146,7 +142,7 @@ const RenderElement = props => {
 
 		case "embed-image":
 			return (
-				<LazyLoad once={true}>
+				<LazyLoad once={true} offset={100}>
 					<EmbedImage
 						attributes={attributes}
 						element={element}
@@ -156,7 +152,7 @@ const RenderElement = props => {
 			);
 		case "embed":
 			return (
-				<LazyLoad once={true}>
+				<LazyLoad once={true} offset={100}>
 					<Embed
 						attributes={attributes}
 						element={element}

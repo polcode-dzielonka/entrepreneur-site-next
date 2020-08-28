@@ -123,10 +123,10 @@ const Questions = ({
 	if (loading) return <SingleLoader />;
 	return (
 		<div className={styles.bookendWrapper}>
-			<h1 className={styles.sectionHeader}>
+			<div className={styles.sectionHeader}>
 				<span className={styles.questionPosition}>{questionPosition}</span>
 				{question}
-			</h1>
+			</div>
 			<div>
 				{!showAnswer && (
 					<div className={styles.easing}>
@@ -165,9 +165,9 @@ const Questions = ({
 					/>
 				</div>
 			</div>
-			<h1 className={styles.sectionHeaderScore}>
+			<div className={styles.sectionHeaderScore}>
 				Current Score: {currentScore}
-			</h1>
+			</div>
 			<div className={styles.answerWrap}>
 				<QuizButton
 					answerInfo={answerInfo}

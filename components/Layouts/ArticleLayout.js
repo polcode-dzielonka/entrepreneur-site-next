@@ -23,14 +23,14 @@ const Article = ({ id, individual, quiz, slide, url }) => {
 				</article>
 				<aside className={styles.sideArticleSection}>
 					<div className={styles.sectionPadding}>
-						<SectionBar title="Popular" titleColor="#111" titleSize="1.7rem" />
+						<SectionBar title="Popular" titleColor="#111" titleSize="1rem" />
 					</div>
 					<SideBarContent data={slide.items} type="slideshow" showAd={true} />
 					<LazyLoad once={true}>
 						<FacebookPage />
 					</LazyLoad>
 					<div className={styles.sectionPadding}>
-						<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
+						<SectionBar title="Quiz" titleColor="#111" titleSize="1rem" />
 					</div>
 					<SideBarSmallContent
 						data={quiz.items}

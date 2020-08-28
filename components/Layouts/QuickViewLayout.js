@@ -36,20 +36,26 @@ const QuickViewLayout = ({
 				</article>
 				<aside className={styles.sideArticleSection}>
 					<div className={styles.sectionPadding}>
-						<SectionBar title="Popular" titleColor="#111" titleSize="1.7rem" />
+						<SectionBar title="Popular" titleColor="#111" titleSize="1rem" />
 					</div>
-					<SideBarContent data={headline.items} type="article" showAd={true} />
+					<SideBarContent
+						data={headline.items}
+						type="article"
+						showAd={true}
+						limit={6}
+					/>
 					<LazyLoad once={true}>
 						<FacebookPage />
 					</LazyLoad>
 					<div className={styles.sectionPadding}>
-						<SectionBar title="Quiz" titleColor="#111" titleSize="1.7rem" />
+						<SectionBar title="Quiz" titleColor="#111" titleSize="1rem" />
 					</div>
 					<SideBarSmallContent
 						data={quiz.items}
 						type="quiz"
 						showAd={true}
 						adCode={AMAZON_MUSIC_CODE_RECT_LARGE}
+						limit={6}
 					/>
 				</aside>
 			</main>

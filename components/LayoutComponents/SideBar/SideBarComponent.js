@@ -52,16 +52,16 @@ const SideBarContent = ({
 				</a>
 			</Link>
 			<div className={styles.sideTitleInfo}>
-				<h1 className={styles.sideTitle}>
+				<h3 className={styles.sideTitle}>
 					<Link href={refPath} as={contentLink}>
 						<a className={styles.infoLink}>{headline}</a>
 					</Link>
-					<h2 className={styles.sideTitle}>
+					<div className={styles.categoryLinkWrapper}>
 						<Link href={refPath} as={contentLink}>
 							<a className={styles.categoryLink}>{category}</a>
 						</Link>
-					</h2>
-				</h1>
+					</div>
+				</h3>
 			</div>
 		</article>
 	);

@@ -9,25 +9,23 @@ const EmbedImage = ({ attributes, element, children }) => {
 		imagePath: "",
 		imageAttribution: "",
 		imageAttributionLink: "",
+		imageCrop: "",
+		imageCropInfo: {},
 	});
 	useEffect(() => {
 		handleImageEmbed();
 	}, []);
 
 	const handleImageEmbed = () => {
-		const embedImageUrl = data.image;
-		const embedImageAlt = data.imageAlt;
-		const embedImagePath = data.imagePath;
-		const embedImageAttribution = data.imageAttribution;
-		const embedImageAttributionLink = data.imageAttributionLink;
-		const embedImageComment = data.imageComment;
 		setEmbedImageUrl({
-			imageUrl: embedImageUrl,
-			imageAlt: embedImageAlt,
-			imageAttribution: embedImageAttribution,
-			imageAttributionLink: embedImageAttributionLink,
-			imagePath: embedImagePath,
-			imageComment: embedImageComment,
+			imageUrl: data.image,
+			imageAlt: data.imageAlt,
+			imageAttribution: data.imageAttribution,
+			imageAttributionLink: data.imageAttributionLink,
+			imagePath: data.imagePath,
+			imageComment: data.imageComment,
+			imageCrop: data.imageCrop,
+			imageCropInfo: data.imageCropInfo,
 		});
 	};
 
@@ -37,6 +35,8 @@ const EmbedImage = ({ attributes, element, children }) => {
 				src={embedImage.imageUrl}
 				alt={embedImage.imageAlt}
 				imagePath={embedImage.imagePath}
+				imageCrop={embedImage.imageCrop}
+				imageCropInfo={embedImage.imageCropInfo}
 				animation={true}
 				sizes="330px"
 				noMaxHeight={true}
@@ -71,6 +71,8 @@ EmbedImage.defaultProps = {
 			imageAttribution: "",
 			imageAttributionLink: "",
 			imagePath: "",
+			imageCrop: "",
+			imageCropInfo: {},
 		},
 	},
 };

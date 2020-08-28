@@ -42,7 +42,7 @@ const Header = ({ menuOpen, onClick }) => {
 							{links.map(({ href, label }, index) => (
 								<Link href={href} key={index}>
 									<a className={`${styles.navMenuItem} nav-menu-item-link`}>
-										<span className={styles.navMenuLink}>{label}</span>
+										<span className={styles.navMenuLink}>{label} </span>
 									</a>
 								</Link>
 							))}

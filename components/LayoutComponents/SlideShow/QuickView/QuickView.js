@@ -42,7 +42,7 @@ const QuickView = ({ content, position, url, id }) => {
 
 	return (
 		<div className={styles.sectionPadding}>
-			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
+			<SectionBar title={`${category}`} titleColor="#111" titleSize="1rem" />
 			<Headline
 				data={details}
 				id={id}
@@ -82,7 +82,7 @@ const QuickView = ({ content, position, url, id }) => {
 					<SectionBar
 						title="Leave a Comment"
 						titleColor="#111"
-						titleSize="2rem"
+						titleSize="1rem"
 					/>
 					<FacebookComments
 						url={commentsUrl}

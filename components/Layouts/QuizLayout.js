@@ -38,14 +38,14 @@ const Quiz = ({
 				</article>
 				<aside className={styles.sideArticleSection}>
 					<div className={styles.sectionPadding}>
-						<SectionBar title="Popular" titleColor="#111" titleSize="1.7rem" />
+						<SectionBar title="Quiz" titleColor="#111" titleSize="1rem" />
 					</div>
 					<SideBarContent data={headline.items} type="article" showAd={true} />
 					<LazyLoad once={true}>
 						<FacebookPage />
 					</LazyLoad>
 					<div className={styles.sectionPadding}>
-						<SectionBar title="Lists" titleColor="#111" titleSize="1.7rem" />
+						<SectionBar title="Popular" titleColor="#111" titleSize="1rem" />
 					</div>
 					<SideBarSmallContent
 						data={slide.items}

@@ -17,6 +17,7 @@ const AdWrapper = ({ adCode, sticky = false }) => {
 					/>
 				</div>
 			</div>
+			<hr className={styles.breaker} />
 		</div>
 	);
 };

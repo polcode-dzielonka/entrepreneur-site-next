@@ -1,23 +1,24 @@
 @import "../../../../styles/_baseTheme"
 .categoryLink
     color: #fff
-    font-size: 1rem
+    font-size: 0.8rem
     margin: 0
     text-decoration: none
     float: right
-    padding-right: 1rem
+    // padding-right: 1rem
     font-family: $font
-
+    text-transform: capitalize
+    padding: 0.5rem
     &:hover
         color: $primary
 
 .infoLink
     color: #fff
-    font-size: 1.5rem
+    font-size: 1.2rem
     letter-spacing: -0.02em
-    line-height: 1.2
-    margin: 0.5rem
-    margin-bottom: 0.55rem
+    line-height: 1.4
+    margin: 0.5rem 0.2rem 0rem 0.5rem
+    // margin-bottom: 0.55rem
     text-decoration: none
     display: -webkit-box
     -webkit-line-clamp: 3
@@ -34,7 +35,8 @@
     margin-bottom: 1rem
     position: relative
     cursor: pointer
-    padding: 0rem 0rem 1rem 0rem
+    height: 250px
+    // padding: 0rem 0rem 1rem 0rem
 
 .sideHeadlineAnchor
     width: 100%
@@ -65,19 +67,41 @@
 .sideTitle
     position: relative
     width: 100%
-    text-transform: uppercase
+    text-transform: capitalize
     margin: 0
     padding: 0
     background: rgba(16, 16, 16, 0.75)
     overflow: hidden
 
 @media only screen and (max-width: 1000px) 
+    .categoryLink
+        font-size: 1rem
+
     .infoLink
-        font-size: 2.5rem
+        font-size: 1.8rem
+        line-height: 2rem
 
     .sideContent
-        padding: 0rem 0rem 0.25rem 0rem
+        height: 50%
+        margin: 2.5rem 5rem 0rem 5rem
 
 @media only screen and (max-width: 645px) 
     .infoLink
         font-size: 1.5rem
+
+    .sideContent
+        height: 400px
+        margin: 0rem 0rem 2rem 0rem
+
+@media only screen and (max-width: 560px) 
+    .infoLink
+        font-size: 1.15rem
+        line-height: 1.4rem
+
+    .sideContent
+        height: 275px
+        margin: 0rem 0rem 2rem 0rem
+
+    .categoryLink
+        font-size: 0.8rem
+        line-height: 1rem

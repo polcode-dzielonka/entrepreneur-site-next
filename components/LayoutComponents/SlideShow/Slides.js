@@ -97,11 +97,7 @@ const Slides = ({
 				{index % 4 === 0 && (
 					<>
 						<LazyLoad once={true}>
-							<SectionBar
-								title={`Share`}
-								titleColor="#111"
-								titleSize="1.5rem"
-							/>
+							<SectionBar title={`Share`} titleColor="#111" titleSize="1rem" />
 							<ShareButtonHoriz
 								data={openingSocialButtons}
 								url={shareUrl}
@@ -119,10 +115,10 @@ const Slides = ({
 							<SectionBar
 								title={`Up Next`}
 								titleColor="#111"
-								titleSize="1.5rem"
+								titleSize="1rem"
 							/>
 							<NextLink data={midDataOverview} type="article" id={midDataId} />
-							<SectionBar title={``} titleColor="#111" titleSize="1.5rem" />
+							<SectionBar title={``} titleColor="#111" titleSize="1rem" />
 						</LazyLoad>
 					</>
 				)}

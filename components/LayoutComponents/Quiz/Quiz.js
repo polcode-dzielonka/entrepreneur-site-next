@@ -58,13 +58,15 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 
 	return (
 		<div className={styles.sectionPadding}>
-			<SectionBar title={`${category}`} titleColor="#111" titleSize="1.5rem" />
-			<Headline
-				data={details}
-				id={id}
-				position={position}
-				totalQuestions={content.numQuestions}
-			/>
+			<SectionBar title={`${category}`} titleColor="#111" titleSize="1rem" />
+			{position === "opening" && (
+				<Headline
+					data={details}
+					id={id}
+					position={position}
+					totalQuestions={content.numQuestions}
+				/>
+			)}
 			<div>
 				{(position === "opening" || position === "closing") && (
 					<>
@@ -93,16 +95,18 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							numberQuestions={content.numQuestions}
 						/>
 						{position === "opening" && (
-							<QuickViewButton
-								label="Start"
-								imgSrc={details[0].headlineImage}
-								imagePath={details[0].headlineImagePath}
-								imageCrop={details[0].headlineImageCrop}
-								imageCropInfo={details[0].headlineImageCropInfo}
-								href={`${nextHref}/1`}
-								refPath={`/[category]/[url]/quiz/[quizId]/questions/[questionId]`}
-								imageAlt={details[0].headlineImageAlt}
-							/>
+							<div className={styles.openingButton}>
+								<QuickViewButton
+									label="Start"
+									imgSrc={details[0].headlineImage}
+									imagePath={details[0].headlineImagePath}
+									imageCrop={details[0].headlineImageCrop}
+									imageCropInfo={details[0].headlineImageCropInfo}
+									href={`${nextHref}/1`}
+									refPath={`/[category]/[url]/quiz/[quizId]/questions/[questionId]`}
+									imageAlt={details[0].headlineImageAlt}
+								/>
+							</div>
 						)}
 					</>
 				)}
@@ -163,7 +167,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 					<SectionBar
 						title="Leave a Comment"
 						titleColor="#111"
-						titleSize="2rem"
+						titleSize="1rem"
 					/>
 					<FacebookComments
 						url={commentsUrl}

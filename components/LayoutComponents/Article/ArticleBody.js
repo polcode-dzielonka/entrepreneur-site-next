@@ -73,7 +73,7 @@ const ArticleBody = ({
 			</LazyLoad>
 			<AdWrapper adCode={AMAZON_BUSINESS_AD_RECT} />
 
-			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="2rem" />
+			<SectionBar title="Leave a Comment" titleColor="#111" titleSize="1rem" />
 			<FacebookComments url={url} numPostsVisible={5} orderBy="reverse_time" />
 			<LazyLoad>
 				<ScrollingContent id={id} type={"article"} />

@@ -4,26 +4,35 @@
     padding: 0
     margin: 0
 
+.answerCommentHeader
+    font-size: 1.6rem
+    padding: 0
+    margin: 0px 0px 10px 0px
+
 .bookendWrapper
     height: 100%
     width: 100%
-    margin: 0
+    margin: 0px 0px 10px 0px
     padding: 0
 
 .editorAnswer
     font-size: 2.5rem
     text-align: justify
+    font-family: $font
     margin: 0 auto
     padding-top: 0.5rem
+    display: flex
+    flex-direction: row
 
 .editorBlock
     font-size: 2.25rem
     text-align: justify
     font-color: blue
-    padding: 2rem
+    // padding: 2rem
 
 .correct
-    width: 100%
+    // width: 100%
+    // padding-left: 25px
     display: flex
     flex-direction: row
     align-items: center
@@ -32,7 +41,7 @@
 
     &Group
         display: flex
-        flex-direction: row
+        flex-direction: column
         text-align: center
         margin: 0 auto
 
@@ -44,14 +53,15 @@
 .incorrectLabel
     position: relative
     height: 100%
-    margin-left: -3.5rem
     color: #d20000
 
 .correctImage
-    width: 25%
+    width: 60%
+    margin: 0 auto
 
 .incorrectImage
     width: 40%
+    margin: 0 auto
 
 .incorrectWrapper
     display: flex
@@ -61,24 +71,29 @@
 @media only screen and (max-width: 650px) 
     .answerComment
         font-size: 1.75rem
+        margin: 1rem 0rem
 
     .answerCommentHeader
-        font-size: 1.75rem
+        font-size: 1.5rem
+        line-height: 1.7rem
         padding: 0
         margin: 0
 
     .correctImage
-        width: 20%
-        height: 20%
+        width: 40%
+        margin: 0 auto
 
     .correctLabel
         font-size: 1.75rem
+
+    .editorAnswer
+        flex-direction: column
 
     .editorBlock
         padding: 1rem
 
     .incorrectImage
-        width: 20%
+        width: 30%
 
     .incorrectLabel
         font-size: 1.75rem

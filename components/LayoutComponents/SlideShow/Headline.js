@@ -24,7 +24,7 @@ import {
 	AMAZON_KINDLE_CODE_SQUARE,
 } from "../../ads/code/amazonBusiness";
 import { FIVERR_SQUARE } from "../../ads/code/fiverr";
-const BookEnds = ({ data, id, position }) => {
+const BookEnds = ({ data, id, position, cpcMarker }) => {
 	const {
 		headlineImage,
 		headlineImageAlt,
@@ -58,7 +58,6 @@ const BookEnds = ({ data, id, position }) => {
 				tags={slideTags}
 			/>
 			<h1 className={styles.sectionHeading}>{title}</h1>
-			<h3 className={styles.sectionCategory}>{category}</h3>
 			<ShowMeta
 				showDate={showDate}
 				displayDate={displayDate}
@@ -85,14 +84,16 @@ const BookEnds = ({ data, id, position }) => {
 				/>
 			</div>
 			<hr className={styles.break} />
-			<div>
-				<MultiAdsWrapper
-					adCodeOne={FIVERR_SQUARE}
-					adCodeTwo={AMAZON_KINDLE_CODE_SQUARE}
-				/>
-			</div>
+			{cpcMarker && (
+				<div>
+					<MultiAdsWrapper
+						adCodeOne={FIVERR_SQUARE}
+						adCodeTwo={AMAZON_KINDLE_CODE_SQUARE}
+					/>
+				</div>
+			)}
 			<LazyLoad once={true}>
-				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
+				<SectionBar title={`Share`} titleColor="#111" titleSize="1rem" />
 				<ShareButtonVert
 					data={sideSocialButtons}
 					url={canonical}

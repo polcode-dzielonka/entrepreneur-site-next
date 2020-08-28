@@ -1,9 +1,9 @@
 import HeadlineLayout from "../components/Layouts/HeadlineLayout";
 import MainHeadlineLoading from "../components/Loading/Layouts/MainHeadlineLoadingLayout";
 import prodRequest from "../components/apiRequest/prodRequest";
-import { networthHeadlineQuery } from "../data/queryData/querys";
+import { businessHeadlineQuery } from "../data/queryData/querys";
 
-const Networth = ({ headline, quiz, slide }) => {
+const Business = ({ headline, quiz, slide }) => {
 	if (!headline || !quiz || !slide) return <MainHeadlineLoading />;
 
 	return (
@@ -11,16 +11,16 @@ const Networth = ({ headline, quiz, slide }) => {
 			headline={headline.data.listProductionArticles}
 			quiz={quiz.data.listProductionQuizs}
 			slide={slide.data.listProductionSlideshows}
-			title="Networth"
-			pageTitle="Networth"
-			canonical="networth"
+			title="Business"
+			pageTitle="Business"
+			canonical="Business"
 		/>
 	);
 };
 
 export async function getStaticProps() {
 	const [headline, quiz, slide] = await Promise.all(
-		networthHeadlineQuery.map(query =>
+		businessHeadlineQuery.map(query =>
 			prodRequest({
 				query: query.query,
 				variables: query.variables,
@@ -38,4 +38,4 @@ export async function getStaticProps() {
 	};
 }
 
-export default Networth;
+export default Business;
