@@ -51,7 +51,7 @@ const ArticleBody = ({
 
 			<br />
 			<LazyLoad once={true}>
-				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
+				<SectionBar title={`Share`} titleColor="#111" titleSize="1rem" />
 				<ShareButtonHoriz
 					data={closingSocialButtons}
 					url={url}

@@ -32,13 +32,14 @@
 
 .sectionParagraph
     margin: 2rem auto
-    width: 85%
+    width: 92.5%
     padding: 0
-    font-size: 1.45rem
     font-weight: 300
-    line-height: 2rem
-    color: $secondary
     font-family: $secondaryFont
+    color: $contentFontColor
+    font-size: $paragraphFontSize
+    line-height: $paragraphLineHeight
+    letter-spacing: $paragraphLetterSpace
 
 .slidePosition
     font-weight: 900
@@ -61,6 +62,8 @@
     .sectionParagraph
         margin: 2rem 0 0.5rem 0
         width: 98%
+        font-size: 1.1rem
+        line-height: 1.7rem
 
 @media only screen and (max-width: 450px) 
     .sectionHeader
@@ -72,3 +75,5 @@
 
     .sectionParagraph
         margin-bottom: 1.5rem
+        font-size: 1.1rem
+        line-height: $lineHeight

@@ -46,10 +46,13 @@ const Questions = ({
 		answerImageAttribution,
 		answerImagePath,
 		answerImageAttributionLink,
+		answerImageCrop,
+		answerImageCropInfo,
 		correctAnswerDetails,
 		inCorrectAnswerDetails,
 		longAnswer,
 		longFalseAnswer,
+		longAnswerSerialized,
 		question,
 		questionImage,
 		questionImageAlt,
@@ -57,10 +60,11 @@ const Questions = ({
 		questionImageAttribution,
 		questionImageAttributionLink,
 		questionPosition,
+		questionImageCrop,
+		questionImageCropInfo,
 		correctAnswerComment,
 		incorrectAnswerComment,
 	} = questionDetails;
-
 	const answerInfo = {
 		...correctAnswerDetails,
 		...inCorrectAnswerDetails,
@@ -137,6 +141,8 @@ const Questions = ({
 							imagePath={questionImagePath}
 							imageAltAttribution={questionImageAttribution}
 							imageAltAttributionLink={questionImageAttributionLink}
+							imageCrop={questionImageCrop}
+							imageCropInfo={questionImageCropInfo}
 							styles={{ width: "100%", height: "100%" }}
 							noMaxHeight={true}
 						/>
@@ -153,12 +159,14 @@ const Questions = ({
 							imagePath={answerImagePath}
 							imageAltAttribution={answerImageAttribution}
 							imageAltAttributionLink={answerImageAttributionLink}
+							imageCrop={answerImageCrop}
+							imageCropInfo={answerImageCropInfo}
 							styles={{ width: "100%", height: "100%" }}
 							noMaxHeight={true}
 						/>
 					</div>
 				)}
-				<div>
+				<div className={styles.multiWrapper}>
 					<MultiAdsWrapper
 						adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
 						adCodeTwo={FIVERR_SQUARE}
@@ -188,6 +196,7 @@ const Questions = ({
 				answer={longAnswer}
 				correctAnswerComment={correctAnswerComment}
 				incorrectAnswerComment={incorrectAnswerComment}
+				longAnswerSerialized={longAnswerSerialized}
 			/>
 
 			{showAnswer && (
@@ -216,6 +225,16 @@ const Questions = ({
 						setSelected(false);
 						setCorrect(false);
 					}}
+					imageCrop={
+						nextQuestionData[0]
+							? nextQuestionData[0].questionImageCrop
+							: questionImageCrop
+					}
+					imageCropInfo={
+						nextQuestionData[0]
+							? nextQuestionData[0].questionImageCropInfo
+							: questionImageCropInfo
+					}
 				/>
 			)}
 			<div>

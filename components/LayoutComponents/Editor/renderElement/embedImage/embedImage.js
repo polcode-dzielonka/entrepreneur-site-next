@@ -17,6 +17,12 @@ const EmbedImage = ({ attributes, element, children }) => {
 	}, []);
 
 	const handleImageEmbed = () => {
+		const imageCheck =
+			data.imagePath &&
+			data.image.indexOf("content-factory-media") > 1 &&
+			data.image.split(".").pop() !== "gif"
+				? true
+				: false;
 		setEmbedImageUrl({
 			imageUrl: data.image,
 			imageAlt: data.imageAlt,
@@ -26,25 +32,38 @@ const EmbedImage = ({ attributes, element, children }) => {
 			imageComment: data.imageComment,
 			imageCrop: data.imageCrop,
 			imageCropInfo: data.imageCropInfo,
+			imageCheck,
 		});
 	};
 
 	return (
 		<div {...attributes} className={styles.embedWrapper}>
-			<ImageLoader
-				src={embedImage.imageUrl}
-				alt={embedImage.imageAlt}
-				imagePath={embedImage.imagePath}
-				imageCrop={embedImage.imageCrop}
-				imageCropInfo={embedImage.imageCropInfo}
-				animation={true}
-				sizes="330px"
-				noMaxHeight={true}
-				styles={{
-					width: "100%",
-					centerize: true,
-				}}
-			/>
+			{embedImage.imageCheck && (
+				<ImageLoader
+					src={embedImage.imageUrl}
+					alt={embedImage.imageAlt}
+					imagePath={embedImage.imagePath}
+					imageCrop={embedImage.imageCrop}
+					imageCropInfo={embedImage.imageCropInfo}
+					animation={true}
+					sizes="330px"
+					noMaxHeight={true}
+					styles={{
+						width: "100%",
+						centerize: true,
+					}}
+				/>
+			)}
+			{!embedImage.imageCheck && (
+				<img
+					src={embedImage.imageUrl}
+					alt={embedImage.imageAlt}
+					style={{
+						width: "100%",
+						centerize: true,
+					}}
+				/>
+			)}
 			{children}
 			{embedImage.imageAttribution && (
 				<span>

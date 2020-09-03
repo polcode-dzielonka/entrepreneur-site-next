@@ -1,10 +1,5 @@
-import { useMemo, useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
-import { Slate, Editable } from "slate-react";
-import { createEditor } from "slate";
-import RenderElement from "../Editor/renderElement/renderElement";
-import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import styles from "./styles/bookEndStyles.module.sass";
 import baseTheme from "../../../theme/baseTheme.json";
 import dynamic from "next/dynamic";
@@ -27,6 +22,8 @@ const QuizBookEnds = ({
 	imagePath,
 	imageAltAttribution,
 	imageAltAttributionLink,
+	imageCrop,
+	imageCropInfo,
 	title,
 	details,
 	position,
@@ -34,11 +31,8 @@ const QuizBookEnds = ({
 	scoreComments,
 	finalScore,
 	numberQuestions,
+	serialized,
 }) => {
-	const editor = useMemo(() => createEditor(), []);
-	const renderElement = useCallback(props => <RenderElement {...props} />, []);
-	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
-	const value = details;
 	const positionOpening = position === "opening";
 	const positionClosing = position === "closing";
 	const percentageScore = Number(finalScore) / Number(numberQuestions);
@@ -69,6 +63,8 @@ const QuizBookEnds = ({
 					imagePath={imagePath}
 					imageAltAttribution={imageAltAttribution}
 					imageAltAttributionLink={imageAltAttributionLink}
+					imageCrop={imageCrop}
+					imageCropInfo={imageCropInfo}
 					styles={{ width: "100%", height: "100%" }}
 					noMaxHeight={true}
 				/>
@@ -80,13 +76,12 @@ const QuizBookEnds = ({
 			)}
 			<>
 				<div className={styles.sectionParagraph}>
-					<Slate editor={editor} value={value}>
-						<Editable
-							readOnly={true}
-							renderElement={renderElement}
-							renderLeaf={renderLeaf}
-						/>
-					</Slate>
+					<div
+						className={styles.sectionParagraph}
+						dangerouslySetInnerHTML={{
+							__html: serialized,
+						}}
+					/>
 				</div>
 				{positionClosing && <div className={styles.endHeader}>{title}</div>}
 			</>

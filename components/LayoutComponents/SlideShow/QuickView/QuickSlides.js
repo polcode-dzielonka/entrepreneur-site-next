@@ -1,10 +1,6 @@
-import { useMemo, useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Embed from "../../../Embed/Embed";
-import { Slate, Editable } from "slate-react";
-import { createEditor } from "slate";
-import RenderElement from "../../Editor/renderElement/renderElement";
-import RenderLeaf from "../../Editor/renderLeaf/renderLeaf";
 import defaultValue from "../../Editor/defaultValue";
 import QuickViewButton from "../../../Button/QuickViewButton";
 import LazyLoad from "react-lazyload";
@@ -42,17 +38,18 @@ const QuickSlides = ({
 		slideImage,
 		slideImageAlt,
 		slideImagePath,
+		slideImageCrop,
+		slideImageCropInfo,
 		slideImageAttribution,
 		slideImageAttributionLink,
 		slidePosition,
+		slideSerialized,
 	} = slideDetails;
 
 	const value = slideDetails.slideDetails
 		? slideDetails.slideDetails
 		: defaultValue;
-	const editor = useMemo(() => createEditor(), []);
-	const renderElement = useCallback(props => <RenderElement {...props} />, []);
-	const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
+
 	const showNumber = countdown ? total - slidePosition + 1 : slidePosition;
 	const [loading, setLoading] = useState(false);
 
@@ -78,19 +75,20 @@ const QuickSlides = ({
 					imageAlt={slideImageAlt}
 					imageAltAttribution={slideImageAttribution}
 					imageAltAttributionLink={slideImageAttributionLink}
+					imageCrop={slideImageCrop}
+					imageCropInfo={slideImageCropInfo}
 					imagePath={slideImagePath}
 					styles={{ width: "100%", height: "100%" }}
 					noMaxHeight={true}
 				/>
 			</div>
 			<div className={styles.sectionParagraph}>
-				<Slate editor={editor} value={value}>
-					<Editable
-						readOnly={true}
-						renderElement={renderElement}
-						renderLeaf={renderLeaf}
-					/>
-				</Slate>
+				<div
+					className={styles.sectionParagraph}
+					dangerouslySetInnerHTML={{
+						__html: slideSerialized,
+					}}
+				/>
 			</div>
 			<div>
 				<MultiAdsWrapper
@@ -115,6 +113,16 @@ const QuickSlides = ({
 							nextSlideData[0]
 								? nextSlideData[0].slideImageAlt
 								: "Next Slide Image"
+						}
+						imageCrop={
+							nextSlideData[0]
+								? nextSlideData[0].slideImageCrop
+								: slideImageCrop
+						}
+						imageCropInfo={
+							nextSlideData[0]
+								? nextSlideData[0].slideImageCropInfo
+								: slideImageCropInfo
 						}
 					/>
 				</LazyLoad>

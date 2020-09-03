@@ -55,7 +55,6 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 		positionNumber + 1 === content.numQuestions + 1
 			? "closing"
 			: positionNumber + 1;
-
 	return (
 		<div className={styles.sectionPadding}>
 			<SectionBar title={`${category}`} titleColor="#111" titleSize="1rem" />
@@ -81,8 +80,8 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							imageAltAttributionLink={
 								questions[position][0][`${position}ImageAttributionLink`]
 							}
-							imageCrop={questions[position][0][`${position}Crop`]}
-							imageCropInfo={questions[position][0][`${position}CropInfo`]}
+							imageCrop={questions[position][0][`${position}ImageCrop`]}
+							imageCropInfo={questions[position][0][`${position}ImageCropInfo`]}
 							title={questions[position][0][`${position}`]}
 							details={
 								questions[position][0][`${position}QuizDetails`]
@@ -93,6 +92,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							scoreComments={scoreCommentsDetails}
 							finalScore={currentScore}
 							numberQuestions={content.numQuestions}
+							serialized={questions[position][0][`${position}QuizSerialized`]}
 						/>
 						{position === "opening" && (
 							<div className={styles.openingButton}>

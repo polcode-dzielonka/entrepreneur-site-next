@@ -10,6 +10,8 @@ const SlideLinkButton = ({
 	imgSrc,
 	imagePath,
 	imageAlt,
+	imageCrop,
+	imageCropInfo,
 }) => {
 	return (
 		<div className={styles.linkSection}>
@@ -28,6 +30,8 @@ const SlideLinkButton = ({
 									imagePath={imagePath ? imagePath : getImagePath(imgSrc)}
 									imageAlt={imageAlt}
 									layout={"nextButton"}
+									imageCrop={imageCrop}
+									imageCropInfo={imageCropInfo}
 								/>
 							</div>
 						</div>

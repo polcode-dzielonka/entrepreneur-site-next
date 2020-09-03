@@ -1,6 +1,6 @@
 import React from "react";
 import params from "./layout";
-import { newImageUrl } from "../helper/imageUrlHelper";
+import { newImageUrl, clean } from "../helper/imageUrlHelper";
 import styles from "./styles/cloudStyles.module.sass";
 
 const CloudImageComponent = ({
@@ -23,18 +23,31 @@ const CloudImageComponent = ({
 						const parsedInfo = imageCropInfo; //JSON.parse(imageCropInfo);
 						cropParams = {
 							crop: imageCrop,
-							x: (parsedInfo.x, 2).toFixed(2),
-							y: (parsedInfo.y, 2).toFixed(2),
-							aspect: parsedInfo.aspect ? parsedInfo.aspect.toFixed(2) : 1.7,
+							x: parsedInfo.x ? Math.round(parsedInfo.x) : 0,
+							y: parsedInfo.y ? Math.round(parsedInfo.y) : 0,
+							cropWidth: parsedInfo.width ? Math.round(parsedInfo.width) : null,
+							cropHeight: parsedInfo.height
+								? Math.round(parsedInfo.height)
+								: null,
+							aspect: parsedInfo.aspect
+								? Math.floor(parsedInfo.aspect * 100) / 100
+								: null,
 						};
 					}
+					const cleanCropParams = cropParams ? clean(cropParams) : null;
 					const parameterList = {
 						...imageProps.imageParams,
-						...cropParams,
+						...cleanCropParams,
 					};
+
 					const parameterUrl = Object.keys(parameterList)
-						.map(key => `${key}=${parameterList[key]}`)
+						.map(key => {
+							if (parameterList[key] !== null) {
+								return `${key}=${parameterList[key]}`;
+							}
+						})
 						.join("&");
+
 					return (
 						<source
 							srcSet={`${cloudfrontUrl}?${parameterUrl} ${Math.round(

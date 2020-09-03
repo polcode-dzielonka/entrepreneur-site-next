@@ -1,10 +1,6 @@
-import { useMemo, useCallback } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
-import { Slate, Editable } from "slate-react";
-import { createEditor } from "slate";
-import RenderElement from "../Editor/renderElement/renderElement";
-import RenderLeaf from "../Editor/renderLeaf/renderLeaf";
 import { openingSocialButtons } from "../../SocialMedia/data";
 import SectionBar from "../SectionBar";
 import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
@@ -37,20 +33,17 @@ const Slides = ({
 			slideImage,
 			slideImageAlt,
 			slideImagePath,
+			slideImageCrop,
+			slideImageCropInfo,
 			slideImageAttribution,
 			slideImageAttributionLink,
 			slidePosition,
+			slideSerialized,
 		} = slideData;
-		const value = slideData.slideDetails
-			? slideData.slideDetails
-			: defaultValue;
-
-		const editor = useMemo(() => createEditor(), []);
-		const renderElement = useCallback(
-			props => <RenderElement {...props} />,
-			[],
-		);
-		const renderLeaf = useCallback(props => <RenderLeaf {...props} />, []);
+		const [slideCrop, setSlideCrop] = useState({
+			slideImageCrop,
+			slideImageCropInfo,
+		});
 		const arrayNumber = Number.isInteger(index / 2) ? index / 2 : null;
 		const adData =
 			arrayNumber && arrayNumber < latest.items.length
@@ -61,6 +54,7 @@ const Slides = ({
 		const showNumber = countdown
 			? data.length - slidePosition + 1
 			: slidePosition;
+
 		return (
 			<div className={slideStyles.bookendWrapper} key={index}>
 				<h1 className={slideStyles.sectionHeader}>
@@ -78,6 +72,8 @@ const Slides = ({
 							imageAlt={slideImageAlt}
 							imageAltAttribution={slideImageAttribution}
 							imageAltAttributionLink={slideImageAttributionLink}
+							imageCrop={slideCrop.slideImageCrop}
+							imageCropInfo={slideCrop.slideImageCropInfo}
 							imagePath={slideImagePath}
 							styles={{ width: "100%", height: "100%" }}
 							noMaxHeight={false}
@@ -85,15 +81,13 @@ const Slides = ({
 					</LazyLoad>
 				</div>
 				<div className={slideStyles.sectionParagraph}>
-					<Slate editor={editor} value={value}>
-						<Editable
-							readOnly={true}
-							renderElement={renderElement}
-							renderLeaf={renderLeaf}
-						/>
-					</Slate>
+					<div
+						className={slideStyles.sectionParagraph}
+						dangerouslySetInnerHTML={{
+							__html: slideSerialized,
+						}}
+					/>
 				</div>
-
 				{index % 4 === 0 && (
 					<>
 						<LazyLoad once={true}>

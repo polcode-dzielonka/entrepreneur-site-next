@@ -12,6 +12,8 @@ const QuickViewButton = ({
 	handler,
 	imagePath,
 	imageAlt,
+	imageCrop,
+	imageCropInfo,
 }) => {
 	return (
 		<div className={styles.linkSection}>
@@ -24,6 +26,8 @@ const QuickViewButton = ({
 									imagePath={imagePath ? imagePath : getImagePath(imgSrc)}
 									imageAlt={imageAlt}
 									layout={"nextButton"}
+									imageCrop={imageCrop}
+									imageCropInfo={imageCropInfo}
 								/>
 							</div>
 						</div>

@@ -10,6 +10,8 @@ const EmbedUrl = ({
 	imageAltAttribution,
 	imageAltAttributionLink,
 	imagePath,
+	imageCrop,
+	imageCropInfo,
 	styles,
 	noMaxHeight,
 }) => {
@@ -17,7 +19,6 @@ const EmbedUrl = ({
 		ssr: false,
 		loading: () => <SingleSocialLoader />,
 	});
-
 	return (
 		<>
 			{!embed && (
@@ -28,6 +29,8 @@ const EmbedUrl = ({
 					animation={false}
 					styles={styles}
 					noMaxHeight={noMaxHeight}
+					imageCrop={imageCrop}
+					imageCropInfo={imageCropInfo}
 				/>
 			)}
 			{embed && (

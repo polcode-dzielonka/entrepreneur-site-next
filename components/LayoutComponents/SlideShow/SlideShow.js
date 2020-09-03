@@ -41,7 +41,6 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 		headlineImageAlt,
 	} = details[0];
 	const positionNumber = Number(position);
-
 	if (
 		!slides &&
 		positionNumber > content.numSlides &&
@@ -50,7 +49,6 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	) {
 		return <ErrorLoader />;
 	}
-
 	const bookEndOpening = slides["opening"][0];
 	const bookEndClosing = slides["closing"][0];
 	const slideData = countdown ? slides["slides"] : slides["slides"];
@@ -97,6 +95,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 											: undefined
 									}
 									embed={slides[position][0][`${position}Image-embed`]}
+									serialized={slides[position][0][`${position}SlideSerialized`]}
 								/>
 								{position === "opening" && (
 									<QuickViewButton
@@ -106,6 +105,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 										href={`${nextHref}/1`}
 										refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
 										imageAlt={details[0].headlineImageAlt}
+										imageCrop={details[0].headlineImageCrop}
+										imageCropInfo={details[0].headlineImageCropInfo}
 									/>
 								)}
 							</>
@@ -155,6 +156,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 								: undefined
 						}
 						embed={bookEndOpening["openingImage-embed"]}
+						serialized={bookEndOpening.openingSlideSerialized}
 					/>
 					<div>
 						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
@@ -187,6 +189,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 								: undefined
 						}
 						embed={bookEndClosing["closingImage-embed"]}
+						serialized={bookEndClosing.closingSlideSerialized}
 					/>
 					<div>
 						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
@@ -197,7 +200,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 				<ScrollUpButton />
 			</LazyLoad>
 			<LazyLoad once={true}>
-				<SectionBar title={`Share`} titleColor="#111" titleSize="1.5rem" />
+				<SectionBar title={`Share`} titleColor="#111" titleSize="1rem" />
 				<ShareButtonHoriz
 					data={closingSocialButtons}
 					url={shareUrl}

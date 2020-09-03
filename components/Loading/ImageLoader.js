@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import PropTypes from "prop-types";
 export const config = { amp: "hybrid" };
 import { useAmp } from "next/amp";
@@ -20,7 +20,13 @@ const ImageLoader = ({
 	const [classStyle, setClassStyle] = useState(
 		animation ? "imgLoadingAnimation" : "imgLoading",
 	);
-	const imageCheck = imagePath || src.indexOf("content-factory-media") > 1;
+
+	const imageCheck =
+		imagePath &&
+		src.indexOf("content-factory-media") > 1 &&
+		src.split(".").pop() !== "gif"
+			? true
+			: false;
 
 	const isAmp = useAmp();
 
@@ -31,6 +37,7 @@ const ImageLoader = ({
 				: `${loaderStyles.imgLoaded} img-loaded`,
 		);
 	};
+
 	return (
 		<>
 			{!isAmp && (
