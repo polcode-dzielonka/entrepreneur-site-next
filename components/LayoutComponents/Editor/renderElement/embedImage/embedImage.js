@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ImageLoader from "../../../../Loading/EditorImageLoader";
 import styles from "../styles/embedImage/embedImageStyles.module.sass";
-const EmbedImage = ({ attributes, element, children }) => {
-	const { data } = element;
+const EmbedImage = ({ node }) => {
+	const { data } = node;
+
 	const [embedImage, setEmbedImageUrl] = useState({
 		imageUrl: "",
 		imageAlt: "",
@@ -11,12 +12,14 @@ const EmbedImage = ({ attributes, element, children }) => {
 		imageAttributionLink: "",
 		imageCrop: "",
 		imageCropInfo: {},
+		imageCheck: false,
 	});
 	useEffect(() => {
 		handleImageEmbed();
 	}, []);
 
 	const handleImageEmbed = () => {
+		if (!data.image || !data.imagePath) return;
 		const imageCheck =
 			data.imagePath &&
 			data.image.indexOf("content-factory-media") > 1 &&
@@ -37,7 +40,7 @@ const EmbedImage = ({ attributes, element, children }) => {
 	};
 
 	return (
-		<div {...attributes} className={styles.embedWrapper}>
+		<div className={styles.embedWrapper}>
 			{embedImage.imageCheck && (
 				<ImageLoader
 					src={embedImage.imageUrl}
@@ -64,7 +67,6 @@ const EmbedImage = ({ attributes, element, children }) => {
 					}}
 				/>
 			)}
-			{children}
 			{embedImage.imageAttribution && (
 				<span>
 					<a
@@ -77,7 +79,7 @@ const EmbedImage = ({ attributes, element, children }) => {
 					</a>
 				</span>
 			)}
-			<span className={styles.comment}>{embedImage.imageComment}</span>
+			<div className={styles.comment}>{embedImage.imageComment}</div>
 		</div>
 	);
 };
@@ -85,7 +87,7 @@ const EmbedImage = ({ attributes, element, children }) => {
 EmbedImage.defaultProps = {
 	element: {
 		data: {
-			url: "",
+			image: "",
 			imageAlt: "",
 			imageAttribution: "",
 			imageAttributionLink: "",

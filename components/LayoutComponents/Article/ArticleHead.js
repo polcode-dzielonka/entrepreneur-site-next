@@ -69,7 +69,6 @@ const ArticleHead = ({ overview, id }) => {
 				styles={{ width: "100%", height: "100%" }}
 				noMaxHeight={true}
 			/>
-			{brief && <h3 className={styles.sectionBrief}>{brief}</h3>}
 			{bulletHeadlines > 0 && (
 				<ul className={styles.sectionList}>
 					{Object.keys(bulletHeadlinesDetails).map((bullet, index) => {
@@ -81,12 +80,14 @@ const ArticleHead = ({ overview, id }) => {
 					})}
 				</ul>
 			)}
-			<ShowMeta
-				showDate={showDate}
-				displayDate={displayDate}
-				showAuthor={showAuthor}
-				authorName={authorName}
-			/>
+			<div className={styles.metaWrapper}>
+				<ShowMeta
+					showDate={showDate}
+					displayDate={displayDate}
+					showAuthor={showAuthor}
+					authorName={authorName}
+				/>
+			</div>
 			<LazyLoad once={true}>
 				<hr className={styles.break} />
 				<ShareButtonVert
@@ -107,7 +108,6 @@ const ArticleHead = ({ overview, id }) => {
 			</LazyLoad>
 			<hr className={styles.break} />
 			{/* <AdWrapper adCode={AMAZON_BUSINESS_AD_RECT} /> */}
-
 			<ArticleBody
 				content={overview}
 				url={canonical}

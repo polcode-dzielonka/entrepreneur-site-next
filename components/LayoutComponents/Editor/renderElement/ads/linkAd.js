@@ -5,7 +5,7 @@ import { NEXT_ARTICLE } from "../../../../../graphql/indivArticle";
 import NextLink from "./nextLink";
 import prodRequest from "../../../../apiRequest/prodRequest";
 import styles from "../styles/ads/linkAdStyles.module.sass";
-const NextArticleAd = ({ children, attributes }) => {
+const NextArticleAd = ({ children }) => {
 	const [nextInfo, setNextInfo] = useState({
 		showNext: false,
 		url: "",
@@ -68,7 +68,7 @@ const NextArticleAd = ({ children, attributes }) => {
 		}
 	};
 	return (
-		<div className={styles.siteAd} {...attributes}>
+		<div className={styles.siteAd}>
 			{nextInfo.showNext && (
 				<NextLink
 					data={nextInfo}

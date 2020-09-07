@@ -3,8 +3,8 @@ import ClassicQuote from "./classic/classicQuote";
 import BlockQuote from "./block/blockQuote";
 import ElegantQuote from "./elegant/elegantQuote";
 
-const Quote = ({ attributes, element, children }) => {
-	const { data } = element;
+const Quote = ({ node }) => {
+	const { data } = node;
 	const [quote, setQuote] = useState({
 		quote: "",
 		additionalQuote: "",
@@ -21,35 +21,24 @@ const Quote = ({ attributes, element, children }) => {
 	}, []);
 
 	const handleEmbed = () => {
-		const quote = data.quote;
-		const addQuote = data.additionalQuote;
-		const author = data.author;
-		const image = data.quoteImage;
-		const style = data.quoteStyle ? data.quoteStyle : "classic";
 		setQuote({
-			quote,
-			additionalQuote: addQuote,
-			author,
-			quoteImage: image,
-			styleQuote: style,
+			quote: data.quote,
+			additionalQuote: data.additionalQuote,
+			author: data.author,
+			quoteImage: data.image,
+			styleQuote: data.quoteStyle ? data.quoteStyle : "classic",
 		});
 	};
 
-	// const onChange = e => {
-	// 	const embed = e.target.value;
-	// 	const { node, editor } = this.props;
-	// 	editor.setNodeByKey(node.key, { data: { embed } });
-	// };
-
 	switch (quote.styleQuote) {
 		case "classic":
-			return <ClassicQuote {...attributes} {...children} quote={quote} />;
+			return <ClassicQuote quote={quote} />;
 		case "block":
-			return <BlockQuote {...attributes} {...children} quote={quote} />;
+			return <BlockQuote quote={quote} />;
 		case "elegant":
-			return <ElegantQuote {...attributes} {...children} quote={quote} />;
+			return <ElegantQuote quote={quote} />;
 		default:
-			return <BlockQuote {...attributes} {...children} quote={quote} />;
+			return <BlockQuote quote={quote} />;
 	}
 };
 

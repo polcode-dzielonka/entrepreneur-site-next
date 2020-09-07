@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import Embedo from "../../../../Embed/embedo/embedo";
 import SingleSocialLoader from "../../../../Loading/SingleSocialLoader";
 import styles from "../styles/embed/embedStyles.module.sass";
-const EmbedUrl = ({ attributes, element, children }) => {
-	const { data } = element;
+const EmbedUrl = ({ node }) => {
+	const { data, children } = node;
 	const [embedUrl, setEmbedUrl] = useState({
 		url: "",
 		caption: "",
@@ -48,7 +48,7 @@ const EmbedUrl = ({ attributes, element, children }) => {
 	}
 
 	return (
-		<div {...attributes}>
+		<div>
 			<div
 				href={embedUrl.url}
 				className={"embedo"}
@@ -56,7 +56,6 @@ const EmbedUrl = ({ attributes, element, children }) => {
 				rel="noopener noreferrer"
 				ref={embedoContainer}
 			/>
-			{children}
 			<span className={styles.caption}>{embedUrl.caption}</span>
 		</div>
 	);

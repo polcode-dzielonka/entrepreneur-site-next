@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "../../styles/quote/elegant/elegantQuoteStyles.module.sass";
 
-const ElegantQuote = ({ quote, attributes, children }) => {
+const ElegantQuote = ({ quote }) => {
 	return (
-		<div {...attributes}>
+		<div>
 			<blockquote className={styles.elegantBlockquote}>
 				<div className={styles.quoteLine}></div>
 				<p className={styles.elegantText}>{quote.quote}</p>
 				<p className={styles.elegantText}>{quote.additionalQuote}</p>
-				{children}
 				{quote.author ? <span>{quote.author}</span> : ""}
 			</blockquote>
 		</div>

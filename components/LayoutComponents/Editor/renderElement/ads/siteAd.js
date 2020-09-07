@@ -6,7 +6,7 @@ import { midSocialButtons } from "../../../../SocialMedia/data";
 import ShareButtonHoriz from "../../../../SocialMedia/ShareButtonsHoriz";
 import prodRequest from "../../../../apiRequest/prodRequest";
 import styles from "../styles/ads/linkAdStyles.module.sass";
-const SiteAd = ({ children, attributes }) => {
+const SiteAd = ({ children }) => {
 	const [shareInfo, setShareInfo] = useState({
 		url: "",
 		image: "",
@@ -46,7 +46,7 @@ const SiteAd = ({ children, attributes }) => {
 		}
 	};
 	return (
-		<div className={styles.siteAd} {...attributes}>
+		<div className={styles.siteAd}>
 			<ShareButtonHoriz
 				data={midSocialButtons}
 				url={shareInfo.url}
