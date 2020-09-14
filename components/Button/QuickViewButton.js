@@ -37,7 +37,7 @@ const QuickViewButton = ({
 						<div className={styles.arrowWrapper}>
 							<img
 								className={styles.arrow}
-								src={"/static/fatArrowRightWhitex128.png"}
+								src={"/static/newFatArrowRightWhitex128.png"}
 								alt="right-arrow"
 							/>
 						</div>
