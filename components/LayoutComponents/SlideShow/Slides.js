@@ -1,10 +1,8 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
 import { openingSocialButtons } from "../../SocialMedia/data";
 import SectionBar from "../SectionBar";
 import ShareButtonHoriz from "../../SocialMedia/ShareButtonsHoriz";
-import defaultValue from "../Editor/defaultValue";
 import LazyLoad from "react-lazyload";
 import NextLink from "../Editor/renderElement/ads/nextLink";
 import slideStyles from "./styles/slideStyles.module.sass";
@@ -40,10 +38,7 @@ const Slides = ({
 			slidePosition,
 			slideSerialized,
 		} = slideData;
-		const [slideCrop, setSlideCrop] = useState({
-			slideImageCrop,
-			slideImageCropInfo,
-		});
+
 		const arrayNumber = Number.isInteger(index / 2) ? index / 2 : null;
 		const adData =
 			arrayNumber && arrayNumber < latest.items.length
@@ -72,8 +67,8 @@ const Slides = ({
 							imageAlt={slideImageAlt}
 							imageAltAttribution={slideImageAttribution}
 							imageAltAttributionLink={slideImageAttributionLink}
-							imageCrop={slideCrop.slideImageCrop}
-							imageCropInfo={slideCrop.slideImageCropInfo}
+							imageCrop={slideImageCrop}
+							imageCropInfo={slideImageCropInfo}
 							imagePath={slideImagePath}
 							styles={{ width: "100%", height: "100%" }}
 							noMaxHeight={false}

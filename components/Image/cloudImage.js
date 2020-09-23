@@ -13,6 +13,7 @@ const CloudImageComponent = ({
 }) => {
 	const cloudfrontUrl = newImageUrl(imagePath);
 	const layoutParams = params[layout] ? params[layout] : params["content"];
+
 	return (
 		<figure className={styles.cloudWrapper}>
 			<picture>
@@ -20,7 +21,10 @@ const CloudImageComponent = ({
 					let cropParams = null;
 
 					if (imageCrop && imageCropInfo) {
-						const parsedInfo = imageCropInfo; //JSON.parse(imageCropInfo);
+						const parsedInfo =
+							typeof imageCropInfo === "string"
+								? JSON.parse(imageCropInfo)
+								: imageCropInfo;
 						cropParams = {
 							crop: imageCrop,
 							x: parsedInfo.x ? Math.round(parsedInfo.x) : 0,

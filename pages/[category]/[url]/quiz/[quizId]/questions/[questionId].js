@@ -6,6 +6,7 @@ import { QUIZ } from "../../../../../../graphql/indivQuiz";
 import QuickViewLoading from "../../../../../../components/Loading/Layouts/QuizLoadingLayout";
 import prodRequest from "../../../../../../components/apiRequest/prodRequest";
 import { quizQuery } from "../../../../../../data/queryData/querys";
+import parseUrl from "../../../../../../components/helper/parseUrl";
 
 const Questions = ({
 	individual,
@@ -19,6 +20,12 @@ const Questions = ({
 	score,
 }) => {
 	const router = useRouter();
+
+	if (parseUrl(router.asPath)) {
+		Cookie.set("CPC", JSON.stringify(true), {
+			expires: 0.25,
+		});
+	}
 
 	if (!individual || !headline || !quiz || !slide) return <QuickViewLoading />;
 

@@ -26,38 +26,40 @@ const MainHeadline = ({ data }) => {
 			</div>
 			<div className={styles.headlineContainer}>
 				<article className={styles.headlineImageContainer}>
-					<Link
-						href={`/[category]/[url]/article/[id]`}
-						as={`/${category}/${urlDescription}/article/${id}`}
-					>
-						<a className={styles.headlineImageMainWrapper}>
-							<LazyLoad once={true}>
-								<div className={styles.headlineImageMain}>
-									<CloudImage
-										imagePath={
-											headlineImagePath
-												? headlineImagePath
-												: getImagePath(headlineImage)
-										}
-										imageAlt={headlineImageAlt}
-										layout="headline"
-										imageCrop={headlineImageCrop}
-										imageCropInfo={headlineImageCropInfo}
-									/>
-								</div>
-							</LazyLoad>
-						</a>
-					</Link>
-					<Link
-						href={`/[category]/[url]/article/[id]`}
-						as={`/${category}/${urlDescription}/article/${id}`}
-					>
-						<a className={styles.info}>
-							<h1 className={styles.infoTitle}>
-								<span className={styles.infoLink}>{headline}</span>
-							</h1>
-						</a>
-					</Link>
+					<div className={styles.headlineWrapper}>
+						<Link
+							href={`/[category]/[url]/article/[id]`}
+							as={`/${category}/${urlDescription}/article/${id}`}
+						>
+							<a className={styles.headlineImageMainWrapper}>
+								<LazyLoad once={true}>
+									<div className={styles.headlineImageMain}>
+										<CloudImage
+											imagePath={
+												headlineImagePath
+													? headlineImagePath
+													: getImagePath(headlineImage)
+											}
+											imageAlt={headlineImageAlt}
+											layout="headline"
+											imageCrop={headlineImageCrop}
+											imageCropInfo={headlineImageCropInfo}
+										/>
+									</div>
+								</LazyLoad>
+							</a>
+						</Link>
+						<Link
+							href={`/[category]/[url]/article/[id]`}
+							as={`/${category}/${urlDescription}/article/${id}`}
+						>
+							<a className={styles.info}>
+								<h1 className={styles.infoTitle}>
+									<span className={styles.infoLink}>{headline}</span>
+								</h1>
+							</a>
+						</Link>
+					</div>
 				</article>
 				<div className={styles.subHeadlineContainer}>
 					{subHeadlineData.map((head, index) => {
@@ -75,7 +77,12 @@ const MainHeadline = ({ data }) => {
 						} = head;
 
 						return (
-							<article className={styles.subArticle} key={index}>
+							<article
+								className={
+									index === 1 ? styles.midSubArticle : styles.subArticle
+								}
+								key={index}
+							>
 								<div className={styles.subArticleWrapper}>
 									<Link
 										href={`/[category]/[url]/article/[id]`}

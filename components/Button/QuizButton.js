@@ -81,7 +81,7 @@ const QuizButton = ({
 		);
 
 		return (
-			<Fragment key={index}>
+			<div className={styles.buttonWrapper} key={index}>
 				<Ripples
 					color={baseTheme.quizRipple}
 					styling={{ borderRadius: "25px", margin: "0.5rem 0rem 0rem 0rem" }}
@@ -99,6 +99,7 @@ const QuizButton = ({
 							<div className={`${styles.percentageBar} percentage-bar-width`}>
 								<div className={secondClassCorrect}></div>
 							</div>
+
 							<div className={styles.label}>
 								<div className={styles.quizLabel}>{answer.answer}</div>
 							</div>
@@ -137,7 +138,7 @@ const QuizButton = ({
 						`}</style>
 					</button>
 				</Ripples>
-			</Fragment>
+			</div>
 		);
 	});
 };

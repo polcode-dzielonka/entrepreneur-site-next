@@ -34,12 +34,14 @@ const Questions = ({
 	questions,
 	nextQuestionData,
 	randomiseAnswers,
+	cpcMarker,
 }) => {
 	const [showAnswer, setShowAnswer] = useState(false);
 	const [buttonDisabled, setButtonDisabled] = useState(false);
 	const [correct, setCorrect] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const questionDetails = questionData[0];
+
 	const {
 		answerImage,
 		answerImageAlt,
@@ -69,10 +71,13 @@ const Questions = ({
 		...correctAnswerDetails,
 		...inCorrectAnswerDetails,
 	};
+
 	const [selected, setSelected] = useState(false);
+
 	useEffect(() => {
 		setLoading(false);
 	}, [answerImage]);
+
 	const answerClick = (answer, answerDetail, correct) => {
 		const answerType = correct
 			? "correctAnswerDetails"
