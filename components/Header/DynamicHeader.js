@@ -1,6 +1,6 @@
 import Head from "next/head";
 import PropTypes from "prop-types";
-
+import headerImageSocial from "./headerImageSocial";
 const DynamicHeader = ({
 	title,
 	description,
@@ -8,6 +8,9 @@ const DynamicHeader = ({
 	url,
 	imageWidth,
 	imageHeight,
+	imagePath,
+	imageCrop,
+	imageCropInfo,
 	canonical,
 	next,
 	prev,
@@ -15,6 +18,11 @@ const DynamicHeader = ({
 	updatedAt,
 	tags,
 }) => {
+	let socialImage;
+	if (imagePath) {
+		socialImage = headerImageSocial({ imagePath, imageCrop, imageCropInfo });
+	}
+
 	const structuredData = {
 		"@context": "http://schema.org",
 		"@type": "NewsArticle",
@@ -62,11 +70,11 @@ const DynamicHeader = ({
 			<meta name="description" content={description} />
 			<meta name="twitter:title" content={title} />
 			<meta name="twitter:description" content={description} />
-			<meta name="twitter:image" content={image} />
+			<meta name="twitter:image" content={socialImage ? socialImage : image} />
 			<meta name="twitter:url" content={url} />
 			<meta name="og:title" content={title} />
 			<meta name="og:description" content={description} />
-			<meta name="og:image" content={image} />
+			<meta name="og:image" content={socialImage ? socialImage : image} />
 			<meta name="og:url" content={url} />
 			<meta name="og:image:width" content={imageWidth} />
 			<meta name="og:image:height" content={imageHeight} />

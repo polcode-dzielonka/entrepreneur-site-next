@@ -13,6 +13,9 @@ const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 		title,
 		quizUrl,
 		headlineImage,
+		headlineImagePath,
+		headlineImageCrop,
+		headlineImageCropInfo,
 		quizTitle,
 		showDate,
 		displayDate,
@@ -55,6 +58,9 @@ const QuizHeadline = ({ data, id, position, totalQuestions }) => {
 				url={shareUrl}
 				canonical={canonical}
 				image={headlineImage}
+				imagePath={headlineImagePath}
+				imageCrop={headlineImageCrop}
+				imageCropInfo={headlineImageCropInfo}
 				next={next}
 				prev={prev}
 				createdAt={displayDate}

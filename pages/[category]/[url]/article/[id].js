@@ -2,10 +2,10 @@ import ArticleLayout from "../../../../components/Layouts/ArticleLayout";
 import prodRequest from "../../../../components/apiRequest/prodRequest";
 import { articleQuery } from "../../../../data/queryData/querys";
 import { ARTICLE } from "../../../../graphql/indivArticle";
-import MainHeadlineLoading from "../../../../components/Loading/Layouts/MainHeadlineLoadingLayout";
+import ArticleLoading from "../../../../components/Loading/Layouts/ArticleLoadingLayout";
 
-const Article = ({ individual, quiz, slide, id, url }) => {
-	if (!individual || !quiz || !slide) return <MainHeadlineLoading />;
+const Article = ({ individual, quiz, slide, id, category, url }) => {
+	if (!individual || !quiz || !slide) return <ArticleLoading />;
 
 	return (
 		<ArticleLayout
@@ -20,7 +20,7 @@ const Article = ({ individual, quiz, slide, id, url }) => {
 
 export async function getStaticProps(context) {
 	// Fetch data from external API
-	const { id, url } = context.params;
+	const { id, category, url } = context.params;
 	const ARTICLE_QUERY = {
 		query: ARTICLE,
 		variables: {
@@ -39,7 +39,7 @@ export async function getStaticProps(context) {
 	);
 
 	return {
-		props: { individual, quiz, slide },
+		props: { individual, quiz, slide, id, category, url },
 		// Next.js will attempt to re-generate the page:
 		// - When a request comes in
 		// - At most once every second

@@ -3,7 +3,6 @@ import ImageLoader from "../../../../Loading/EditorImageLoader";
 import styles from "../styles/embedImage/embedImageStyles.module.sass";
 const EmbedImage = ({ node }) => {
 	const { data } = node;
-
 	const [embedImage, setEmbedImageUrl] = useState({
 		imageUrl: "",
 		imageAlt: "",
@@ -16,10 +15,10 @@ const EmbedImage = ({ node }) => {
 	});
 	useEffect(() => {
 		handleImageEmbed();
-	}, []);
+	}, [node]);
 
 	const handleImageEmbed = () => {
-		if (!data.image || !data.imagePath) return;
+		if (!data.image) return;
 		const imageCheck =
 			data.imagePath &&
 			data.image.indexOf("content-factory-media") > 1 &&
@@ -38,7 +37,6 @@ const EmbedImage = ({ node }) => {
 			imageCheck,
 		});
 	};
-
 	return (
 		<div className={styles.embedWrapper}>
 			{embedImage.imageCheck && (
@@ -57,7 +55,7 @@ const EmbedImage = ({ node }) => {
 					}}
 				/>
 			)}
-			{!embedImage.imageCheck && (
+			{!embedImage.imageCheck && embedImage.imageUrl && (
 				<img
 					src={embedImage.imageUrl}
 					alt={embedImage.imageAlt}

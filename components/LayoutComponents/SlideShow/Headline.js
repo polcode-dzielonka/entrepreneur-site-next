@@ -53,6 +53,9 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 				url={canonical}
 				canonical={canonical}
 				image={headlineImage}
+				imagePath={headlineImagePath}
+				imageCrop={headlineImageCrop}
+				imageCropInfo={headlineImageCropInfo}
 				createdAt={displayDate}
 				updatedAt={displayDate}
 				tags={slideTags}

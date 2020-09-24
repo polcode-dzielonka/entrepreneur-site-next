@@ -13,6 +13,9 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 		title,
 		slideUrl,
 		headlineImage,
+		headlineImagePath,
+		headlineImageCrop,
+		headlineImageCropInfo,
 		slideTitle,
 		showDate,
 		displayDate,
@@ -55,6 +58,9 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 				url={shareUrl}
 				canonical={canonical}
 				image={headlineImage}
+				imagePath={headlineImagePath}
+				imageCrop={headlineImageCrop}
+				imageCropInfo={headlineImageCropInfo}
 				next={next}
 				prev={prev}
 				createdAt={displayDate}

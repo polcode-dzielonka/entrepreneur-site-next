@@ -18,7 +18,7 @@ const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 	ssr: false,
 });
 import { ETORO_BANNER } from "../../ads/code/eToro";
-import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
+// import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
 
 const ArticleHead = ({ overview, id }) => {
 	const details = JSON.parse(overview.overview);
@@ -52,6 +52,9 @@ const ArticleHead = ({ overview, id }) => {
 				image={headlineImage}
 				createdAt={displayDate}
 				updatedAt={displayDate}
+				imagePath={headlineImagePath}
+				imageCrop={headlineImageCrop}
+				imageCropInfo={headlineImageCropInfo}
 				tags={tags}
 			/>
 			<SectionBar title={category} titleColor="#111" titleSize="1rem" />
