@@ -3,7 +3,7 @@ const parseUrlQuery = url => {
 	let utmCheck = false;
 	if (query[1]) {
 		const utm = query[1].split("=");
-		utmCheck = utm[0] === "utm_content" ? true : false;
+		utmCheck = utm[0] === "utm_source" ? true : false;
 	}
 	return utmCheck;
 };
