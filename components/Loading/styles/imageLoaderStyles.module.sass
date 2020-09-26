@@ -22,7 +22,7 @@
 
 .imgLoadingAnimation
     width: 100%
-    height: 550px
+    height: $loadingImageHeight
     background: #f4f4f4
     opacity: 0
 
@@ -42,8 +42,12 @@
     object-fit: cover
     border: 5px solid blue
 
-@media only screen and (max-width: 450px) 
+@media only screen and (max-width: 670px)
+    .imgLink
+        height: $smallScreenLoadingImageHeight
+
     .imgLoading
-        width: 100%
-        height: 250px
-        background: #f4f4f4
+        height: $smallScreenLoadingImageHeight
+
+    .imgLoadingAnimation
+        height: $smallScreenLoadingImageHeight

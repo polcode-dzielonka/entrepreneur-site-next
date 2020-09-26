@@ -16,14 +16,6 @@ const SideBarContent = ({
 	refPath,
 	contentLink,
 }) => {
-	const prefetchItem = project => {
-		// return fetch(`https://api.github.com/repos/${project}`).then(data => {
-		// 	mutate(`/api/data?id=${project}`, data, false);
-		// 	return data;
-		// });
-		// console.log("SHABBA", project);
-	};
-
 	return (
 		<article
 			// onMouseEnter={() => prefetchItem(contentLink)}
