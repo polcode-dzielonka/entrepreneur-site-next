@@ -3,8 +3,19 @@ import prodRequest from "../../../../components/apiRequest/prodRequest";
 import { articleQuery } from "../../../../data/queryData/querys";
 import { ARTICLE } from "../../../../graphql/indivArticle";
 import ArticleLoading from "../../../../components/Loading/Layouts/ArticleLoadingLayout";
+import parseUrl from "../../../../components/helper/parseUrl";
+import Cookie from "js-cookie";
+import { useRouter } from "next/router";
 
 const Article = ({ individual, quiz, slide, id, category, url }) => {
+	const router = useRouter();
+
+	if (parseUrl(router.asPath)) {
+		Cookie.set("CPC", JSON.stringify(true), {
+			expires: 0.25,
+		});
+	}
+
 	if (!individual || !quiz || !slide) return <ArticleLoading />;
 
 	return (
