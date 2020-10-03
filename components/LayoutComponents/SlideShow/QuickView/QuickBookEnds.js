@@ -15,7 +15,7 @@ import {
 	AMAZON_MUSIC_WIDE_BANNER,
 } from "../../../ads/code/amazonBusiness";
 import { FIVERR_SQUARE } from "../../../ads/code/fiverr";
-
+import Adsense from "../../../ads/code/adsense/adsense";
 const BookEnds = ({
 	image,
 	imageAlt,
@@ -33,9 +33,18 @@ const BookEnds = ({
 	return (
 		<div className={styles.bookEndWrapper}>
 			<div>
-				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
+				<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
 			</div>
 			<h1 className={styles.sectionHeader}>{title}</h1>
+			<div className={styles.sectionParagraph}>
+				<div
+					className={styles.sectionParagraph}
+					dangerouslySetInnerHTML={{
+						__html: serialized,
+					}}
+				/>
+			</div>
 			<div className={styles.imageWrap}>
 				<Embed
 					embed={embed}
@@ -48,19 +57,13 @@ const BookEnds = ({
 					noMaxHeight={true}
 				/>
 			</div>
-			<div className={styles.sectionParagraph}>
-				<div
-					className={styles.sectionParagraph}
-					dangerouslySetInnerHTML={{
-						__html: serialized,
-					}}
-				/>
-			</div>
-			<div>
-				<MultiAdsWrapper
+
+			<div className={styles.adWrap}>
+				<Adsense client="ca-pub-2068760522034474" slot="1874540097" />
+				{/* <MultiAdsWrapper
 					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
 					adCodeTwo={FIVERR_SQUARE}
-				/>
+				/> */}
 			</div>
 		</div>
 	);

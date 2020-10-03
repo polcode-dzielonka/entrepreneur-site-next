@@ -19,6 +19,7 @@ import {
 	AMAZON_MUSIC_WIDE_BANNER,
 } from "../../../ads/code/amazonBusiness";
 import { FIVERR_SQUARE } from "../../../ads/code/fiverr";
+import Adsense from "../../../ads/code/adsense/adsense";
 
 const QuickSlides = ({
 	total,
@@ -61,6 +62,10 @@ const QuickSlides = ({
 
 	return (
 		<div className={styles.bookendWrapper}>
+			<div>
+				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
+				<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
+			</div>
 			<h1 className={styles.sectionHeader}>
 				{showNumbers && (
 					<span className={styles.slidePosition}>{showNumber}</span>
@@ -68,6 +73,14 @@ const QuickSlides = ({
 				{slide}
 			</h1>
 			<h3 className={styles.sectionBrief}>{slideComment}</h3>
+			<div className={styles.sectionParagraph}>
+				<div
+					className={styles.sectionParagraph}
+					dangerouslySetInnerHTML={{
+						__html: slideSerialized,
+					}}
+				/>
+			</div>
 			<div>
 				<Embed
 					embed={slideDetails["slideImage-embed"]}
@@ -82,21 +95,14 @@ const QuickSlides = ({
 					noMaxHeight={true}
 				/>
 			</div>
-			<div className={styles.sectionParagraph}>
-				<div
-					className={styles.sectionParagraph}
-					dangerouslySetInnerHTML={{
-						__html: slideSerialized,
-					}}
-				/>
-			</div>
-			<div>
-				<MultiAdsWrapper
+
+			<div className={styles.adWrap}>
+				<Adsense client="ca-pub-2068760522034474" slot="1874540097" />
+				{/* <MultiAdsWrapper
 					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
 					adCodeTwo={FIVERR_SQUARE}
-				/>
+				/> */}
 			</div>
-
 			{cpcMarker && (
 				<LazyLoad once={true}>
 					<QuickViewButton
@@ -128,7 +134,8 @@ const QuickSlides = ({
 				</LazyLoad>
 			)}
 			<div>
-				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+				{/* <Adsense client="ca-pub-2068760522034474" slot="1874540097" /> */}
+				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
 			</div>
 		</div>
 	);

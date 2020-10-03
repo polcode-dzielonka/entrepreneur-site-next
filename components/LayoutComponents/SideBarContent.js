@@ -10,11 +10,13 @@ import {
 	AMAZON_AD_CODE,
 	AMAZON_KINDLE_CODE_SQUARE,
 } from "../ads/code/amazonBusiness";
+import Adsense from "../ads/code/adsense/adsense";
+
 const SideBarContent = ({ data, type, showAd = false, limit = 0 }) => {
 	const slicedData = limit > 0 ? data.slice(0, limit) : data;
 	return (
 		<>
-			{showAd && <AdWrapper adCode={AMAZON_AD_CODE} />}
+			{showAd && <Adsense client="ca-pub-2068760522034474" slot="6792782716" />}
 			{slicedData.map((article, index) => {
 				const {
 					headlineImage,
@@ -31,7 +33,8 @@ const SideBarContent = ({ data, type, showAd = false, limit = 0 }) => {
 				return (
 					<Fragment key={index}>
 						{index === 2 && showAd && (
-							<AdWrapper adCode={AMAZON_KINDLE_CODE_SQUARE} />
+							<Adsense client="ca-pub-2068760522034474" slot="1753150973" />
+							// <AdWrapper adCode={AMAZON_KINDLE_CODE_SQUARE} />
 						)}
 						<SideBarComponent
 							type={type}
@@ -48,7 +51,7 @@ const SideBarContent = ({ data, type, showAd = false, limit = 0 }) => {
 					</Fragment>
 				);
 			})}
-			{showAd && <AdWrapper adCode={AMAZON_AD_CODE} />}
+			{showAd && <Adsense client="ca-pub-2068760522034474" slot="7552272565" />}
 		</>
 	);
 };

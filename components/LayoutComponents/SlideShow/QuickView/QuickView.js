@@ -49,7 +49,6 @@ const QuickView = ({ content, position, url, id }) => {
 				position={position}
 				totalSlides={content.numSlides}
 			/>
-
 			<LazyLoad once={true}>
 				<ScrollUpButton />
 			</LazyLoad>
@@ -64,7 +63,6 @@ const QuickView = ({ content, position, url, id }) => {
 					position={"bottom_quickview_share_horiz"}
 				/>
 			</LazyLoad>
-
 			<hr className={styles.break} />
 			<Crumbs
 				home={process.env.SITE_ADDRESS}
@@ -76,7 +74,6 @@ const QuickView = ({ content, position, url, id }) => {
 			<LazyLoad once={true}>
 				<QuickEmailSignUp />
 			</LazyLoad>
-
 			{position === "closing" && (
 				<>
 					<SectionBar

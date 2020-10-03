@@ -7,6 +7,8 @@ import LazyLoad from "react-lazyload";
 import SiteAd from "../Editor/renderElement/ads/siteAd";
 import LinkAd from "../Editor/renderElement/ads/linkAd";
 import styles from "./renderElement/styles/renderElementStyles.module.sass";
+import Adsense from "../../ads/code/adsense/adsense";
+
 const Embed = dynamic(() => import("../Editor/renderElement/embed/embed"), {
 	ssr: false,
 	loading: () => <SingleLoader />,
@@ -102,10 +104,8 @@ const Reader = ({ value }) => {
 					return <li className={styles.listItem}>{children}</li>;
 				case "quote":
 					return <Quote node={node} />;
-
 				case "horizontal-line":
 					return <span className={style.horizLine}>{children}</span>;
-
 				case "embed-image":
 					return (
 						<LazyLoad once={true} offset={100}>
@@ -119,9 +119,7 @@ const Reader = ({ value }) => {
 						</LazyLoad>
 					);
 				case "paid-ad":
-					return (
-						<div className={styles.paidAd}>____________ADVERT____________</div>
-					);
+					return <Adsense />;
 				case "site-ad":
 					return (
 						<LazyLoad once={true}>

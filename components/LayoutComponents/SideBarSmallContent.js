@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import SideBarSmallComponent from "./SideBar/SideBarSmallComponent";
 import sideHelper from "../helper/sideBarHelper";
 import dynamic from "next/dynamic";
-
+import Adsense from "../ads/code/adsense/adsense";
 const AdWrapper = dynamic(() => import("../ads/adWrapper"), {
 	ssr: false,
 });
@@ -47,7 +47,15 @@ const SideBarSmallContent = ({
 					/>
 				);
 			})}
-			{showAd && <AdWrapper adCode={adCode} sticky={true} />}
+			{showAd && (
+				<Adsense
+					sticky={true}
+					client="ca-pub-2068760522034474"
+					slot="5182944308"
+				/>
+			)
+			// <AdWrapper adCode={adCode} sticky={true} />
+			}
 		</>
 	);
 };

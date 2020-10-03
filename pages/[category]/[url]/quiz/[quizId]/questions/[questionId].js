@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import QuizLayout from "../../../../../../components/Layouts/QuizLayout";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import QuickViewLoading from "../../../../../../components/Loading/Layouts/QuizL
 import prodRequest from "../../../../../../components/apiRequest/prodRequest";
 import { quizQuery } from "../../../../../../data/queryData/querys";
 import parseUrl from "../../../../../../components/helper/parseUrl";
+import Context from "../../../../../../utils/Context";
 
 const Questions = ({
 	individual,
@@ -20,7 +21,7 @@ const Questions = ({
 	score,
 }) => {
 	const router = useRouter();
-
+	const { handleState, sessionQuizIds } = useContext(Context);
 	if (parseUrl(router.asPath)) {
 		Cookie.set("CPC", JSON.stringify(true), {
 			expires: 0.25,
@@ -48,6 +49,15 @@ const Questions = ({
 			}
 		}
 	}, []);
+
+	useEffect(() => {
+		if (quizId) {
+			const sessionViews = sessionQuizIds
+				.filter(x => quizId !== x.id)
+				.concat({ id: quizId });
+			handleState({ sessionQuizIds: sessionViews });
+		}
+	}, [quizId]);
 
 	return (
 		<QuizLayout

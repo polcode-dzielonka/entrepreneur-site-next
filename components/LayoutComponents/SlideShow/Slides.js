@@ -13,7 +13,7 @@ const MultiAdWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
 });
 import { AMAZON_KINDLE_CODE_SQUARE } from "../../ads/code/amazonBusiness";
 import { FIVERR_SQUARE } from "../../ads/code/fiverr";
-
+import Adsense from "../../ads/code/adsense/adsense";
 const Slides = ({
 	data,
 	showNumbers,
@@ -59,6 +59,15 @@ const Slides = ({
 					{slide}
 				</h1>
 				<h3 className={slideStyles.sectionBrief}>{slideComment}</h3>
+				<div className={slideStyles.sectionParagraph}>
+					<div
+						className={slideStyles.sectionParagraph}
+						dangerouslySetInnerHTML={{
+							__html: slideSerialized,
+						}}
+					/>
+					<Adsense client="ca-pub-2068760522034474" slot="8433059648" />
+				</div>
 				<div>
 					<LazyLoad once={true}>
 						<Embed
@@ -75,14 +84,12 @@ const Slides = ({
 						/>
 					</LazyLoad>
 				</div>
-				<div className={slideStyles.sectionParagraph}>
-					<div
-						className={slideStyles.sectionParagraph}
-						dangerouslySetInnerHTML={{
-							__html: slideSerialized,
-						}}
-					/>
-				</div>
+				{index % 3 !== 0 && (
+					<div className={slideStyles.midAdWrapper}>
+						<Adsense client="ca-pub-2068760522034474" slot="7104500257" />
+					</div>
+				)}
+
 				{index % 4 === 0 && (
 					<>
 						<LazyLoad once={true}>
@@ -112,7 +119,7 @@ const Slides = ({
 					</>
 				)}
 				{index % 3 === 0 && (
-					<div>
+					<div className={slideStyles.multiAdWrap}>
 						<div>
 							<MultiAdWrapper
 								adCodeOne={FIVERR_SQUARE}

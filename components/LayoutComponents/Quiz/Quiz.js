@@ -18,16 +18,21 @@ import styles from "./styles/quizStyles.module.sass";
 import dynamic from "next/dynamic";
 import Context from "../../../utils/Context";
 import LongQuestions from "./LongQuestions";
+import Cookie from "js-cookie";
+
 const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 	ssr: false,
 });
 import { AMAZON_MUSIC_WIDE_BANNER } from "../../ads/code/amazonBusiness";
+import Adsense from "../../ads/code/adsense/adsense";
+import { filterUnique } from "../../../utils/handler";
 
-const QuizDetails = ({ content, position, url, id, score }) => {
+const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 	const details = JSON.parse(content.overview);
 	const questions = JSON.parse(content.questions);
-	const { cpcMarker } = useContext(Context);
-
+	const { cpcMarker, sessionQuizIds, handleState } = useContext(Context);
+	const filterArray = sessionQuizIds.concat({ id });
+	const nextContent = filterUnique(nextQuiz.items, filterArray);
 	const {
 		category,
 		title,
@@ -52,9 +57,20 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 		return <ErrorLoader />;
 	}
 
+	const cookieSetup = () => {
+		Cookie.set("CPC", JSON.stringify(true), {
+			expires: 0.25,
+		});
+		handleState({
+			cpcMarker: true,
+		});
+	};
 	const nextHref = `/${category}/${url}/quiz/${id}/questions`;
 	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/quiz/${id}/questions/opening`;
 	const commentsUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/quiz/${id}/questions/closing`;
+	const nextQuizHref = nextContent[0]
+		? `/${nextContent[0].category}/${nextContent[0].urlDescription}/quiz/${nextContent[0].id}/questions/opening`
+		: "";
 
 	const quizEndRef =
 		positionNumber + 1 === content.numQuestions + 1
@@ -119,11 +135,26 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 										/>
 									</div>
 								)}
+								{position === "closing" && nextContent[0] && (
+									<div className={styles.openingButton}>
+										<QuickViewButton
+											label="Next"
+											optionalTitle={nextContent[0].headline}
+											imgSrc={nextContent[0].headlineImage}
+											imagePath={nextContent[0].headlineImagePath}
+											imageCrop={nextContent[0].headlineImageCrop}
+											imageCropInfo={nextContent[0].headlineImageCropInfo}
+											href={nextQuizHref}
+											refPath={`/[category]/[url]/quiz/[quizId]/questions/[questionId]`}
+											imageAlt={nextContent[0].headlineImageAlt}
+										/>
+									</div>
+								)}
 							</>
 						)}
 
 						<div>
-							<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+							<Adsense client="ca-pub-2068760522034474" slot="4560498904" />
 						</div>
 						<div>
 							{position !== "opening" && position !== "closing" && (
@@ -186,9 +217,7 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						numberQuestions={content.numQuestions}
 						serialized={questions["opening"][0][`openingQuizSerialized`]}
 					/>
-					<div>
-						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
-					</div>
+
 					<LongQuestions
 						total={content.numQuestions}
 						questionData={questions.questions}
@@ -203,6 +232,9 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 						questions={questions}
 						randomiseAnswers={randomiseAnswers}
 					/>
+					<div>
+						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+					</div>
 					{questionsAnswered === content.numQuestions && (
 						<>
 							<BookEnds
@@ -235,6 +267,21 @@ const QuizDetails = ({ content, position, url, id, score }) => {
 							<div>
 								<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
 							</div>
+
+							{nextContent[0] && (
+								<QuickViewButton
+									label={"Next"}
+									optionalTitle={nextContent[0].headline}
+									handler={cookieSetup}
+									imgSrc={nextContent[0].headlineImage}
+									imagePath={nextContent[0].imagePath}
+									href={nextQuizHref}
+									refPath={`/[category]/[url]/quiz/[quizId]/questions/[questionId]`}
+									imageAlt={nextContent[0].headlineImageAlt}
+									imageCrop={nextContent[0].headlineImageCrop}
+									imageCropInfo={nextContent[0].headlineImageCropInfo}
+								/>
+							)}
 						</>
 					)}
 				</>

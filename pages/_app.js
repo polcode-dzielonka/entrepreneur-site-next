@@ -12,6 +12,9 @@ class OverviewApp extends App {
 		cookie: false,
 		emailCookie: true,
 		cpcMarker: false,
+		sessionSlideIds: [],
+		sessionQuizIds: [],
+		sessionArticleIds: [],
 	};
 
 	componentDidMount() {
@@ -46,6 +49,9 @@ class OverviewApp extends App {
 					handleState: this.handleState,
 					emailCookie: this.state.emailCookie,
 					cpcMarker: this.state.cpcMarker,
+					sessionSlideIds: this.state.sessionSlideIds,
+					sessionQuizIds: this.state.sessionQuizIds,
+					sessionArticleIds: this.state.sessionArticleIds,
 				}}
 			>
 				<SignUp />

@@ -10,6 +10,7 @@ import LazyLoad from "react-lazyload";
 import styles from "./styles/contentLayout.module.sass";
 import { AMAZON_MUSIC_CODE_RECT_LARGE } from "../ads/code/amazonBusiness";
 import dynamic from "next/dynamic";
+
 const FacebookPage = dynamic(() => import("../SocialMedia/FacebookPage"), {
 	ssr: false,
 });
@@ -31,6 +32,7 @@ const Slide = ({
 						content={individual}
 						position={position}
 						latest={latest}
+						nextSlideShow={slide}
 						url={url}
 						id={id}
 					/>

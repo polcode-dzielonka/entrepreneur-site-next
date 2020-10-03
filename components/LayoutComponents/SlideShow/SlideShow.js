@@ -19,16 +19,23 @@ import QuickViewButton from "../../Button/QuickViewButton";
 import QuickSlides from "./QuickView/QuickSlides";
 import QuickBookEnds from "./QuickView/QuickBookEnds";
 import QuickHeadline from "./QuickView/QuickHeadline";
-import dynamic from "next/dynamic";
+import { filterUnique } from "../../../utils/handler";
+import Cookie from "js-cookie";
+import Adsense from "../../ads/code/adsense/adsense";
 
-const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
-	ssr: false,
-});
-import { AMAZON_MUSIC_WIDE_BANNER } from "../../ads/code/amazonBusiness";
-const SlideDetails = ({ content, position, latest, url, id }) => {
+const SlideDetails = ({
+	content,
+	position,
+	latest,
+	url,
+	id,
+	nextSlideShow,
+}) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
-	const { cpcMarker } = useContext(Context);
+	const { cpcMarker, sessionSlideIds, handleState } = useContext(Context);
+	const filterArray = sessionSlideIds.concat({ id });
+	const nextContent = filterUnique(nextSlideShow.items, filterArray);
 
 	const {
 		blurb,
@@ -54,11 +61,23 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 	const slideData = countdown ? slides["slides"] : slides["slides"];
 	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${slideUrl}/slideshow/${id}/slides/opening`;
 	const nextHref = `/${category}/${slideUrl}/slideshow/${id}/slides`;
+	const nextSlideShowHref = nextContent[0]
+		? `/${nextContent[0].category}/${nextContent[0].urlDescription}/slideshow/${nextContent[0].id}/slides/opening`
+		: "";
 	const showOpeningSlide = content.showHeadlineSlide === "true" ? true : false;
 	const slideEndRef =
 		positionNumber + 1 === content.numSlides + 1
 			? "closing"
 			: positionNumber + 1;
+
+	const cookieSetup = () => {
+		Cookie.set("CPC", JSON.stringify(true), {
+			expires: 0.25,
+		});
+		handleState({
+			cpcMarker: true,
+		});
+	};
 
 	return (
 		<div className={styles.sectionPadding}>
@@ -73,6 +92,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 							totalSlides={content.numSlides}
 							cpcMarker={cpcMarker}
 						/>
+
 						{(position === "opening" || position === "closing") && (
 							<>
 								<QuickBookEnds
@@ -109,11 +129,21 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 										imageCropInfo={details[0].headlineImageCropInfo}
 									/>
 								)}
+								{position === "closing" && nextContent[0] && (
+									<QuickViewButton
+										label={"Next"}
+										optionalTitle={nextContent[0].headline}
+										imgSrc={nextContent[0].headlineImage}
+										imagePath={nextContent[0].imagePath}
+										href={nextSlideShowHref}
+										refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+										imageAlt={nextContent[0].headlineImageAlt}
+										imageCrop={nextContent[0].headlineImageCrop}
+										imageCropInfo={nextContent[0].headlineImageCropInfo}
+									/>
+								)}
 							</>
 						)}
-					</div>
-					<div>
-						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
 					</div>
 					<div>
 						{position !== "opening" && position !== "closing" && (
@@ -133,6 +163,7 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 								cpcMarker={cpcMarker}
 							/>
 						)}
+						<Adsense client="ca-pub-2068760522034474" slot="7104500257" />
 					</div>
 				</>
 			)}
@@ -159,7 +190,8 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						serialized={bookEndOpening.openingSlideSerialized}
 					/>
 					<div>
-						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+						{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
+						<Adsense client="ca-pub-2068760522034474" slot="8433059648" />
 					</div>
 					<Slides
 						data={slideData}
@@ -192,8 +224,23 @@ const SlideDetails = ({ content, position, latest, url, id }) => {
 						serialized={bookEndClosing.closingSlideSerialized}
 					/>
 					<div>
-						<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+						<Adsense client="ca-pub-2068760522034474" slot="3467673426" />
 					</div>
+
+					{nextContent[0] && (
+						<QuickViewButton
+							label={"Next"}
+							optionalTitle={nextContent[0].headline}
+							handler={cookieSetup}
+							imgSrc={nextContent[0].headlineImage}
+							imagePath={nextContent[0].imagePath}
+							href={nextSlideShowHref}
+							refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+							imageAlt={nextContent[0].headlineImageAlt}
+							imageCrop={nextContent[0].headlineImageCrop}
+							imageCropInfo={nextContent[0].headlineImageCropInfo}
+						/>
+					)}
 				</>
 			)}
 			<LazyLoad once={true}>

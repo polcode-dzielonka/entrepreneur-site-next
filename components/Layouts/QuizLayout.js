@@ -31,6 +31,7 @@ const Quiz = ({
 					<QuizComponent
 						content={individual}
 						position={position}
+						nextQuiz={quiz}
 						url={url}
 						id={id}
 						score={score}

@@ -6,6 +6,7 @@ import { getImagePath } from "../helper/imageUrlHelper";
 
 const QuickViewButton = ({
 	label,
+	optionalTitle,
 	href,
 	refPath,
 	imgSrc,
@@ -31,8 +32,15 @@ const QuickViewButton = ({
 								/>
 							</div>
 						</div>
-						<div className={styles.label}>
-							<div className={styles.linkLabel}>{label} </div>
+						<div className={styles.labelWrapper}>
+							<div className={styles.label}>
+								<div className={styles.linkLabel}>{label} </div>
+							</div>
+							{optionalTitle && (
+								<div className={styles.label}>
+									<div className={styles.optionTitle}>{optionalTitle}</div>
+								</div>
+							)}
 						</div>
 						<div className={styles.arrowWrapper}>
 							<img

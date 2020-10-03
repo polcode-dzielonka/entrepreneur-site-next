@@ -11,19 +11,8 @@ import SectionBar from "../SectionBar";
 import ShowMeta from "../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/headlineStyles.module.sass";
-import dynamic from "next/dynamic";
+import Adsense from "../../ads/code/adsense/adsense";
 
-const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
-	ssr: false,
-});
-const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
-	ssr: false,
-});
-import {
-	AMAZON_MUSIC_WIDE_BANNER,
-	AMAZON_KINDLE_CODE_SQUARE,
-} from "../../ads/code/amazonBusiness";
-import { FIVERR_SQUARE } from "../../ads/code/fiverr";
 const BookEnds = ({ data, id, position, cpcMarker }) => {
 	const {
 		headlineImage,
@@ -68,7 +57,8 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 				authorName={authorName}
 			/>
 			<div>
-				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+				<Adsense client="ca-pub-2068760522034474" slot="4672943880" />
+				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
 			</div>
 			<ul className={styles.listWrapper}>
 				<li className={styles.sectionBrief}>{slideTitle}</li>
@@ -89,10 +79,11 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 			<hr className={styles.break} />
 			{cpcMarker && (
 				<div>
-					<MultiAdsWrapper
+					<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
+					{/* <MultiAdsWrapper
 						adCodeOne={FIVERR_SQUARE}
 						adCodeTwo={AMAZON_KINDLE_CODE_SQUARE}
-					/>
+					/> */}
 				</div>
 			)}
 			<LazyLoad once={true}>
@@ -115,7 +106,6 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 					position={"top_share_horiz"}
 				/>
 			</LazyLoad>
-
 			<hr className={styles.break} />
 		</div>
 	);

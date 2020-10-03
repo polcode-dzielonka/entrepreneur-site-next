@@ -2,20 +2,7 @@ import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
 import styles from "./styles/bookEndStyles.module.sass";
 import baseTheme from "../../../theme/baseTheme.json";
-import dynamic from "next/dynamic";
-
-const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
-	ssr: false,
-});
-const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
-	ssr: false,
-});
-
-import {
-	AMAZON_KINDLE_CODE_SQUARE,
-	AMAZON_MUSIC_WIDE_BANNER,
-} from "../../ads/code/amazonBusiness";
-import { FIVERR_SQUARE } from "../../ads/code/fiverr";
+import Adsense from "../../ads/code/adsense/adsense";
 const QuizBookEnds = ({
 	image,
 	imageAlt,
@@ -45,7 +32,7 @@ const QuizBookEnds = ({
 	return (
 		<div className={styles.bookEndWrapper}>
 			<div>
-				<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
+				<Adsense client="ca-pub-2068760522034474" slot="5713798476" />
 			</div>
 			{positionClosing && (
 				<h1 className={`${styles.sectionHeader} section-header`}>
@@ -85,12 +72,11 @@ const QuizBookEnds = ({
 				</div>
 				{positionClosing && <div className={styles.endHeader}>{title}</div>}
 			</>
-			<div>
-				<MultiAdsWrapper
-					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
-					adCodeTwo={FIVERR_SQUARE}
-				/>
-			</div>
+			{positionClosing && (
+				<div>
+					<Adsense client="ca-pub-2068760522034474" slot="3992688547" />
+				</div>
+			)}
 			<style jsx>
 				{`
 					.section-header {

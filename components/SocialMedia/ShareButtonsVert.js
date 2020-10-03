@@ -108,7 +108,6 @@ const VerticalShareButtons = ({
 					);
 				})}
 			</div>
-
 			<style jsx>
 				{`
 					@media only screen and (max-width: 760px) {

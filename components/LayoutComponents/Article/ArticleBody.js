@@ -1,4 +1,3 @@
-import { useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import Reader from "../Editor/reader";
 import LazyLoad from "react-lazyload";
@@ -15,9 +14,9 @@ import styles from "./styles/articleBodyStyles.module.sass";
 const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 	ssr: false,
 });
-import { ETORO_BANNER } from "../../ads/code/eToro";
+// import { ETORO_BANNER } from "../../ads/code/eToro";
+import Adsense from "../../ads/code/adsense/adsense";
 import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
-
 const ArticleBody = ({
 	content,
 	category,
@@ -34,7 +33,8 @@ const ArticleBody = ({
 			<LazyLoad once={true}>
 				<ScrollUpButton />
 			</LazyLoad>
-			<AdWrapper adCode={ETORO_BANNER} />
+			<Adsense client="ca-pub-2068760522034474" slot="8414762247" />
+			{/* <AdWrapper adCode={ETORO_BANNER} /> */}
 			<br />
 			<LazyLoad once={true}>
 				<SectionBar title={`Share`} titleColor="#111" titleSize="1rem" />

@@ -14,12 +14,12 @@ import LazyLoad from "react-lazyload";
 import styles from "./styles/articleHeadStyles.module.sass";
 import dynamic from "next/dynamic";
 
-const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
-	ssr: false,
-});
-import { ETORO_BANNER } from "../../ads/code/eToro";
+// const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
+// 	ssr: false,
+// });
+// import { ETORO_BANNER } from "../../ads/code/eToro";
 // import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
-
+import Adsense from "../../ads/code/adsense/adsense";
 const ArticleHead = ({ overview, id }) => {
 	const details = JSON.parse(overview.overview);
 	const {
@@ -61,7 +61,9 @@ const ArticleHead = ({ overview, id }) => {
 			<h1 className={styles.sectionHeading}>
 				{articleHeadline ? articleHeadline : headline}
 			</h1>
-			<AdWrapper adCode={ETORO_BANNER} />
+			<Adsense client={"ca-pub-2068760522034474"} slot={"9802692073"} />
+
+			{/* <AdWrapper adCode={ETORO_BANNER} /> */}
 			<ImageLoader
 				src={headlineImage}
 				alt={headlineImageAlt}

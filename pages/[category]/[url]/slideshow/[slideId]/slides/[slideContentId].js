@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import SlideLayout from "../../../../../../components/Layouts/SlideShowLayout";
 import { SLIDESHOW } from "../../../../../../graphql/indivSlideShow";
 import SlideLoading from "../../../../../../components/Loading/Layouts/SlideShowLoading";
@@ -6,7 +7,7 @@ import { slideShowQuery } from "../../../../../../data/queryData/querys";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 import parseUrl from "../../../../../../components/helper/parseUrl";
-
+import Context from "../../../../../../utils/Context";
 const Slide = ({
 	individual,
 	headline,
@@ -18,7 +19,7 @@ const Slide = ({
 	query,
 }) => {
 	const router = useRouter();
-
+	const { handleState, sessionSlideIds } = useContext(Context);
 	if (parseUrl(router.asPath)) {
 		Cookie.set("CPC", JSON.stringify(true), {
 			expires: 0.25,
@@ -26,6 +27,15 @@ const Slide = ({
 	}
 
 	if (!individual || !headline || !quiz || !slide) return <SlideLoading />;
+
+	useEffect(() => {
+		if (slideId) {
+			const sessionViews = sessionSlideIds
+				.filter(x => slideId !== x.id)
+				.concat({ id: slideId });
+			handleState({ sessionSlideIds: sessionViews });
+		}
+	}, [slideId]);
 
 	return (
 		<SlideLayout

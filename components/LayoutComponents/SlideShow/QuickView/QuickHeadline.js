@@ -74,7 +74,6 @@ const QuickHeadline = ({ data, id, position, totalSlides }) => {
 				showAuthor={showAuthor}
 				authorName={authorName}
 			/>
-
 			<LazyLoad once={true}>
 				<ShareButtonVert
 					data={sideSocialButtons}

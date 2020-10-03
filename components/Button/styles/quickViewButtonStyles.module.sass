@@ -21,8 +21,14 @@
 
 .label
     text-align: center
-    width: 60%
     text-decoration: none
+    margin: 0.5rem 0rem
+
+.labelWrapper
+    display: flex
+    text-align: center
+    flex-direction: column
+    margin: 0 auto
 
 .linkButton
     padding: 2rem
@@ -43,6 +49,11 @@
     width: 100%
     outline: none
     text-decoration: none
+
+.optionTitle
+    font-size: 1rem
+    text-align: center
+    text-transform: capitalize
 
 .quickViewImage
     width: 100%
@@ -79,8 +90,33 @@
     margin: 1rem 0
 
 @media only screen and (max-width: 670px) 
+    .arrow
+        text-align: center
+        margin: 0 auto
+
+    .arrowWrapper
+        margin: 1rem 0rem
+
+    .imgWrapper
+        width: 40%
+        text-align: center
+        margin: 0
+        padding: 0
+
+    .linkButton
+        padding: 0rem
+        margin: 1.2rem 0rem 0rem 0rem
+
+    .linkLabel
+        font-size: 1.6rem
+        text-align: center
+        margin: 1rem 0rem
+
     .linkSection
         margin: 1.5rem 0
+
+    .quickViewLink
+        flex-direction: column
 
 @media only screen and (max-width: 450px) 
     .arrow
@@ -91,14 +127,6 @@
         width: 40%
         display: flex
         padding-left: 0.75rem
-
-    .linkButton
-        padding: 0rem
-        margin: 1.2rem 0rem 0rem 0rem
-
-    .linkLabel
-        font-size: 1.6rem
-        text-align: center
 
     .linkSection
         margin: 0rem 0rem 2rem 0rem

@@ -9,7 +9,7 @@ import prodRequest from "../../apiRequest/prodRequest";
 import styles from "./styles/questionStyles.module.sass";
 import SingleLoader from "../../Loading/SingleLoader";
 import dynamic from "next/dynamic";
-
+import Adsense from "../../ads/code/adsense/adsense";
 const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
 	ssr: false,
 });
@@ -172,10 +172,7 @@ const Questions = ({
 					</div>
 				)}
 				<div className={styles.multiWrapper}>
-					<MultiAdsWrapper
-						adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
-						adCodeTwo={FIVERR_SQUARE}
-					/>
+					<Adsense client="ca-pub-2068760522034474" slot="3992688547" />
 				</div>
 			</div>
 			<div className={styles.sectionHeaderScore}>

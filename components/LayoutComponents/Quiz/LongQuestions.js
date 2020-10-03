@@ -7,21 +7,8 @@ import LongAnswer from "./LongAnswer";
 import prodRequest from "../../apiRequest/prodRequest";
 import styles from "./styles/questionStyles.module.sass";
 import SingleLoader from "../../Loading/SingleLoader";
-import dynamic from "next/dynamic";
 import LazyLoad from "react-lazyload";
-
-const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
-	ssr: false,
-});
-const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
-	ssr: false,
-});
-import {
-	AMAZON_KINDLE_CODE_SQUARE,
-	AMAZON_MUSIC_WIDE_BANNER,
-} from "../../ads/code/amazonBusiness";
-import { FIVERR_SQUARE } from "../../ads/code/fiverr";
-
+import Adsense from "../../ads/code/adsense/adsense";
 const Questions = ({
 	total,
 	questionData,
@@ -130,6 +117,9 @@ const Questions = ({
 
 		return (
 			<div className={styles.bookendWrapper}>
+				<div style={{ margin: "3rem 0rem" }}>
+					<Adsense client="ca-pub-2068760522034474" slot="4560498904" />
+				</div>
 				<div className={styles.sectionHeader}>
 					<span className={styles.questionPosition}>{questionPosition}</span>
 					{question}
@@ -171,14 +161,10 @@ const Questions = ({
 							/>
 						</div>
 					)}
-					<LazyLoad once={true}>
-						<div className={styles.multiWrapper}>
-							<MultiAdsWrapper
-								adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
-								adCodeTwo={FIVERR_SQUARE}
-							/>
-						</div>
-					</LazyLoad>
+
+					<div className={styles.multiWrapper}>
+						<Adsense client="ca-pub-2068760522034474" slot="3992688547" />
+					</div>
 				</div>
 				<div className={styles.sectionHeaderScore}>
 					Current Score: {currentScore}
@@ -205,10 +191,6 @@ const Questions = ({
 					incorrectAnswerComment={incorrectAnswerComment}
 					longAnswerSerialized={longAnswerSerialized}
 				/>
-
-				<div>
-					<AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} />
-				</div>
 			</div>
 		);
 	});
