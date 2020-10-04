@@ -119,7 +119,7 @@ const Reader = ({ value }) => {
 						</LazyLoad>
 					);
 				case "paid-ad":
-					return <Adsense />;
+					return <Adsense client="ca-pub-2068760522034474" slot="8517191254" />;
 				case "site-ad":
 					return (
 						<LazyLoad once={true}>
