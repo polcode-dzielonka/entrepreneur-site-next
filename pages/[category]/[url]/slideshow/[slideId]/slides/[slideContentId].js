@@ -26,8 +26,6 @@ const Slide = ({
 		});
 	}
 
-	if (!individual || !headline || !quiz || !slide) return <SlideLoading />;
-
 	useEffect(() => {
 		if (slideId) {
 			const sessionViews = sessionSlideIds
@@ -37,6 +35,15 @@ const Slide = ({
 		}
 	}, [slideId]);
 
+	if (!individual || !headline || !quiz || !slide) return <SlideLoading />;
+
+	const numSlides =
+		individual && individual.data && individual.data.getProductionSlideshow
+			? individual.data.getProductionSlideshow.numSlides
+			: "1000";
+	const positionCheck =
+		Number(slideContentId) > Number(numSlides) ? "closing" : slideContentId;
+
 	return (
 		<SlideLayout
 			individual={individual.data.getProductionSlideshow}
@@ -45,7 +52,7 @@ const Slide = ({
 			quiz={quiz.data.listProductionQuizs}
 			slide={slide.data.listProductionSlideshows}
 			id={slideId}
-			position={slideContentId}
+			position={positionCheck}
 			url={url}
 		/>
 	);

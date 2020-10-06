@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import BookEnds from "./BookEnds";
 import Slides from "./Slides";
@@ -33,7 +33,8 @@ const SlideDetails = ({
 }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
-	const { cpcMarker, sessionSlideIds, handleState } = useContext(Context);
+	const { sessionSlideIds } = useContext(Context);
+	const [cpcMarker, setCpcMarker] = useState(false);
 	const filterArray = sessionSlideIds.concat({ id });
 	const nextContent = filterUnique(nextSlideShow.items, filterArray);
 
@@ -48,6 +49,12 @@ const SlideDetails = ({
 		headlineImageAlt,
 	} = details[0];
 	const positionNumber = Number(position);
+
+	useEffect(() => {
+		const cpcMarker = Cookie.get("CPC") ? JSON.parse(Cookie.get("CPC")) : false;
+		setCpcMarker(cpcMarker);
+	}, []);
+
 	if (
 		!slides &&
 		positionNumber > content.numSlides &&
@@ -74,9 +81,7 @@ const SlideDetails = ({
 		Cookie.set("CPC", JSON.stringify(true), {
 			expires: 0.25,
 		});
-		handleState({
-			cpcMarker: true,
-		});
+		setCpcMarker(true);
 	};
 
 	return (
@@ -115,7 +120,6 @@ const SlideDetails = ({
 											: undefined
 									}
 									embed={slides[position][0][`${position}Image-embed`]}
-									serialized={slides[position][0][`${position}SlideSerialized`]}
 								/>
 								{position === "opening" && (
 									<QuickViewButton
@@ -187,10 +191,8 @@ const SlideDetails = ({
 								: undefined
 						}
 						embed={bookEndOpening["openingImage-embed"]}
-						serialized={bookEndOpening.openingSlideSerialized}
 					/>
 					<div>
-						{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
 						<Adsense client="ca-pub-2068760522034474" slot="8433059648" />
 					</div>
 					<Slides
@@ -221,7 +223,6 @@ const SlideDetails = ({
 								: undefined
 						}
 						embed={bookEndClosing["closingImage-embed"]}
-						serialized={bookEndClosing.closingSlideSerialized}
 					/>
 					<div>
 						<Adsense client="ca-pub-2068760522034474" slot="3467673426" />

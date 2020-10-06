@@ -1,25 +1,12 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Embed from "../../../Embed/Embed";
-import defaultValue from "../../Editor/defaultValue";
 import QuickViewButton from "../../../Button/QuickViewButton";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/quickSlideStyles.module.sass";
 import SingleLoader from "../../../Loading/SingleLoader";
-import dynamic from "next/dynamic";
-
-const MultiAdsWrapper = dynamic(() => import("../../../ads/twoAdsWrapper"), {
-	ssr: false,
-});
-const AdWrapper = dynamic(() => import("../../../ads/adWrapper"), {
-	ssr: false,
-});
-import {
-	AMAZON_KINDLE_CODE_SQUARE,
-	AMAZON_MUSIC_WIDE_BANNER,
-} from "../../../ads/code/amazonBusiness";
-import { FIVERR_SQUARE } from "../../../ads/code/fiverr";
 import Adsense from "../../../ads/code/adsense/adsense";
+import Reader from "../../Editor/reader";
 
 const QuickSlides = ({
 	total,
@@ -44,12 +31,8 @@ const QuickSlides = ({
 		slideImageAttribution,
 		slideImageAttributionLink,
 		slidePosition,
-		slideSerialized,
+		bottomSlideDetails,
 	} = slideDetails;
-
-	const value = slideDetails.slideDetails
-		? slideDetails.slideDetails
-		: defaultValue;
 
 	const showNumber = countdown ? total - slidePosition + 1 : slidePosition;
 	const [loading, setLoading] = useState(false);
@@ -59,11 +42,9 @@ const QuickSlides = ({
 	}, [slideImage]);
 
 	if (loading) return <SingleLoader />;
-
 	return (
 		<div className={styles.bookendWrapper}>
 			<div>
-				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
 				<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
 			</div>
 			<h1 className={styles.sectionHeader}>
@@ -74,12 +55,7 @@ const QuickSlides = ({
 			</h1>
 			<h3 className={styles.sectionBrief}>{slideComment}</h3>
 			<div className={styles.sectionParagraph}>
-				<div
-					className={styles.sectionParagraph}
-					dangerouslySetInnerHTML={{
-						__html: slideSerialized,
-					}}
-				/>
+				<Reader value={slideDetails.slideDetails[0].children} />
 			</div>
 			<div>
 				<Embed
@@ -95,13 +71,13 @@ const QuickSlides = ({
 					noMaxHeight={true}
 				/>
 			</div>
-
+			<div className={styles.bottomSectionParagraph}>
+				{bottomSlideDetails && (
+					<Reader value={bottomSlideDetails[0].children} />
+				)}
+			</div>
 			<div className={styles.adWrap}>
 				<Adsense client="ca-pub-2068760522034474" slot="1874540097" />
-				{/* <MultiAdsWrapper
-					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
-					adCodeTwo={FIVERR_SQUARE}
-				/> */}
 			</div>
 			{cpcMarker && (
 				<LazyLoad once={true}>
@@ -133,10 +109,6 @@ const QuickSlides = ({
 					/>
 				</LazyLoad>
 			)}
-			<div>
-				{/* <Adsense client="ca-pub-2068760522034474" slot="1874540097" /> */}
-				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
-			</div>
 		</div>
 	);
 };

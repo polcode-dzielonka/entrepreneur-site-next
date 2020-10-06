@@ -7,7 +7,7 @@ import LazyLoad from "react-lazyload";
 import NextLink from "../Editor/renderElement/ads/nextLink";
 import slideStyles from "./styles/slideStyles.module.sass";
 import dynamic from "next/dynamic";
-
+import Reader from "../Editor/reader";
 const MultiAdWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
 	ssr: false,
 });
@@ -36,7 +36,7 @@ const Slides = ({
 			slideImageAttribution,
 			slideImageAttributionLink,
 			slidePosition,
-			slideSerialized,
+			bottomSlideDetails,
 		} = slideData;
 
 		const arrayNumber = Number.isInteger(index / 2) ? index / 2 : null;
@@ -60,12 +60,8 @@ const Slides = ({
 				</h1>
 				<h3 className={slideStyles.sectionBrief}>{slideComment}</h3>
 				<div className={slideStyles.sectionParagraph}>
-					<div
-						className={slideStyles.sectionParagraph}
-						dangerouslySetInnerHTML={{
-							__html: slideSerialized,
-						}}
-					/>
+					<Reader value={slideData.slideDetails[0].children} />
+
 					<Adsense client="ca-pub-2068760522034474" slot="8433059648" />
 				</div>
 				<div>
@@ -83,6 +79,11 @@ const Slides = ({
 							noMaxHeight={false}
 						/>
 					</LazyLoad>
+				</div>
+				<div className={slideStyles.bottomSectionParagraph}>
+					{bottomSlideDetails && (
+						<Reader value={bottomSlideDetails[0].children} />
+					)}
 				</div>
 				{index % 3 !== 0 && (
 					<div className={slideStyles.midAdWrapper}>

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Embed from "../../Embed/Embed";
 import styles from "./styles/bookEndStyles.module.sass";
-
+import Reader from "../Editor/reader";
 const BookEnds = ({
 	image,
 	imageAlt,
@@ -15,7 +15,6 @@ const BookEnds = ({
 	details,
 	position,
 	embed,
-	serialized,
 }) => {
 	return (
 		<div className={styles.bookendWrapper}>
@@ -24,12 +23,7 @@ const BookEnds = ({
 					<>
 						<h1 className={styles.sectionHeader}>{title}</h1>
 						<div className={styles.sectionParagraph}>
-							<div
-								className={styles.sectionParagraph}
-								dangerouslySetInnerHTML={{
-									__html: serialized,
-								}}
-							/>
+							<Reader value={details[0].children} />
 						</div>
 					</>
 				)}
@@ -55,12 +49,7 @@ const BookEnds = ({
 					<>
 						<h1 className={styles.sectionHeader}> {title}</h1>
 						<div className={styles.sectionParagraph}>
-							<div
-								className={styles.sectionParagraph}
-								dangerouslySetInnerHTML={{
-									__html: serialized,
-								}}
-							/>
+							<Reader value={details[0].children} />
 						</div>
 					</>
 				)}

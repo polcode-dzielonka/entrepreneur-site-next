@@ -23,7 +23,6 @@ const Questions = ({
 	questions,
 	nextQuestionData,
 	randomiseAnswers,
-	cpcMarker,
 }) => {
 	const [loading, setLoading] = useState(false);
 
@@ -46,7 +45,6 @@ const Questions = ({
 			inCorrectAnswerDetails,
 			longAnswer,
 			longFalseAnswer,
-			longAnswerSerialized,
 			question,
 			questionImage,
 			questionImageAlt,
@@ -189,7 +187,6 @@ const Questions = ({
 					answer={longAnswer}
 					correctAnswerComment={correctAnswerComment}
 					incorrectAnswerComment={incorrectAnswerComment}
-					longAnswerSerialized={longAnswerSerialized}
 				/>
 			</div>
 		);

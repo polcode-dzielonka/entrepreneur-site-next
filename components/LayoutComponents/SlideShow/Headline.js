@@ -58,7 +58,6 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 			/>
 			<div>
 				<Adsense client="ca-pub-2068760522034474" slot="4672943880" />
-				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
 			</div>
 			<ul className={styles.listWrapper}>
 				<li className={styles.sectionBrief}>{slideTitle}</li>
@@ -80,10 +79,6 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 			{cpcMarker && (
 				<div>
 					<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
-					{/* <MultiAdsWrapper
-						adCodeOne={FIVERR_SQUARE}
-						adCodeTwo={AMAZON_KINDLE_CODE_SQUARE}
-					/> */}
 				</div>
 			)}
 			<LazyLoad once={true}>

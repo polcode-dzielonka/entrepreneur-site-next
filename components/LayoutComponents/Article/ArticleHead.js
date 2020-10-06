@@ -12,15 +12,9 @@ import {
 import ShowMeta from "../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/articleHeadStyles.module.sass";
-import dynamic from "next/dynamic";
-
-// const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
-// 	ssr: false,
-// });
-// import { ETORO_BANNER } from "../../ads/code/eToro";
-// import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
 import Adsense from "../../ads/code/adsense/adsense";
-const ArticleHead = ({ overview, id }) => {
+
+const ArticleHead = ({ overview, id, nextSlideShow }) => {
 	const details = JSON.parse(overview.overview);
 	const {
 		articleHeadline,
@@ -42,6 +36,7 @@ const ArticleHead = ({ overview, id }) => {
 		tags,
 	} = details[0];
 	const canonical = `${process.env.SITE_ADDRESS}/${category}/${urlDescription}/article/${id}`;
+
 	return (
 		<div className={styles.sectionPadding}>
 			<DynamicHeader
@@ -61,9 +56,15 @@ const ArticleHead = ({ overview, id }) => {
 			<h1 className={styles.sectionHeading}>
 				{articleHeadline ? articleHeadline : headline}
 			</h1>
+			<div className={styles.metaWrapper}>
+				<ShowMeta
+					showDate={showDate}
+					displayDate={displayDate}
+					showAuthor={showAuthor}
+					authorName={authorName}
+				/>
+			</div>
 			<Adsense client={"ca-pub-2068760522034474"} slot={"9802692073"} />
-
-			{/* <AdWrapper adCode={ETORO_BANNER} /> */}
 			<ImageLoader
 				src={headlineImage}
 				alt={headlineImageAlt}
@@ -85,14 +86,7 @@ const ArticleHead = ({ overview, id }) => {
 					})}
 				</ul>
 			)}
-			<div className={styles.metaWrapper}>
-				<ShowMeta
-					showDate={showDate}
-					displayDate={displayDate}
-					showAuthor={showAuthor}
-					authorName={authorName}
-				/>
-			</div>
+
 			<LazyLoad once={true}>
 				<hr className={styles.break} />
 				<ShareButtonVert
@@ -112,12 +106,12 @@ const ArticleHead = ({ overview, id }) => {
 				/>
 			</LazyLoad>
 			<hr className={styles.break} />
-			{/* <AdWrapper adCode={AMAZON_BUSINESS_AD_RECT} /> */}
 			<ArticleBody
 				content={overview}
 				url={canonical}
 				image={headlineImage}
 				headline={headline}
+				nextSlideShow={nextSlideShow}
 				brief={brief}
 				id={id}
 			/>

@@ -10,17 +10,11 @@ import styles from "./styles/questionStyles.module.sass";
 import SingleLoader from "../../Loading/SingleLoader";
 import dynamic from "next/dynamic";
 import Adsense from "../../ads/code/adsense/adsense";
-const MultiAdsWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
-	ssr: false,
-});
+
 const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 	ssr: false,
 });
-import {
-	AMAZON_KINDLE_CODE_SQUARE,
-	AMAZON_MUSIC_WIDE_BANNER,
-} from "../../ads/code/amazonBusiness";
-import { FIVERR_SQUARE } from "../../ads/code/fiverr";
+import { AMAZON_MUSIC_WIDE_BANNER } from "../../ads/code/amazonBusiness";
 
 const Questions = ({
 	total,
@@ -34,7 +28,6 @@ const Questions = ({
 	questions,
 	nextQuestionData,
 	randomiseAnswers,
-	cpcMarker,
 }) => {
 	const [showAnswer, setShowAnswer] = useState(false);
 	const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -54,7 +47,6 @@ const Questions = ({
 		inCorrectAnswerDetails,
 		longAnswer,
 		longFalseAnswer,
-		longAnswerSerialized,
 		question,
 		questionImage,
 		questionImageAlt,
@@ -198,7 +190,6 @@ const Questions = ({
 				answer={longAnswer}
 				correctAnswerComment={correctAnswerComment}
 				incorrectAnswerComment={incorrectAnswerComment}
-				longAnswerSerialized={longAnswerSerialized}
 			/>
 
 			{showAnswer && (

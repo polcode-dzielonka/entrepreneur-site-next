@@ -19,7 +19,7 @@ const Article = ({ id, individual, quiz, slide, url }) => {
 		<Layout>
 			<main className={styles.articleContainer}>
 				<article className={styles.articleSection}>
-					<ArticleContent overview={individual} id={id} />
+					<ArticleContent overview={individual} id={id} nextSlideShow={slide} />
 				</article>
 				<aside className={styles.sideArticleSection}>
 					<div className={styles.sectionPadding}>

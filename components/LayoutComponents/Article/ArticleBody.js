@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Reader from "../Editor/reader";
+import { useContext } from "react";
 import LazyLoad from "react-lazyload";
 import FacebookComments from "../../SocialMedia/FacebookComments";
 import { closingSocialButtons } from "../../SocialMedia/data";
@@ -14,9 +15,13 @@ import styles from "./styles/articleBodyStyles.module.sass";
 const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 	ssr: false,
 });
-// import { ETORO_BANNER } from "../../ads/code/eToro";
 import Adsense from "../../ads/code/adsense/adsense";
 import { AMAZON_BUSINESS_AD_RECT } from "../../ads/code/amazonBusiness";
+import Context from "../../../utils/Context";
+import { filterUnique } from "../../../utils/handler";
+import QuickViewButton from "../../Button/QuickViewButton";
+import Cookie from "js-cookie";
+
 const ArticleBody = ({
 	content,
 	category,
@@ -25,16 +30,47 @@ const ArticleBody = ({
 	headline,
 	brief,
 	id,
+	nextSlideShow,
 }) => {
 	const value = JSON.parse(content.content);
+
+	const { sessionSlideIds, handleState } = useContext(Context);
+	const filterArray = sessionSlideIds.concat({ id });
+	const nextContent = filterUnique(nextSlideShow.items, filterArray);
+	const nextSlideShowHref = nextContent[0]
+		? `/${nextContent[0].category}/${nextContent[0].urlDescription}/slideshow/${nextContent[0].id}/slides/opening`
+		: "";
+
+	const cookieSetup = () => {
+		Cookie.set("CPC", JSON.stringify(true), {
+			expires: 0.25,
+		});
+	};
+
 	return (
 		<div className={styles.sectionPadding}>
 			<Reader value={value} />
+
+			{nextContent[0] && (
+				<div className={styles.nextButtonWrapper}>
+					<QuickViewButton
+						label={"Next"}
+						optionalTitle={nextContent[0].headline}
+						handler={cookieSetup}
+						imgSrc={nextContent[0].headlineImage}
+						imagePath={nextContent[0].imagePath}
+						href={nextSlideShowHref}
+						refPath={`/[category]/[url]/slideshow/[slideId]/slides/[slideContentId]`}
+						imageAlt={nextContent[0].headlineImageAlt}
+						imageCrop={nextContent[0].headlineImageCrop}
+						imageCropInfo={nextContent[0].headlineImageCropInfo}
+					/>
+				</div>
+			)}
 			<LazyLoad once={true}>
 				<ScrollUpButton />
 			</LazyLoad>
 			<Adsense client="ca-pub-2068760522034474" slot="8414762247" />
-			{/* <AdWrapper adCode={ETORO_BANNER} /> */}
 			<br />
 			<LazyLoad once={true}>
 				<SectionBar title={`Share`} titleColor="#111" titleSize="1rem" />

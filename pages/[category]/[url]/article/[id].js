@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import ArticleLayout from "../../../../components/Layouts/ArticleLayout";
 import prodRequest from "../../../../components/apiRequest/prodRequest";
 import { articleQuery } from "../../../../data/queryData/querys";
@@ -6,9 +7,11 @@ import ArticleLoading from "../../../../components/Loading/Layouts/ArticleLoadin
 import parseUrl from "../../../../components/helper/parseUrl";
 import Cookie from "js-cookie";
 import { useRouter } from "next/router";
+import Context from "../../../../utils/Context";
 
 const Article = ({ individual, quiz, slide, id, category, url }) => {
 	const router = useRouter();
+	const { handleState, sessionArticleIds } = useContext(Context);
 
 	if (parseUrl(router.asPath)) {
 		Cookie.set("CPC", JSON.stringify(true), {
@@ -17,6 +20,15 @@ const Article = ({ individual, quiz, slide, id, category, url }) => {
 	}
 
 	if (!individual || !quiz || !slide) return <ArticleLoading />;
+
+	useEffect(() => {
+		if (id) {
+			const sessionViews = sessionArticleIds
+				.filter(x => id !== x.id)
+				.concat({ id: id });
+			handleState({ sessionArticleIds: sessionViews });
+		}
+	}, [id]);
 
 	return (
 		<ArticleLayout

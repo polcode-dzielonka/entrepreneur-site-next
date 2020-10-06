@@ -1,21 +1,8 @@
 import PropTypes from "prop-types";
 import Embed from "../../../Embed/Embed";
 import styles from "./styles/quickBookEndStyles.module.sass";
-import dynamic from "next/dynamic";
-
-const MultiAdsWrapper = dynamic(() => import("../../../ads/twoAdsWrapper"), {
-	ssr: false,
-});
-const AdWrapper = dynamic(() => import("../../../ads/adWrapper"), {
-	ssr: false,
-});
-
-import {
-	AMAZON_KINDLE_CODE_SQUARE,
-	AMAZON_MUSIC_WIDE_BANNER,
-} from "../../../ads/code/amazonBusiness";
-import { FIVERR_SQUARE } from "../../../ads/code/fiverr";
 import Adsense from "../../../ads/code/adsense/adsense";
+import Reader from "../../Editor/reader";
 const BookEnds = ({
 	image,
 	imageAlt,
@@ -24,26 +11,18 @@ const BookEnds = ({
 	imageAltAttributionLink,
 	title,
 	details,
-	position,
 	embed,
-	serialized,
 }) => {
 	const value = details;
 
 	return (
 		<div className={styles.bookEndWrapper}>
 			<div>
-				{/* <AdWrapper adCode={AMAZON_MUSIC_WIDE_BANNER} /> */}
 				<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
 			</div>
 			<h1 className={styles.sectionHeader}>{title}</h1>
 			<div className={styles.sectionParagraph}>
-				<div
-					className={styles.sectionParagraph}
-					dangerouslySetInnerHTML={{
-						__html: serialized,
-					}}
-				/>
+				<Reader value={details[0].children} />
 			</div>
 			<div className={styles.imageWrap}>
 				<Embed
@@ -60,10 +39,6 @@ const BookEnds = ({
 
 			<div className={styles.adWrap}>
 				<Adsense client="ca-pub-2068760522034474" slot="1874540097" />
-				{/* <MultiAdsWrapper
-					adCodeOne={AMAZON_KINDLE_CODE_SQUARE}
-					adCodeTwo={FIVERR_SQUARE}
-				/> */}
 			</div>
 		</div>
 	);

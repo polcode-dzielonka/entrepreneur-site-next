@@ -30,7 +30,8 @@ import { filterUnique } from "../../../utils/handler";
 const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 	const details = JSON.parse(content.overview);
 	const questions = JSON.parse(content.questions);
-	const { cpcMarker, sessionQuizIds, handleState } = useContext(Context);
+	const { sessionQuizIds } = useContext(Context);
+	const [cpcMarker, setCpcMarker] = useState(false);
 	const filterArray = sessionQuizIds.concat({ id });
 	const nextContent = filterUnique(nextQuiz.items, filterArray);
 	const {
@@ -49,6 +50,11 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 		setCurrentScore(0);
 	}, [id]);
 
+	useEffect(() => {
+		const cpcMarker = Cookie.get("CPC") ? JSON.parse(Cookie.get("CPC")) : false;
+		setCpcMarker(cpcMarker);
+	}, []);
+
 	if (
 		positionNumber > content.numQuestions &&
 		position !== "opening" &&
@@ -61,10 +67,9 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 		Cookie.set("CPC", JSON.stringify(true), {
 			expires: 0.25,
 		});
-		handleState({
-			cpcMarker: true,
-		});
+		setCpcMarker(true);
 	};
+
 	const nextHref = `/${category}/${url}/quiz/${id}/questions`;
 	const shareUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/quiz/${id}/questions/opening`;
 	const commentsUrl = `${process.env.SITE_ADDRESS}/${category}/${url}/quiz/${id}/questions/closing`;
@@ -117,9 +122,6 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 									scoreComments={scoreCommentsDetails}
 									finalScore={currentScore}
 									numberQuestions={content.numQuestions}
-									serialized={
-										questions[position][0][`${position}QuizSerialized`]
-									}
 								/>
 								{position === "opening" && (
 									<div className={styles.openingButton}>
@@ -215,7 +217,6 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 						scoreComments={scoreCommentsDetails}
 						finalScore={currentScore}
 						numberQuestions={content.numQuestions}
-						serialized={questions["opening"][0][`openingQuizSerialized`]}
 					/>
 
 					<LongQuestions
@@ -260,7 +261,6 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 								scoreComments={scoreCommentsDetails}
 								finalScore={currentScore}
 								numberQuestions={content.numQuestions}
-								serialized={questions["closing"][0][`closingQuizSerialized`]}
 								positionClosing={true}
 							/>
 

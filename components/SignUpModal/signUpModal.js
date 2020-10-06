@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Ripples from "../Button/Ripples";
 import Context from "../../utils/Context";
@@ -19,12 +19,12 @@ import baseTheme from "../../theme/baseTheme.json";
 const cookieTime = 60;
 
 const SignUpModal = () => {
-	const { emailCookie, handleState } = useContext(Context);
 	const [formData, setFormData] = useState(INITIAL_STATE);
 	const [errors, setErrors] = useState(ERROR_STATE);
 	const [showModal, setShowModal] = useState(false);
 	const [widthModal, setWidthModal] = useState(true);
 	const [successModal, setSuccessModal] = useState(false);
+	const [emailCookie, setEmailCookie] = useState(false);
 	const [count, setCount] = useState(0);
 	const handleScroll = () => {
 		const top = window.pageYOffset || document.documentElement.scrollTop;
@@ -38,6 +38,12 @@ const SignUpModal = () => {
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		handleScroll();
+
+		const cookieEmailMarker = Cookie.get("wealth-cookie-email-signup")
+			? JSON.parse(Cookie.get("wealth-cookie-email-signup"))
+			: true;
+
+		setEmailCookie(cookieEmailMarker);
 
 		if (window.innerWidth < 1000) {
 			setWidthModal(false);
@@ -53,7 +59,7 @@ const SignUpModal = () => {
 		Cookie.set("wealth-cookie-email-signup", JSON.stringify(false), {
 			expires: expiryDate,
 		});
-		handleState({ emailCookie: value });
+		setEmailCookie(value);
 	};
 
 	const validateForm = e => {
@@ -97,7 +103,7 @@ const SignUpModal = () => {
 			});
 			setFormData(INITIAL_STATE);
 			setSuccessModal(true);
-			handleState({ emailCookie: false });
+			setEmailCookie(false);
 			setErrors({
 				ERROR_STATE,
 			});

@@ -1,12 +1,18 @@
-import { useContext } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Ripples from "../Button/Ripples";
 import Cookie from "js-cookie";
-import Context from "../../utils/Context";
 import styles from "./styles/cookieBannerStyles.module.sass";
 import baseTheme from "../../theme/baseTheme.json";
 const CookieBanner = () => {
-	const { cookie, handleState } = useContext(Context);
+	const [cookie, setCookie] = useState(true);
+
+	useEffect(() => {
+		const cookieMarker = Cookie.get("cookie-accept")
+			? JSON.parse(Cookie.get("cookie-accept"))
+			: true;
+		setCookie(cookieMarker);
+	}, []);
 
 	const changeCookie = () => {
 		//set expiry to 10 minutes:- new Date(new Date().getTime() + 10 * 60 * 1000)
@@ -15,7 +21,7 @@ const CookieBanner = () => {
 		Cookie.set("cookie-accept", JSON.stringify(false), {
 			expires: Number(expiryDate),
 		});
-		handleState({ cookie: false });
+		setCookie(false);
 	};
 
 	return (

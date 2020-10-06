@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-// import Embed from "../../Embed/Embed";
 import styles from "./styles/longAnswerStyles.module.sass";
+import Reader from "../Editor/reader";
 
 const LongAnswer = ({
 	showAnswer,
@@ -8,7 +8,6 @@ const LongAnswer = ({
 	answer,
 	correctAnswerComment,
 	incorrectAnswerComment,
-	longAnswerSerialized,
 }) => {
 	return (
 		<div className={styles.bookendWrapper}>
@@ -46,11 +45,7 @@ const LongAnswer = ({
 							</div>
 						</div>
 						<div>
-							<div
-								dangerouslySetInnerHTML={{
-									__html: longAnswerSerialized,
-								}}
-							/>
+							<Reader value={answer[0].children} />
 						</div>
 					</div>
 				</div>

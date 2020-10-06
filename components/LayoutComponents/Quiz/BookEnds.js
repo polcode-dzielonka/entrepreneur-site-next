@@ -3,6 +3,8 @@ import Embed from "../../Embed/Embed";
 import styles from "./styles/bookEndStyles.module.sass";
 import baseTheme from "../../../theme/baseTheme.json";
 import Adsense from "../../ads/code/adsense/adsense";
+import Reader from "../Editor/reader";
+
 const QuizBookEnds = ({
 	image,
 	imageAlt,
@@ -28,7 +30,7 @@ const QuizBookEnds = ({
 			Object.keys(scoreComments).length,
 		0,
 	);
-
+	console.log("DETIALS", details);
 	return (
 		<div className={styles.bookEndWrapper}>
 			<div>
@@ -61,14 +63,10 @@ const QuizBookEnds = ({
 					{scoreComments[`scoreComment${commentNumber}`]}
 				</h1>
 			)}
+
 			<>
 				<div className={styles.sectionParagraph}>
-					<div
-						className={styles.sectionParagraph}
-						dangerouslySetInnerHTML={{
-							__html: serialized,
-						}}
-					/>
+					<Reader value={details[0].children} />
 				</div>
 				{positionClosing && <div className={styles.endHeader}>{title}</div>}
 			</>
