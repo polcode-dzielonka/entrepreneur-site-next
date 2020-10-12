@@ -22,6 +22,8 @@ import QuickHeadline from "./QuickView/QuickHeadline";
 import { filterUnique } from "../../../utils/handler";
 import Cookie from "js-cookie";
 import Adsense from "../../ads/code/adsense/adsense";
+import prodRequest from "../../apiRequest/prodRequest";
+import { UPDATE_SLIDESHOW } from "../../../graphql/indivSlideShow";
 
 const SlideDetails = ({
 	content,
@@ -33,11 +35,11 @@ const SlideDetails = ({
 }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
+	const { viewCount } = content;
 	const { sessionSlideIds } = useContext(Context);
 	const [cpcMarker, setCpcMarker] = useState(false);
 	const filterArray = sessionSlideIds.concat({ id });
 	const nextContent = filterUnique(nextSlideShow.items, filterArray);
-
 	const {
 		blurb,
 		category,
@@ -54,6 +56,26 @@ const SlideDetails = ({
 		const cpcMarker = Cookie.get("CPC") ? JSON.parse(Cookie.get("CPC")) : false;
 		setCpcMarker(cpcMarker);
 	}, []);
+
+	useEffect(() => {
+		const updatedCount = viewCount ? Number(viewCount) + 1 : 1;
+
+		try {
+			const mutationData = {
+				query: UPDATE_SLIDESHOW,
+				operationName: "updateProductionSlideshow",
+				variables: {
+					input: {
+						id,
+						viewCount: JSON.stringify(updatedCount),
+					},
+				},
+			};
+			prodRequest(mutationData);
+		} catch (err) {
+			console.log("Error with request", err);
+		}
+	}, [id]);
 
 	if (
 		!slides &&

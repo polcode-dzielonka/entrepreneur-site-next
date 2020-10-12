@@ -12,6 +12,7 @@ const SideBarSmallContent = ({
 	showAd = false,
 	adCode,
 	limit = 0,
+	cpcAd,
 }) => {
 	const slicedData = limit > 0 ? data.slice(0, limit) : data;
 	return (
@@ -47,15 +48,14 @@ const SideBarSmallContent = ({
 					/>
 				);
 			})}
-			{showAd && (
+			{showAd && !cpcAd && (
 				<Adsense
 					sticky={true}
 					client="ca-pub-2068760522034474"
 					slot="5182944308"
 				/>
-			)
-			// <AdWrapper adCode={adCode} sticky={true} />
-			}
+			)}
+			{cpcAd && <AdWrapper adCode={cpcAd.displayAd} sticky={true} />}
 		</>
 	);
 };

@@ -12,11 +12,14 @@ import {
 } from "../ads/code/amazonBusiness";
 import Adsense from "../ads/code/adsense/adsense";
 
-const SideBarContent = ({ data, type, showAd = false, limit = 0 }) => {
+const SideBarContent = ({ data, type, showAd = false, limit = 0, cpcAd }) => {
 	const slicedData = limit > 0 ? data.slice(0, limit) : data;
 	return (
 		<>
-			{showAd && <Adsense client="ca-pub-2068760522034474" slot="6792782716" />}
+			{cpcAd && <AdWrapper adCode={cpcAd.displayAd} />}
+			{showAd && !cpcAd && (
+				<Adsense client="ca-pub-2068760522034474" slot="6792782716" />
+			)}
 			{slicedData.map((article, index) => {
 				const {
 					headlineImage,
@@ -51,7 +54,10 @@ const SideBarContent = ({ data, type, showAd = false, limit = 0 }) => {
 					</Fragment>
 				);
 			})}
-			{showAd && <Adsense client="ca-pub-2068760522034474" slot="7552272565" />}
+			{cpcAd && <AdWrapper adCode={cpcAd.displayAd} />}
+			{showAd && !cpcAd && (
+				<Adsense client="ca-pub-2068760522034474" slot="7552272565" />
+			)}
 		</>
 	);
 };

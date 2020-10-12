@@ -1,8 +1,8 @@
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import ErrorLoader from "../../Error";
 import Headline from "./QuickHeadline";
 import SectionBar from "../../SectionBar";
-import QuickViewButton from "../../../Button/QuickViewButton";
 import ScrollUpButton from "../../ScrollUpButton/ScrollUpButton";
 import Crumbs from "../../Crumbs/crumbs";
 import ShareButtonHoriz from "../../../SocialMedia/ShareButtonsHoriz";
@@ -12,6 +12,9 @@ import FacebookComments from "../../../SocialMedia/FacebookComments";
 import LazyLoad from "react-lazyload";
 import ScrollingContent from "../../ScrollingContent/ScrollingContent";
 import styles from "./styles/quickViewStyles.module.sass";
+import { UPDATE_SLIDESHOW } from "../../../../graphql/indivSlideShow";
+import prodRequest from "../../../apiRequest/prodRequest";
+
 const QuickView = ({ content, position, url, id }) => {
 	const details = JSON.parse(content.overview);
 	const slides = JSON.parse(content.slides);
@@ -23,8 +26,29 @@ const QuickView = ({ content, position, url, id }) => {
 		showNumbers,
 		countdown,
 	} = details[0];
-
+	const { viewCount } = content;
 	const positionNumber = Number(position);
+
+	useEffect(() => {
+		const updatedCount = viewCount ? Number(viewCount) + 1 : 1;
+
+		try {
+			const mutationData = {
+				query: UPDATE_SLIDESHOW,
+				operationName: "updateProductionSlideshow",
+				variables: {
+					input: {
+						id,
+						viewCount: JSON.stringify(updatedCount),
+					},
+				},
+			};
+			prodRequest(mutationData);
+		} catch (err) {
+			console.log("Error with request", err);
+		}
+	}, [id]);
+
 	if (
 		positionNumber > content.numSlides &&
 		position !== "opening" &&

@@ -23,6 +23,9 @@ const QuickViewLayout = ({
 	position,
 	url,
 }) => {
+	const headlineData = individual.linkedArticle
+		? [individual.linkedArticle, ...headline.items]
+		: headline.items;
 	return (
 		<Layout>
 			<main className={styles.articleContainer}>
@@ -39,7 +42,7 @@ const QuickViewLayout = ({
 						<SectionBar title="Popular" titleColor="#111" titleSize="1rem" />
 					</div>
 					<SideBarContent
-						data={headline.items}
+						data={headlineData}
 						type="article"
 						showAd={true}
 						limit={6}

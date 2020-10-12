@@ -15,6 +15,7 @@ const FacebookPage = dynamic(() => import("../SocialMedia/FacebookPage"), {
 });
 
 const Article = ({ id, individual, quiz, slide, url }) => {
+	const cpcAd = individual.linkedCpc ? individual.linkedCpc : null;
 	return (
 		<Layout>
 			<main className={styles.articleContainer}>
@@ -25,7 +26,12 @@ const Article = ({ id, individual, quiz, slide, url }) => {
 					<div className={styles.sectionPadding}>
 						<SectionBar title="Popular" titleColor="#111" titleSize="1rem" />
 					</div>
-					<SideBarContent data={slide.items} type="slideshow" showAd={true} />
+					<SideBarContent
+						data={slide.items}
+						cpcAd={cpcAd}
+						type="slideshow"
+						showAd={true}
+					/>
 					<LazyLoad once={true}>
 						<FacebookPage />
 					</LazyLoad>
@@ -35,6 +41,7 @@ const Article = ({ id, individual, quiz, slide, url }) => {
 					<SideBarSmallContent
 						data={quiz.items}
 						type="quiz"
+						cpcAd={cpcAd}
 						showAd={true}
 						adCode={ETORO_COPY_TRADER}
 					/>

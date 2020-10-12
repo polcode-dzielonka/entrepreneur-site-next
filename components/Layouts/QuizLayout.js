@@ -24,6 +24,9 @@ const Quiz = ({
 	url,
 	score,
 }) => {
+	const headlineData = individual.linkedArticle
+		? [individual.linkedArticle, ...headline.items]
+		: headline.items;
 	return (
 		<Layout>
 			<main className={styles.articleContainer}>
@@ -41,7 +44,7 @@ const Quiz = ({
 					<div className={styles.sectionPadding}>
 						<SectionBar title="Quiz" titleColor="#111" titleSize="1rem" />
 					</div>
-					<SideBarContent data={headline.items} type="article" showAd={true} />
+					<SideBarContent data={headlineData} type="article" showAd={true} />
 					<LazyLoad once={true}>
 						<FacebookPage />
 					</LazyLoad>

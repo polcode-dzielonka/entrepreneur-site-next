@@ -20,7 +20,6 @@ const QuizBookEnds = ({
 	scoreComments,
 	finalScore,
 	numberQuestions,
-	serialized,
 }) => {
 	const positionOpening = position === "opening";
 	const positionClosing = position === "closing";
@@ -30,7 +29,6 @@ const QuizBookEnds = ({
 			Object.keys(scoreComments).length,
 		0,
 	);
-	console.log("DETIALS", details);
 	return (
 		<div className={styles.bookEndWrapper}>
 			<div>

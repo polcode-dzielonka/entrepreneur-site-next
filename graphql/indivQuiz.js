@@ -20,6 +20,18 @@ export const QUIZ = /* GraphQL */ `
 			sideHeadline
 			bottomHeadline
 			shareCount
+			linkedArticle {
+				id
+				headline
+				headlineImage
+				headlineImageAlt
+				headlineImageCrop
+				headlineImageCropInfo
+				headlineImagePath
+				kicker
+				urlDescription
+				category
+			}
 		}
 	}
 `;

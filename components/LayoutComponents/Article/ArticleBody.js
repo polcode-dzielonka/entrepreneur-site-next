@@ -1,6 +1,6 @@
+import { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import Reader from "../Editor/reader";
-import { useContext } from "react";
 import LazyLoad from "react-lazyload";
 import FacebookComments from "../../SocialMedia/FacebookComments";
 import { closingSocialButtons } from "../../SocialMedia/data";
@@ -21,6 +21,8 @@ import Context from "../../../utils/Context";
 import { filterUnique } from "../../../utils/handler";
 import QuickViewButton from "../../Button/QuickViewButton";
 import Cookie from "js-cookie";
+import prodRequest from "../../apiRequest/prodRequest";
+import { UPDATE_ARTICLE } from "../../../graphql/indivArticle";
 
 const ArticleBody = ({
 	content,
@@ -34,12 +36,33 @@ const ArticleBody = ({
 }) => {
 	const value = JSON.parse(content.content);
 
-	const { sessionSlideIds, handleState } = useContext(Context);
+	const { sessionSlideIds } = useContext(Context);
 	const filterArray = sessionSlideIds.concat({ id });
+	const { viewCount } = content;
 	const nextContent = filterUnique(nextSlideShow.items, filterArray);
 	const nextSlideShowHref = nextContent[0]
 		? `/${nextContent[0].category}/${nextContent[0].urlDescription}/slideshow/${nextContent[0].id}/slides/opening`
 		: "";
+
+	useEffect(() => {
+		const updatedCount = viewCount ? Number(viewCount) + 1 : 1;
+
+		try {
+			const mutationData = {
+				query: UPDATE_ARTICLE,
+				operationName: "updateProductionArticle",
+				variables: {
+					input: {
+						id,
+						viewCount: JSON.stringify(updatedCount),
+					},
+				},
+			};
+			prodRequest(mutationData);
+		} catch (err) {
+			console.log("Error with request", err);
+		}
+	}, [id]);
 
 	const cookieSetup = () => {
 		Cookie.set("CPC", JSON.stringify(true), {

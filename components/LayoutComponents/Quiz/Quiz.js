@@ -19,7 +19,8 @@ import dynamic from "next/dynamic";
 import Context from "../../../utils/Context";
 import LongQuestions from "./LongQuestions";
 import Cookie from "js-cookie";
-
+import prodRequest from "../../apiRequest/prodRequest";
+import { UPDATE_QUIZ } from "../../../graphql/indivQuiz";
 const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 	ssr: false,
 });
@@ -31,6 +32,7 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 	const details = JSON.parse(content.overview);
 	const questions = JSON.parse(content.questions);
 	const { sessionQuizIds } = useContext(Context);
+	const { viewCount } = content;
 	const [cpcMarker, setCpcMarker] = useState(false);
 	const filterArray = sessionQuizIds.concat({ id });
 	const nextContent = filterUnique(nextQuiz.items, filterArray);
@@ -48,6 +50,24 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 
 	useEffect(() => {
 		setCurrentScore(0);
+
+		const updatedCount = viewCount ? Number(viewCount) + 1 : 1;
+
+		try {
+			const mutationData = {
+				query: UPDATE_QUIZ,
+				operationName: "UpdateProductionQuiz",
+				variables: {
+					input: {
+						id,
+						viewCount: JSON.stringify(updatedCount),
+					},
+				},
+			};
+			prodRequest(mutationData);
+		} catch (err) {
+			console.log("Error with request", err);
+		}
 	}, [id]);
 
 	useEffect(() => {

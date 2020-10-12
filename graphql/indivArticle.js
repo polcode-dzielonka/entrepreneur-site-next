@@ -14,6 +14,10 @@ export const ARTICLE = /* GraphQL */ `
 			schedule
 			original
 			scheduleTime
+			linkedCpc {
+				id
+				displayAd
+			}
 			createdAt
 			updatedAt
 		}
@@ -36,6 +40,10 @@ export const ADVERT_ARTICLE = /* GraphQL */ `
 			scheduleTime
 			createdAt
 			updatedAt
+			linkedCpc {
+				id
+				displayAd
+			}
 		}
 	}
 `;
@@ -66,6 +74,15 @@ export const NEXT_ARTICLE = /* GraphQL */ `
 			}
 			nextToken
 			sortIndex
+		}
+	}
+`;
+
+export const UPDATE_ARTICLE = /* GraphQL */ `
+	mutation updateProductionArticle($input: UpdateProductionArticleInput!) {
+		updateProductionArticle(input: $input) {
+			id
+			viewCount
 		}
 	}
 `;

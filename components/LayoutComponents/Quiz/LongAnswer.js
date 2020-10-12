@@ -37,7 +37,6 @@ const LongAnswer = ({
 							</div>
 						</div>
 					)}
-
 					<div className={styles.editorBlock}>
 						<div className={styles.answerComment}>
 							<div className={styles.answerCommentHeader}>

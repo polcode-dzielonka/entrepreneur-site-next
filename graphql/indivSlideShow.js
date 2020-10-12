@@ -23,6 +23,27 @@ export const SLIDESHOW = /* GraphQL */ `
 			sideHeadline
 			bottomHeadline
 			shareCount
+			linkedArticle {
+				id
+				headline
+				headlineImage
+				headlineImageAlt
+				headlineImageCrop
+				headlineImageCropInfo
+				headlineImagePath
+				kicker
+				urlDescription
+				category
+			}
+		}
+	}
+`;
+
+export const UPDATE_SLIDESHOW = /* GraphQL */ `
+	mutation updateProductionSlideshow($input: UpdateProductionSlideshowInput!) {
+		updateProductionSlideshow(input: $input) {
+			id
+			viewCount
 		}
 	}
 `;

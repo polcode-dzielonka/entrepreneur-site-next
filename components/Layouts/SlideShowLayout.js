@@ -24,6 +24,9 @@ const Slide = ({
 	position,
 	url,
 }) => {
+	const headlineData = individual.linkedArticle
+		? [individual.linkedArticle, ...headline.items]
+		: headline.items;
 	return (
 		<Layout>
 			<main className={styles.articleContainer}>
@@ -43,7 +46,7 @@ const Slide = ({
 					</div>
 					<div className={styles.sideContentWrapper}>
 						<SideBarContent
-							data={headline.items}
+							data={headlineData}
 							type="article"
 							showAd={true}
 							limit={6}
