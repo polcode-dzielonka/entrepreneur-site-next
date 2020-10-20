@@ -145,7 +145,7 @@ const SlideDetails = ({
 								/>
 								{position === "opening" && (
 									<QuickViewButton
-										label="Next"
+										label="Start"
 										imgSrc={details[0].headlineImage}
 										imagePath={details[0].imagePath}
 										href={`${nextHref}/1`}

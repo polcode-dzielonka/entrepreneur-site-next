@@ -5,77 +5,68 @@ import { PropTypes } from "prop-types";
 import styles from "./styles/headerStyles.module.sass";
 const Header = ({ menuOpen, onClick }) => {
 	return (
-		<header className={styles.siteHeader}>
-			<nav className={styles.mobileNav}>
-				<div className={styles.mobileLinks}>
-					<div className={styles.mobileNavMenuItem}>
-						<div className={styles.iconWrapper}>
-							<Link href={"/"}>
-								<a>
-									<img
-										src="/static/business_motivation.svg"
-										className={styles.headerIcon}
-										alt="wealthmack_logo"
-									/>
+		<header className="Header">
+			<nav className={styles.navigation}>
+				<div className={styles.logo}>
+					<Link href={"/"}>
+						<a>
+							<img
+								src="/static/business_motivation.svg"
+								className={styles.headerIcon}
+								alt="wealthmack_logo"
+							/>
+						</a>
+					</Link>
+				</div>
+				<div className={styles.headLinks}>
+					<div className={styles.linkWrapper}>
+						{links.map(({ href, label }, index) => (
+							<Link href={href} key={index}>
+								<a className={styles.navMenuItem}>
+									<span className={styles.navMenuLink}>{label} </span>
 								</a>
 							</Link>
-						</div>
-						<MenuButton open={menuOpen} onClick={onClick} />
+						))}
 					</div>
 				</div>
-			</nav>
-			{!menuOpen && (
-				<nav className={styles.navbar}>
-					<div className={styles.headLinks}>
-						<div className={styles.logoWrapper}>
-							<Link href={"/"}>
-								<a>
+				<div className={styles.headSocialLinks}>
+					<div className={styles.socialWrapper}>
+						{socialLinks.map(({ href, icon, altName }, index) => (
+							<div className={styles.socialNavMenuItem} key={index}>
+								<a href={href} target="_blank" rel="noopener noreferrer">
 									<img
-										src="/static/business_motivation.svg"
-										className={styles.headerIcon}
-										alt="wealthmack_logo"
+										className={styles.socialStyles}
+										src={icon}
+										alt={altName}
 									/>
 								</a>
-							</Link>
-						</div>
-						<div className={styles.linkWrapper}>
-							{links.map(({ href, label }, index) => (
-								<Link href={href} key={index}>
-									<a className={`${styles.navMenuItem} nav-menu-item-link`}>
-										<span className={styles.navMenuLink}>{label} </span>
-									</a>
-								</Link>
-							))}
-						</div>
+							</div>
+						))}
 					</div>
-					<div className={styles.headSocialLinks}>
-						<div className={styles.socialWrapper}>
-							{socialLinks.map(({ href, icon, altName }, index) => (
-								<div
-									className={`${styles.socialNavMenuItem} social-menu-item-link`}
-									key={index}
-								>
-									<a href={href} target="_blank" rel="noopener noreferrer">
-										<img
-											className={styles.socialStyles}
-											src={icon}
-											alt={altName}
-										/>
-									</a>
-								</div>
-							))}
-						</div>
-					</div>
-				</nav>
-			)}
-			<style jsx>{`
-				.nav-menu-item-link {
-					width: calc(100% / ${links.length});
-				}
-				.social-menu-item-link {
-					width: calc(100% / ${socialLinks.length});
-				}
-			`}</style>
+				</div>
+				<div className={styles.burger}>
+					<MenuButton open={menuOpen} onClick={onClick} />
+				</div>
+			</nav>
+			<style jsx>
+				{`
+					.Header {
+						position: fixed;
+						top: 0; /* Stick it to the top */
+						max-height: 70px;
+						width: 100vw;
+
+						display: grid;
+
+						/* Cosmetics */
+						background-color: #101010;
+						z-index: 1000;
+						height: 3.45rem;
+						align-items: center;
+						justify-items: center;
+					}
+				`}
+			</style>
 		</header>
 	);
 };

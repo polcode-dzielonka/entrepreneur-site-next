@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Menu from "../Header/Menu/Menu";
@@ -12,17 +12,18 @@ const Layout = props => {
 	const { background, children } = props;
 	const [menuOpen, setMenuOpen] = useState(false);
 
-	const onClick = e => {
+	const clickMenu = e => {
 		setMenuOpen(!menuOpen);
 	};
+
 	return (
 		<div
 			className={styles.topLayout}
 			style={{ backgroundColor: background ? "#111" : "white" }}
 		>
 			<DefaultHeader />
-			<Header menuOpen={menuOpen} onClick={e => onClick()} />
-			{menuOpen && <Menu onClick={e => onClick()} />}
+			<Header menuOpen={menuOpen} onClick={e => clickMenu()} />
+			{menuOpen && <Menu onClick={e => clickMenu()} />}
 			<div className={styles.pageLayout}>{children}</div>
 			<CookieBanner />
 			<LazyLoad once={true}>
