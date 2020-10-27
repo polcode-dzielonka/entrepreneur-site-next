@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Embed from "../../../Embed/Embed";
 import styles from "./styles/quickBookEndStyles.module.sass";
 import Adsense from "../../../ads/code/adsense/adsense";
+import adsenseStyles from "../../../ads/code/adsense/adsenseStyles";
 import Reader from "../../Editor/reader";
 const BookEnds = ({
 	image,
@@ -13,12 +14,14 @@ const BookEnds = ({
 	details,
 	embed,
 }) => {
-	const value = details;
-
 	return (
 		<div className={styles.bookEndWrapper}>
 			<div>
-				<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
+				<Adsense
+					client="ca-pub-2068760522034474"
+					slot="3049705177"
+					adStyle={adsenseStyles["maxHeight"]}
+				/>
 			</div>
 			<h1 className={styles.sectionHeader}>{title}</h1>
 			<div className={styles.sectionParagraph}>
@@ -36,7 +39,6 @@ const BookEnds = ({
 					noMaxHeight={true}
 				/>
 			</div>
-
 			<div className={styles.adWrap}>
 				<Adsense client="ca-pub-2068760522034474" slot="1874540097" />
 			</div>

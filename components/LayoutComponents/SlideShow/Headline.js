@@ -12,6 +12,7 @@ import ShowMeta from "../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/headlineStyles.module.sass";
 import Adsense from "../../ads/code/adsense/adsense";
+import adsenseStyles from "../../ads/code/adsense/adsenseStyles";
 
 const BookEnds = ({ data, id, position, cpcMarker }) => {
 	const {
@@ -57,7 +58,12 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 				authorName={authorName}
 			/>
 			<div>
-				<Adsense client="ca-pub-2068760522034474" slot="4672943880" />
+				<Adsense
+					client="ca-pub-2068760522034474"
+					slot="4672943880"
+					format={"rectangle"}
+					adStyle={adsenseStyles["maxHeight"]}
+				/>
 			</div>
 			<ul className={styles.listWrapper}>
 				<li className={styles.sectionBrief}>{slideTitle}</li>

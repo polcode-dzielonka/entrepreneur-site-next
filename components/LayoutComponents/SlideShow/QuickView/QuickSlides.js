@@ -6,6 +6,7 @@ import LazyLoad from "react-lazyload";
 import styles from "./styles/quickSlideStyles.module.sass";
 import SingleLoader from "../../../Loading/SingleLoader";
 import Adsense from "../../../ads/code/adsense/adsense";
+import adsenseStyles from "../../../ads/code/adsense/adsenseStyles";
 import Reader from "../../Editor/reader";
 
 const QuickSlides = ({
@@ -45,7 +46,11 @@ const QuickSlides = ({
 	return (
 		<div className={styles.bookendWrapper}>
 			<div>
-				<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
+				<Adsense
+					client="ca-pub-2068760522034474"
+					slot="3049705177"
+					adStyle={adsenseStyles["maxHeight"]}
+				/>
 			</div>
 			<h1 className={styles.sectionHeader}>
 				{showNumbers && (

@@ -14,6 +14,8 @@ const MultiAdWrapper = dynamic(() => import("../../ads/twoAdsWrapper"), {
 import { AMAZON_KINDLE_CODE_SQUARE } from "../../ads/code/amazonBusiness";
 import { FIVERR_SQUARE } from "../../ads/code/fiverr";
 import Adsense from "../../ads/code/adsense/adsense";
+import adsenseStyles from "../../ads/code/adsense/adsenseStyles";
+
 const Slides = ({
 	data,
 	showNumbers,
@@ -61,8 +63,11 @@ const Slides = ({
 				<h3 className={slideStyles.sectionBrief}>{slideComment}</h3>
 				<div className={slideStyles.sectionParagraph}>
 					<Reader value={slideData.slideDetails[0].children} />
-
-					<Adsense client="ca-pub-2068760522034474" slot="8433059648" />
+					<Adsense
+						client="ca-pub-2068760522034474"
+						slot="8433059648"
+						adStyle={adsenseStyles["maxHeight"]}
+					/>
 				</div>
 				<div>
 					<LazyLoad once={true}>
