@@ -13,6 +13,7 @@ import ShowMeta from "../../showMeta/showMeta";
 import LazyLoad from "react-lazyload";
 import styles from "./styles/articleHeadStyles.module.sass";
 import Adsense from "../../ads/code/adsense/adsense";
+import adsenseStyles from "../../ads/code/adsense/adsenseStyles";
 
 const ArticleHead = ({ overview, id, nextSlideShow }) => {
 	const details = JSON.parse(overview.overview);
@@ -64,7 +65,12 @@ const ArticleHead = ({ overview, id, nextSlideShow }) => {
 					authorName={authorName}
 				/>
 			</div>
-			<Adsense client={"ca-pub-2068760522034474"} slot={"9802692073"} />
+			<Adsense
+				client={"ca-pub-2068760522034474"}
+				slot={"9802692073"}
+				responsive={false}
+				adStyle={adsenseStyles["maxHeight"]}
+			/>
 			<ImageLoader
 				src={headlineImage}
 				alt={headlineImageAlt}

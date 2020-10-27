@@ -61,7 +61,7 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 				<Adsense
 					client="ca-pub-2068760522034474"
 					slot="4672943880"
-					format={"rectangle"}
+					responsive={false}
 					adStyle={adsenseStyles["maxHeight"]}
 				/>
 			</div>
@@ -84,7 +84,12 @@ const BookEnds = ({ data, id, position, cpcMarker }) => {
 			<hr className={styles.break} />
 			{cpcMarker && (
 				<div>
-					<Adsense client="ca-pub-2068760522034474" slot="3049705177" />
+					<Adsense
+						client="ca-pub-2068760522034474"
+						slot="3049705177"
+						responsive={false}
+						adStyle={adsenseStyles["maxHeight"]}
+					/>
 				</div>
 			)}
 			<LazyLoad once={true}>

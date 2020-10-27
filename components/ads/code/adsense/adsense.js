@@ -29,14 +29,26 @@ const Adsense = ({
 			<div className={styles.adWrap}>
 				<div className={styles.adHeader}>
 					<div className={styles.advert}>ADVERTISEMENT</div>
-					<ins
-						className="adsbygoogle adbanner-customize"
-						style={adStyle}
-						data-ad-client={client}
-						data-ad-slot={slot}
-						data-ad-format={format}
-						data-full-width-responsive={responsive}
-					/>
+
+					{responsive && (
+						<ins
+							className="adsbygoogle adbanner-customize"
+							style={adStyle}
+							data-ad-client={client}
+							data-ad-slot={slot}
+							data-ad-format={format}
+							data-full-width-responsive={responsive}
+						/>
+					)}
+
+					{!responsive && (
+						<ins
+							className="adsbygoogle adbanner-customize"
+							style={adStyle}
+							data-ad-client={client}
+							data-ad-slot={slot}
+						/>
+					)}
 				</div>
 				<hr className={styles.breaker} />
 			</div>

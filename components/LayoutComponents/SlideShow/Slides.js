@@ -66,6 +66,7 @@ const Slides = ({
 					<Adsense
 						client="ca-pub-2068760522034474"
 						slot="8433059648"
+						responsive={false}
 						adStyle={adsenseStyles["maxHeight"]}
 					/>
 				</div>
