@@ -119,7 +119,6 @@ const SlideDetails = ({
 							totalSlides={content.numSlides}
 							cpcMarker={cpcMarker}
 						/>
-
 						{(position === "opening" || position === "closing") && (
 							<>
 								<QuickBookEnds
@@ -189,7 +188,12 @@ const SlideDetails = ({
 								cpcMarker={cpcMarker}
 							/>
 						)}
-						<Adsense client="ca-pub-2068760522034474" slot="7104500257" />
+						<Adsense
+							client="ca-pub-2068760522034474"
+							slot="7104500257"
+							responsive={true}
+							adStyle={{ display: "block" }}
+						/>
 					</div>
 				</>
 			)}
@@ -227,7 +231,6 @@ const SlideDetails = ({
 						latest={latest}
 						countdown={countdown}
 					/>
-
 					<BookEnds
 						position={"closing"}
 						image={bookEndClosing.closingImage}
@@ -249,7 +252,6 @@ const SlideDetails = ({
 					<div>
 						<Adsense client="ca-pub-2068760522034474" slot="3467673426" />
 					</div>
-
 					{nextContent[0] && (
 						<QuickViewButton
 							label={"Next"}

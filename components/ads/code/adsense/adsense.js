@@ -10,7 +10,6 @@ const Adsense = ({
 	responsive,
 	adStyle,
 }) => {
-	// This code is ran when the component mounts
 	useEffect(() => {
 		try {
 			(window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -40,7 +39,6 @@ const Adsense = ({
 							data-full-width-responsive={responsive}
 						/>
 					)}
-
 					{!responsive && (
 						<ins
 							className="adsbygoogle adbanner-customize"

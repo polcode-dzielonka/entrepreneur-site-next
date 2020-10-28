@@ -49,6 +49,7 @@ const QuickSlides = ({
 				<Adsense
 					client="ca-pub-2068760522034474"
 					slot="3049705177"
+					responsive={false}
 					adStyle={adsenseStyles["maxHeight"]}
 				/>
 			</div>
@@ -82,7 +83,12 @@ const QuickSlides = ({
 				)}
 			</div>
 			<div className={styles.adWrap}>
-				<Adsense client="ca-pub-2068760522034474" slot="1874540097" />
+				<Adsense
+					client="ca-pub-2068760522034474"
+					slot="1874540097"
+					responsive={false}
+					adStyle={adsenseStyles["maxHeight"]}
+				/>
 			</div>
 			{cpcMarker && (
 				<LazyLoad once={true}>

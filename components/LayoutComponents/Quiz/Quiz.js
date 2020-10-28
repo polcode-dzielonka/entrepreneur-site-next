@@ -26,6 +26,7 @@ const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 });
 import { AMAZON_MUSIC_WIDE_BANNER } from "../../ads/code/amazonBusiness";
 import Adsense from "../../ads/code/adsense/adsense";
+import adsenseStyles from "../../ads/code/adsense/adsenseStyles";
 import { filterUnique } from "../../../utils/handler";
 
 const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
@@ -175,8 +176,13 @@ const QuizDetails = ({ content, position, url, id, score, nextQuiz }) => {
 							</>
 						)}
 
-						<div>
-							<Adsense client="ca-pub-2068760522034474" slot="4560498904" />
+						<div className={styles.adsenseWrapper}>
+							<Adsense
+								client="ca-pub-2068760522034474"
+								slot="4560498904"
+								responsive={false}
+								adStyle={adsenseStyles["maxHeight"]}
+							/>
 						</div>
 						<div>
 							{position !== "opening" && position !== "closing" && (

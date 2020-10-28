@@ -9,6 +9,7 @@ import styles from "./styles/questionStyles.module.sass";
 import SingleLoader from "../../Loading/SingleLoader";
 import LazyLoad from "react-lazyload";
 import Adsense from "../../ads/code/adsense/adsense";
+import adsenseStyles from "../../ads/code/adsense/adsenseStyles";
 const Questions = ({
 	total,
 	questionData,
@@ -115,8 +116,13 @@ const Questions = ({
 
 		return (
 			<div className={styles.bookendWrapper}>
-				<div style={{ margin: "3rem 0rem" }}>
-					<Adsense client="ca-pub-2068760522034474" slot="4560498904" />
+				<div className={styles.adsenseWrapper}>
+					<Adsense
+						client="ca-pub-2068760522034474"
+						slot="4560498904"
+						responsive={false}
+						adStyle={adsenseStyles["maxHeight"]}
+					/>
 				</div>
 				<div className={styles.sectionHeader}>
 					<span className={styles.questionPosition}>{questionPosition}</span>

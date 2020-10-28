@@ -10,6 +10,7 @@ import styles from "./styles/questionStyles.module.sass";
 import SingleLoader from "../../Loading/SingleLoader";
 import dynamic from "next/dynamic";
 import Adsense from "../../ads/code/adsense/adsense";
+import adsenseStyles from "../../ads/code/adsense/adsenseStyles";
 
 const AdWrapper = dynamic(() => import("../../ads/adWrapper"), {
 	ssr: false,
@@ -164,7 +165,11 @@ const Questions = ({
 					</div>
 				)}
 				<div className={styles.multiWrapper}>
-					<Adsense client="ca-pub-2068760522034474" slot="3992688547" />
+					<Adsense
+						client="ca-pub-2068760522034474"
+						slot="3992688547"
+						responsive={true}
+					/>
 				</div>
 			</div>
 			<div className={styles.sectionHeaderScore}>
